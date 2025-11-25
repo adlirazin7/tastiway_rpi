@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "firebase-admin": "^13.5.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "name": "project",
+  "version": "1.0.0",
+  "main": "fetchOrders.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module"
+}

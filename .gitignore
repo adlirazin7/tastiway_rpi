@@ -1,0 +1,51 @@
+# ============================
+# Node.js
+# ============================
+node_modules/
+npm-debug.log
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
+
+# ============================
+# Environment & Credentials
+# ============================
+# Firebase / Google Service Account (NEVER commit)
+service_account-cp4.json
+
+# Local env files
+.env
+*.env
+
+# ============================
+# Database files
+# ============================
+*.db
+tastiway.db
+*.sqlite
+*.sqlite3
+
+# ============================
+# App-specific JS files
+# (Only ignore if auto-generated or private)
+# ============================
+sql.js
+
+# ============================
+# OS Files
+# ============================
+.DS_Store
+Thumbs.db
+
+# ============================
+# Logs
+# ============================
+logs/
+*.log
+
+# ============================
+# Optional JetBrains / VSCode
+# ============================
+.idea/
+.vscode/

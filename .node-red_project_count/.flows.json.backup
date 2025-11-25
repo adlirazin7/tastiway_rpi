@@ -1,0 +1,1982 @@
+[
+    {
+        "id": "f69312076bb95996",
+        "type": "tab",
+        "label": "Basic Count Flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8896598dfb74748c",
+        "type": "group",
+        "z": "f69312076bb95996",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "8e57b949301535ff",
+            "40dd98edefacbfeb",
+            "2c0caf796cd63d0e",
+            "ee4d21a02dc77d76",
+            "31061fbfd67e3e44",
+            "cb5bd06e4d986184",
+            "e207c57ab5d541f5",
+            "be45d7d87d25809a",
+            "b0a3ccad6d276ce8",
+            "a3d78a2661a5f910",
+            "3f2c9ded7b6973d1",
+            "a83dfe4e7a42b076"
+        ],
+        "x": 74,
+        "y": 79,
+        "w": 1052,
+        "h": 202
+    },
+    {
+        "id": "4a6bf541ef792204",
+        "type": "modbus-client",
+        "name": "",
+        "clienttype": "serial",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyACM1",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "d7416ec1d9513281",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "icon",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "bf6ce2ec840921b5",
+        "type": "ui-theme",
+        "name": "Tastiway Theme",
+        "colors": {
+            "surface": "#01274c",
+            "primary": "#007ecc",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "61bc6e56e10603d1",
+        "type": "global-config",
+        "env": [],
+        "modules": {}
+    },
+    {
+        "id": "d6080a2e5d1dfe6f",
+        "type": "ui-page",
+        "name": "Production Plan",
+        "ui": "d7416ec1d9513281",
+        "path": "/production_plan",
+        "icon": "timetable",
+        "layout": "grid",
+        "theme": "bf6ce2ec840921b5",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "53026aa3c68dea20",
+        "type": "ui-group",
+        "name": "Select Production Plan",
+        "page": "d6080a2e5d1dfe6f",
+        "width": "12",
+        "height": "1",
+        "order": 1,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "2dc83d708a58e0a5",
+        "type": "ui-spacer",
+        "group": "53026aa3c68dea20",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 3,
+        "width": 12,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "8b5a8b9ec8801e6b",
+        "type": "ui-page",
+        "name": "Process",
+        "ui": "d7416ec1d9513281",
+        "path": "/process",
+        "icon": "play",
+        "layout": "grid",
+        "theme": "bf6ce2ec840921b5",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 2,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "16a799820a185e70",
+        "type": "ui-group",
+        "name": "Details",
+        "page": "8b5a8b9ec8801e6b",
+        "width": "12",
+        "height": 1,
+        "order": 1,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "true",
+        "groupType": "default"
+    },
+    {
+        "id": "25c1914aaf26412a",
+        "type": "sqlitedb",
+        "db": "/home/pi/Project/tastiway.db",
+        "mode": "RWC"
+    },
+    {
+        "id": "0d92c765bfad87e6",
+        "type": "ui-theme",
+        "name": "Basic Blue Theme",
+        "colors": {
+            "surface": "#4d58ff",
+            "primary": "#0094ce",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "f8e5a7882313f0fe",
+        "type": "ui-spacer",
+        "group": "53026aa3c68dea20",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 1,
+        "width": 8,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "902127b30471c926",
+        "type": "ui-spacer",
+        "group": "16a799820a185e70",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 10,
+        "width": 8,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "5075a7d8e4947586",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "dff5edc413f07f75",
+        "type": "ui-spacer",
+        "group": "16a799820a185e70",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 9,
+        "width": 12,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "a8102679cc6c4334",
+        "type": "ui-spacer",
+        "group": "16a799820a185e70",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 2,
+        "width": 12,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "af232e24ea5e6cdb",
+        "type": "ui-spacer",
+        "group": "53026aa3c68dea20",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 6,
+        "width": 1,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "8be2d2b13318ba66",
+        "type": "ui-spacer",
+        "group": "16a799820a185e70",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 5,
+        "width": 1,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "05ffaf499e6d0c46",
+        "type": "ui-spacer",
+        "group": "16a799820a185e70",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 7,
+        "width": 1,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "8e57b949301535ff",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 120,
+        "wires": [
+            [
+                "40dd98edefacbfeb"
+            ]
+        ]
+    },
+    {
+        "id": "40dd98edefacbfeb",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "name": "Create tables tastiway_plans",
+        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS tastiway_plans (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  start INTEGER NOT NULL,\n  end INTEGER NOT NULL,\n  orderId TEXT NOT NULL,\n  productName TEXT NOT NULL,\n  quantity INTEGER NOT NULL\n);\n`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 120,
+        "wires": [
+            [
+                "2c0caf796cd63d0e"
+            ]
+        ]
+    },
+    {
+        "id": "2c0caf796cd63d0e",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 710,
+        "y": 120,
+        "wires": [
+            [
+                "ee4d21a02dc77d76"
+            ]
+        ]
+    },
+    {
+        "id": "ee4d21a02dc77d76",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "name": "create table tastiway_plans",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "8ede334e90c6c664",
+        "type": "rpi-gpio in",
+        "z": "f69312076bb95996",
+        "name": "",
+        "pin": "16",
+        "intype": "tri",
+        "debounce": "20",
+        "read": false,
+        "bcm": true,
+        "x": 130,
+        "y": 1060,
+        "wires": [
+            [
+                "0e98c478cdb04582"
+            ]
+        ]
+    },
+    {
+        "id": "0e98c478cdb04582",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "add +1 count",
+        "func": "var oldState = flow.get(\"oldState\") || 0;\nvar newState = msg.payload;\nvar currentOrderId = flow.get(\"currentOrderId\") || null;\n\nvar sqlMsg = null;\n\n// Only count if an order is active\nif (currentOrderId) {\n    // Rising edge detection: 0 → 1\n    if (oldState === 0 && newState === 1) {\n        sqlMsg = {\n            topic: `UPDATE current\n                    SET counts = counts + 1\n                    WHERE orderId = '${currentOrderId}';`\n        };\n        node.status({ fill: \"green\", shape: \"dot\", text: \"Counting...\" });\n    }\n} else {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"Counting disabled\" });\n}\n\n// Save the latest state\nflow.set(\"oldState\", newState);\n\n// Only send if a count happened\nreturn sqlMsg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 1060,
+        "wires": [
+            [
+                "317ec6aaa27620e1"
+            ]
+        ]
+    },
+    {
+        "id": "8e4507e43a676b13",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "create row in current",
+        "func": "msg.topic=`\nINSERT INTO count ( plan, count)\nVALUES ('test',0);\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 1760,
+        "wires": [
+            [
+                "eb7b3a0e05830ea3"
+            ]
+        ]
+    },
+    {
+        "id": "eb7b3a0e05830ea3",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 990,
+        "y": 1760,
+        "wires": [
+            [
+                "6d21db2df8dc7a48"
+            ]
+        ]
+    },
+    {
+        "id": "6d21db2df8dc7a48",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "set countingEnabled",
+        "func": "if (!msg.error && msg.topic && msg.topic.toUpperCase().includes(\"INSERT INTO\")) {\n    flow.set(\"countingEnabled\", true);\n    node.status({ fill: \"green\", text: \"Counting enabled\" });\n} else {\n    flow.set(\"countingEnabled\", false);\n    node.status({ fill: \"red\", text: \"Counting disabled\" });\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1240,
+        "y": 1760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "317ec6aaa27620e1",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 510,
+        "y": 1060,
+        "wires": [
+            [
+                "231d11e98ba1955a"
+            ]
+        ]
+    },
+    {
+        "id": "231d11e98ba1955a",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "Retrieve count",
+        "func": "var currentOrderId = flow.get(\"currentOrderId\") || null;\nvar sqlMsg = null;\n\n// if start is pressed\nif (currentOrderId) {\n        sqlMsg = {topic : `\n            SELECT counts\n            FROM current\n            WHERE orderId = '${currentOrderId}';\n        `};\n        node.status({ fill: \"green\", shape: \"dot\", text: \"Retrieving counts\" }); \n} else {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"Counting disabled\" });\n}\n\nreturn sqlMsg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 1060,
+        "wires": [
+            [
+                "447ef07a2ae008b3"
+            ]
+        ]
+    },
+    {
+        "id": "447ef07a2ae008b3",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 930,
+        "y": 1060,
+        "wires": [
+            [
+                "1167c30a1cedc02b"
+            ]
+        ]
+    },
+    {
+        "id": "1167c30a1cedc02b",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "function 1",
+        "func": "if (msg.payload && msg.payload.length > 0) {\n    const countValue = msg.payload[0].counts;\n\n    node.status({ fill: \"green\", shape: \"dot\", text: \"Count: \" + countValue });\n\n    // Send to UI\n    msg.payload = countValue;\n    return msg;\n} else {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"No data\" });\n    return null;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 1060,
+        "wires": [
+            [
+                "9c0a05a7de101d95",
+                "26d222d71a3d8ff4"
+            ]
+        ]
+    },
+    {
+        "id": "ae13bab034a8c453",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "name": "PP Inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 600,
+        "wires": [
+            [
+                "387dc7dc7cfd6972"
+            ]
+        ]
+    },
+    {
+        "id": "387dc7dc7cfd6972",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "order (sqlite)",
+        "func": "msg.topic = \"SELECT * FROM tastiway_plans;\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 600,
+        "wires": [
+            [
+                "f7ab77b47925689a"
+            ]
+        ]
+    },
+    {
+        "id": "3b5d722bfc436434",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "group": "53026aa3c68dea20",
+        "page": "",
+        "ui": "",
+        "name": "OrderID Cards",
+        "order": 4,
+        "width": "",
+        "height": "",
+        "head": "",
+        "format": "<template>\n  <v-container fluid class=\"pa-0\">\n    <v-row dense class=\"ma-0\">\n      <template v-for=\"(plans, date) in groupedPlans\" :key=\"date\">\n        <!-- Date header -->\n        <v-col cols=\"12\" class=\"px-4 py-2\">\n          <div class=\"text-h6 font-weight-bold\">{{ date }}</div>\n        </v-col>\n\n        <!-- Cards under this date -->\n        <v-col v-for=\"(plan, index) in plans\" :key=\"date + '-' + index\" cols=\"12\" sm=\"6\" class=\"pa-2\">\n          <v-card class=\"hoverable plan-card pa-3\" outlined @click=\"selectPlan(plan)\">\n            <v-row>\n              <v-col class=\"pa-4\">\n                <div class=\"text-h6\">{{ plan.productName }}</div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  {{ plan.orderId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Quantity: {{ plan.quantity }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Start: {{ new Date(plan.start).toLocaleString() }}\n                </div>\n              </v-col>\n            </v-row>\n          </v-card>\n        </v-col>\n      </template>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      selectedPlan: null,\n      planOptions: [],\n    };\n  },\n\n  computed: {\n    groupedPlans() {\n      const groups = {};\n\n      // group by display date\n      this.planOptions.forEach((plan) => {\n        const date = new Date(plan.start);\n        const displayKey = date.toLocaleDateString(\"en-GB\"); // stays like \"14/11/2025\"\n\n        if (!groups[displayKey]) groups[displayKey] = [];\n        groups[displayKey].push(plan);\n      });\n\n      // sort date keys DESC but KEEP display format\n      const sorted = Object.fromEntries(\n        Object.entries(groups).sort((a, b) => {\n          const dA = new Date(a[0].split(\"/\").reverse().join(\"-\")); // 14/11/2025 → 2025-11-14\n          const dB = new Date(b[0].split(\"/\").reverse().join(\"-\"));\n          return dB - dA; // newest first\n        })\n      );\n\n      return sorted;\n    },\n  },\n\n  methods: {\n    selectPlan(plan) {\n      this.selectedPlan = plan.orderId;\n      this.send({ payload: plan.orderId }); // sending orderId to Node-RED exec node\n\n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: {\n          orderId: plan.orderId,\n          productName: plan.productName,\n          quantity: plan.quantity,\n          start: plan.start,\n        },\n      });\n    },\n  },\n\n  watch: {\n    msg(newMsg) {\n      if (Array.isArray(newMsg?.payload)) {\n        this.planOptions = newMsg.payload.map((r) => ({\n          productName: r.productName,\n          orderId: r.orderId,\n          quantity: r.quantity ?? 0,\n          start: r.start ?? \"-\",\n        }));\n      } else if (newMsg?.payload?.orderId) {\n        const r = newMsg.payload;\n        this.planOptions = [\n          {\n            productName: r.productName,\n            orderId: r.orderId,\n            quantity: r.quantity ?? 0,\n            start: r.start ?? \"-\",\n          },\n        ];\n      }\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .plan-card {\n    width: 100%;\n    cursor: pointer;\n    transition: 0.25s;\n    border-radius: 16px;\n    overflow: hidden;\n  }\n\n  .plan-card:hover {\n    background-color: #f5f5f5;\n    transform: scale(1.01);\n  }\n\n  .v-card.selected {\n    border-color: #1976d2;\n    background-color: #e3f2fd;\n  }\n\n  .v-container {\n    max-height: 100%;\n    overflow-y: auto;\n    scrollbar-width: none;\n    padding-top: 0 !important;\n  }\n</style>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 800,
+        "y": 600,
+        "wires": [
+            [
+                "a838e298114a1f97",
+                "7088c57090ef3bb3"
+            ]
+        ]
+    },
+    {
+        "id": "c1b07fca4d8a1bc9",
+        "type": "ui-button",
+        "z": "f69312076bb95996",
+        "group": "53026aa3c68dea20",
+        "name": "Refresh Order ID",
+        "label": "Refresh Order ID",
+        "order": 2,
+        "width": "4",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "refresh-style",
+        "icon": "refresh",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "#01274c",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 170,
+        "y": 700,
+        "wires": [
+            [
+                "387dc7dc7cfd6972"
+            ]
+        ]
+    },
+    {
+        "id": "92dea9fd9848195e",
+        "type": "exec",
+        "z": "f69312076bb95996",
+        "command": "node /home/pi/Project/fetchOrders.js",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "(orders) -- firestore => sqlite",
+        "x": 420,
+        "y": 460,
+        "wires": [
+            [
+                "5e16498d64ade981"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a838e298114a1f97",
+        "type": "exec",
+        "z": "f69312076bb95996",
+        "command": "node /home/pi/Project/startCounting.js",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "+ process&current(sqlite) &&  + status (firestore)",
+        "x": 1120,
+        "y": 600,
+        "wires": [
+            [
+                "534651e93a429058"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "2fe74988ab142866",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "name": "fetch orders",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "14400",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 460,
+        "wires": [
+            [
+                "92dea9fd9848195e"
+            ]
+        ]
+    },
+    {
+        "id": "534651e93a429058",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "+ process&current(sqlite) &&  + status (firestore)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1540,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "5e16498d64ade981",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "fetch orders -- firestore=>sqlite",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "f7ab77b47925689a",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 590,
+        "y": 600,
+        "wires": [
+            [
+                "3b5d722bfc436434"
+            ]
+        ]
+    },
+    {
+        "id": "31061fbfd67e3e44",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "cb5bd06e4d986184"
+            ]
+        ]
+    },
+    {
+        "id": "cb5bd06e4d986184",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "name": "Create table tastiway_process",
+        "func": "msg.topic = `\n\nCREATE TABLE IF NOT EXISTS tastiway_process (\n  orderId TEXT NOT NULL PRIMARY KEY,\n  start INTEGER NOT NULL,\n  stop INTEGER,\n  counts INTEGER DEFAULT 0,\n  uploaded INTEGER DEFAULT 0\n);\n`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 180,
+        "wires": [
+            [
+                "e207c57ab5d541f5"
+            ]
+        ]
+    },
+    {
+        "id": "e207c57ab5d541f5",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 710,
+        "y": 180,
+        "wires": [
+            [
+                "be45d7d87d25809a"
+            ]
+        ]
+    },
+    {
+        "id": "be45d7d87d25809a",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "name": "create table tastiway_process",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "b0a3ccad6d276ce8",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 240,
+        "wires": [
+            [
+                "a3d78a2661a5f910"
+            ]
+        ]
+    },
+    {
+        "id": "a3d78a2661a5f910",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "name": "Create table current",
+        "func": "msg.topic = `\n\nCREATE TABLE IF NOT EXISTS current (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  orderId TEXT NOT NULL,\n  counts INTEGER DEFAULT 0 \n);\n`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 240,
+        "wires": [
+            [
+                "3f2c9ded7b6973d1"
+            ]
+        ]
+    },
+    {
+        "id": "3f2c9ded7b6973d1",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 710,
+        "y": 240,
+        "wires": [
+            [
+                "a83dfe4e7a42b076"
+            ]
+        ]
+    },
+    {
+        "id": "a83dfe4e7a42b076",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "name": "create table current",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "72f4bf72b10c45e8",
+        "type": "comment",
+        "z": "f69312076bb95996",
+        "name": "Initaitions sqlite",
+        "info": "",
+        "x": 160,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7088c57090ef3bb3",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "set flow for currentOrderId",
+        "func": "// Expecting msg.orderId to come from previous node\nconst orderId = msg.payload;\n\nif (orderId) {\n    flow.set(\"currentOrderId\", orderId);\n    node.status({ text: \"Current Order: \" + orderId });\n} else {\n    node.error(\"❌ Missing orderId argument!\", msg);\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b9b7d594a7adf9f9",
+        "type": "ui-text-input",
+        "z": "f69312076bb95996",
+        "group": "53026aa3c68dea20",
+        "name": "OrderId input view",
+        "label": "Order ID",
+        "order": 5,
+        "width": "12",
+        "height": "1",
+        "topic": "topic",
+        "topicType": "msg",
+        "mode": "number",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "sendOnClear": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "x": 170,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5040a4cc321a9a37",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "group": "16a799820a185e70",
+        "page": "",
+        "ui": "",
+        "name": "Product Name view",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<template>\n  <v-container fluid class=\"pa-0 ma-0\">\n    <v-row no-gutters>\n      <v-col class=\"pa-4\">\n        <h2 class=\"text-h5 font-weight-bold mb-1\">\n          {{ productName || 'No product selected' }}\n        </h2>\n        <p class=\"text-body-1\">\n          {{ orderId ? `Order ID: ${orderId}` : '' }}\n        </p>\n      </v-col>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      productName: null,\n      orderId: null,\n    };\n  },\n  mounted() {\n    const query = this.$route.query;\n    this.productName = query.productName;\n    this.orderId = query.orderId;\n  },\n};\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 170,
+        "y": 1180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9691b231f332fa27",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 410,
+        "y": 1760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ca38691fc478bbae",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "fetch from current",
+        "func": "msg.topic=`\nSELECT * FROM current\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 1760,
+        "wires": [
+            [
+                "9691b231f332fa27"
+            ]
+        ]
+    },
+    {
+        "id": "9c0a05a7de101d95",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "204c7b57bb3d9ae7",
+        "type": "exec",
+        "z": "f69312076bb95996",
+        "command": "node /home/pi/Project/finishCounting.js",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Finish Counting",
+        "x": 860,
+        "y": 1260,
+        "wires": [
+            [
+                "b59f60c8d21beb67"
+            ],
+            [
+                "b59f60c8d21beb67"
+            ],
+            [
+                "b59f60c8d21beb67"
+            ]
+        ]
+    },
+    {
+        "id": "b59f60c8d21beb67",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "5ab907e3f5e90ab8",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "function 2",
+        "func": "const orderId = flow.get(\"currentOrderId\");\n\nif (!orderId) {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"❌ No currentOrderId found\" });\n    node.error(\"No currentOrderId set in flow context!\");\n    return null;\n}\n\nmsg.payload = orderId;\n\n// // Optionally, set msg.args if your Exec node uses an array of arguments\n// msg.args = [orderId];\n\nnode.status({ text: `▶️ Sending ${orderId}` });\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 1260,
+        "wires": [
+            [
+                "204c7b57bb3d9ae7"
+            ]
+        ]
+    },
+    {
+        "id": "70f1aace271b00c8",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "group": "16a799820a185e70",
+        "page": "",
+        "ui": "",
+        "name": "Finish Button",
+        "order": 11,
+        "width": "4",
+        "height": "2",
+        "head": "",
+        "format": "<template>\n  <v-btn fluid class=\"finish-style\" @click=\"handleClick\">\n    Finish\n  </v-btn>\n</template>\n\n<script>\n  export default {\n  methods: {\n    handleClick() {\n      // send a message back to Node-RED\n      this.send({ payload: \"finished\" });\n      // go back to the previous page\n      this.$root.$router.push(\"/production_plan\");\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .finish-style {\n    font-weight: 600;\n    color: white !important;\n    background: #e73c52 !important;\n    /* ← you missed this semicolon */\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n      0 4px 10px rgba(1, 39, 76, 0.4),\n      inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n        /* font-size: calc(1vw + 0.5em); */\n    font-size: calc(0.8vw + 0.4em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n    overflow: hidden;\n      max-height: calc( 2 * var(--widget-row-height)); \n  }\n\n  .finish-style:hover,\n  .finish-style:focus {\n    background: #b52f43 !important;\n    /* darker red for hover */\n    box-shadow:\n      0 6px 16px rgba(1, 39, 76, 0.5),\n      inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n  }\n\n  .finish-style:active {\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n  }\n</style>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 390,
+        "y": 1260,
+        "wires": [
+            [
+                "5ab907e3f5e90ab8"
+            ]
+        ]
+    },
+    {
+        "id": "ae1c765ff72ae7bb",
+        "type": "ui-event",
+        "z": "f69312076bb95996",
+        "ui": "d7416ec1d9513281",
+        "name": "",
+        "x": 130,
+        "y": 780,
+        "wires": [
+            [
+                "b918c810745954df",
+                "a153e30311bbef15",
+                "f6317eedc5fda05c"
+            ]
+        ]
+    },
+    {
+        "id": "b918c810745954df",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "function 3",
+        "func": "// Trigger only when user opens the Production Plan page\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/production_plan\"\n) {\n    // run your query or next logic\n    msg.topic = \"SELECT * FROM tastiway_plans;\";\n    return msg;\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 760,
+        "wires": [
+            [
+                "387dc7dc7cfd6972"
+            ]
+        ]
+    },
+    {
+        "id": "3a3e4c63811bd53c",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "group": "",
+        "page": "d6080a2e5d1dfe6f",
+        "ui": "",
+        "name": "Refresh Button CSS",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": ".refresh-style button {\n    font-weight: 600;\n    color: white;\n    background: linear-gradient(145deg, rgb(1, 39, 76), rgb(3, 64, 110));\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n        0 4px 10px rgba(1, 39, 76, 0.4),\n        inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n    /* font-size: 2.3em; */\n    /* font-size: calc(1.3vw + 0.6em); */\n    font-size: calc(1vw + 0.5em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n    max-height: calc( 2 * var(--widget-row-height)); /* in case font size gets out of hand */\n    overflow: hidden; /* in case text too wide at this font size */\n}\n\n/* hover + focus feedback */\n.refresh-style button:hover,\n.refresh-style button:focus {\n    transform: scale(1.04);\n    background: linear-gradient(145deg, rgb(3, 64, 110), rgb(1, 39, 76));\n    box-shadow:\n        0 6px 16px rgba(1, 39, 76, 0.5),\n        inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n}\n\n/* optional active press effect */\n.refresh-style button:active {\n    transform: scale(0.98);\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n}",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "page:style",
+        "className": "",
+        "x": 180,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d47793119f83d1d8",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "group": "",
+        "page": "d6080a2e5d1dfe6f",
+        "ui": "",
+        "name": "Finish Button CSS",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": ".finish-style button {\n    font-weight: 600;\n    color: white;\n    background: linear-gradient(145deg, rgb(1, 39, 76), rgb(3, 64, 110));\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n        0 4px 10px rgba(1, 39, 76, 0.4),\n        inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n    /* font-size: 2.3em; */\n    /* font-size: calc(1.3vw + 0.6em); */\n    font-size: calc(1vw + 0.5em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n    max-height: calc( 2 * var(--widget-row-height)); /* in case font size gets out of hand */\n    overflow: hidden; /* in case text too wide at this font size */\n}\n\n/* hover + focus feedback */\n.finish-style button:hover,\n.finish-style button:focus {\n    transform: scale(1.04);\n    background: linear-gradient(145deg, rgb(3, 64, 110), rgb(1, 39, 76));\n    box-shadow:\n        0 6px 16px rgba(1, 39, 76, 0.5),\n        inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n}\n\n/* optional active press effect */\n.finish-style button:active {\n    transform: scale(0.98);\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n}",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "page:style",
+        "className": "",
+        "x": 410,
+        "y": 1320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c59dfe4ed5a3e147",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "group": "16a799820a185e70",
+        "page": "",
+        "ui": "",
+        "name": "Elapsed TIme",
+        "order": 12,
+        "width": "2",
+        "height": "1",
+        "head": "",
+        "format": "<template>\n  <v-card class=\"borderless pa-4 text-left\">\n    <div class=\"text-h5 font-weight-bold\">{{ elapsed }}</div>\n  </v-card>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      start: Date.now(),\n      elapsed: \"00:00:00\",\n      interval: null,\n    };\n  },\n\n  mounted() {\n    this.interval = setInterval(() => {\n      const diff = Date.now() - this.start;\n      this.elapsed = this.formatTime(diff);\n    }, 1000);\n  },\n\n  beforeUnmount() {\n    clearInterval(this.interval);\n  },\n\n  methods: {\n    formatTime(ms) {\n      let sec = Math.floor(ms / 1000);\n      const hrs = String(Math.floor(sec / 3600)).padStart(2, \"0\");\n      sec %= 3600;\n      const mins = String(Math.floor(sec / 60)).padStart(2, \"0\");\n      sec = String(sec % 60).padStart(2, \"0\");\n      return `${hrs}:${mins}:${sec}`;\n    }\n  }\n};\n</script>\n\n<style>\n  .borderless {\n    border: transparent;\n    padding: 0;\n  }\n\n  .borderless .v-card-text {\n    border: 1px solid transparent;\n    padding: 0;\n  }\n</style>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 180,
+        "y": 1580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "26d222d71a3d8ff4",
+        "type": "ui-gauge",
+        "z": "f69312076bb95996",
+        "name": "Count Gauge",
+        "group": "16a799820a185e70",
+        "order": 4,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "10",
+        "height": "4",
+        "gtype": "gauge-34",
+        "gstyle": "rounded",
+        "title": "Count",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#000000",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#000000",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#000000",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "10",
+        "sizeThickness": "24",
+        "sizeGap": "0",
+        "sizeKeyThickness": "0",
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1390,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a153e30311bbef15",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "function 5",
+        "func": "// // Just trigger the template when user opens the Process page\n// if (\n//     msg.topic === \"$pageview\" &&\n//     msg.payload?.page?.path === \"/process\"\n// ) {\n//     return { trigger: true };    // passes the event into the UI Template\n// }\n\n// return null;\n\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/process\"\n) {\n    const query = msg.payload.query;\n\n    const qty = Number(query.quantity);\n\n\n    msg.payload = null;\n    msg.ui_update = {\n        max: qty\n    };\n\n\n    return msg;\n}\n\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 880,
+        "wires": [
+            [
+                "f6317eedc5fda05c",
+                "26d222d71a3d8ff4"
+            ]
+        ]
+    },
+    {
+        "id": "f6317eedc5fda05c",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "cb6cabb336cecf6e",
+        "type": "exec",
+        "z": "f69312076bb95996",
+        "command": "node /home/pi/Documents/exitKiosk.js ",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "exit kiosk mode",
+        "x": 420,
+        "y": 2140,
+        "wires": [
+            [
+                "e83a8072abe1b99a"
+            ],
+            [
+                "e83a8072abe1b99a"
+            ],
+            [
+                "e83a8072abe1b99a"
+            ]
+        ]
+    },
+    {
+        "id": "e83a8072abe1b99a",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 2140,
+        "wires": []
+    },
+    {
+        "id": "54c1c7e147492003",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "group": "",
+        "page": "",
+        "ui": "d7416ec1d9513281",
+        "name": "Close App Button ",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<template>\n  <Teleport v-if=\"mounted\" to=\"#app-bar-actions\">\n    <v-btn icon color=\"red\" variant=\"text\" @click=\"send({ payload: 'close' })\">\n      <v-icon>mdi-close</v-icon>\n    </v-btn>\n  </Teleport>\n</template>\n\n<script>\n  export default {\n        data() {\n            return {\n                mounted: false\n            }\n        },\n        mounted() {\n          setTimeout(() => {\n            this.mounted = true\n          }, 10)\n        }\n    }\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "widget:ui",
+        "className": "",
+        "x": 150,
+        "y": 2140,
+        "wires": [
+            [
+                "cb6cabb336cecf6e"
+            ]
+        ]
+    },
+    {
+        "id": "98cbbf1d93d66571",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 1980,
+        "wires": [
+            [
+                "a3ea43a9ebfea57b"
+            ]
+        ]
+    },
+    {
+        "id": "a3ea43a9ebfea57b",
+        "type": "exec",
+        "z": "f69312076bb95996",
+        "command": "cat /sys/class/net/wlan0/operstate",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "cat operstate",
+        "x": 350,
+        "y": 1980,
+        "wires": [
+            [
+                "d11fc626c2fe6aa8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "d11fc626c2fe6aa8",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "function 8",
+        "func": "msg.payload = (msg.payload.trim() === \"up\") ? \"Connected\" : \"Disconnected\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 1980,
+        "wires": [
+            [
+                "565aa7a6d5ed08d5",
+                "375686e4d3e1d76e"
+            ]
+        ]
+    },
+    {
+        "id": "565aa7a6d5ed08d5",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "group": "",
+        "page": "",
+        "ui": "d7416ec1d9513281",
+        "name": "Wifi Icon ",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<template>\n  <Teleport v-if=\"mounted\" to=\"#app-bar-actions\">\n    <v-btn icon variant=\"text\" :color=\"wifiConnected ? 'green' : 'red'\" @click.stop=\"\">\n      <v-icon>{{ wifiConnected ? 'mdi-wifi' : 'mdi-wifi-off' }}</v-icon>\n    </v-btn>\n  </Teleport>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      mounted: false,\n      wifiConnected: false\n    };\n  },\n\n  mounted() {\n    this.mounted = true;\n  },\n\n  watch: {\n    msg(newMsg) {\n      if (!newMsg || newMsg.payload == null) return;\n      this.wifiConnected = newMsg.payload === \"Connected\";\n    }\n  }\n};\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "widget:ui",
+        "className": "",
+        "x": 760,
+        "y": 1980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "375686e4d3e1d76e",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 15",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 1900,
+        "wires": []
+    },
+    {
+        "id": "44bfb6ef778a96bf",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/10 0-23 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 2280,
+        "wires": [
+            [
+                "95c19fc6a00fb19f"
+            ]
+        ]
+    },
+    {
+        "id": "95c19fc6a00fb19f",
+        "type": "exec",
+        "z": "f69312076bb95996",
+        "command": "node /home/pi/Project/update_andon.js ",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "update andon",
+        "x": 360,
+        "y": 2280,
+        "wires": [
+            [
+                "fb5dbb32e75e69f5"
+            ],
+            [
+                "fb5dbb32e75e69f5"
+            ],
+            [
+                "fb5dbb32e75e69f5"
+            ]
+        ]
+    },
+    {
+        "id": "fb5dbb32e75e69f5",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 2280,
+        "wires": []
+    },
+    {
+        "id": "function_handle_dialog",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "Process Dialog",
+        "func": "msg.payload = {\n    signal: msg.values.blueBtn ? \"blue\" : msg.values.yellowBtn ? \"yellow\" : null,\n    message: msg.values.textMessage\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 140,
+        "y": 2680,
+        "wires": [
+            [
+                "debug_out"
+            ]
+        ]
+    },
+    {
+        "id": "debug_out",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "Dialog Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 360,
+        "y": 2680,
+        "wires": []
+    },
+    {
+        "id": "99bdfba52e6ed083",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "group": "",
+        "page": "",
+        "ui": "d7416ec1d9513281",
+        "name": "Page Styling",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "\nbody,\n.v-application {\n    background-color: white !important;\n    font-family: monospace !important;\n}\n\n",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "site:style",
+        "className": "",
+        "x": 690,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "754e4bad2e59674b",
+        "type": "ui-button",
+        "z": "f69312076bb95996",
+        "group": "16a799820a185e70",
+        "name": "",
+        "label": "",
+        "order": 8,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "play",
+        "iconPosition": "left",
+        "payload": "green",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "msg.buttonColor",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 470,
+        "y": 2400,
+        "wires": [
+            [
+                "07de2168c6005a83"
+            ]
+        ]
+    },
+    {
+        "id": "d04b7a03d79bf858",
+        "type": "ui-button",
+        "z": "f69312076bb95996",
+        "group": "16a799820a185e70",
+        "name": "",
+        "label": "",
+        "order": 6,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "account-question",
+        "iconPosition": "left",
+        "payload": "blue",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "msg.buttonColor",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 470,
+        "y": 2440,
+        "wires": [
+            [
+                "07de2168c6005a83"
+            ]
+        ]
+    },
+    {
+        "id": "8426445f15bb7aaa",
+        "type": "ui-button",
+        "z": "f69312076bb95996",
+        "group": "16a799820a185e70",
+        "name": "",
+        "label": "",
+        "order": 3,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "close-octagon",
+        "iconPosition": "left",
+        "payload": "red",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "msg.buttonColor",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 470,
+        "y": 2480,
+        "wires": [
+            [
+                "07de2168c6005a83"
+            ]
+        ]
+    },
+    {
+        "id": "07de2168c6005a83",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "Toggle Color Logic",
+        "func": "// Get previous active color\nlet activeColor = flow.get('activeColor') || null;\nconst pressedColor = msg.payload;\n\n// Ignore if the same button is pressed\nif (pressedColor === activeColor) {\n    return null;\n}\n\n// Save the new active color\nflow.set('activeColor', pressedColor);\n\n// Construct button messages\nconst greenMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'green' ? 'green' : '#0a7d00'\n    }\n};\n\nconst blueMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'blue' ? 'blue' : '#003c8f'\n    }\n};\n\nconst redMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'red' ? 'red' : '#8b0000'\n    }\n};\n\n\n// Output active color to downstream\nconst outputMsg = { payload: pressedColor };\n\nreturn [ greenMsg,blueMsg, redMsg, outputMsg];",
+        "outputs": 4,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 2420,
+        "wires": [
+            [
+                "754e4bad2e59674b"
+            ],
+            [
+                "d04b7a03d79bf858"
+            ],
+            [
+                "8426445f15bb7aaa"
+            ],
+            [
+                "c2702c05965937f5"
+            ]
+        ]
+    },
+    {
+        "id": "ce96c436669e48b9",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1260,
+        "y": 2440,
+        "wires": []
+    },
+    {
+        "id": "c2702c05965937f5",
+        "type": "exec",
+        "z": "f69312076bb95996",
+        "command": "node /home/pi/Project/andon_traffic_light.js ",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "update traffic andon",
+        "x": 1020,
+        "y": 2420,
+        "wires": [
+            [
+                "ce96c436669e48b9"
+            ],
+            [
+                "ce96c436669e48b9"
+            ],
+            [
+                "ce96c436669e48b9"
+            ]
+        ]
+    },
+    {
+        "id": "c6958310caaee75b",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "Toggle Color Logic",
+        "func": "// Get previous active color\nlet activeColor = flow.get('activeColor') || null;\n\nconst greenMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'green' ? 'green' : '#0a7d00'\n    }\n};\n\nconst blueMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'blue' ? 'blue' : '#003c8f'\n    }\n};\n\nconst redMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'red' ? 'red' : '#8b0000'\n    }\n};\n\nreturn [greenMsg, blueMsg, redMsg];\n",
+        "outputs": 3,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 2440,
+        "wires": [
+            [
+                "754e4bad2e59674b"
+            ],
+            [
+                "d04b7a03d79bf858"
+            ],
+            [
+                "8426445f15bb7aaa"
+            ]
+        ]
+    },
+    {
+        "id": "b26ba174377aa758",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 90,
+        "y": 2440,
+        "wires": [
+            [
+                "c6958310caaee75b"
+            ]
+        ]
+    }
+]

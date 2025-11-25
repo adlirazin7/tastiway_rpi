@@ -1,0 +1,4842 @@
+[
+    {
+        "id": "9f6ce41efe93ec24",
+        "type": "tab",
+        "label": "Acrel Modbus",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "69594495cf1ea8a1",
+        "type": "tab",
+        "label": "DB2 Buttons",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7c2196e0bf45cdca",
+        "type": "tab",
+        "label": "TMM Flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d34a0391580f1586",
+        "type": "group",
+        "z": "69594495cf1ea8a1",
+        "name": "Fixed Round Buttons",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "bd54913827144c1e",
+            "6eb27320b308af4d",
+            "722b745215f085f0",
+            "27ee1b05047db589",
+            "fb769b5b1ac7e460",
+            "00a210647991ac85"
+        ],
+        "x": 14,
+        "y": 19,
+        "w": 712,
+        "h": 122
+    },
+    {
+        "id": "d35e14936c5225e4",
+        "type": "group",
+        "z": "69594495cf1ea8a1",
+        "name": "Responsive Buttons",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "0b3c7165b87d1ca0",
+            "57022ce1f218aad6",
+            "3efcba291e1d4ca7",
+            "bb86a78e2f17c1b7",
+            "0a460124e234d3b4",
+            "884f26d74da094c9",
+            "8dd06db9b14503fe",
+            "58d7f5f613542cd7",
+            "a2cb332a0a9e6630",
+            "cd8237db0c02d81b",
+            "6b28a6ab48ee0ed0"
+        ],
+        "x": 14,
+        "y": 159,
+        "w": 712,
+        "h": 242
+    },
+    {
+        "id": "fc63de1623344194",
+        "type": "group",
+        "z": "69594495cf1ea8a1",
+        "name": "Fixed Square Buttons",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "a4a5c7edbcbc8a80",
+            "c2a039cfc96615ac",
+            "29d24d2d6ac6eb31",
+            "29b8f0d5e043f6fe",
+            "d83117d229ef6f72",
+            "d025498ebe0956be",
+            "072064f2e633efe7",
+            "d4d7e965819ff4c3",
+            "9df29002ae0db5f4",
+            "f5376597158c99a7",
+            "fc6dd02ed405c4da",
+            "811b3fe3f87e27e6",
+            "3f51ef2ce012460a",
+            "d8fbdc642d84f607"
+        ],
+        "x": 14,
+        "y": 419,
+        "w": 712,
+        "h": 282
+    },
+    {
+        "id": "d9cfe70f210b43e5",
+        "type": "group",
+        "z": "7c2196e0bf45cdca",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "e678c5f76465e708",
+            "5e53c013b6b1cf2f",
+            "7898b75bcadf79e5",
+            "49603acde0b4cb85",
+            "46bb5762d2f3c750",
+            "35c1877cba5568f8",
+            "82d2643e55c7ee22",
+            "d1361d157bf42587",
+            "1bf2b72c4cb416ba",
+            "70a504f88a83e41c",
+            "765602198123efe5",
+            "9271c39e4e869867",
+            "a940d9172735db12",
+            "c8289f2083621b64",
+            "c44918c63f3ccb43",
+            "05bfb7dad78edf7d"
+        ],
+        "x": 54,
+        "y": 59,
+        "w": 1052,
+        "h": 262
+    },
+    {
+        "id": "4a6bf541ef792204",
+        "type": "modbus-client",
+        "name": "",
+        "clienttype": "serial",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyACM1",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "d7416ec1d9513281",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "icon",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "bf6ce2ec840921b5",
+        "type": "ui-theme",
+        "name": "Tastiway Theme",
+        "colors": {
+            "surface": "#01274c",
+            "primary": "#007ecc",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "a0218fe3622ac926",
+        "type": "ui-page",
+        "name": "Power Meter",
+        "ui": "d7416ec1d9513281",
+        "path": "/power_meter",
+        "icon": "lightning-bolt-outline",
+        "layout": "grid",
+        "theme": "bf6ce2ec840921b5",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 2,
+        "className": "mypage",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "544af962277d51ba",
+        "type": "ui-group",
+        "name": "Current",
+        "page": "a0218fe3622ac926",
+        "width": "12",
+        "height": "2",
+        "order": 3,
+        "showTitle": false,
+        "className": "current-style",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "b396f17e092b1414",
+        "type": "ui-group",
+        "name": "Chart",
+        "page": "a0218fe3622ac926",
+        "width": "12",
+        "height": "8",
+        "order": 4,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "79f99a2fd4914121",
+        "type": "ui-group",
+        "name": "Voltage Gauge",
+        "page": "a0218fe3622ac926",
+        "width": "12",
+        "height": "2",
+        "order": 2,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "61bc6e56e10603d1",
+        "type": "global-config",
+        "env": [],
+        "modules": {}
+    },
+    {
+        "id": "d6080a2e5d1dfe6f",
+        "type": "ui-page",
+        "name": "Production Plan",
+        "ui": "d7416ec1d9513281",
+        "path": "/production_plan",
+        "icon": "timetable",
+        "layout": "grid",
+        "theme": "bf6ce2ec840921b5",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "53026aa3c68dea20",
+        "type": "ui-group",
+        "name": "Select Production Plan",
+        "page": "d6080a2e5d1dfe6f",
+        "width": "12",
+        "height": "1",
+        "order": 1,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "2dc83d708a58e0a5",
+        "type": "ui-spacer",
+        "group": "53026aa3c68dea20",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 4,
+        "width": 12,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "8b5a8b9ec8801e6b",
+        "type": "ui-page",
+        "name": "Process",
+        "ui": "d7416ec1d9513281",
+        "path": "/process",
+        "icon": "play",
+        "layout": "grid",
+        "theme": "bf6ce2ec840921b5",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 4,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "16a799820a185e70",
+        "type": "ui-group",
+        "name": "Details",
+        "page": "8b5a8b9ec8801e6b",
+        "width": "12",
+        "height": 1,
+        "order": 1,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "true",
+        "groupType": "default"
+    },
+    {
+        "id": "25c1914aaf26412a",
+        "type": "sqlitedb",
+        "db": "/home/pi/Project/tastiway.db",
+        "mode": "RWC"
+    },
+    {
+        "id": "0d92c765bfad87e6",
+        "type": "ui-theme",
+        "name": "Basic Blue Theme",
+        "colors": {
+            "surface": "#4d58ff",
+            "primary": "#0094ce",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "dd9e211ef4e39083",
+        "type": "ui-page",
+        "name": "CSS & ui_control Buttons",
+        "ui": "d7416ec1d9513281",
+        "path": "/page2",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "0d92c765bfad87e6",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 3,
+        "className": "",
+        "visible": "false",
+        "disabled": "false"
+    },
+    {
+        "id": "97fe32d54dfd638a",
+        "type": "ui-group",
+        "name": "Fixed Round Buttons",
+        "page": "dd9e211ef4e39083",
+        "width": "4",
+        "height": "1",
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "e3b442f221bd875f",
+        "type": "ui-group",
+        "name": "Fixed Square Buttons",
+        "page": "dd9e211ef4e39083",
+        "width": "4",
+        "height": "1",
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "a8b9bc5ba792cd37",
+        "type": "ui-group",
+        "name": "Responsive Buttons",
+        "page": "dd9e211ef4e39083",
+        "width": "4",
+        "height": "1",
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "1eae9334fd999f20",
+        "type": "ui-group",
+        "name": "Modbus Connection",
+        "page": "a0218fe3622ac926",
+        "width": "12",
+        "height": 1,
+        "order": 1,
+        "showTitle": false,
+        "className": "connection-style",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "f8e5a7882313f0fe",
+        "type": "ui-spacer",
+        "group": "53026aa3c68dea20",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 1,
+        "width": 8,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "902127b30471c926",
+        "type": "ui-spacer",
+        "group": "16a799820a185e70",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 12,
+        "width": 8,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "5075a7d8e4947586",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "dff5edc413f07f75",
+        "type": "ui-spacer",
+        "group": "16a799820a185e70",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 11,
+        "width": 12,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "3502d5d56411657d",
+        "type": "ui-spacer",
+        "group": "16a799820a185e70",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 8,
+        "width": 1,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "cb397865d60aeb08",
+        "type": "ui-spacer",
+        "group": "16a799820a185e70",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 3,
+        "width": 12,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "54badb6e68c2d94f",
+        "type": "ui-spacer",
+        "group": "16a799820a185e70",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 5,
+        "width": 1,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "a00acd6c3cf84ad5",
+        "type": "modbus-read",
+        "z": "9f6ce41efe93ec24",
+        "name": "ModBus 0x2000",
+        "topic": "",
+        "showStatusActivities": true,
+        "logIOActivities": false,
+        "showErrors": true,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "8448",
+        "quantity": "54",
+        "rate": "1",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "server": "4a6bf541ef792204",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": true,
+        "x": 160,
+        "y": 360,
+        "wires": [
+            [
+                "e62dfe44c41f45b2"
+            ],
+            [
+                "e0891a6933882b0f"
+            ]
+        ]
+    },
+    {
+        "id": "e0891a6933882b0f",
+        "type": "buffer-parser",
+        "z": "9f6ce41efe93ec24",
+        "name": "Parse Float",
+        "data": "payload.data",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "floatbe",
+                "name": "voltage_l1",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatbe",
+                "name": "voltage_l2",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatbe",
+                "name": "voltage_l3",
+                "offset": 8,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatbe",
+                "name": "current_l1",
+                "offset": 24,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatbe",
+                "name": "current_l2",
+                "offset": 28,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatbe",
+                "name": "current_l3",
+                "offset": 32,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatbe",
+                "name": "kw",
+                "offset": 52,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatbe",
+                "name": "pf",
+                "offset": 100,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "floatbe",
+                "name": "freq",
+                "offset": 104,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "ac9e494acc2ad46d"
+            ]
+        ]
+    },
+    {
+        "id": "b7f5f81c38363851",
+        "type": "function",
+        "z": "9f6ce41efe93ec24",
+        "name": "Combine Array",
+        "func": "\n// if (Array.isArray(msg.payload)) {\n//     msg.payload = Object.assign({}, ...msg.payload);\n// }\n\n// for (let item in msg.payload) {\n//     if (typeof msg.payload[item] === \"number\") {\n//         msg.payload[item] = msg.payload[item].toFixed(3);\n//     }\n// }\n\n// return msg;\n\nif (Array.isArray(msg.payload)) {\n    msg.payload = Object.assign({}, ...msg.payload);\n}\n\nfor (let key in msg.payload) {\n    if (typeof msg.payload[key] === \"number\") {\n        // keep it as number by wrapping with Number()\n        msg.payload[key] = Number(msg.payload[key].toFixed(3));\n    }\n}\n\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 400,
+        "wires": [
+            [
+                "ef560a0120cc8b36",
+                "851a2b8a18a6788e",
+                "36e5304fd148abb1",
+                "73b85a3657d84f31",
+                "fbeb9c2501e66724",
+                "4badca98f1f9bc54",
+                "ff99b34a3853cefd",
+                "cd109ac3f31eee48",
+                "7a1cf1fb5f599ef3",
+                "3465205e5aa5767a",
+                "7ef78c74d7c72d0f",
+                "4091cde29528d73a"
+            ]
+        ]
+    },
+    {
+        "id": "06a9bf4582e25c3d",
+        "type": "modbus-read",
+        "z": "9f6ce41efe93ec24",
+        "name": "ModBus 0x3000",
+        "topic": "",
+        "showStatusActivities": true,
+        "logIOActivities": false,
+        "showErrors": true,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "12288",
+        "quantity": "16",
+        "rate": "1",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "server": "4a6bf541ef792204",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": true,
+        "x": 160,
+        "y": 440,
+        "wires": [
+            [
+                "e62dfe44c41f45b2"
+            ],
+            [
+                "dd919171e95f02ee"
+            ]
+        ]
+    },
+    {
+        "id": "dd919171e95f02ee",
+        "type": "buffer-parser",
+        "z": "9f6ce41efe93ec24",
+        "name": "Parse Double",
+        "data": "payload.data",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "doublebe",
+                "name": "kwh",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "doublebe",
+                "name": "kvarh",
+                "offset": 24,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 380,
+        "y": 460,
+        "wires": [
+            [
+                "ac9e494acc2ad46d"
+            ]
+        ]
+    },
+    {
+        "id": "5b5d65e7915df00d",
+        "type": "sqlite",
+        "z": "9f6ce41efe93ec24",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "SQLite",
+        "x": 1030,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "734c5f3d1781642e",
+        "type": "function",
+        "z": "9f6ce41efe93ec24",
+        "name": "Create Table",
+        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS energy_reading (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  timestamp INTEGER NOT NULL,\n  date TEXT,\n  voltage_l1 REAL,\n  voltage_l2 REAL,\n  voltage_l3 REAL,\n  current_l1 REAL,\n  current_l2 REAL,\n  current_l3 REAL,\n  kw REAL,\n  pf REAL,\n  freq REAL,\n  kwh REAL,\n  kvarh REAL,\n  uploaded INTEGER DEFAULT 0\n);\n`;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 740,
+        "wires": [
+            [
+                "5b5d65e7915df00d"
+            ]
+        ]
+    },
+    {
+        "id": "da68eb675c7d2b90",
+        "type": "inject",
+        "z": "9f6ce41efe93ec24",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 580,
+        "y": 740,
+        "wires": [
+            [
+                "734c5f3d1781642e"
+            ]
+        ]
+    },
+    {
+        "id": "ac9e494acc2ad46d",
+        "type": "join",
+        "z": "9f6ce41efe93ec24",
+        "name": "Joined Msg ",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 610,
+        "y": 400,
+        "wires": [
+            [
+                "b7f5f81c38363851"
+            ]
+        ]
+    },
+    {
+        "id": "ef560a0120cc8b36",
+        "type": "debug",
+        "z": "9f6ce41efe93ec24",
+        "name": "Combined String Data",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "851a2b8a18a6788e",
+        "type": "function",
+        "z": "9f6ce41efe93ec24",
+        "name": "Insert SQLite",
+        "func": "// Get current time \nconst data = msg.payload;\nconst now = new Date();\nconst seconds = now.getSeconds();\nconst minutes = now.getMinutes();\nconst hours = now.getHours();\n\n\nif (seconds % 20 === 0) {\n\n    const timestamp = Date.now(); \n\n    const yyyy = now.getFullYear();\n    const mm = String(now.getMonth() + 1).padStart(2, '0');\n    const dd = String(now.getDate()).padStart(2, '0');\n    const dateOnly = `${yyyy}-${mm}-${dd}`;\n\n    msg.topic = `\n    INSERT INTO energy_reading (\n    timestamp, date,\n    voltage_l1, voltage_l2, voltage_l3,\n    current_l1, current_l2, current_l3,\n    kw, pf, freq, kwh, kvarh, uploaded\n    )\n    VALUES (\n    ${timestamp},\n    '${dateOnly}',  \n    ${data[\"voltage_l1\"] || 0},\n    ${data[\"voltage_l2\"] || 0},\n    ${data[\"voltage_l3\"] || 0},\n    ${data[\"current_l1\"] || 0},\n    ${data[\"current_l2\"] || 0},\n    ${data[\"current_l3\"] || 0},\n    ${data[\"kw\"] || 0},\n    ${data[\"pf\"] || 0},\n    ${data[\"freq\"] || 0},\n    ${data[\"kwh\"] || 0},\n    ${data[\"kvarh\"] || 0},\n    0\n    );\n    `;\n\n// node.warn(`Insert triggered at ${now}`);\nreturn msg;\n}\n\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 540,
+        "wires": [
+            [
+                "5b5d65e7915df00d"
+            ]
+        ]
+    },
+    {
+        "id": "9d5f7298adca020b",
+        "type": "inject",
+        "z": "9f6ce41efe93ec24",
+        "d": true,
+        "name": "5 Minute Timer",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1220,
+        "wires": [
+            [
+                "051a6b3d18447bf8"
+            ]
+        ]
+    },
+    {
+        "id": "051a6b3d18447bf8",
+        "type": "exec",
+        "z": "9f6ce41efe93ec24",
+        "d": true,
+        "command": "node /home/pi/acrel_modbus/index.js",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 470,
+        "y": 1220,
+        "wires": [
+            [],
+            [],
+            [
+                "bdfc1bff750114d0"
+            ]
+        ]
+    },
+    {
+        "id": "bdfc1bff750114d0",
+        "type": "debug",
+        "z": "9f6ce41efe93ec24",
+        "d": true,
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "9262dd55c02ff3dc",
+        "type": "inject",
+        "z": "9f6ce41efe93ec24",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 580,
+        "y": 640,
+        "wires": [
+            [
+                "5c408b53be8bb496"
+            ]
+        ]
+    },
+    {
+        "id": "5c408b53be8bb496",
+        "type": "function",
+        "z": "9f6ce41efe93ec24",
+        "name": "Drop Table",
+        "func": "msg.topic = `\nDROP TABLE IF  EXISTS energy_reading;\n`;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c1ebdab1d1df413f",
+        "type": "ui-template",
+        "z": "9f6ce41efe93ec24",
+        "group": "",
+        "page": "a0218fe3622ac926",
+        "ui": "",
+        "name": "Page Styling",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "body {\nfont-family: monospace;\n}\n",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "page:style",
+        "className": "",
+        "x": 1010,
+        "y": 20,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "36e5304fd148abb1",
+        "type": "ui-template",
+        "z": "9f6ce41efe93ec24",
+        "group": "544af962277d51ba",
+        "page": "",
+        "ui": "",
+        "name": "L1CurrentCard",
+        "order": 1,
+        "width": "4",
+        "height": "2",
+        "head": "",
+        "format": "<template>\n    <v-card  fluid elevation=\"2\" class=\"current-card d-flex flex-column align-center justify-center\" rounded=\"lg\">\n      <div class=\"current-title\">{{ title }}</div>\n      <div class=\"current-value\" :style=\"{ color: voltageColor }\">\n        {{ formattedVoltage }}<span class=\"unit\">A</span>\n      </div>\n    </v-card>\n</template>\n\n<script>\n  export default {\n  props: ['msg'],\n  data() {\n    return {\n      title: 'L1 Current', // change for L2, L3, etc.\n      value: 0,\n    };\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.payload?.current_l1 != null) {\n        this.value = Number(newMsg.payload.current_l1);\n      }\n    },\n  },\n  computed: {\n    formattedVoltage() {\n      return this.value.toFixed(2);\n    },\n  },\n};\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "current-style",
+        "x": 1200,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6d1f46f4bdc79e7c",
+        "type": "ui-template",
+        "z": "9f6ce41efe93ec24",
+        "group": "",
+        "page": "a0218fe3622ac926",
+        "ui": "",
+        "name": "Current Card Styling",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "\n.current-style .v-card {\n  /* border: none !important; */\n  box-shadow: none !important;\n  padding: 0 !important;\n  background: transparent !important;\n  border: transparent;\n}\n\n.current-style .current-card {\n  width: 100%;\n  height: 100%;\n  background-color: white !important;\n  color: black;\n  border: 2px solid #ccc;          /* visible card border */\n  border-radius: 12px;             /* smooth corners */\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* subtle elevation */\n  transition: all 0.3s ease;\n}\n\n.current-style .v-card-text {\n    border: 1px solid transparent ;\n    padding: 0;\n}\n\n.current-style .current-title {\n    font-size: clamp(1rem, 2vw, 1.4rem);\n    color: black;\n    font-weight: 500;\n    <!-- text-transform: uppercase; -->\n    letter-spacing: 0.5px;\n    margin-bottom: 8px;\n    text-align: center;\n}\n\n.current-style .current-value {\n    font-size: clamp(2rem, 4vw, 3rem);\n    font-weight: bold;\n    color: black;\n}\n\n.current-style .unit {\n    font-size: clamp(1rem, 1.5vw, 1.4rem);\n    margin-left: 4px;\n    opacity: 0.8;\n}",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "page:style",
+        "className": "",
+        "x": 1200,
+        "y": 20,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "73b85a3657d84f31",
+        "type": "ui-template",
+        "z": "9f6ce41efe93ec24",
+        "group": "544af962277d51ba",
+        "page": "",
+        "ui": "",
+        "name": "L2CurrentCard",
+        "order": 2,
+        "width": "4",
+        "height": "2",
+        "head": "",
+        "format": "<template>\n    <v-card fluid elevation=\"2\" class=\"current-card d-flex flex-column align-center justify-center\" rounded=\"lg\">\n      <div class=\"current-title\">{{ title }}</div>\n      <div class=\"current-value\" :style=\"{ color: voltageColor }\">\n        {{ formattedVoltage }}<span class=\"unit\">A</span>\n      </div>\n    </v-card>\n</template>\n\n<script>\n  export default {\n  props: ['msg'],\n  data() {\n    return {\n      title: 'L2 Current', // change for L2, L3, etc.\n      value: 0,\n    };\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.payload?.current_l2 != null) {\n        this.value = Number(newMsg.payload.current_l2);\n      }\n    },\n  },\n  computed: {\n    formattedVoltage() {\n      return this.value.toFixed(2);\n    },\n  },\n};\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "current-style",
+        "x": 1200,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fbeb9c2501e66724",
+        "type": "ui-template",
+        "z": "9f6ce41efe93ec24",
+        "group": "544af962277d51ba",
+        "page": "",
+        "ui": "",
+        "name": "L3CurrentCard",
+        "order": 3,
+        "width": "4",
+        "height": "2",
+        "head": "",
+        "format": "<template>\n    <v-card elevation=\"2\" class=\"current-card d-flex flex-column align-center justify-center\" rounded=\"lg\">\n      <div class=\"current-title\">{{ title }}</div>\n      <div class=\"current-value\" :style=\"{ color: voltageColor }\">\n        {{ formattedVoltage }}<span class=\"unit\">A</span>\n      </div>\n    </v-card>\n</template>\n\n<script>\n  export default {\n  props: ['msg'],\n  data() {\n    return {\n      title: 'L3 Current', // change for L2, L3, etc.\n      value: 0,\n    };\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.payload?.current_l3 != null) {\n        this.value = Number(newMsg.payload.current_l3);\n      }\n    },\n  },\n  computed: {\n    formattedVoltage() {\n      return this.value.toFixed(2);\n    },\n  },\n};\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "current-style",
+        "x": 1200,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4badca98f1f9bc54",
+        "type": "ui-template",
+        "z": "9f6ce41efe93ec24",
+        "group": "544af962277d51ba",
+        "page": "",
+        "ui": "",
+        "name": "Frequency",
+        "order": 6,
+        "width": "4",
+        "height": "2",
+        "head": "",
+        "format": "<template>\n    <v-card elevation=\"2\" class=\"current-card d-flex flex-column align-center justify-center\" rounded=\"lg\">\n      <div class=\"current-title\">{{ title }}</div>\n      <div class=\"current-value\" :style=\"{ color: voltageColor }\">\n        {{ formattedValue }}<span class=\"unit\">Hz</span>\n      </div>\n    </v-card>\n</template>\n\n<script>\n  export default {\n  props: ['msg'],\n  data() {\n    return {\n      title: 'Frequency', // change for L2, L3, etc.\n      value: 0,\n    };\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.payload?.freq != null) {\n        this.value = Number(newMsg.payload.freq);\n      }\n    },\n  },\n  computed: {\n    formattedValue() {\n      return this.value.toFixed(2);\n    },\n  },\n};\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "current-style",
+        "x": 1190,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ff99b34a3853cefd",
+        "type": "ui-template",
+        "z": "9f6ce41efe93ec24",
+        "group": "544af962277d51ba",
+        "page": "",
+        "ui": "",
+        "name": "Power Factor",
+        "order": 5,
+        "width": "4",
+        "height": "2",
+        "head": "",
+        "format": "<template>\n    <v-card elevation=\"2\" class=\"current-card d-flex flex-column align-center justify-center\" rounded=\"lg\">\n      <div class=\"current-title\">{{ title }}</div>\n      <div class=\"current-value\" :style=\"{ color: voltageColor }\">\n        {{ formattedValue }}\n      </div>\n    </v-card>\n</template>\n\n<script>\n  export default {\n  props: ['msg'],\n  data() {\n    return {\n      title: 'PF', // change for L2, L3, etc.\n      value: 0,\n    };\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.payload?.pf != null) {\n        this.value = Number(newMsg.payload.pf);\n      }\n    },\n  },\n  computed: {\n    formattedValue() {\n      return this.value.toFixed(2);\n    },\n  },\n};\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "current-style",
+        "x": 1190,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cd109ac3f31eee48",
+        "type": "ui-template",
+        "z": "9f6ce41efe93ec24",
+        "group": "544af962277d51ba",
+        "page": "",
+        "ui": "",
+        "name": "Total Active Power",
+        "order": 4,
+        "width": "4",
+        "height": "2",
+        "head": "",
+        "format": "<template>\n    <v-card elevation=\"2\" class=\"current-card d-flex flex-column align-center justify-center\" rounded=\"lg\">\n      <div class=\"current-title\">{{ title }}</div>\n      <div class=\"current-value\" :style=\"{ color: voltageColor }\">\n        {{ formattedValue }}\n      </div>\n    </v-card>\n</template>\n\n<script>\n  export default {\n  props: ['msg'],\n  data() {\n    return {\n      title: 'kW', // change for L2, L3, etc.\n      value: 0,\n    };\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.payload?.kw != null) {\n        this.value = Number(newMsg.payload.kw);\n      }\n    },\n  },\n  computed: {\n    formattedValue() {\n      return this.value.toFixed(2);\n    },\n  },\n};\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "current-style",
+        "x": 1210,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4306cc1e741b8da1",
+        "type": "ui-chart",
+        "z": "9f6ce41efe93ec24",
+        "group": "b396f17e092b1414",
+        "name": "kWh Chart",
+        "label": "Energy Consumption (kWh)",
+        "order": 1,
+        "chartType": "bar",
+        "category": "kWh",
+        "categoryType": "str",
+        "xAxisLabel": "Time (hr)",
+        "xAxisProperty": "hour",
+        "xAxisPropertyType": "property",
+        "xAxisType": "category",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "kWh",
+        "yAxisProperty": "kwh_diff",
+        "yAxisPropertyType": "property",
+        "ymin": "0",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#43a09c",
+            "#03a9f4",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c1afd0"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "12",
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 930,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bbc2ee2fdc27420a",
+        "type": "sqlite",
+        "z": "9f6ce41efe93ec24",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "SQLite",
+        "x": 530,
+        "y": 900,
+        "wires": [
+            [
+                "f05ea044660e0e7a",
+                "6b0e4b0c09bd5a25"
+            ]
+        ]
+    },
+    {
+        "id": "63696328b149ec69",
+        "type": "inject",
+        "z": "9f6ce41efe93ec24",
+        "name": "1 hr Timer",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1200",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 900,
+        "wires": [
+            [
+                "1c75a2907a045f5b"
+            ]
+        ]
+    },
+    {
+        "id": "1c75a2907a045f5b",
+        "type": "function",
+        "z": "9f6ce41efe93ec24",
+        "name": "Query by Date",
+        "func": "const now = new Date\nconst yyyy = now.getFullYear();\nconst mm = String(now.getMonth() + 1).padStart(2, '0');\nconst dd = String(now.getDate()).padStart(2, '0');\nconst dateOnly = `${yyyy}-${mm}-${dd}`;\n\nmsg.topic = `\nSELECT * FROM energy_reading \nWHERE date = '${dateOnly}'\n`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 900,
+        "wires": [
+            [
+                "bbc2ee2fdc27420a"
+            ]
+        ]
+    },
+    {
+        "id": "7a1cf1fb5f599ef3",
+        "type": "ui-gauge",
+        "z": "9f6ce41efe93ec24",
+        "name": "",
+        "group": "79f99a2fd4914121",
+        "order": 1,
+        "value": "payload.voltage_l1",
+        "valueType": "msg",
+        "width": "4",
+        "height": "4",
+        "gtype": "gauge-34",
+        "gstyle": "rounded",
+        "title": "L1 Voltage",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "",
+        "icon": "",
+        "prefix": "",
+        "suffix": "V",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "240",
+        "sizeThickness": "16",
+        "sizeGap": "4",
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1190,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7ef78c74d7c72d0f",
+        "type": "ui-gauge",
+        "z": "9f6ce41efe93ec24",
+        "name": "",
+        "group": "79f99a2fd4914121",
+        "order": 2,
+        "value": "payload.voltage_l3",
+        "valueType": "msg",
+        "width": "4",
+        "height": "4",
+        "gtype": "gauge-34",
+        "gstyle": "rounded",
+        "title": "L3 Voltage",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "",
+        "icon": "",
+        "prefix": "",
+        "suffix": " V",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "240",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1190,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3465205e5aa5767a",
+        "type": "ui-gauge",
+        "z": "9f6ce41efe93ec24",
+        "name": "",
+        "group": "79f99a2fd4914121",
+        "order": 3,
+        "value": "payload.voltage_l2",
+        "valueType": "msg",
+        "width": "4",
+        "height": "4",
+        "gtype": "gauge-34",
+        "gstyle": "rounded",
+        "title": "L2 Voltage",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "",
+        "icon": "",
+        "prefix": "",
+        "suffix": " V",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "240",
+        "sizeThickness": 16,
+        "sizeGap": "4",
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1190,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f05ea044660e0e7a",
+        "type": "function",
+        "z": "9f6ce41efe93ec24",
+        "name": "Filter kWh Data",
+        "func": "\nlet data = msg.payload;\n\ndata.sort((a, b) => a.timestamp - b.timestamp);\n\nlet hourly = [];\nlet grouped = {}; // to hold readings per hour\n\nfor (let item of data) {\n    let date = new Date(item.timestamp);\n    let hourKey = date.getFullYear() + '-' +\n        String(date.getMonth() + 1).padStart(2, '0') + '-' +\n        String(date.getDate()).padStart(2, '0') + ' ' +\n        String(date.getHours()).padStart(2, '0');\n\n    // group all readings for that hour\n    if (!grouped[hourKey]) grouped[hourKey] = [];\n    grouped[hourKey].push(item);\n}\n\n// pick the reading closest to the exact hour (e.g., 12:00, 13:00, etc.)\nfor (let hourKey of Object.keys(grouped)) {\n    let readings = grouped[hourKey];\n    let targetTime = new Date(hourKey + ':00').getTime();\n\n    let closest = readings.reduce((prev, curr) => {\n        return (Math.abs(curr.timestamp - targetTime) <\n                Math.abs(prev.timestamp - targetTime)) ? curr : prev;\n    });\n\n    if (closest.kwh === 0) {\n        let nonZero = readings.findLast(r => r.kwh > 0); // look from latest backwards\n        if (nonZero) {\n            closest = nonZero;\n        } else {\n            // if all are zero, skip this hour completely\n            node.warn(`⚠️ All readings zero for ${hourKey}, skipping`);\n            continue;\n        }\n    }\n\n    hourly.push({\n        timestamp: closest.timestamp,\n        kwh: closest.kwh\n    });\n}\n\n// sort hourly list\nhourly.sort((a, b) => a.timestamp - b.timestamp);\n\n// compute differences between hours\nlet result = [];\nfor (let i = 1; i < hourly.length; i++) {\n    let prev = hourly[i - 1];\n    let curr = hourly[i];\n\n    if (!curr.kwh || !prev.kwh || curr.kwh < prev.kwh) continue;\n\n    let hourLabel = new Date(prev.timestamp).toLocaleTimeString('en-US', {\n    hour: 'numeric',\n    minute: '2-digit',\n    hour12: true\n    });\n\n    result.push({\n        hour: hourLabel,             // label = start of interval\n        kwh_diff: parseFloat((curr.kwh - prev.kwh).toFixed(3))\n    });\n}\n\nmsg.payload = result;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 900,
+        "wires": [
+            [
+                "4306cc1e741b8da1",
+                "4537bdab9d19d9a3"
+            ]
+        ]
+    },
+    {
+        "id": "b8b02956f7054e96",
+        "type": "ui-template",
+        "z": "9f6ce41efe93ec24",
+        "group": "",
+        "page": "",
+        "ui": "d7416ec1d9513281",
+        "name": "Page Styling",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "\nbody,\n.v-application {\n    background-color: white !important;\n    font-family: monospace !important;\n}\n\n",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "site:style",
+        "className": "",
+        "x": 850,
+        "y": 20,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "be85d686fa7cba75",
+        "type": "ui-template",
+        "z": "9f6ce41efe93ec24",
+        "group": "1eae9334fd999f20",
+        "page": "",
+        "ui": "",
+        "name": "Connection Status",
+        "order": 1,
+        "width": "4",
+        "height": "1",
+        "head": "",
+        "format": "<!-- <template>\n    <v-card class=\"pa-4 d-flex flex-column align-center justify-center\"\n        :color=\"state === 'connected' ? 'green-lighten-2' : 'red-lighten-2'\">\n        <div class=\"text-h6 font-weight-bold\">\n            {{ state === 'connected' ? 'Connected to RS-485' : 'Disconnected from RS-485' }}\n        </div>\n    </v-card>\n</template>\n\n<script>\n    export default {\n  data() {\n    return {\n      state: 'unknown',\n      timestamp: ''\n    };\n  },\n  mounted() {\n    this.$watch('msg', (msg) => {\n      if (msg?.payload) {\n        this.state = msg.payload.state;\n      }\n    });\n  }\n};\n</script> -->\n\n<template>\n    <!-- <div class=\"connection-style\"> -->\n  <v-card fluid class=\"rs485-status-card pa-0 d-flex flex-column align-center justify-center\"\n    :class=\"state === 'connected' ? 'connected' : 'disconnected'\">\n    <div class=\"text-h6 font-weight-bold\">\n      {{ state === 'connected' ? 'Connected to RS-485' : 'Disconnected from RS-485' }}\n    </div>\n  </v-card>\n    <!-- </div> -->\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      state: 'unknown',\n      timestamp: ''\n    }\n  },\n  mounted() {\n    this.$watch('msg', (msg) => {\n      if (msg?.payload) {\n        this.state = msg.payload.state\n      }\n    })\n  }\n}\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "connection-style",
+        "x": 670,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e62dfe44c41f45b2",
+        "type": "function",
+        "z": "9f6ce41efe93ec24",
+        "name": "Check RS485 Connection",
+        "func": "let lastState = context.get(\"lastState\") || \"unknown\";\n\nlet currentState = (msg.payload === \"\" || msg.payload == null) ? \"disconnected\" : \"connected\";\n\nif (currentState !== lastState) {\n    context.set(\"lastState\", currentState);\n    msg.payload = { state: currentState, timestamp: new Date().toLocaleTimeString() };\n    return msg;\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 100,
+        "wires": [
+            [
+                "be85d686fa7cba75"
+            ]
+        ]
+    },
+    {
+        "id": "76d1296b8f0877f8",
+        "type": "ui-template",
+        "z": "9f6ce41efe93ec24",
+        "group": "",
+        "page": "a0218fe3622ac926",
+        "ui": "",
+        "name": "Connection Border CSS",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": ".connection-style .v-card {\n    border: transparent;\n    padding: 0;\n}\n\n.connection-style .v-card-text {\n    border: 1px solid transparent ;\n    padding: 0;\n}\n\n.rs485-status-card {\n    font-weight: 600;\n    color: white;\n    border-radius: 16px;\n    border: 0.1vw solid rgba(255, 255, 255, 0.25);\n    box-shadow:\n        0 4px 12px rgba(0, 0, 0, 0.2),\n        inset 0 0 10px rgba(255, 255, 255, 0.15);\n    transition: all 0.3s ease;\n    text-align: center;\n\n    /* font-size: calc(1vw + 0.4em); */\n    font-size: 1em;\n    max-height: calc(2 * var(--widget-row-height));\n    overflow: hidden;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n\n/* Connected state – green gradient */\n.rs485-status-card.connected {\n    background: linear-gradient(145deg, rgb(46, 160, 73), rgb(18, 108, 34));\n    box-shadow:\n        0 4px 10px rgba(46, 160, 73, 0.5),\n        inset 0 0 12px rgba(255, 255, 255, 0.15);\n}\n\n/* Disconnected state – red gradient */\n.rs485-status-card.disconnected {\n    background: linear-gradient(145deg, rgb(168, 41, 41), rgb(122, 25, 25));\n    box-shadow:\n        0 4px 10px rgba(168, 41, 41, 0.5),\n        inset 0 0 12px rgba(255, 255, 255, 0.15);\n}\n\n\n",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "page:style",
+        "className": "",
+        "x": 690,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "acefae6a9de3ad37",
+        "type": "ui-event",
+        "z": "9f6ce41efe93ec24",
+        "ui": "d7416ec1d9513281",
+        "name": "",
+        "x": 110,
+        "y": 820,
+        "wires": [
+            [
+                "ab318361b11dcecb"
+            ]
+        ]
+    },
+    {
+        "id": "ab318361b11dcecb",
+        "type": "function",
+        "z": "9f6ce41efe93ec24",
+        "name": "Query On Page Open ( Power Meter )",
+        "func": "if (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/power_meter\"\n) {\n    const now = new Date();\n    const yyyy = now.getFullYear();\n    const mm = String(now.getMonth() + 1).padStart(2, '0');\n    const dd = String(now.getDate()).padStart(2, '0');\n    const dateOnly = `${yyyy}-${mm}-${dd}`;\n\n    msg.topic = `\n        SELECT * FROM energy_reading \n        WHERE date = '${dateOnly}';\n    `;\n\n    return msg;\n}\n\n// ignore other messages\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 820,
+        "wires": [
+            [
+                "bbc2ee2fdc27420a"
+            ]
+        ]
+    },
+    {
+        "id": "66b31342ebb5c892",
+        "type": "ui-chart",
+        "z": "9f6ce41efe93ec24",
+        "group": "b396f17e092b1414",
+        "name": "kW Chart",
+        "label": "Total Active Power (kW)",
+        "order": 2,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "Time ",
+        "xAxisProperty": "time",
+        "xAxisPropertyType": "property",
+        "xAxisType": "category",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "kW",
+        "yAxisProperty": "kW",
+        "yAxisPropertyType": "property",
+        "ymin": "0",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "false",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": "24",
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#43a09c",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c1afd0"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "12",
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 920,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6b0e4b0c09bd5a25",
+        "type": "function",
+        "z": "9f6ce41efe93ec24",
+        "name": "Filter kW Data",
+        "func": "// ensure msg.payload is an array\nlet data = Array.isArray(msg.payload) ? msg.payload : [msg.payload];\n\n// safety check\nif (!Array.isArray(data) || data.length === 0) {\n    node.warn(\"⚠️ No data received from energy_reading query.\");\n    return null;\n}\n\ndata.sort((a, b) => Number(a.timestamp) - Number(b.timestamp));\n\nconst result = data.map(row => {\n    if (typeof row.kw !== 'number') return null;\n\n    const time = new Date(row.timestamp).toLocaleTimeString('en-GB', {\n        hour: '2-digit',\n        minute: '2-digit',\n        hour12: false\n    });\n\n    return {\n        time,\n        kW: +row.kw.toFixed(3)\n    };\n}).filter(Boolean);\n\nmsg.topic = \"kW\";   \nmsg.payload = result;\n\nnode.status({ text: `🟢 ${result.length} points ready` });\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 1020,
+        "wires": [
+            [
+                "66b31342ebb5c892"
+            ]
+        ]
+    },
+    {
+        "id": "4537bdab9d19d9a3",
+        "type": "debug",
+        "z": "9f6ce41efe93ec24",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "b6a601098de5f46e",
+        "type": "inject",
+        "z": "9f6ce41efe93ec24",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 480,
+        "y": 1100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ba4d3b9ba498a0f3",
+        "type": "json",
+        "z": "9f6ce41efe93ec24",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 490,
+        "y": 1340,
+        "wires": [
+            [
+                "e0987381ab41eb88",
+                "df35a4ecd9290f36"
+            ]
+        ]
+    },
+    {
+        "id": "944df567ca7dd6ba",
+        "type": "watch",
+        "z": "9f6ce41efe93ec24",
+        "name": "",
+        "files": "/home/pi/config.json",
+        "recursive": "",
+        "x": 150,
+        "y": 1340,
+        "wires": [
+            [
+                "7528d658ab5c0a8c"
+            ]
+        ]
+    },
+    {
+        "id": "e0987381ab41eb88",
+        "type": "debug",
+        "z": "9f6ce41efe93ec24",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "cf0054bc01602651",
+        "type": "inject",
+        "z": "9f6ce41efe93ec24",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 1300,
+        "wires": [
+            [
+                "7528d658ab5c0a8c"
+            ]
+        ]
+    },
+    {
+        "id": "7528d658ab5c0a8c",
+        "type": "file in",
+        "z": "9f6ce41efe93ec24",
+        "name": "config.json",
+        "filename": "/home/pi/config.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 350,
+        "y": 1340,
+        "wires": [
+            [
+                "ba4d3b9ba498a0f3"
+            ]
+        ]
+    },
+    {
+        "id": "df35a4ecd9290f36",
+        "type": "function",
+        "z": "9f6ce41efe93ec24",
+        "name": "Flow set kg/hour & threshold",
+        "func": "const {threshold , kgperhour}= msg.payload\nglobal.set(\"kgperhour\",kgperhour)\nglobal.set(\"threshold\",threshold)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 1340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "426176f2845c4c78",
+        "type": "inject",
+        "z": "9f6ce41efe93ec24",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 580,
+        "y": 540,
+        "wires": [
+            [
+                "851a2b8a18a6788e"
+            ]
+        ]
+    },
+    {
+        "id": "4091cde29528d73a",
+        "type": "function",
+        "z": "9f6ce41efe93ec24",
+        "name": "Pump data in /process kW chart",
+        "func": "const path = global.get(\"currentPage\");\nconst now = new Date();\nconst seconds = now.getSeconds();\n\nif (path !== \"/process\" || !msg || !msg.payload) return null;\n\n// only run when seconds == 20\nif (seconds % 20 !== 0) return null;\n\nmsg.topic = \"kW\";\nmsg.payload = {\n    time: now.toLocaleTimeString('en-GB', {\n        hour: \"2-digit\",\n        minute: \"2-digit\",\n        second: \"2-digit\"\n    }),\n    kW: Number(msg.payload.kw || 0)   \n};\n\nnode.warn(\"triggered\");\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1210,
+        "y": 640,
+        "wires": [
+            [
+                "46c79e349cf7960e",
+                "44b7c4bfe104f4b8",
+                "a0ee443bfd36df41"
+            ]
+        ]
+    },
+    {
+        "id": "46c79e349cf7960e",
+        "type": "ui-chart",
+        "z": "9f6ce41efe93ec24",
+        "group": "16a799820a185e70",
+        "name": "kW Chart",
+        "label": "Total Active Power (kW)",
+        "order": 10,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "Time ",
+        "xAxisProperty": "time",
+        "xAxisPropertyType": "property",
+        "xAxisType": "category",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "kW",
+        "yAxisProperty": "kW",
+        "yAxisPropertyType": "property",
+        "ymin": "0",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "false",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": "24",
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#43a09c",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c1afd0"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "12",
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 1700,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "44b7c4bfe104f4b8",
+        "type": "function",
+        "z": "9f6ce41efe93ec24",
+        "name": "Get Threshold",
+        "func": "// const data = msg.payload || [];\n\n// // get threshold from global context\n// let glob = global.get(\"threshold\");\n\n// let threshold = (typeof glob === \"number\" && !isNaN(glob)) ? glob : 0;\n\n// if (!Array.isArray(data) || data.length === 0) {\n//     return null;\n// }\n\n// // build constant threshold line with same timestamps\n// const thresholdPayload = data.map(row => ({\n//     time: row.time,\n//     kW: threshold\n// }));\n\n// msg.topic = \"Threshold\";\n// msg.payload = thresholdPayload;\n\n// return msg;\n\nconst row = msg.payload;\n\nif (!row || !row.time) return null;\n\nlet glob = global.get(\"threshold\");\nlet threshold = (typeof glob === \"number\" && !isNaN(glob)) ? glob : 0;\n\nmsg.topic = \"Threshold\";\nmsg.payload = {\n    time: row.time,\n    kW: threshold\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1460,
+        "y": 720,
+        "wires": [
+            [
+                "46c79e349cf7960e"
+            ]
+        ]
+    },
+    {
+        "id": "a0ee443bfd36df41",
+        "type": "debug",
+        "z": "9f6ce41efe93ec24",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1440,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "0c843499ae2936b9",
+        "type": "ui-event",
+        "z": "9f6ce41efe93ec24",
+        "ui": "d7416ec1d9513281",
+        "name": "",
+        "x": 1250,
+        "y": 820,
+        "wires": [
+            [
+                "ef55f3609e4bd1c9"
+            ]
+        ]
+    },
+    {
+        "id": "ef55f3609e4bd1c9",
+        "type": "function",
+        "z": "9f6ce41efe93ec24",
+        "name": "Clear Chart",
+        "func": "if (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/process\"\n) {\n    return { payload: [] };\n}\n\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1450,
+        "y": 820,
+        "wires": [
+            [
+                "46c79e349cf7960e"
+            ]
+        ]
+    },
+    {
+        "id": "bd54913827144c1e",
+        "type": "ui-button",
+        "z": "69594495cf1ea8a1",
+        "g": "d34a0391580f1586",
+        "group": "97fe32d54dfd638a",
+        "name": "Round 2x2",
+        "label": "",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "round",
+        "icon": "power",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "#fff",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 630,
+        "y": 60,
+        "wires": [
+            [
+                "722b745215f085f0"
+            ]
+        ]
+    },
+    {
+        "id": "a4a5c7edbcbc8a80",
+        "type": "ui-button",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "group": "e3b442f221bd875f",
+        "name": "Big Square 1",
+        "label": "ON",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "square",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "x": 630,
+        "y": 460,
+        "wires": [
+            [
+                "c2a039cfc96615ac"
+            ]
+        ]
+    },
+    {
+        "id": "6eb27320b308af4d",
+        "type": "ui-button",
+        "z": "69594495cf1ea8a1",
+        "g": "d34a0391580f1586",
+        "group": "97fe32d54dfd638a",
+        "name": "Round 1x1",
+        "label": "",
+        "order": 2,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "smallround",
+        "icon": "power",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "#fff",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 630,
+        "y": 100,
+        "wires": [
+            [
+                "27ee1b05047db589"
+            ]
+        ]
+    },
+    {
+        "id": "0b3c7165b87d1ca0",
+        "type": "ui-button",
+        "z": "69594495cf1ea8a1",
+        "g": "d35e14936c5225e4",
+        "group": "a8b9bc5ba792cd37",
+        "name": "START",
+        "label": "START",
+        "order": 3,
+        "width": "2",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "rounded onehigh",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "red",
+        "textColor": "black",
+        "iconColor": "gold",
+        "x": 620,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "722b745215f085f0",
+        "type": "function",
+        "z": "69594495cf1ea8a1",
+        "g": "d34a0391580f1586",
+        "name": "Use msg.class",
+        "func": "let state = context.get(\"buttonstate\") || \"on\" \nif (state === \"on\") {\n    state = \"off\"\n    msg.class = \"plainicon\"\n}\nelse {\n    state = \"on\"\n    msg.class = \"redicon\"\n}\ncontext.set (\"buttonstate\", state)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 60,
+        "wires": [
+            [
+                "bd54913827144c1e"
+            ]
+        ]
+    },
+    {
+        "id": "57022ce1f218aad6",
+        "type": "ui-button",
+        "z": "69594495cf1ea8a1",
+        "g": "d35e14936c5225e4",
+        "group": "a8b9bc5ba792cd37",
+        "name": "Fiat Lux",
+        "label": "Fiat Lux",
+        "order": 1,
+        "width": "4",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "rounded twohigh",
+        "icon": "lightbulb-on",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "black",
+        "iconColor": "gold",
+        "x": 620,
+        "y": 240,
+        "wires": [
+            [
+                "3efcba291e1d4ca7"
+            ]
+        ]
+    },
+    {
+        "id": "c2a039cfc96615ac",
+        "type": "function",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "name": "ui_update textColor & label",
+        "func": "let state = context.get(\"buttonstate\") || \"ON\"\nmsg.ui_update = {}\nif ( state === \"ON\") {\n    state = \"OFF\"\n    msg.ui_update.label = \"OFF\"\n    msg.ui_update.textColor = \"red\";\n}\nelse {\n    state = \"ON\"\n    msg.ui_update.label = \"ON\"\n    msg.ui_update.textColor = \"green\";\n}\nmsg.ui_update.buttonColor = \"white\"\ncontext.set(\"buttonstate\", state)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 460,
+        "wires": [
+            [
+                "a4a5c7edbcbc8a80"
+            ]
+        ]
+    },
+    {
+        "id": "29d24d2d6ac6eb31",
+        "type": "ui-button",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "group": "e3b442f221bd875f",
+        "name": "Big Square 2",
+        "label": "I/O",
+        "order": 2,
+        "width": "2",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "square",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "x": 630,
+        "y": 500,
+        "wires": [
+            [
+                "29b8f0d5e043f6fe"
+            ]
+        ]
+    },
+    {
+        "id": "29b8f0d5e043f6fe",
+        "type": "function",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "name": "ui_update buttonColor",
+        "func": "let state = context.get(\"buttonstate\") || \"ON\"\nmsg.ui_update = {}\nif (state === \"OFF\") {\n    state = \"ON\"\n    msg.ui_update.buttonColor = \"green\"\n}\nelse {\n    state = \"OFF\"\n    msg.ui_update.buttonColor = \"red\"\n}\nmsg.ui_update.textColor = \"black\"\ncontext.set (\"buttonstate\", state)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 500,
+        "wires": [
+            [
+                "29d24d2d6ac6eb31"
+            ]
+        ]
+    },
+    {
+        "id": "d83117d229ef6f72",
+        "type": "ui-button",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "group": "e3b442f221bd875f",
+        "name": "Small Square 1",
+        "label": "ON",
+        "order": 3,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "smallsquare",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "x": 620,
+        "y": 540,
+        "wires": [
+            [
+                "f5376597158c99a7"
+            ]
+        ]
+    },
+    {
+        "id": "072064f2e633efe7",
+        "type": "ui-button",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "group": "e3b442f221bd875f",
+        "name": "Small Square 2",
+        "label": "",
+        "order": 4,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "smallsquare",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "x": 620,
+        "y": 580,
+        "wires": [
+            [
+                "fc6dd02ed405c4da"
+            ]
+        ]
+    },
+    {
+        "id": "d4d7e965819ff4c3",
+        "type": "ui-button",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "group": "e3b442f221bd875f",
+        "name": "Small Square 3",
+        "label": "ON",
+        "order": 5,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "smallsquare",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "x": 620,
+        "y": 620,
+        "wires": [
+            [
+                "811b3fe3f87e27e6"
+            ]
+        ]
+    },
+    {
+        "id": "d025498ebe0956be",
+        "type": "ui-button",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "group": "e3b442f221bd875f",
+        "name": "Small Square 4",
+        "label": "",
+        "order": 6,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "smallsquare",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "x": 620,
+        "y": 660,
+        "wires": [
+            [
+                "3f51ef2ce012460a"
+            ]
+        ]
+    },
+    {
+        "id": "9df29002ae0db5f4",
+        "type": "inject",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "name": "Init",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 460,
+        "wires": [
+            [
+                "c2a039cfc96615ac",
+                "29b8f0d5e043f6fe",
+                "f5376597158c99a7",
+                "fc6dd02ed405c4da",
+                "811b3fe3f87e27e6",
+                "3f51ef2ce012460a"
+            ]
+        ]
+    },
+    {
+        "id": "f5376597158c99a7",
+        "type": "function",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "name": "ui_update textColor & label",
+        "func": "let state = context.get(\"buttonstate\") || \"ON\"\nmsg.ui_update = {}\nif (state === \"ON\") {\n    state = \"OFF\"\n    msg.ui_update.label = \"OFF\"\n    msg.ui_update.textColor = \"red\";\n}\nelse {\n    state = \"ON\"\n    msg.ui_update.label = \"ON\"\n    msg.ui_update.textColor = \"green\";\n}\nmsg.ui_update.buttonColor = \"white\"\ncontext.set(\"buttonstate\", state)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 540,
+        "wires": [
+            [
+                "d83117d229ef6f72"
+            ]
+        ]
+    },
+    {
+        "id": "fc6dd02ed405c4da",
+        "type": "function",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "name": "ui_update buttonColor & icon",
+        "func": "let color = context.get(\"buttonstate\") || \"ON\"\nmsg.ui_update = {}\nif (color === \"green\") {\n    color = \"red\"\n    msg.ui_update.icon = \"power-off\"\n}\nelse {\n    color = \"green\"\n    msg.ui_update.icon = \"power-on\"\n}\nmsg.ui_update.buttonColor = color \ncontext.set (\"buttonstate\", color)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 580,
+        "wires": [
+            [
+                "072064f2e633efe7"
+            ]
+        ]
+    },
+    {
+        "id": "811b3fe3f87e27e6",
+        "type": "function",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "name": "ui_update everything",
+        "func": "let color = context.get(\"buttonstate\") || \"ON\"\nmsg.ui_update = {}\nif (color === \"green\") {\n    msg.ui_update.buttonColor = \"green\" \n    msg.ui_update.textColor = \"red\"\n    msg.ui_update.label = \"ON\"\n    color = \"red\"\n}\nelse {\n    color = \"green\"\n    msg.ui_update.buttonColor = \"red\"\n    msg.ui_update.textColor = \"green\"\n    msg.ui_update.label = \"OFF\"\n}\ncontext.set (\"buttonstate\", color)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 620,
+        "wires": [
+            [
+                "d4d7e965819ff4c3"
+            ]
+        ]
+    },
+    {
+        "id": "3f51ef2ce012460a",
+        "type": "function",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "name": "ui_update icon",
+        "func": "let color = context.get(\"buttonstate\") || \"ON\"\nmsg.ui_update = {}\nif (color === \"green\") {\n    msg.ui_update.icon = \"power-off\"\n    color = \"red\"\n}\nelse {\n    color = \"green\"\n    msg.ui_update.icon = \"power-on\"\n}\ncontext.set (\"buttonstate\", color)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 660,
+        "wires": [
+            [
+                "d025498ebe0956be"
+            ]
+        ]
+    },
+    {
+        "id": "3efcba291e1d4ca7",
+        "type": "function",
+        "z": "69594495cf1ea8a1",
+        "g": "d35e14936c5225e4",
+        "name": "ui_update iconColor x6",
+        "func": "const lightness = [0, 30, 35, 40, 45, 50]\nlet lightlevel = context.get(\"lightlevel\") || 0\nlightlevel = (lightlevel + 1) % 6\nmsg.ui_update = {}\nmsg.ui_update.iconColor = \"hsla(55, 100%, \" + lightness[lightlevel] + \"%, 1)\"\ncontext.set (\"lightlevel\", lightlevel)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 240,
+        "wires": [
+            [
+                "57022ce1f218aad6"
+            ]
+        ]
+    },
+    {
+        "id": "27ee1b05047db589",
+        "type": "function",
+        "z": "69594495cf1ea8a1",
+        "g": "d34a0391580f1586",
+        "name": "Use msg.class",
+        "func": "let state = context.get(\"buttonstate\") || \"on\" \nif (state === \"on\") {\n    state = \"off\"\n    msg.class = \"plainicon\"\n}\nelse {\n    state = \"on\"\n    msg.class = \"greenicon\"\n}\ncontext.set (\"buttonstate\", state)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 100,
+        "wires": [
+            [
+                "6eb27320b308af4d"
+            ]
+        ]
+    },
+    {
+        "id": "bb86a78e2f17c1b7",
+        "type": "ui-button",
+        "z": "69594495cf1ea8a1",
+        "g": "d35e14936c5225e4",
+        "group": "a8b9bc5ba792cd37",
+        "name": "Enable",
+        "label": "Enable",
+        "order": 5,
+        "width": "2",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "onehigh",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "red",
+        "textColor": "black",
+        "iconColor": "gold",
+        "enableClick": true,
+        "x": 620,
+        "y": 320,
+        "wires": [
+            [
+                "0a460124e234d3b4"
+            ]
+        ]
+    },
+    {
+        "id": "0a460124e234d3b4",
+        "type": "function",
+        "z": "69594495cf1ea8a1",
+        "g": "d35e14936c5225e4",
+        "name": "class & ui_update label",
+        "func": "let state = context.get(\"buttonstate\") || \"ON\"\nlet msg2 = {}\nmsg2.ui_update = {}\nmsg2.ui_update.buttonColor = \"white\"\n\nmsg.ui_update = {}\nif (state === \"ON\") {\n    state = \"OFF\"\n    msg.ui_update.label = \"DISABLED\"\n    msg2.class = \"disabled\"\n}\nelse {\n    state = \"ON\"\n    msg.ui_update.label = \"ENABLED\"\n    msg2.class = \"enabled\"\n}\nmsg.ui_update.buttonColor = \"white\"\nmsg.ui_update.icon = \"\"\ncontext.set(\"buttonstate\", state)\nreturn [msg2, msg];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "0b3c7165b87d1ca0"
+            ],
+            [
+                "bb86a78e2f17c1b7"
+            ]
+        ]
+    },
+    {
+        "id": "fb769b5b1ac7e460",
+        "type": "inject",
+        "z": "69594495cf1ea8a1",
+        "g": "d34a0391580f1586",
+        "name": "Init",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 60,
+        "wires": [
+            [
+                "722b745215f085f0",
+                "27ee1b05047db589"
+            ]
+        ]
+    },
+    {
+        "id": "a2cb332a0a9e6630",
+        "type": "function",
+        "z": "69594495cf1ea8a1",
+        "g": "d35e14936c5225e4",
+        "name": "ui_update buttonColor & label",
+        "func": "let state = context.get(\"buttonstate\") || \"on\"\nmsg.ui_update = {}\nif (state === \"on\") {\n    state = \"off\"\n    msg.ui_update.buttonColor = \"red\";\n    msg.ui_update.label = \"PORT\"\n}\nelse {\n    state = \"on\"\n    msg.ui_update.buttonColor = \"green\";\n    msg.ui_update.label = \"STARBOARD\"\n}\nmsg.ui_update.textColor = \"black\"\ncontext.set(\"buttonstate\", state)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 360,
+        "wires": [
+            [
+                "58d7f5f613542cd7"
+            ]
+        ]
+    },
+    {
+        "id": "58d7f5f613542cd7",
+        "type": "ui-button",
+        "z": "69594495cf1ea8a1",
+        "g": "d35e14936c5225e4",
+        "group": "a8b9bc5ba792cd37",
+        "name": "Starboard",
+        "label": "Port",
+        "order": 4,
+        "width": "2",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "onehigh",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "x": 620,
+        "y": 360,
+        "wires": [
+            [
+                "a2cb332a0a9e6630"
+            ]
+        ]
+    },
+    {
+        "id": "8dd06db9b14503fe",
+        "type": "function",
+        "z": "69594495cf1ea8a1",
+        "g": "d35e14936c5225e4",
+        "name": "ui_update textColor",
+        "func": "let state = context.get(\"buttonstate\") || \"on\"\nmsg.ui_update = {}\nif ( state === \"on\") {\n    state = \"off\"\n    msg.ui_update.textColor = \"red\";\n}\nelse {\n    state = \"on\"\n    msg.ui_update.textColor = \"green\";\n}\nmsg.ui_update.buttonColor = \"white\"\ncontext.set(\"buttonstate\", state)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "884f26d74da094c9"
+            ]
+        ]
+    },
+    {
+        "id": "884f26d74da094c9",
+        "type": "ui-button",
+        "z": "69594495cf1ea8a1",
+        "g": "d35e14936c5225e4",
+        "group": "a8b9bc5ba792cd37",
+        "name": "Bilge Pump",
+        "label": "Bilge Pump",
+        "order": 2,
+        "width": "4",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "twohigh",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 630,
+        "y": 200,
+        "wires": [
+            [
+                "8dd06db9b14503fe"
+            ]
+        ]
+    },
+    {
+        "id": "cd8237db0c02d81b",
+        "type": "inject",
+        "z": "69594495cf1ea8a1",
+        "g": "d35e14936c5225e4",
+        "name": "Init",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 200,
+        "wires": [
+            [
+                "8dd06db9b14503fe",
+                "3efcba291e1d4ca7",
+                "0a460124e234d3b4",
+                "a2cb332a0a9e6630"
+            ]
+        ]
+    },
+    {
+        "id": "00a210647991ac85",
+        "type": "ui-template",
+        "z": "69594495cf1ea8a1",
+        "g": "d34a0391580f1586",
+        "group": "",
+        "page": "dd9e211ef4e39083",
+        "ui": "",
+        "name": "CSS: Round",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": ".round button, .smallround button {\n    /* border and shadow on button */\n    border: 0.1vw solid #888888;\n    box-shadow: inset rgba(20, 70, 85, 0.8) 0px 0px 20px -10px;\n}\n.round.plainicon button i, .smallround.plainicon button i{\n    color: whitesmoke !important;\n    text-shadow: -1px -1px 1px #444, 1px -1px 1px #444, -1px 1px 1px #444, 1px 1px 1px #444;\n}\n.round.greenicon button i, .smallround.greenicon button i{\n    color: lime !important;\n    text-shadow: -1px -1px 1px #444, 1px -1px 1px #444, -1px 1px 1px #444, 1px 1px 1px #444, 0px 0px 12px #00ff00;\n}\n.round.redicon button i, .smallround.redicon button i{\n    color: red !important;\n    text-shadow: -1px -1px 1px #444, 1px -1px 1px #444, -1px 1px 1px #444, 1px 1px 1px #444, 0px 0px 12px #f44336;\n}\n.round button {\n    font-size: 3em;\n    border-radius: 50%;\n    max-height: calc( 2 * var(--widget-row-height));\n    min-height: calc( 2 *var(--widget-row-height));\n    max-width: calc( 2 *var(--widget-row-height));\n    min-width: calc( 2 *var(--widget-row-height));\n}\n.smallround button {\n    font-size: 1.5em;\n    border-radius: 50%;\n    max-height: var(--widget-row-height);\n    min-height: var(--widget-row-height);\n    max-width: var(--widget-row-height);\n    min-width: var(--widget-row-height);\n}",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "page:style",
+        "className": "",
+        "x": 110,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6b28a6ab48ee0ed0",
+        "type": "ui-template",
+        "z": "69594495cf1ea8a1",
+        "g": "d35e14936c5225e4",
+        "group": "",
+        "page": "dd9e211ef4e39083",
+        "ui": "",
+        "name": "CSS: Responsive",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": ".onehigh button i, .twohigh button i, .square button i, .smallsquare button i {\n    /* border and shadow on icon */\n    text-shadow: -1px -1px 1px #444, 1px -1px 1px #444, -1px 1px 1px #444, 1px 1px 1px #444, 0px 0px 10px #888888;\n}\n.onehigh button, .twohigh button, .square button, .smallsquare button {\n    /* border and shadow on button */\n    border: 0.1vw solid #888888;\n    box-shadow: inset rgba(20, 70, 85, 0.8) 0px 0px 20px -10px;\n}\n.enabled button {\n    opacity: 1;\n}\n.disabled button {\n    opacity: 0.3;\n}\n.rounded button {\n    border-radius: 5em;\n}\n.onehigh button {\n    font-size: 1em; /* could use vw units but hard to control at minimum resolution */\n    background-color:white;\n    max-height: var(--widget-row-height);   /* in case font size gets out of hand */\n    overflow: hidden;                       /* in case text too wide at this font size */\n}\n.twohigh button {\n    font-size: 2.3em;\n    background-color:white;\n    max-height: calc( 2 * var(--widget-row-height)); /* in case font size gets out of hand */\n    overflow: hidden; /* in case text too wide at this font size */\n}\n",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "page:style",
+        "className": "",
+        "x": 130,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d8fbdc642d84f607",
+        "type": "ui-template",
+        "z": "69594495cf1ea8a1",
+        "g": "fc63de1623344194",
+        "page": "dd9e211ef4e39083",
+        "name": "CSS: Square",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": ".square button i, .smallsquare button i {\n    /* border and shadow on icon */\n    text-shadow: -1px -1px 1px #444, 1px -1px 1px #444, -1px 1px 1px #444, 1px 1px 1px #444, 0px 0px 10px #888888;\n}\n.square button, .smallsquare button {\n    /* border and shadow on button */\n    border: 0.1vw solid #888888;\n    box-shadow: inset rgba(20, 70, 85, 0.8) 0px 0px 20px -10px;\n}\n.square button {\n    font-size: 2.5em;\n    max-height: calc( 2 * var(--widget-row-height));\n    min-height: calc( 2 *var(--widget-row-height));\n    max-width: calc( 2 *var(--widget-row-height));\n    min-width: calc( 2 *var(--widget-row-height));\n}\n.smallsquare button {\n    font-size: 1.2em;\n    max-height: var(--widget-row-height);\n    min-height: var(--widget-row-height);\n    max-width: var(--widget-row-height);\n    min-width: var(--widget-row-height);\n}",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "page:style",
+        "className": "",
+        "x": 110,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "069b7afe7e9c6c60",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "create row in current",
+        "func": "msg.topic=`\nINSERT INTO count ( plan, count)\nVALUES ('test',0);\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 1820,
+        "wires": [
+            [
+                "39ab135e2b42bf26"
+            ]
+        ]
+    },
+    {
+        "id": "39ab135e2b42bf26",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 910,
+        "y": 1820,
+        "wires": [
+            [
+                "b19c8e6a5a480d6c"
+            ]
+        ]
+    },
+    {
+        "id": "b19c8e6a5a480d6c",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "set countingEnabled",
+        "func": "if (!msg.error && msg.topic && msg.topic.toUpperCase().includes(\"INSERT INTO\")) {\n    flow.set(\"countingEnabled\", true);\n    node.status({ fill: \"green\", text: \"Counting enabled\" });\n} else {\n    flow.set(\"countingEnabled\", false);\n    node.status({ fill: \"red\", text: \"Counting disabled\" });\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 1820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3554b92a1f570784",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 610,
+        "y": 1040,
+        "wires": [
+            [
+                "11ab196cf20c8221"
+            ]
+        ]
+    },
+    {
+        "id": "11ab196cf20c8221",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "Retrieve count",
+        "func": "var currentOrderId = flow.get(\"currentOrderId\") || null;\nvar sqlMsg = null;\n\n// if start is pressed\nif (currentOrderId) {\n        sqlMsg = {topic : `\n            SELECT counts\n            FROM current\n            WHERE orderId = '${currentOrderId}';\n        `};\n        node.status({ fill: \"green\", shape: \"dot\", text: \"Retrieving counts\" }); \n} else {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"Counting disabled\" });\n}\n\nreturn sqlMsg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 1040,
+        "wires": [
+            [
+                "e383a367c37706f3"
+            ]
+        ]
+    },
+    {
+        "id": "e383a367c37706f3",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 970,
+        "y": 1040,
+        "wires": [
+            [
+                "bcfccd4d20dd8ea5"
+            ]
+        ]
+    },
+    {
+        "id": "bcfccd4d20dd8ea5",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "function 6",
+        "func": "if (msg.payload && msg.payload.length > 0) {\n    const countValue = msg.payload[0].counts;\n\n    node.status({ fill: \"green\", shape: \"dot\", text: \"Count: \" + countValue });\n\n    // Send to UI\n    msg.payload = countValue;\n    return msg;\n} else {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"No data\" });\n    return null;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1140,
+        "y": 1040,
+        "wires": [
+            [
+                "4415a02911064050",
+                "32617c450eca30d7",
+                "8d4b1e15d28d6004"
+            ]
+        ]
+    },
+    {
+        "id": "98b0ebffc8842e6e",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "name": "PP Inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 580,
+        "wires": [
+            [
+                "6a0068e23f64f81b"
+            ]
+        ]
+    },
+    {
+        "id": "6a0068e23f64f81b",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "order (sqlite)",
+        "func": "msg.topic = \"SELECT * FROM tastiway_plans;\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 580,
+        "wires": [
+            [
+                "47ec09a408339ad6"
+            ]
+        ]
+    },
+    {
+        "id": "0d2796169e882cb5",
+        "type": "ui-template",
+        "z": "7c2196e0bf45cdca",
+        "group": "53026aa3c68dea20",
+        "page": "",
+        "ui": "",
+        "name": "OrderID Cards",
+        "order": 5,
+        "width": "",
+        "height": "",
+        "head": "",
+        "format": "<template>\n  <v-container fluid class=\"pa-0\">\n    <v-row dense class=\"ma-0\">\n      <template v-for=\"(plans, date) in groupedPlans\" :key=\"date\">\n        <!-- Date header -->\n        <v-col cols=\"12\" class=\"px-4 py-2\">\n          <div class=\"text-h6 font-weight-bold\">{{ date }}</div>\n        </v-col>\n\n        <!-- Cards under this date -->\n        <v-col v-for=\"(plan, index) in plans\" :key=\"date + '-' + index\" cols=\"12\" sm=\"6\" class=\"pa-2\">\n          <v-card class=\"hoverable plan-card pa-3\" outlined @click=\"selectPlan(plan)\">\n            <v-row>\n              <v-col class=\"pa-4\">\n                <div class=\"text-h6\">{{ plan.productName }}</div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  {{ plan.orderId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Quantity: {{ plan.quantity }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Start: {{ new Date(plan.start).toLocaleString() }}\n                </div>\n              </v-col>\n            </v-row>\n          </v-card>\n        </v-col>\n      </template>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      selectedPlan: null,\n      planOptions: [],\n    };\n  },\n\n  computed: {\n    groupedPlans() {\n      const groups = {};\n\n      // group by display date\n      this.planOptions.forEach((plan) => {\n        const date = new Date(plan.start);\n        const displayKey = date.toLocaleDateString(\"en-GB\"); // stays like \"14/11/2025\"\n\n        if (!groups[displayKey]) groups[displayKey] = [];\n        groups[displayKey].push(plan);\n      });\n\n      // sort date keys DESC but KEEP display format\n      const sorted = Object.fromEntries(\n        Object.entries(groups).sort((a, b) => {\n          const dA = new Date(a[0].split(\"/\").reverse().join(\"-\")); // 14/11/2025 → 2025-11-14\n          const dB = new Date(b[0].split(\"/\").reverse().join(\"-\"));\n          return dB - dA; // newest first\n        })\n      );\n\n      return sorted;\n    },\n  },\n\n  methods: {\n    selectPlan(plan) {\n      this.selectedPlan = plan.orderId;\n      this.send({ payload: plan.orderId }); // sending orderId to Node-RED exec node\n\n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: {\n          orderId: plan.orderId,\n          productName: plan.productName,\n          quantity: plan.quantity,\n          start: plan.start,\n        },\n      });\n    },\n  },\n\n  watch: {\n    msg(newMsg) {\n      if (Array.isArray(newMsg?.payload)) {\n        this.planOptions = newMsg.payload.map((r) => ({\n          productName: r.productName,\n          orderId: r.orderId,\n          quantity: r.quantity ?? 0,\n          start: r.start ?? \"-\",\n        }));\n      } else if (newMsg?.payload?.orderId) {\n        const r = newMsg.payload;\n        this.planOptions = [\n          {\n            productName: r.productName,\n            orderId: r.orderId,\n            quantity: r.quantity ?? 0,\n            start: r.start ?? \"-\",\n          },\n        ];\n      }\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .plan-card {\n    width: 100%;\n    cursor: pointer;\n    transition: 0.25s;\n    border-radius: 16px;\n    overflow: hidden;\n  }\n\n  .plan-card:hover {\n    background-color: #f5f5f5;\n    transform: scale(1.01);\n  }\n\n  .v-card.selected {\n    border-color: #1976d2;\n    background-color: #e3f2fd;\n  }\n\n  .v-container {\n    max-height: 100%;\n    overflow-y: auto;\n    scrollbar-width: none;\n    padding-top: 0 !important;\n  }\n</style>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1000,
+        "y": 580,
+        "wires": [
+            [
+                "9b6707d52ef68d2a",
+                "0c8bcc3e80290dcd"
+            ]
+        ]
+    },
+    {
+        "id": "b85b364f08813fef",
+        "type": "ui-button",
+        "z": "7c2196e0bf45cdca",
+        "group": "53026aa3c68dea20",
+        "name": "Refresh Order ID",
+        "label": "Refresh Order ID",
+        "order": 2,
+        "width": "4",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "refresh-style",
+        "icon": "refresh",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "#01274c",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 150,
+        "y": 680,
+        "wires": [
+            [
+                "6a0068e23f64f81b"
+            ]
+        ]
+    },
+    {
+        "id": "3f8f5c0643229b9b",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "node /home/pi/Project/fetchOrders.js",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "(orders) -- firestore => sqlite",
+        "x": 400,
+        "y": 400,
+        "wires": [
+            [
+                "db6794e0eb964bb1"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "9b6707d52ef68d2a",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "node /home/pi/Project/startCounting.js",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "+ process&current(sqlite) &&  + status (firestore)",
+        "x": 1360,
+        "y": 580,
+        "wires": [
+            [
+                "9e53df2a68840d25"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "aa9cc26fdd069bca",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "name": "fetch orders",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "14400",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 400,
+        "wires": [
+            [
+                "3f8f5c0643229b9b"
+            ]
+        ]
+    },
+    {
+        "id": "9e53df2a68840d25",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "+ process&current(sqlite) &&  + status (firestore)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1800,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "db6794e0eb964bb1",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "fetch orders -- firestore=>sqlite",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "47ec09a408339ad6",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 790,
+        "y": 580,
+        "wires": [
+            [
+                "0d2796169e882cb5"
+            ]
+        ]
+    },
+    {
+        "id": "817962aa2a40a7df",
+        "type": "comment",
+        "z": "7c2196e0bf45cdca",
+        "name": "Initaitions sqlite",
+        "info": "",
+        "x": 140,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "0c8bcc3e80290dcd",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "set flow for currentOrderId",
+        "func": "// Expecting msg.orderId to come from previous node\nconst orderId = msg.payload;\n\nif (orderId) {\n    flow.set(\"currentOrderId\", orderId);\n    node.status({ text: \"Current Order: \" + orderId });\n} else {\n    node.error(\"❌ Missing orderId argument!\", msg);\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1290,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cc2c7cf1aeb03bdf",
+        "type": "ui-text-input",
+        "z": "7c2196e0bf45cdca",
+        "group": "53026aa3c68dea20",
+        "name": "Order Id Input",
+        "label": "Order ID",
+        "order": 3,
+        "width": "12",
+        "height": "1",
+        "topic": "topic",
+        "topicType": "msg",
+        "mode": "number",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "sendOnClear": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "x": 180,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5ccbf8cf3a8e54a0",
+        "type": "ui-template",
+        "z": "7c2196e0bf45cdca",
+        "group": "16a799820a185e70",
+        "page": "",
+        "ui": "",
+        "name": "Product Name view",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<template>\n  <v-container fluid class=\"pa-0 ma-0\">\n    <v-row no-gutters>\n      <v-col class=\"pa-4\">\n        <h2 class=\"text-h5 font-weight-bold mb-1\">\n          {{ productName || 'No product selected' }}\n        </h2>\n        <p class=\"text-body-1\">\n          {{ orderId ? `Order ID: ${orderId}` : '' }}\n        </p>\n      </v-col>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      productName: null,\n      orderId: null,\n    };\n  },\n  mounted() {\n    const query = this.$route.query;\n    this.productName = query.productName;\n    this.orderId = query.orderId;\n  },\n};\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 190,
+        "y": 1160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3c9e2997a65ef608",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 390,
+        "y": 1820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d1f1bd0e222ee442",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "fetch from current",
+        "func": "msg.topic=`\nSELECT * FROM current\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 1820,
+        "wires": [
+            [
+                "3c9e2997a65ef608"
+            ]
+        ]
+    },
+    {
+        "id": "4415a02911064050",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "debug 6",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1340,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "42604bdecfe45d66",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "node /home/pi/Project/finishCounting.js",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 910,
+        "y": 1240,
+        "wires": [
+            [
+                "ae9c66e33e93e6a8"
+            ],
+            [
+                "ae9c66e33e93e6a8"
+            ],
+            [
+                "ae9c66e33e93e6a8"
+            ]
+        ]
+    },
+    {
+        "id": "ae9c66e33e93e6a8",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1200,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "73877598962bf3b5",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "function 7",
+        "func": "const orderId = flow.get(\"currentOrderId\");\n\nif (!orderId) {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"❌ No currentOrderId found\" });\n    node.error(\"No currentOrderId set in flow context!\");\n    return null;\n}\n\nmsg.payload = orderId;\n\n// // Optionally, set msg.args if your Exec node uses an array of arguments\n// msg.args = [orderId];\n\nnode.status({ text: `▶️ Sending ${orderId}` });\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 1240,
+        "wires": [
+            [
+                "42604bdecfe45d66"
+            ]
+        ]
+    },
+    {
+        "id": "32617c450eca30d7",
+        "type": "ui-template",
+        "z": "7c2196e0bf45cdca",
+        "d": true,
+        "group": "16a799820a185e70",
+        "page": "",
+        "ui": "",
+        "name": "Count",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<template>\n  <v-container fluid class=\"pa-0\">\n    <v-card class=\"pa-4 d-flex flex-column align-center justify-center\">\n      <h2 class=\"text-h5 mt-2\">Count</h2>\n      <h1 class=\"text-h2 font-weight-bold\" :style=\"{ color: color }\">\n        {{ count }}\n      </h1>\n    </v-card>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      count: 0,\n      color: \"gray\",\n    };\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.payload !== undefined && newMsg.payload !== null) {\n        this.count = newMsg.payload;\n        this.color = \"green\";\n      } else {\n        this.count = \"—\";\n        this.color = \"red\";\n      }\n    },\n  },\n};\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1410,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "56086092f3289288",
+        "type": "ui-template",
+        "z": "7c2196e0bf45cdca",
+        "group": "16a799820a185e70",
+        "page": "",
+        "ui": "",
+        "name": "Finish Button",
+        "order": 13,
+        "width": "4",
+        "height": "2",
+        "head": "",
+        "format": "<template>\n  <v-btn fluid class=\"finish-style\" @click=\"handleClick\">\n    Finish\n  </v-btn>\n</template>\n\n<script>\n  export default {\n  methods: {\n    handleClick() {\n      // send a message back to Node-RED\n      this.send({ payload: \"finished\" });\n      // go back to the previous page\n      this.$root.$router.push(\"/production_plan\");\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .finish-style {\n    font-weight: 600;\n    color: white !important;\n    background: #e73c52 !important;\n    /* ← you missed this semicolon */\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n      0 4px 10px rgba(1, 39, 76, 0.4),\n      inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n        /* font-size: calc(1vw + 0.5em); */\n    font-size: calc(0.8vw + 0.4em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n    overflow: hidden;\n      max-height: calc( 2 * var(--widget-row-height)); \n  }\n\n  .finish-style:hover,\n  .finish-style:focus {\n    background: #b52f43 !important;\n    /* darker red for hover */\n    box-shadow:\n      0 6px 16px rgba(1, 39, 76, 0.5),\n      inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n  }\n\n  .finish-style:active {\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n  }\n</style>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 170,
+        "y": 1240,
+        "wires": [
+            [
+                "73877598962bf3b5"
+            ]
+        ]
+    },
+    {
+        "id": "f5264f73d6e3c36c",
+        "type": "ui-event",
+        "z": "7c2196e0bf45cdca",
+        "ui": "d7416ec1d9513281",
+        "name": "",
+        "x": 110,
+        "y": 760,
+        "wires": [
+            [
+                "771c3bd2c2cba03e",
+                "50e4f151392a0cd8",
+                "0d1ba548ef99b7e9",
+                "6ff71356c05332d3"
+            ]
+        ]
+    },
+    {
+        "id": "771c3bd2c2cba03e",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "Query Order ID on page open",
+        "func": "// Trigger only when user opens the Production Plan page\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/production_plan\"\n) {\n    // run your query or next logic\n    msg.topic = \"SELECT * FROM tastiway_plans;\";\n    return msg;\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 720,
+        "wires": [
+            [
+                "6a0068e23f64f81b"
+            ]
+        ]
+    },
+    {
+        "id": "76e417e5396e58d1",
+        "type": "ui-template",
+        "z": "7c2196e0bf45cdca",
+        "group": "",
+        "page": "d6080a2e5d1dfe6f",
+        "ui": "",
+        "name": "Refresh Button CSS",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": ".refresh-style button {\n    font-weight: 600;\n    color: white;\n    background: linear-gradient(145deg, rgb(1, 39, 76), rgb(3, 64, 110));\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n        0 4px 10px rgba(1, 39, 76, 0.4),\n        inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n    /* font-size: 2.3em; */\n    /* font-size: calc(1.3vw + 0.6em); */\n    font-size: calc(1vw + 0.5em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n    max-height: calc( 2 * var(--widget-row-height)); /* in case font size gets out of hand */\n    overflow: hidden; /* in case text too wide at this font size */\n}\n\n/* hover + focus feedback */\n.refresh-style button:hover,\n.refresh-style button:focus {\n    transform: scale(1.04);\n    background: linear-gradient(145deg, rgb(3, 64, 110), rgb(1, 39, 76));\n    box-shadow:\n        0 6px 16px rgba(1, 39, 76, 0.5),\n        inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n}\n\n/* optional active press effect */\n.refresh-style button:active {\n    transform: scale(0.98);\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n}",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "page:style",
+        "className": "",
+        "x": 160,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "df9b6088c98f4920",
+        "type": "ui-template",
+        "z": "7c2196e0bf45cdca",
+        "group": "",
+        "page": "d6080a2e5d1dfe6f",
+        "ui": "",
+        "name": "Finish Button CSS",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": ".finish-style button {\n    font-weight: 600;\n    color: white;\n    background: linear-gradient(145deg, rgb(1, 39, 76), rgb(3, 64, 110));\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n        0 4px 10px rgba(1, 39, 76, 0.4),\n        inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n    /* font-size: 2.3em; */\n    /* font-size: calc(1.3vw + 0.6em); */\n    font-size: calc(1vw + 0.5em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n    max-height: calc( 2 * var(--widget-row-height)); /* in case font size gets out of hand */\n    overflow: hidden; /* in case text too wide at this font size */\n}\n\n/* hover + focus feedback */\n.finish-style button:hover,\n.finish-style button:focus {\n    transform: scale(1.04);\n    background: linear-gradient(145deg, rgb(3, 64, 110), rgb(1, 39, 76));\n    box-shadow:\n        0 6px 16px rgba(1, 39, 76, 0.5),\n        inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n}\n\n/* optional active press effect */\n.finish-style button:active {\n    transform: scale(0.98);\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n}",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "page:style",
+        "className": "",
+        "x": 190,
+        "y": 1300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "097eb90fcd9ac9de",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "node /home/pi/Documents/exitKiosk.js ",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "exit kioks mode",
+        "x": 480,
+        "y": 1660,
+        "wires": [
+            [
+                "17949b581abb57a9"
+            ],
+            [
+                "17949b581abb57a9"
+            ],
+            [
+                "17949b581abb57a9"
+            ]
+        ]
+    },
+    {
+        "id": "17949b581abb57a9",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 1660,
+        "wires": []
+    },
+    {
+        "id": "3bd1c5385cd28ad6",
+        "type": "ui-template",
+        "z": "7c2196e0bf45cdca",
+        "group": "",
+        "page": "",
+        "ui": "d7416ec1d9513281",
+        "name": "Close App Button ",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<template>\n  <Teleport v-if=\"mounted\" to=\"#app-bar-actions\">\n    <v-btn icon color=\"red\" variant=\"text\" @click=\"send({ payload: 'close' })\">\n      <v-icon>mdi-close</v-icon>\n    </v-btn>\n  </Teleport>\n</template>\n\n<script>\n  export default {\n        data() {\n            return {\n                mounted: false\n            }\n        },\n        mounted() {\n          setTimeout(() => {\n            this.mounted = true\n          }, 10)\n        }\n    }\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "widget:ui",
+        "className": "",
+        "x": 190,
+        "y": 1660,
+        "wires": [
+            [
+                "097eb90fcd9ac9de"
+            ]
+        ]
+    },
+    {
+        "id": "bc268174a548eaa7",
+        "type": "ui-template",
+        "z": "7c2196e0bf45cdca",
+        "group": "16a799820a185e70",
+        "page": "",
+        "ui": "",
+        "name": "Elapsed TIme",
+        "order": 14,
+        "width": "2",
+        "height": "1",
+        "head": "",
+        "format": "<template>\n  <v-card class=\"borderless pa-4 text-left\">\n    <div class=\"text-h5 font-weight-bold\">{{ elapsed }}</div>\n  </v-card>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      start: Date.now(),\n      elapsed: \"00:00:00\",\n      interval: null,\n    };\n  },\n\n  mounted() {\n    this.interval = setInterval(() => {\n      const diff = Date.now() - this.start;\n      this.elapsed = this.formatTime(diff);\n    }, 1000);\n  },\n\n  beforeUnmount() {\n    clearInterval(this.interval);\n  },\n\n  methods: {\n    formatTime(ms) {\n      let sec = Math.floor(ms / 1000);\n      const hrs = String(Math.floor(sec / 3600)).padStart(2, \"0\");\n      sec %= 3600;\n      const mins = String(Math.floor(sec / 60)).padStart(2, \"0\");\n      sec = String(sec % 60).padStart(2, \"0\");\n      return `${hrs}:${mins}:${sec}`;\n    }\n  }\n};\n</script>\n\n<style>\n  .borderless {\n    border: transparent;\n    padding: 0;\n  }\n\n  .borderless .v-card-text {\n    border: 1px solid transparent;\n    padding: 0;\n  }\n</style>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 180,
+        "y": 1360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8d4b1e15d28d6004",
+        "type": "ui-gauge",
+        "z": "7c2196e0bf45cdca",
+        "name": "Count Gauge",
+        "group": "16a799820a185e70",
+        "order": 9,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "10",
+        "height": "4",
+        "gtype": "gauge-34",
+        "gstyle": "rounded",
+        "title": "Count",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "kg",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#000000",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "4",
+                "color": "#000000",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "7",
+                "color": "#000000",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "10",
+        "sizeThickness": "24",
+        "sizeGap": "0",
+        "sizeKeyThickness": "0",
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1350,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "50e4f151392a0cd8",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "Update Gauge Expected Qty",
+        "func": "// // Just trigger the template when user opens the Process page\n// if (\n//     msg.topic === \"$pageview\" &&\n//     msg.payload?.page?.path === \"/process\"\n// ) {\n//     return { trigger: true };    // passes the event into the UI Template\n// }\n\n// return null;\n\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/process\"\n) {\n    const query = msg.payload.query;\n\n    const qty = Number(query.quantity);\n\n\n    msg.payload = null;\n    msg.ui_update = {\n        max: qty\n    };\n\n\n    return msg;\n}\n\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 780,
+        "wires": [
+            [
+                "8d4b1e15d28d6004"
+            ]
+        ]
+    },
+    {
+        "id": "e678c5f76465e708",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "5e53c013b6b1cf2f"
+            ]
+        ]
+    },
+    {
+        "id": "5e53c013b6b1cf2f",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "Create tables tastiway_plans",
+        "func": "msg.topic = `\nCREATE TABLE IF NOT EXISTS tastiway_plans (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  start INTEGER NOT NULL,\n  end INTEGER NOT NULL,\n  orderId TEXT NOT NULL,\n  productName TEXT NOT NULL,\n  quantity INTEGER NOT NULL\n);\n`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 100,
+        "wires": [
+            [
+                "7898b75bcadf79e5"
+            ]
+        ]
+    },
+    {
+        "id": "7898b75bcadf79e5",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 690,
+        "y": 100,
+        "wires": [
+            [
+                "49603acde0b4cb85"
+            ]
+        ]
+    },
+    {
+        "id": "49603acde0b4cb85",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "create table tastiway_plans",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "46bb5762d2f3c750",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 160,
+        "wires": [
+            [
+                "35c1877cba5568f8"
+            ]
+        ]
+    },
+    {
+        "id": "35c1877cba5568f8",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "Create table tastiway_process",
+        "func": "msg.topic = `\n\nCREATE TABLE IF NOT EXISTS tastiway_process (\n  orderId TEXT NOT NULL PRIMARY KEY,\n  start INTEGER NOT NULL,\n  stop INTEGER,\n  counts INTEGER DEFAULT 0,\n  uploaded INTEGER DEFAULT 0\n);\n`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 160,
+        "wires": [
+            [
+                "82d2643e55c7ee22"
+            ]
+        ]
+    },
+    {
+        "id": "82d2643e55c7ee22",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 690,
+        "y": 160,
+        "wires": [
+            [
+                "d1361d157bf42587"
+            ]
+        ]
+    },
+    {
+        "id": "d1361d157bf42587",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "create table tastiway_process",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "1bf2b72c4cb416ba",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 220,
+        "wires": [
+            [
+                "70a504f88a83e41c"
+            ]
+        ]
+    },
+    {
+        "id": "70a504f88a83e41c",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "Create table current",
+        "func": "msg.topic = `\n\nCREATE TABLE IF NOT EXISTS current (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  orderId TEXT NOT NULL,\n  counts INTEGER DEFAULT 0 \n);\n`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 220,
+        "wires": [
+            [
+                "765602198123efe5"
+            ]
+        ]
+    },
+    {
+        "id": "765602198123efe5",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 690,
+        "y": 220,
+        "wires": [
+            [
+                "9271c39e4e869867"
+            ]
+        ]
+    },
+    {
+        "id": "9271c39e4e869867",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "create table current",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "a940d9172735db12",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 280,
+        "wires": [
+            [
+                "c8289f2083621b64"
+            ]
+        ]
+    },
+    {
+        "id": "c8289f2083621b64",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "Alter current -- add start",
+        "func": "msg.topic = `\nALTER TABLE current\nADD COLUMN start INTEGER;\n`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 280,
+        "wires": [
+            [
+                "c44918c63f3ccb43"
+            ]
+        ]
+    },
+    {
+        "id": "c44918c63f3ccb43",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 690,
+        "y": 280,
+        "wires": [
+            [
+                "05bfb7dad78edf7d"
+            ]
+        ]
+    },
+    {
+        "id": "05bfb7dad78edf7d",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "create table current",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "30ea4ff2fb21cbd9",
+        "type": "http in",
+        "z": "7c2196e0bf45cdca",
+        "name": "",
+        "url": "/tmm_count",
+        "method": "post",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 1080,
+        "wires": [
+            [
+                "2c1027b9acb1e47f",
+                "17edd56104b7de83"
+            ]
+        ]
+    },
+    {
+        "id": "2c1027b9acb1e47f",
+        "type": "http response",
+        "z": "7c2196e0bf45cdca",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 390,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "17edd56104b7de83",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "from countTMM.js",
+        "func": "const {count} =msg.payload\nconst currentOrderId = flow.get(\"currentOrderId\") || null;\nconst rounded = Number(count.toFixed(2))\n\nmsg.topic = `UPDATE current\n                    SET counts = ${rounded}\n                    WHERE orderId = '${currentOrderId}';`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 1080,
+        "wires": [
+            [
+                "3554b92a1f570784"
+            ]
+        ]
+    },
+    {
+        "id": "022e0ceeadabaf71",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 1020,
+        "wires": [
+            [
+                "8c4c21fe6ae3477b"
+            ]
+        ]
+    },
+    {
+        "id": "8c4c21fe6ae3477b",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "node /home/pi/Project/countTMM.js",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "countTMM",
+        "x": 390,
+        "y": 1020,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "0d1ba548ef99b7e9",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "89b7d742c10fb973",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 1920,
+        "wires": [
+            [
+                "1b867985ce312e11"
+            ]
+        ]
+    },
+    {
+        "id": "1b867985ce312e11",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "Set Dummy Count",
+        "func": "const currentOrderId = '20251112-ZM-004'\nconst rounded = 50;\nmsg.topic = `UPDATE current SET counts = ${rounded} WHERE orderId = '${currentOrderId}';`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 1920,
+        "wires": [
+            [
+                "947603fd1358ec57"
+            ]
+        ]
+    },
+    {
+        "id": "947603fd1358ec57",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 530,
+        "y": 1920,
+        "wires": [
+            [
+                "1bf0293bf4111b55"
+            ]
+        ]
+    },
+    {
+        "id": "1bf0293bf4111b55",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 1920,
+        "wires": []
+    },
+    {
+        "id": "6ff71356c05332d3",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "Update currentPage global",
+        "func": "if (msg.topic === \"$pageview\") {\n    const path = msg.payload?.page?.path || null;\n\n    global.set(\"currentPage\", path);\n\n    return null;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "38030d0ae17217c4",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 1580,
+        "wires": [
+            [
+                "ed5a4ebae5d2a964"
+            ]
+        ]
+    },
+    {
+        "id": "ed5a4ebae5d2a964",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "cat /sys/class/net/wlan0/operstate",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "cat operstate",
+        "x": 390,
+        "y": 1580,
+        "wires": [
+            [
+                "d145077b5c03a4b3"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "d145077b5c03a4b3",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "function 4",
+        "func": "msg.payload = (msg.payload.trim() === \"up\") ? \"Connected\" : \"Disconnected\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1580,
+        "wires": [
+            [
+                "4a388a566e0d7db0",
+                "5b5398461ff4fd39"
+            ]
+        ]
+    },
+    {
+        "id": "4a388a566e0d7db0",
+        "type": "ui-template",
+        "z": "7c2196e0bf45cdca",
+        "group": "",
+        "page": "",
+        "ui": "d7416ec1d9513281",
+        "name": "Wifi Icon ",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<template>\n  <Teleport v-if=\"mounted\" to=\"#app-bar-actions\">\n    <v-btn icon variant=\"text\" :color=\"wifiConnected ? 'green' : 'red'\" @click.stop=\"\">\n      <v-icon>{{ wifiConnected ? 'mdi-wifi' : 'mdi-wifi-off' }}</v-icon>\n    </v-btn>\n  </Teleport>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      mounted: false,\n      wifiConnected: false\n    };\n  },\n\n  mounted() {\n    this.mounted = true;\n  },\n\n  watch: {\n    msg(newMsg) {\n      if (!newMsg || newMsg.payload == null) return;\n      this.wifiConnected = newMsg.payload === \"Connected\";\n    }\n  }\n};\n</script>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "widget:ui",
+        "className": "",
+        "x": 800,
+        "y": 1580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5b5398461ff4fd39",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "44bfb6ef778a96bf",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/5 0-23 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 2200,
+        "wires": [
+            [
+                "95c19fc6a00fb19f"
+            ]
+        ]
+    },
+    {
+        "id": "95c19fc6a00fb19f",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "node /home/pi/Project/update_andon.js ",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "update andon",
+        "x": 360,
+        "y": 2200,
+        "wires": [
+            [
+                "fb5dbb32e75e69f5"
+            ],
+            [
+                "fb5dbb32e75e69f5"
+            ],
+            [
+                "fb5dbb32e75e69f5"
+            ]
+        ]
+    },
+    {
+        "id": "fb5dbb32e75e69f5",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 2200,
+        "wires": []
+    },
+    {
+        "id": "ab6f5a541832241a",
+        "type": "ui-button",
+        "z": "7c2196e0bf45cdca",
+        "group": "16a799820a185e70",
+        "name": "",
+        "label": "",
+        "order": 4,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "play",
+        "iconPosition": "left",
+        "payload": "green",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "msg.buttonColor",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 490,
+        "y": 2260,
+        "wires": [
+            [
+                "3c0f03d582983436"
+            ]
+        ]
+    },
+    {
+        "id": "bc066fa67abea6c1",
+        "type": "ui-button",
+        "z": "7c2196e0bf45cdca",
+        "group": "16a799820a185e70",
+        "name": "",
+        "label": "",
+        "order": 6,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "account-question",
+        "iconPosition": "left",
+        "payload": "blue",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "msg.buttonColor",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 490,
+        "y": 2300,
+        "wires": [
+            [
+                "3c0f03d582983436"
+            ]
+        ]
+    },
+    {
+        "id": "38efd371fa38b492",
+        "type": "ui-button",
+        "z": "7c2196e0bf45cdca",
+        "group": "16a799820a185e70",
+        "name": "",
+        "label": "",
+        "order": 7,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "close-octagon",
+        "iconPosition": "left",
+        "payload": "red",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "msg.buttonColor",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 490,
+        "y": 2340,
+        "wires": [
+            [
+                "3c0f03d582983436"
+            ]
+        ]
+    },
+    {
+        "id": "3c0f03d582983436",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "Toggle Color Logic",
+        "func": "// Get previous active color\nlet activeColor = flow.get('activeColor') || null;\nconst pressedColor = msg.payload;\n\n// Ignore if the same button is pressed\nif (pressedColor === activeColor) {\n    return null;\n}\n\n// Save the new active color\nflow.set('activeColor', pressedColor);\n\n// Construct button messages\nconst greenMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'green' ? 'green' : '#0a7d00'\n    }\n};\n\nconst blueMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'blue' ? 'blue' : '#003c8f'\n    }\n};\n\nconst redMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'red' ? 'red' : '#8b0000'\n    }\n};\n\n\n// Output active color to downstream\nconst outputMsg = { payload: pressedColor };\n\nreturn [ greenMsg,blueMsg, redMsg, outputMsg];",
+        "outputs": 4,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 2280,
+        "wires": [
+            [
+                "ab6f5a541832241a"
+            ],
+            [
+                "bc066fa67abea6c1"
+            ],
+            [
+                "38efd371fa38b492"
+            ],
+            [
+                "8d6b0f30e3941d03"
+            ]
+        ]
+    },
+    {
+        "id": "83af2bb0b2126ae5",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1280,
+        "y": 2300,
+        "wires": []
+    },
+    {
+        "id": "8d6b0f30e3941d03",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "node /home/pi/Project/andon_traffic_light.js ",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "update traffic andon",
+        "x": 1040,
+        "y": 2280,
+        "wires": [
+            [
+                "83af2bb0b2126ae5"
+            ],
+            [
+                "83af2bb0b2126ae5"
+            ],
+            [
+                "83af2bb0b2126ae5"
+            ]
+        ]
+    },
+    {
+        "id": "0aca8ae5856f17bb",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "Toggle Color Logic",
+        "func": "// Get previous active color\nlet activeColor = flow.get('activeColor') || null;\n\nconst greenMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'green' ? 'green' : '#0a7d00'\n    }\n};\n\nconst blueMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'blue' ? 'blue' : '#003c8f'\n    }\n};\n\nconst redMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'red' ? 'red' : '#8b0000'\n    }\n};\n\nreturn [greenMsg, blueMsg, redMsg];\n",
+        "outputs": 3,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 2300,
+        "wires": [
+            [
+                "ab6f5a541832241a"
+            ],
+            [
+                "bc066fa67abea6c1"
+            ],
+            [
+                "38efd371fa38b492"
+            ]
+        ]
+    },
+    {
+        "id": "da23595418687429",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 2300,
+        "wires": [
+            [
+                "0aca8ae5856f17bb"
+            ]
+        ]
+    }
+]

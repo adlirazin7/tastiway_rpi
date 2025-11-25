@@ -1,0 +1,19 @@
+{
+  "name": "node-red-project",
+  "description": "initially created for you by Node-RED 4.1.0",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "@flowfuse/node-red-dashboard": "~1.28.0",
+    "@gogovega/node-red-contrib-cloud-firestore": "~0.2.2",
+    "node-red-contrib-buffer-parser": "^3.2.2",
+    "node-red-contrib-modbus": "~5.44.1",
+    "node-red-contrib-play-audio": "^2.5.0",
+    "node-red-node-pi-gpio": "^2.0.6",
+    "node-red-node-ping": "^0.3.3",
+    "node-red-node-random": "^0.4.1",
+    "node-red-node-serialport": "^2.0.3",
+    "node-red-node-smooth": "^0.1.2",
+    "node-red-node-sqlite": "~1.1.1"
+  }
+}

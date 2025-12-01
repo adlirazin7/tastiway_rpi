@@ -205,84 +205,6 @@
         }
     },
     {
-        "id": "a0218fe3622ac926",
-        "type": "ui-page",
-        "name": "Power Meter",
-        "ui": "d7416ec1d9513281",
-        "path": "/power_meter",
-        "icon": "lightning-bolt-outline",
-        "layout": "grid",
-        "theme": "bf6ce2ec840921b5",
-        "breakpoints": [
-            {
-                "name": "Default",
-                "px": "0",
-                "cols": "3"
-            },
-            {
-                "name": "Tablet",
-                "px": "576",
-                "cols": "6"
-            },
-            {
-                "name": "Small Desktop",
-                "px": "768",
-                "cols": "9"
-            },
-            {
-                "name": "Desktop",
-                "px": "1024",
-                "cols": "12"
-            }
-        ],
-        "order": 2,
-        "className": "mypage",
-        "visible": "true",
-        "disabled": "false"
-    },
-    {
-        "id": "544af962277d51ba",
-        "type": "ui-group",
-        "name": "Current",
-        "page": "a0218fe3622ac926",
-        "width": "12",
-        "height": "2",
-        "order": 3,
-        "showTitle": false,
-        "className": "current-style",
-        "visible": "true",
-        "disabled": "false",
-        "groupType": "default"
-    },
-    {
-        "id": "b396f17e092b1414",
-        "type": "ui-group",
-        "name": "Chart",
-        "page": "a0218fe3622ac926",
-        "width": "12",
-        "height": "8",
-        "order": 4,
-        "showTitle": false,
-        "className": "",
-        "visible": "true",
-        "disabled": "false",
-        "groupType": "default"
-    },
-    {
-        "id": "79f99a2fd4914121",
-        "type": "ui-group",
-        "name": "Voltage Gauge",
-        "page": "a0218fe3622ac926",
-        "width": "12",
-        "height": "2",
-        "order": 2,
-        "showTitle": false,
-        "className": "",
-        "visible": "true",
-        "disabled": "false",
-        "groupType": "default"
-    },
-    {
         "id": "61bc6e56e10603d1",
         "type": "global-config",
         "env": [],
@@ -424,6 +346,135 @@
         }
     },
     {
+        "id": "f8e5a7882313f0fe",
+        "type": "ui-spacer",
+        "group": "53026aa3c68dea20",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 1,
+        "width": 8,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "902127b30471c926",
+        "type": "ui-spacer",
+        "group": "16a799820a185e70",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 13,
+        "width": 8,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "5075a7d8e4947586",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "dff5edc413f07f75",
+        "type": "ui-spacer",
+        "group": "16a799820a185e70",
+        "name": "spacer",
+        "tooltip": "",
+        "order": 12,
+        "width": 12,
+        "height": 1,
+        "className": ""
+    },
+    {
+        "id": "a0218fe3622ac926",
+        "type": "ui-page",
+        "name": "Power Meter",
+        "ui": "d7416ec1d9513281",
+        "path": "/power_meter",
+        "icon": "lightning-bolt-outline",
+        "layout": "grid",
+        "theme": "bf6ce2ec840921b5",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 2,
+        "className": "mypage",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "544af962277d51ba",
+        "type": "ui-group",
+        "name": "Current",
+        "page": "a0218fe3622ac926",
+        "width": "12",
+        "height": "2",
+        "order": 3,
+        "showTitle": false,
+        "className": "current-style",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "b396f17e092b1414",
+        "type": "ui-group",
+        "name": "Chart",
+        "page": "a0218fe3622ac926",
+        "width": "12",
+        "height": "8",
+        "order": 4,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "79f99a2fd4914121",
+        "type": "ui-group",
+        "name": "Voltage Gauge",
+        "page": "a0218fe3622ac926",
+        "width": "12",
+        "height": "2",
+        "order": 2,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
         "id": "dd9e211ef4e39083",
         "type": "ui-page",
         "name": "CSS & ui_control Buttons",
@@ -511,57 +562,6 @@
         "visible": "true",
         "disabled": "false",
         "groupType": "default"
-    },
-    {
-        "id": "f8e5a7882313f0fe",
-        "type": "ui-spacer",
-        "group": "53026aa3c68dea20",
-        "name": "spacer",
-        "tooltip": "",
-        "order": 1,
-        "width": 8,
-        "height": 1,
-        "className": ""
-    },
-    {
-        "id": "902127b30471c926",
-        "type": "ui-spacer",
-        "group": "16a799820a185e70",
-        "name": "spacer",
-        "tooltip": "",
-        "order": 13,
-        "width": 8,
-        "height": 1,
-        "className": ""
-    },
-    {
-        "id": "5075a7d8e4947586",
-        "type": "ui-theme",
-        "name": "Default Theme",
-        "colors": {
-            "surface": "#ffffff",
-            "primary": "#0094CE",
-            "bgPage": "#eeeeee",
-            "groupBg": "#ffffff",
-            "groupOutline": "#cccccc"
-        },
-        "sizes": {
-            "pagePadding": "12px",
-            "groupGap": "12px",
-            "groupBorderRadius": "4px",
-            "widgetGap": "12px"
-        }
-    },
-    {
-        "id": "dff5edc413f07f75",
-        "type": "ui-spacer",
-        "group": "16a799820a185e70",
-        "name": "spacer",
-        "tooltip": "",
-        "order": 12,
-        "width": 12,
-        "height": 1,
-        "className": ""
     },
     {
         "id": "3502d5d56411657d",
@@ -3002,6 +3002,77 @@
         ]
     },
     {
+        "id": "44bfb6ef778a96bf",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/5 0-23 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 2200,
+        "wires": [
+            [
+                "95c19fc6a00fb19f"
+            ]
+        ]
+    },
+    {
+        "id": "95c19fc6a00fb19f",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "node /home/pi/Project/update_andon.js ",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "update andon",
+        "x": 360,
+        "y": 2200,
+        "wires": [
+            [
+                "fb5dbb32e75e69f5"
+            ],
+            [
+                "fb5dbb32e75e69f5"
+            ],
+            [
+                "fb5dbb32e75e69f5"
+            ]
+        ]
+    },
+    {
+        "id": "fb5dbb32e75e69f5",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 2200,
+        "wires": []
+    },
+    {
         "id": "069b7afe7e9c6c60",
         "type": "function",
         "z": "7c2196e0bf45cdca",
@@ -4537,77 +4608,6 @@
         "wires": []
     },
     {
-        "id": "44bfb6ef778a96bf",
-        "type": "inject",
-        "z": "7c2196e0bf45cdca",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "*/5 0-23 * * *",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 130,
-        "y": 2200,
-        "wires": [
-            [
-                "95c19fc6a00fb19f"
-            ]
-        ]
-    },
-    {
-        "id": "95c19fc6a00fb19f",
-        "type": "exec",
-        "z": "7c2196e0bf45cdca",
-        "command": "node /home/pi/Project/update_andon.js ",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "update andon",
-        "x": 360,
-        "y": 2200,
-        "wires": [
-            [
-                "fb5dbb32e75e69f5"
-            ],
-            [
-                "fb5dbb32e75e69f5"
-            ],
-            [
-                "fb5dbb32e75e69f5"
-            ]
-        ]
-    },
-    {
-        "id": "fb5dbb32e75e69f5",
-        "type": "debug",
-        "z": "7c2196e0bf45cdca",
-        "name": "debug 4",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 2200,
-        "wires": []
-    },
-    {
         "id": "ab6f5a541832241a",
         "type": "ui-button",
         "z": "7c2196e0bf45cdca",
@@ -4729,7 +4729,7 @@
         "type": "function",
         "z": "7c2196e0bf45cdca",
         "name": "Toggle Color Logic",
-        "func": "// Get previous active color\nlet activeColor = flow.get('activeColor') || null;\nconst pressedColor = msg.payload;\n\n// Ignore if the same button is pressed\nif (pressedColor === activeColor) {\n    return null;\n}\n\n// Save the new active color\nflow.set('activeColor', pressedColor);\n\n// Construct button messages\nconst greenMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'green' ? 'green' : '#0a7d00'\n    }\n};\n\nconst blueMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'blue' ? 'blue' : '#003c8f'\n    }\n};\n\nconst redMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'red' ? 'red' : '#8b0000'\n    }\n};\n\n\n// Output active color to downstream\nconst outputMsg = { payload: pressedColor };\n\nreturn [ greenMsg,blueMsg, redMsg, outputMsg];",
+        "func": "// Get previous active color\nlet activeColor = flow.get('activeColor') || null;\nconst pressedColor = msg.payload;\n\n// Ignore if the same button is pressed\nif (pressedColor === activeColor) {\n    return null;\n}\n\n// Save the new active color\nflow.set('activeColor', pressedColor);\n\n// Construct button messages\nconst greenMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'green' ? 'green' : 'grey'\n    }\n};\n\nconst blueMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'blue' ? 'blue' : 'grey'\n    }\n};\n\nconst redMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'red' ? 'red' : 'grey'\n    }\n};\n\n\n// Output active color to downstream\nconst outputMsg = { payload: pressedColor };\n\nreturn [ greenMsg,blueMsg, redMsg, outputMsg];",
         "outputs": 4,
         "timeout": "",
         "noerr": 0,
@@ -4800,7 +4800,7 @@
         "type": "function",
         "z": "7c2196e0bf45cdca",
         "name": "Toggle Color Logic",
-        "func": "// Get previous active color\nlet activeColor = flow.get('activeColor') || null;\n\nconst greenMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'green' ? 'green' : '#0a7d00'\n    }\n};\n\nconst blueMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'blue' ? 'blue' : '#003c8f'\n    }\n};\n\nconst redMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'red' ? 'red' : '#8b0000'\n    }\n};\n\nreturn [greenMsg, blueMsg, redMsg];\n",
+        "func": "// Get previous active color\nlet activeColor = flow.get('activeColor') || null;\n\nconst greenMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'green' ? 'green' : 'grey'\n    }\n};\n\nconst blueMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'blue' ? 'blue' : 'grey'\n    }\n};\n\nconst redMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'red' ? 'red' : 'grey'\n    }\n};\n\nreturn [greenMsg, blueMsg, redMsg];\n",
         "outputs": 3,
         "timeout": "",
         "noerr": 0,

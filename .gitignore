@@ -49,3 +49,5 @@ logs/
 # ============================
 .idea/
 .vscode/
+.node-red_project_count/.sessions.json
+.node-red_project_modbus/.sessions.json

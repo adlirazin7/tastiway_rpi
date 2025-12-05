@@ -9,11 +9,16 @@ import fs from "fs";
 // retrieve the custom machine Id 
 const machineId = fs.readFileSync('/etc/machine_id_custom', 'utf8').trim();
 
-const orderId = process.argv[2];
+const combined = process.argv[2];
+console.log("combined:", combined)
+const [orderId, activePic, batchId] = combined.split(",-,");
+
 if (!orderId) {
     console.error("❌ Missing orderId argument!");
     process.exit(1);
 }
+
+
 
 let db;
 let dbFirestore;
@@ -42,9 +47,9 @@ try {
     const nowMillis = Date.now();
     try {// orderId Primary key
         await db.run(
-            `INSERT OR IGNORE INTO tastiway_process (orderId, start)
-             VALUES (?, ?)`,
-            [orderId, nowMillis]
+            `INSERT OR IGNORE INTO tastiway_process (orderId, start, pic, batchId)
+             VALUES (?, ?, ?, ?)`,
+            [orderId, nowMillis, activePic, batchId]
         );
     } catch (err) {
         throw new Error(`❌ SQLite table 'process' failed: ${err.message}`);
@@ -57,18 +62,18 @@ try {
         if (!currentRow) {
             // table empty -> insert new
             await db.run(
-                `INSERT INTO current (orderId, counts) VALUES (?, ?)`,
-                [orderId, 0]
+                `INSERT INTO current (orderId, counts, pic) VALUES (?, ?, ?)`,
+                [orderId, 0, activePic]
             );
         } else if (currentRow.orderId !== orderId) {
             // different order -> clear and insert new
             await db.run(`DELETE FROM current;`);
             await db.run(
-                `INSERT INTO current (orderId, counts) VALUES (?, ?)`,
-                [orderId, 0]
+                `INSERT INTO current (orderId, counts, pic) VALUES (?, ?, ?)`,
+                [orderId, 0, activePic]
             );
         } else {
-            // dame orderId -> keep as is
+            // same orderId -> keep as is
         }
     } catch (err) {
         throw new Error(`❌ 'current' table handling failed: ${err.message}`);
@@ -99,7 +104,7 @@ try {
             .set(
                 {
                     status: "green",
-		    lastSeen: new Date(),
+                    lastSeen: new Date(),
                 },
                 { merge: true }
             );

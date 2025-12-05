@@ -41,10 +41,6 @@ try {
         throw new Error(`🔥 Firestore fetch failed: ${firestoreErr.message}`);
     }
 
-    if (snap.empty) {
-        console.log("No data found in production plans");
-        process.exit(0);
-    }
 
     // delete all the orders - more simple -- the user could update the order when status === 'pending'
     try {
@@ -53,6 +49,10 @@ try {
     } catch (sqliteErr) {
         throw new Error(`💾 SQLite delete/reset failed: ${sqliteErr.message}`);
     }
+    if (snap.empty) {
+        console.log("No data found in production plans");
+        process.exit(0);
+    }
     // insert into sqlite 
     let insertedCount = 0;
     try {
@@ -60,12 +60,13 @@ try {
             const data = doc.data();
             await db.run(
                 `INSERT INTO tastiway_plans
-          (start, end, orderId, productName, quantity)
-         VALUES (?, ?, ?, ?, ?)`,
+          (start, end, orderId, batchId, productName, quantity)
+         VALUES (?, ?, ?, ?, ?, ?)`,
                 [
                     data.start?.toDate().toISOString() ?? null,
                     data.end?.toDate().toISOString() ?? null,
                     data.orderId ?? null,
+                    data.batchId ?? null,
                     data.productName ?? null,
                     data.quantity ?? null,
                 ]

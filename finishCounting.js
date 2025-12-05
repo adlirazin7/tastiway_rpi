@@ -1,5 +1,5 @@
 import { initializeApp, cert } from "firebase-admin/app";
-import { getFirestore } from "firebase-admin/firestore";
+import { getFirestore, Timestamp } from "firebase-admin/firestore";
 import serviceAccount from "./service_account-cp4.json" with { type: "json" };
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
@@ -9,7 +9,10 @@ import fs from "fs";
 // retrieve the custom machine Id 
 const machineId = fs.readFileSync('/etc/machine_id_custom', 'utf8').trim();
 
-const orderId = process.argv[2];
+const combined = process.argv[2];
+console.log("combined:", combined)
+const [orderId, reject] = combined.split(",-,");
+
 if (!orderId) {
     console.error("❌ Missing orderId argument!");
     process.exit(1);
@@ -45,9 +48,9 @@ try {
         if (orderId === currentRow['orderId']) {
             await db.run(
                 `UPDATE tastiway_process
-                SET stop = ?, counts = ?
+                SET stop = ?, counts = ?, reject = ?
                 WHERE orderId = ?`,
-                [nowMillis, currentRow['counts'], orderId]
+                [nowMillis, currentRow['counts'], reject, orderId]
             );
         } else {
             console.log("❌ orderId inside current and in the flow are different !!!")
@@ -55,7 +58,7 @@ try {
         // clear the current table
         await db.run("DELETE FROM current;");
     } catch (err) {
-        throw new Error(`❌ 'current' table handling failed: ${err.message}`);
+        throw new Error(`❌ 'tastiway_process' table handling failed: ${err.message}`);
     }
 
     // Firestore -- update status
@@ -74,21 +77,32 @@ try {
         throw new Error(`❌ Firestore update status failed: ${err.message}`);
     }
 
-    //Firestore -- add collection 'record'
+
+
+    //Firestore -- add collection 'reports'
     try {
         const order = await db.get(`SELECT * FROM tastiway_process WHERE orderId = ?`, [orderId]);
+        // retrieve the andon array for that period from count_logs
+        const data = await db.all(`SELECT timestamp, count, andon FROM log WHERE orderId= ? AND timestamp > ? AND timestamp < ?`, [orderId, order["start"], order["stop"]]);
+        data.push({ timestamp: nowMillis, count: order["counts"], andon: data[data.length - 1]["andon"] });
+        // set the doc in the firestore
         await dbFirestore
             .collection("tastiway_reports")
             .doc(orderId)
             .set(
                 {
                     orderId: orderId,
-                    start: order['start'],
-                    stop: order['stop'],
-                    counts: order['counts'],
+                    start: Timestamp.fromMillis(order["start"]),
+                    stop: Timestamp.fromMillis(order["stop"]),
+                    finalCount: order["counts"],
+                    reject: order["reject"],
+                    batchId: order["batchId"],
+                    machineId: machineId,
+                    data: data
+
                 },
             )
-        // once added into 'record', modify the updated
+        // once added into 'report', modify the updated
         await db.run(
             `UPDATE tastiway_process
             SET uploaded = 1
@@ -108,7 +122,7 @@ try {
             .set(
                 {
                     status: "yellow",
-	            lastSeen: new Date(),
+                    lastSeen: new Date(),
                 },
                 { merge: true }
             );

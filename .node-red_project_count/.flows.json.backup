@@ -32,42 +32,60 @@
             "b0a3ccad6d276ce8",
             "a3d78a2661a5f910",
             "3f2c9ded7b6973d1",
-            "a83dfe4e7a42b076"
+            "a83dfe4e7a42b076",
+            "5756be06b1516839",
+            "70e16d4faa819142",
+            "120cf863c8ba2f62",
+            "a89785d8bc402843"
         ],
-        "x": 74,
+        "x": 94,
         "y": 79,
         "w": 1052,
-        "h": 202
+        "h": 262
     },
     {
-        "id": "4a6bf541ef792204",
-        "type": "modbus-client",
-        "name": "",
-        "clienttype": "serial",
-        "bufferCommands": true,
-        "stateLogEnabled": false,
-        "queueLogEnabled": false,
-        "failureLogEnabled": true,
-        "tcpHost": "127.0.0.1",
-        "tcpPort": 502,
-        "tcpType": "DEFAULT",
-        "serialPort": "/dev/ttyACM1",
-        "serialType": "RTU-BUFFERD",
-        "serialBaudrate": 9600,
-        "serialDatabits": 8,
-        "serialStopbits": 1,
-        "serialParity": "none",
-        "serialConnectionDelay": 100,
-        "serialAsciiResponseStartDelimiter": "0x3A",
-        "unit_id": 1,
-        "commandDelay": 1,
-        "clientTimeout": 1000,
-        "reconnectOnTimeout": true,
-        "reconnectTimeout": 2000,
-        "parallelUnitIdsAllowed": true,
-        "showErrors": false,
-        "showWarnings": true,
-        "showLogs": true
+        "id": "d3760f4172c763a6",
+        "type": "group",
+        "z": "f69312076bb95996",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "c3751df6655f9a49",
+            "01ba145b9414a53a",
+            "c9fa976fcbcbeaad",
+            "a16d9505dbbcf8c4",
+            "a9a4b2c0cb0403ec",
+            "2df4b92e8cc4a2d6",
+            "81a4eecc55f83b03",
+            "1c61f3de5a74dc67",
+            "67a14cad98f3ea5a",
+            "68ad5cb73845748f",
+            "281a023651f4c647",
+            "caaee56f4e42d967",
+            "ab08efcc0e59d6cc",
+            "088111059854cf41",
+            "4a78ea0fbb8bdc22",
+            "b48dd578139306db",
+            "9883577d393fd1ad",
+            "f37ea846073a02af",
+            "f21f6bde3613ce58",
+            "1da702148ed46fcc",
+            "b026175dce5fee1b",
+            "26240593488c8e98",
+            "7419990bbe325e7f",
+            "dc6ef99ba62a84eb"
+        ],
+        "x": 1194,
+        "y": 79,
+        "w": 1032,
+        "h": 382
     },
     {
         "id": "d7416ec1d9513281",
@@ -170,7 +188,7 @@
         "group": "53026aa3c68dea20",
         "name": "spacer",
         "tooltip": "",
-        "order": 3,
+        "order": 4,
         "width": 12,
         "height": 1,
         "className": ""
@@ -232,30 +250,12 @@
         "mode": "RWC"
     },
     {
-        "id": "0d92c765bfad87e6",
-        "type": "ui-theme",
-        "name": "Basic Blue Theme",
-        "colors": {
-            "surface": "#4d58ff",
-            "primary": "#0094ce",
-            "bgPage": "#eeeeee",
-            "groupBg": "#ffffff",
-            "groupOutline": "#cccccc"
-        },
-        "sizes": {
-            "pagePadding": "12px",
-            "groupGap": "12px",
-            "groupBorderRadius": "4px",
-            "widgetGap": "12px"
-        }
-    },
-    {
         "id": "f8e5a7882313f0fe",
         "type": "ui-spacer",
         "group": "53026aa3c68dea20",
         "name": "spacer",
         "tooltip": "",
-        "order": 1,
+        "order": 3,
         "width": 8,
         "height": 1,
         "className": ""
@@ -270,24 +270,6 @@
         "width": 8,
         "height": 1,
         "className": ""
-    },
-    {
-        "id": "5075a7d8e4947586",
-        "type": "ui-theme",
-        "name": "Default Theme",
-        "colors": {
-            "surface": "#ffffff",
-            "primary": "#0094CE",
-            "bgPage": "#eeeeee",
-            "groupBg": "#ffffff",
-            "groupOutline": "#cccccc"
-        },
-        "sizes": {
-            "pagePadding": "12px",
-            "groupGap": "12px",
-            "groupBorderRadius": "4px",
-            "widgetGap": "12px"
-        }
     },
     {
         "id": "dff5edc413f07f75",
@@ -317,7 +299,7 @@
         "group": "53026aa3c68dea20",
         "name": "spacer",
         "tooltip": "",
-        "order": 6,
+        "order": 10,
         "width": 1,
         "height": 1,
         "className": ""
@@ -366,7 +348,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 180,
+        "x": 200,
         "y": 120,
         "wires": [
             [
@@ -387,7 +369,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 440,
+        "x": 460,
         "y": 120,
         "wires": [
             [
@@ -404,7 +386,7 @@
         "sqlquery": "msg.topic",
         "sql": "",
         "name": "tastiwayDB",
-        "x": 710,
+        "x": 730,
         "y": 120,
         "wires": [
             [
@@ -426,7 +408,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
+        "x": 960,
         "y": 120,
         "wires": []
     },
@@ -441,7 +423,7 @@
         "read": false,
         "bcm": true,
         "x": 130,
-        "y": 1060,
+        "y": 1180,
         "wires": [
             [
                 "0e98c478cdb04582"
@@ -461,7 +443,7 @@
         "finalize": "",
         "libs": [],
         "x": 330,
-        "y": 1060,
+        "y": 1180,
         "wires": [
             [
                 "317ec6aaa27620e1"
@@ -481,7 +463,7 @@
         "finalize": "",
         "libs": [],
         "x": 720,
-        "y": 1760,
+        "y": 1880,
         "wires": [
             [
                 "eb7b3a0e05830ea3"
@@ -497,7 +479,7 @@
         "sql": "",
         "name": "tastiwayDB",
         "x": 990,
-        "y": 1760,
+        "y": 1880,
         "wires": [
             [
                 "6d21db2df8dc7a48"
@@ -517,7 +499,7 @@
         "finalize": "",
         "libs": [],
         "x": 1240,
-        "y": 1760,
+        "y": 1880,
         "wires": [
             []
         ]
@@ -531,7 +513,7 @@
         "sql": "",
         "name": "tastiwayDB",
         "x": 510,
-        "y": 1060,
+        "y": 1180,
         "wires": [
             [
                 "231d11e98ba1955a"
@@ -551,7 +533,7 @@
         "finalize": "",
         "libs": [],
         "x": 720,
-        "y": 1060,
+        "y": 1180,
         "wires": [
             [
                 "447ef07a2ae008b3"
@@ -567,7 +549,7 @@
         "sql": "",
         "name": "tastiwayDB",
         "x": 930,
-        "y": 1060,
+        "y": 1180,
         "wires": [
             [
                 "1167c30a1cedc02b"
@@ -578,7 +560,7 @@
         "id": "1167c30a1cedc02b",
         "type": "function",
         "z": "f69312076bb95996",
-        "name": "function 1",
+        "name": "send count value",
         "func": "if (msg.payload && msg.payload.length > 0) {\n    const countValue = msg.payload[0].counts;\n\n    node.status({ fill: \"green\", shape: \"dot\", text: \"Count: \" + countValue });\n\n    // Send to UI\n    msg.payload = countValue;\n    return msg;\n} else {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"No data\" });\n    return null;\n}\n",
         "outputs": 1,
         "timeout": 0,
@@ -586,8 +568,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1160,
-        "y": 1060,
+        "x": 1190,
+        "y": 1180,
         "wires": [
             [
                 "9c0a05a7de101d95",
@@ -617,7 +599,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 160,
-        "y": 600,
+        "y": 680,
         "wires": [
             [
                 "387dc7dc7cfd6972"
@@ -628,7 +610,7 @@
         "id": "387dc7dc7cfd6972",
         "type": "function",
         "z": "f69312076bb95996",
-        "name": "order (sqlite)",
+        "name": "query plans (sqlite)",
         "func": "msg.topic = \"SELECT * FROM tastiway_plans;\";\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
@@ -636,8 +618,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
-        "y": 600,
+        "x": 430,
+        "y": 680,
         "wires": [
             [
                 "f7ab77b47925689a"
@@ -652,22 +634,23 @@
         "page": "",
         "ui": "",
         "name": "OrderID Cards",
-        "order": 4,
+        "order": 8,
         "width": "",
         "height": "",
         "head": "",
-        "format": "<template>\n  <v-container fluid class=\"pa-0\">\n    <v-row dense class=\"ma-0\">\n      <template v-for=\"(plans, date) in groupedPlans\" :key=\"date\">\n        <!-- Date header -->\n        <v-col cols=\"12\" class=\"px-4 py-2\">\n          <div class=\"text-h6 font-weight-bold\">{{ date }}</div>\n        </v-col>\n\n        <!-- Cards under this date -->\n        <v-col v-for=\"(plan, index) in plans\" :key=\"date + '-' + index\" cols=\"12\" sm=\"6\" class=\"pa-2\">\n          <v-card class=\"hoverable plan-card pa-3\" outlined @click=\"selectPlan(plan)\">\n            <v-row>\n              <v-col class=\"pa-4\">\n                <div class=\"text-h6\">{{ plan.productName }}</div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  {{ plan.orderId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Quantity: {{ plan.quantity }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Start: {{ new Date(plan.start).toLocaleString() }}\n                </div>\n              </v-col>\n            </v-row>\n          </v-card>\n        </v-col>\n      </template>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      selectedPlan: null,\n      planOptions: [],\n    };\n  },\n\n  computed: {\n    groupedPlans() {\n      const groups = {};\n\n      // group by display date\n      this.planOptions.forEach((plan) => {\n        const date = new Date(plan.start);\n        const displayKey = date.toLocaleDateString(\"en-GB\"); // stays like \"14/11/2025\"\n\n        if (!groups[displayKey]) groups[displayKey] = [];\n        groups[displayKey].push(plan);\n      });\n\n      // sort date keys DESC but KEEP display format\n      const sorted = Object.fromEntries(\n        Object.entries(groups).sort((a, b) => {\n          const dA = new Date(a[0].split(\"/\").reverse().join(\"-\")); // 14/11/2025 → 2025-11-14\n          const dB = new Date(b[0].split(\"/\").reverse().join(\"-\"));\n          return dB - dA; // newest first\n        })\n      );\n\n      return sorted;\n    },\n  },\n\n  methods: {\n    selectPlan(plan) {\n      this.selectedPlan = plan.orderId;\n      this.send({ payload: plan.orderId }); // sending orderId to Node-RED exec node\n\n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: {\n          orderId: plan.orderId,\n          productName: plan.productName,\n          quantity: plan.quantity,\n          start: plan.start,\n        },\n      });\n    },\n  },\n\n  watch: {\n    msg(newMsg) {\n      if (Array.isArray(newMsg?.payload)) {\n        this.planOptions = newMsg.payload.map((r) => ({\n          productName: r.productName,\n          orderId: r.orderId,\n          quantity: r.quantity ?? 0,\n          start: r.start ?? \"-\",\n        }));\n      } else if (newMsg?.payload?.orderId) {\n        const r = newMsg.payload;\n        this.planOptions = [\n          {\n            productName: r.productName,\n            orderId: r.orderId,\n            quantity: r.quantity ?? 0,\n            start: r.start ?? \"-\",\n          },\n        ];\n      }\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .plan-card {\n    width: 100%;\n    cursor: pointer;\n    transition: 0.25s;\n    border-radius: 16px;\n    overflow: hidden;\n  }\n\n  .plan-card:hover {\n    background-color: #f5f5f5;\n    transform: scale(1.01);\n  }\n\n  .v-card.selected {\n    border-color: #1976d2;\n    background-color: #e3f2fd;\n  }\n\n  .v-container {\n    max-height: 100%;\n    overflow-y: auto;\n    scrollbar-width: none;\n    padding-top: 0 !important;\n  }\n</style>",
+        "format": "<template>\n  <v-container fluid class=\"pa-0\">\n    <v-row dense class=\"ma-0\">\n      <template v-for=\"(plans, date) in groupedPlans\" :key=\"date\">\n        <!-- Date header -->\n        <v-col cols=\"12\" class=\"px-4 py-2\">\n          <div class=\"text-h6 font-weight-bold\">{{ date }}</div>\n        </v-col>\n\n        <!-- Cards under this date -->\n        <v-col v-for=\"(plan, index) in plans\" :key=\"date + '-' + index\" cols=\"12\" sm=\"6\" class=\"pa-2\">\n          <v-card class=\"hoverable plan-card pa-3\" outlined @click=\"selectPlan(plan)\">\n            <v-row>\n              <v-col class=\"pa-4\">\n                <div class=\"text-h6\">{{ plan.productName }}</div>\n                <div class=\"text-subtitle-1 font-weight-bold \">\n                  {{ plan.batchId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  {{ plan.orderId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Quantity: {{ plan.quantity }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Start: {{ new Date(plan.start).toLocaleString() }}\n                </div>\n              </v-col>\n            </v-row>\n          </v-card>\n        </v-col>\n      </template>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      selectedPlan: null,\n      planOptions: [],\n      activePic: \"\"\n    };\n  },\n\n  computed: {\n    groupedPlans() {\n      const groups = {};\n\n      // group by display date\n      this.planOptions.forEach((plan) => {\n        const date = new Date(plan.start);\n        const displayKey = date.toLocaleDateString(\"en-GB\"); // stays like \"14/11/2025\"\n\n        if (!groups[displayKey]) groups[displayKey] = [];\n        groups[displayKey].push(plan);\n      });\n\n      // sort date keys DESC but KEEP display format\n      const sorted = Object.fromEntries(\n        Object.entries(groups).sort((a, b) => {\n          const dA = new Date(a[0].split(\"/\").reverse().join(\"-\")); // 14/11/2025 → 2025-11-14\n          const dB = new Date(b[0].split(\"/\").reverse().join(\"-\"));\n          return dB - dA; // newest first\n        })\n      );\n\n      return sorted;\n    },\n  },\n\n  methods: {\n    selectPlan(plan) {\n      this.selectedPlan = plan.orderId;\n      this.send({ payload: `${plan.orderId},-,${this.activePic},-,${plan.batchId}` }); // sending orderId to Node-RED exec node\n      // this.send({ payload: `${plan.orderId}` }); // sending orderId to Node-RED exec node\n\n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: {\n          orderId: plan.orderId,\n          productName: plan.productName,\n          quantity: plan.quantity,\n          start: plan.start,\n          activePic: this.activePic\n        },\n      });\n    },\n  },\n\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n\n      if (Array.isArray(newMsg?.payload)) {\n        this.planOptions = newMsg.payload.map((r) => ({\n          productName: r.productName,\n          orderId: r.orderId,\n          quantity: r.quantity ?? 0,\n          start: r.start ?? \"-\",\n          batchId: r.batchId \n\n        }));\n      } else if (newMsg?.payload?.orderId) {\n        const r = newMsg.payload;\n        this.planOptions = [\n          {\n            productName: r.productName,\n            orderId: r.orderId,\n            quantity: r.quantity ?? 0,\n            start: r.start ?? \"-\",\n            batchId: r.batchId \n\n          },\n        ];\n      }\n    },\n  },\n};\n\n</script>\n\n<style scoped>\n  .plan-card {\n    width: 100%;\n    cursor: pointer;\n    transition: 0.25s;\n    border-radius: 16px;\n    overflow: hidden;\n  }\n\n  .plan-card:hover {\n    background-color: #f5f5f5;\n    transform: scale(1.01);\n  }\n\n  .v-card.selected {\n    border-color: #1976d2;\n    background-color: #e3f2fd;\n  }\n\n  .v-container {\n    max-height: 100%;\n    overflow-y: auto;\n    scrollbar-width: none;\n    padding-top: 0 !important;\n  }\n</style>\n\n<script>\n(function(scope) {\n  scope.$watch(\"msg\", function(msg) {\n    if (!msg) return;\n\n    scope.$emit(\"input\", msg);\n  });\n})(scope);\n</script>",
         "storeOutMessages": true,
         "passthru": false,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 800,
-        "y": 600,
+        "x": 860,
+        "y": 680,
         "wires": [
             [
+                "7088c57090ef3bb3",
                 "a838e298114a1f97",
-                "7088c57090ef3bb3"
+                "f74d78774be5cba9"
             ]
         ]
     },
@@ -703,7 +686,7 @@
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
         "x": 170,
-        "y": 700,
+        "y": 820,
         "wires": [
             [
                 "387dc7dc7cfd6972"
@@ -744,14 +727,20 @@
         "winHide": false,
         "oldrc": false,
         "name": "+ process&current(sqlite) &&  + status (firestore)",
-        "x": 1120,
-        "y": 600,
+        "x": 1440,
+        "y": 620,
         "wires": [
+            [
+                "534651e93a429058",
+                "916fbe10e7e43768",
+                "6cb56de36a3e267f"
+            ],
             [
                 "534651e93a429058"
             ],
-            [],
-            []
+            [
+                "534651e93a429058"
+            ]
         ]
     },
     {
@@ -796,7 +785,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1540,
+        "x": 1940,
         "y": 600,
         "wires": []
     },
@@ -813,7 +802,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 750,
+        "x": 710,
         "y": 460,
         "wires": []
     },
@@ -825,8 +814,8 @@
         "sqlquery": "msg.topic",
         "sql": "",
         "name": "tastiwayDB",
-        "x": 590,
-        "y": 600,
+        "x": 650,
+        "y": 680,
         "wires": [
             [
                 "3b5d722bfc436434"
@@ -855,7 +844,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 180,
+        "x": 200,
         "y": 180,
         "wires": [
             [
@@ -876,7 +865,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 450,
+        "x": 470,
         "y": 180,
         "wires": [
             [
@@ -893,7 +882,7 @@
         "sqlquery": "msg.topic",
         "sql": "",
         "name": "tastiwayDB",
-        "x": 710,
+        "x": 730,
         "y": 180,
         "wires": [
             [
@@ -915,7 +904,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 950,
+        "x": 970,
         "y": 180,
         "wires": []
     },
@@ -941,7 +930,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 180,
+        "x": 200,
         "y": 240,
         "wires": [
             [
@@ -962,7 +951,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 420,
+        "x": 440,
         "y": 240,
         "wires": [
             [
@@ -979,7 +968,7 @@
         "sqlquery": "msg.topic",
         "sql": "",
         "name": "tastiwayDB",
-        "x": 710,
+        "x": 730,
         "y": 240,
         "wires": [
             [
@@ -1001,7 +990,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 910,
+        "x": 930,
         "y": 240,
         "wires": []
     },
@@ -1020,15 +1009,15 @@
         "type": "function",
         "z": "f69312076bb95996",
         "name": "set flow for currentOrderId",
-        "func": "// Expecting msg.orderId to come from previous node\nconst orderId = msg.payload;\n\nif (orderId) {\n    flow.set(\"currentOrderId\", orderId);\n    node.status({ text: \"Current Order: \" + orderId });\n} else {\n    node.error(\"❌ Missing orderId argument!\", msg);\n}\n\nreturn msg;\n",
+        "func": "// Expecting msg.orderId to come from previous node\nconst combined = msg.payload;\nconst orderId = combined.split(\",-,\")[0];\n\nif (orderId) {\n    flow.set(\"currentOrderId\", orderId);\n    node.status({ text: \"Current Order: \" + orderId });\n} else {\n    node.error(\"❌ Missing orderId argument!\", msg);\n}\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1050,
-        "y": 700,
+        "x": 1190,
+        "y": 840,
         "wires": [
             []
         ]
@@ -1037,31 +1026,34 @@
         "id": "b9b7d594a7adf9f9",
         "type": "ui-text-input",
         "z": "f69312076bb95996",
+        "d": true,
         "group": "53026aa3c68dea20",
         "name": "OrderId input view",
-        "label": "Order ID",
-        "order": 5,
-        "width": "12",
-        "height": "1",
-        "topic": "topic",
+        "label": "BatchId",
+        "order": 6,
+        "width": 6,
+        "height": 1,
+        "topic": "payload",
         "topicType": "msg",
-        "mode": "number",
+        "mode": "text",
         "tooltip": "",
         "delay": 300,
         "passthru": true,
         "sendOnDelay": false,
         "sendOnBlur": true,
-        "sendOnEnter": true,
+        "sendOnEnter": false,
         "className": "",
         "clearable": false,
         "sendOnClear": false,
         "icon": "",
         "iconPosition": "left",
         "iconInnerPosition": "inside",
-        "x": 170,
-        "y": 920,
+        "x": 250,
+        "y": 600,
         "wires": [
-            []
+            [
+                "2c1ad7df4a0e9ace"
+            ]
         ]
     },
     {
@@ -1083,7 +1075,7 @@
         "templateScope": "local",
         "className": "",
         "x": 170,
-        "y": 1180,
+        "y": 1300,
         "wires": [
             []
         ]
@@ -1097,7 +1089,7 @@
         "sql": "",
         "name": "tastiwayDB",
         "x": 410,
-        "y": 1760,
+        "y": 1880,
         "wires": [
             []
         ]
@@ -1115,7 +1107,7 @@
         "finalize": "",
         "libs": [],
         "x": 170,
-        "y": 1760,
+        "y": 1880,
         "wires": [
             [
                 "9691b231f332fa27"
@@ -1136,7 +1128,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1360,
-        "y": 1140,
+        "y": 1260,
         "wires": []
     },
     {
@@ -1151,8 +1143,8 @@
         "winHide": false,
         "oldrc": false,
         "name": "Finish Counting",
-        "x": 860,
-        "y": 1260,
+        "x": 940,
+        "y": 1380,
         "wires": [
             [
                 "b59f60c8d21beb67"
@@ -1178,27 +1170,28 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1100,
-        "y": 1260,
+        "x": 1140,
+        "y": 1380,
         "wires": []
     },
     {
         "id": "5ab907e3f5e90ab8",
         "type": "function",
         "z": "f69312076bb95996",
-        "name": "function 2",
-        "func": "const orderId = flow.get(\"currentOrderId\");\n\nif (!orderId) {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"❌ No currentOrderId found\" });\n    node.error(\"No currentOrderId set in flow context!\");\n    return null;\n}\n\nmsg.payload = orderId;\n\n// // Optionally, set msg.args if your Exec node uses an array of arguments\n// msg.args = [orderId];\n\nnode.status({ text: `▶️ Sending ${orderId}` });\n\nreturn msg;\n",
+        "name": "send orderId & reject",
+        "func": "const orderId = flow.get(\"currentOrderId\");\nconst reject = msg.payload.rejectQty;\n\nif (!orderId) {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"❌ No currentOrderId found\" });\n    node.error(\"No currentOrderId set in flow context!\");\n    return null;\n}\n\nmsg.payload = `${orderId},-,${reject}`;\n\n// // Optionally, set msg.args if your Exec node uses an array of arguments\n// msg.args = [orderId];\n\nnode.status({ text: `▶️ Sending ${orderId}` });\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 580,
-        "y": 1260,
+        "x": 720,
+        "y": 1380,
         "wires": [
             [
-                "204c7b57bb3d9ae7"
+                "204c7b57bb3d9ae7",
+                "063b70f650298f26"
             ]
         ]
     },
@@ -1214,17 +1207,18 @@
         "width": "4",
         "height": "2",
         "head": "",
-        "format": "<template>\n  <v-btn fluid class=\"finish-style\" @click=\"handleClick\">\n    Finish\n  </v-btn>\n</template>\n\n<script>\n  export default {\n  methods: {\n    handleClick() {\n      // send a message back to Node-RED\n      this.send({ payload: \"finished\" });\n      // go back to the previous page\n      this.$root.$router.push(\"/production_plan\");\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .finish-style {\n    font-weight: 600;\n    color: white !important;\n    background: #e73c52 !important;\n    /* ← you missed this semicolon */\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n      0 4px 10px rgba(1, 39, 76, 0.4),\n      inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n        /* font-size: calc(1vw + 0.5em); */\n    font-size: calc(0.8vw + 0.4em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n    overflow: hidden;\n      max-height: calc( 2 * var(--widget-row-height)); \n  }\n\n  .finish-style:hover,\n  .finish-style:focus {\n    background: #b52f43 !important;\n    /* darker red for hover */\n    box-shadow:\n      0 6px 16px rgba(1, 39, 76, 0.5),\n      inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n  }\n\n  .finish-style:active {\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n  }\n</style>",
+        "format": "<template>\n    <div class=\"text-center pa-4\">\n  <v-btn class=\"finish-style\"  width=\"100%\"  @click=\"dialog = true\">\n    Finish\n  </v-btn>\n\n  <v-dialog v-model=\"dialog\" width=\"700px\">\n    <v-card title=\"Confirm Finish\">\n      <v-card-text>\n\n\n        <v-number-input\n          v-model=\"rejectQty\"\n          :reverse=\"false\"\n          controlVariant=\"default\"\n          label=\"Rejected Quantity\"\n          :hideInput=\"false\"\n          :inset=\"false\"\n        ></v-number-input>\n      </v-card-text>\n\n      <v-card-actions class=\"actions-right\">\n        <v-btn text @click=\"dialog = false\">\n          Cancel\n        </v-btn>\n\n        <v-btn class=\"submit-big\" color=\"red\" variant=\"flat\" @click=\"submit\">\n          Submit\n        </v-btn>\n      </v-card-actions>\n    </v-card>\n\n  </v-dialog>\n    </div>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n    dialog: false,\n    rejectQty: null,\n    };\n  },\n\n  methods: {\n    submit() {\n      this.send({\n      payload: {\n      rejectQty: this.rejectQty ?? 0,\n      },\n      });\n\n      this.$root.$router.push(\"/production_plan\");\n      this.dialog = false;\n    }\n  },\n};\n</script>\n\n<style scoped>\n  .finish-style {\n    font-weight: 600;\n    color: white !important;\n    background: #e73c52 !important;\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n      0 4px 10px rgba(1, 39, 76, 0.4),\n      inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n    font-size: calc(0.8vw + 0.4em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n  }\n\n  .finish-style:hover,\n  .finish-style:focus {\n    background: #b52f43 !important;\n    box-shadow:\n      0 6px 16px rgba(1, 39, 76, 0.5),\n      inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n  }\n\n  .finish-style:active {\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n  }\n\n  .submit-big {\n  min-width: 180px; /* wider */\n  padding: 10px 24px; /* taller + more horizontal padding */\n  font-size: 1rem;\n  font-weight: 600;\n  border-radius: 10px;\n  }\n\n  .actions-right {\n  display: flex;\n  justify-content: flex-end;   /* align both buttons right */\n  gap: 12px;                   /* spacing between Cancel + Submit */\n  padding-right: 20px;         /* optional: add a little breathing room */\n}\n</style>",
         "storeOutMessages": true,
         "passthru": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 390,
-        "y": 1260,
+        "x": 450,
+        "y": 1380,
         "wires": [
             [
-                "5ab907e3f5e90ab8"
+                "5ab907e3f5e90ab8",
+                "d3181f7c823461a8"
             ]
         ]
     },
@@ -1234,13 +1228,14 @@
         "z": "f69312076bb95996",
         "ui": "d7416ec1d9513281",
         "name": "",
-        "x": 130,
-        "y": 780,
+        "x": 150,
+        "y": 900,
         "wires": [
             [
                 "b918c810745954df",
                 "a153e30311bbef15",
-                "f6317eedc5fda05c"
+                "f6317eedc5fda05c",
+                "099b519895618f53"
             ]
         ]
     },
@@ -1248,7 +1243,7 @@
         "id": "b918c810745954df",
         "type": "function",
         "z": "f69312076bb95996",
-        "name": "function 3",
+        "name": "trigger in pp page",
         "func": "// Trigger only when user opens the Production Plan page\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/production_plan\"\n) {\n    // run your query or next logic\n    msg.topic = \"SELECT * FROM tastiway_plans;\";\n    return msg;\n}\n\nreturn null;",
         "outputs": 1,
         "timeout": 0,
@@ -1256,8 +1251,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 360,
-        "y": 760,
+        "x": 390,
+        "y": 860,
         "wires": [
             [
                 "387dc7dc7cfd6972"
@@ -1283,7 +1278,7 @@
         "templateScope": "page:style",
         "className": "",
         "x": 180,
-        "y": 660,
+        "y": 780,
         "wires": [
             []
         ]
@@ -1300,13 +1295,13 @@
         "width": 0,
         "height": 0,
         "head": "",
-        "format": ".finish-style button {\n    font-weight: 600;\n    color: white;\n    background: linear-gradient(145deg, rgb(1, 39, 76), rgb(3, 64, 110));\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n        0 4px 10px rgba(1, 39, 76, 0.4),\n        inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n    /* font-size: 2.3em; */\n    /* font-size: calc(1.3vw + 0.6em); */\n    font-size: calc(1vw + 0.5em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n    max-height: calc( 2 * var(--widget-row-height)); /* in case font size gets out of hand */\n    overflow: hidden; /* in case text too wide at this font size */\n}\n\n/* hover + focus feedback */\n.finish-style button:hover,\n.finish-style button:focus {\n    transform: scale(1.04);\n    background: linear-gradient(145deg, rgb(3, 64, 110), rgb(1, 39, 76));\n    box-shadow:\n        0 6px 16px rgba(1, 39, 76, 0.5),\n        inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n}\n\n/* optional active press effect */\n.finish-style button:active {\n    transform: scale(0.98);\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n}",
+        "format": ".finish-style {\n    font-weight: 600 !important;\n    color: white !important;\n    background: linear-gradient(145deg, rgb(1, 39, 76), rgb(3, 64, 110)) !important;\n    border: 0.1vw solid rgba(255, 255, 255, 0.2) !important;\n    border-radius: 14px !important;\n    box-shadow:\n        0 4px 10px rgba(1, 39, 76, 0.4),\n        inset 0 0 12px rgba(255, 255, 255, 0.15) !important;\n    text-transform: none !important;\n    letter-spacing: 0.5px !important;\n    font-size: calc(1vw + 0.5em) !important;\n    padding: 0.6em 1.2em !important;\n    transition: all 0.25s ease !important;\n    cursor: pointer !important;\n}\n\n/* hover + focus feedback */\n.finish-style:hover,\n.finish-style:focus {\n    transform: scale(1.04);\n    background: linear-gradient(145deg, rgb(3, 64, 110), rgb(1, 39, 76));\n    box-shadow:\n        0 6px 16px rgba(1, 39, 76, 0.5),\n        inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n}\n\n/* optional active press effect */\n.finish-style:active {\n    transform: scale(0.98);\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n}",
         "storeOutMessages": true,
         "passthru": true,
         "resendOnRefresh": true,
         "templateScope": "page:style",
         "className": "",
-        "x": 410,
+        "x": 470,
         "y": 1320,
         "wires": [
             []
@@ -1320,7 +1315,7 @@
         "page": "",
         "ui": "",
         "name": "Elapsed TIme",
-        "order": 12,
+        "order": 13,
         "width": "2",
         "height": "1",
         "head": "",
@@ -1330,8 +1325,8 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 180,
-        "y": 1580,
+        "x": 160,
+        "y": 1360,
         "wires": [
             []
         ]
@@ -1385,7 +1380,7 @@
         "styleGlow": false,
         "className": "",
         "x": 1390,
-        "y": 980,
+        "y": 1100,
         "wires": [
             []
         ]
@@ -1394,16 +1389,16 @@
         "id": "a153e30311bbef15",
         "type": "function",
         "z": "f69312076bb95996",
-        "name": "function 5",
-        "func": "// // Just trigger the template when user opens the Process page\n// if (\n//     msg.topic === \"$pageview\" &&\n//     msg.payload?.page?.path === \"/process\"\n// ) {\n//     return { trigger: true };    // passes the event into the UI Template\n// }\n\n// return null;\n\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/process\"\n) {\n    const query = msg.payload.query;\n\n    const qty = Number(query.quantity);\n\n\n    msg.payload = null;\n    msg.ui_update = {\n        max: qty\n    };\n\n\n    return msg;\n}\n\nreturn null;\n",
+        "name": "trigger in process page",
+        "func": "// // Just trigger the template when user opens the Process page\n// if (\n//     msg.topic === \"$pageview\" &&\n//     msg.payload?.page?.path === \"/process\"\n// ) {\n//     return { trigger: true };    // passes the event into the UI Template\n// }\n\n// return null;\n\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/process\"\n) {\n    const query = msg.payload.query;\n\n    const qty = Number(query.quantity);\n\n\n    msg.payload = null;\n    msg.ui_update = {\n        max: qty\n    };\n\n    return msg;\n}\n\nreturn null;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 860,
-        "y": 880,
+        "x": 400,
+        "y": 960,
         "wires": [
             [
                 "f6317eedc5fda05c",
@@ -1423,8 +1418,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1000,
-        "y": 820,
+        "x": 680,
+        "y": 920,
         "wires": []
     },
     {
@@ -1440,7 +1435,7 @@
         "oldrc": false,
         "name": "exit kiosk mode",
         "x": 420,
-        "y": 2140,
+        "y": 2260,
         "wires": [
             [
                 "e83a8072abe1b99a"
@@ -1466,7 +1461,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 680,
-        "y": 2140,
+        "y": 2260,
         "wires": []
     },
     {
@@ -1488,7 +1483,7 @@
         "templateScope": "widget:ui",
         "className": "",
         "x": 150,
-        "y": 2140,
+        "y": 2260,
         "wires": [
             [
                 "cb6cabb336cecf6e"
@@ -1517,7 +1512,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 150,
-        "y": 1980,
+        "y": 2100,
         "wires": [
             [
                 "a3ea43a9ebfea57b"
@@ -1537,7 +1532,7 @@
         "oldrc": false,
         "name": "cat operstate",
         "x": 350,
-        "y": 1980,
+        "y": 2100,
         "wires": [
             [
                 "d11fc626c2fe6aa8"
@@ -1550,7 +1545,7 @@
         "id": "d11fc626c2fe6aa8",
         "type": "function",
         "z": "f69312076bb95996",
-        "name": "function 8",
+        "name": "check connection",
         "func": "msg.payload = (msg.payload.trim() === \"up\") ? \"Connected\" : \"Disconnected\";\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
@@ -1558,8 +1553,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 560,
-        "y": 1980,
+        "x": 590,
+        "y": 2100,
         "wires": [
             [
                 "565aa7a6d5ed08d5",
@@ -1585,8 +1580,8 @@
         "resendOnRefresh": true,
         "templateScope": "widget:ui",
         "className": "",
-        "x": 760,
-        "y": 1980,
+        "x": 800,
+        "y": 2100,
         "wires": [
             []
         ]
@@ -1603,8 +1598,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 740,
-        "y": 1900,
+        "x": 780,
+        "y": 2040,
         "wires": []
     },
     {
@@ -1622,14 +1617,14 @@
             }
         ],
         "repeat": "",
-        "crontab": "*/10 0-23 * * *",
+        "crontab": "*/5 0-23 * * *",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
         "x": 130,
-        "y": 2280,
+        "y": 2400,
         "wires": [
             [
                 "95c19fc6a00fb19f"
@@ -1649,7 +1644,7 @@
         "oldrc": false,
         "name": "update andon",
         "x": 360,
-        "y": 2280,
+        "y": 2400,
         "wires": [
             [
                 "fb5dbb32e75e69f5"
@@ -1667,7 +1662,7 @@
         "type": "debug",
         "z": "f69312076bb95996",
         "name": "debug 4",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1675,7 +1670,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 560,
-        "y": 2280,
+        "y": 2400,
         "wires": []
     },
     {
@@ -1690,8 +1685,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 140,
-        "y": 2680,
+        "x": 120,
+        "y": 2500,
         "wires": [
             [
                 "debug_out"
@@ -1708,8 +1703,8 @@
         "console": false,
         "tostatus": false,
         "complete": "payload",
-        "x": 360,
-        "y": 2680,
+        "x": 340,
+        "y": 2500,
         "wires": []
     },
     {
@@ -1767,8 +1762,8 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 470,
-        "y": 2400,
+        "x": 1830,
+        "y": 920,
         "wires": [
             [
                 "07de2168c6005a83"
@@ -1806,8 +1801,8 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 470,
-        "y": 2440,
+        "x": 1830,
+        "y": 960,
         "wires": [
             [
                 "07de2168c6005a83"
@@ -1845,8 +1840,8 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 470,
-        "y": 2480,
+        "x": 1830,
+        "y": 1000,
         "wires": [
             [
                 "07de2168c6005a83"
@@ -1858,15 +1853,15 @@
         "type": "function",
         "z": "f69312076bb95996",
         "name": "Toggle Color Logic",
-        "func": "// Get previous active color\nlet activeColor = flow.get('activeColor') || null;\nconst pressedColor = msg.payload;\n\n// Ignore if the same button is pressed\nif (pressedColor === activeColor) {\n    return null;\n}\n\n// Save the new active color\nflow.set('activeColor', pressedColor);\n\n// Construct button messages\nconst greenMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'green' ? 'green' : '#0a7d00'\n    }\n};\n\nconst blueMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'blue' ? 'blue' : '#003c8f'\n    }\n};\n\nconst redMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'red' ? 'red' : '#8b0000'\n    }\n};\n\n\n// Output active color to downstream\nconst outputMsg = { payload: pressedColor };\n\nreturn [ greenMsg,blueMsg, redMsg, outputMsg];",
+        "func": "// Get previous active color\nlet activeColor = flow.get('activeColor') || null;\nconst pressedColor = msg.payload;\n\n// Ignore if the same button is pressed\nif (pressedColor === activeColor) {\n    return null;\n}\n\n// Save the new active color\nflow.set('activeColor', pressedColor);\n\n// Construct button messages\nconst greenMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'green' ? 'green' : 'grey'\n    }\n};\n\nconst blueMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'blue' ? 'blue' : 'grey'\n    }\n};\n\nconst redMsg = {\n    ui_update: {\n        buttonColor: pressedColor === 'red' ? 'red' : 'grey'\n    }\n};\n\n\n// Output active color to downstream\nconst outputMsg = { payload: pressedColor };\n\nreturn [ greenMsg,blueMsg, redMsg, outputMsg];",
         "outputs": 4,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 750,
-        "y": 2420,
+        "x": 2110,
+        "y": 940,
         "wires": [
             [
                 "754e4bad2e59674b"
@@ -1878,7 +1873,9 @@
                 "8426445f15bb7aaa"
             ],
             [
-                "c2702c05965937f5"
+                "c2702c05965937f5",
+                "916fbe10e7e43768",
+                "34e31d288f9286f1"
             ]
         ]
     },
@@ -1894,8 +1891,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1260,
-        "y": 2440,
+        "x": 2620,
+        "y": 960,
         "wires": []
     },
     {
@@ -1910,8 +1907,8 @@
         "winHide": false,
         "oldrc": false,
         "name": "update traffic andon",
-        "x": 1020,
-        "y": 2420,
+        "x": 2390,
+        "y": 940,
         "wires": [
             [
                 "ce96c436669e48b9"
@@ -1936,8 +1933,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 270,
-        "y": 2440,
+        "x": 1570,
+        "y": 960,
         "wires": [
             [
                 "754e4bad2e59674b"
@@ -1951,7 +1948,628 @@
         ]
     },
     {
-        "id": "b26ba174377aa758",
+        "id": "61cc6b94df5f95aa",
+        "type": "ui-text-input",
+        "z": "f69312076bb95996",
+        "group": "53026aa3c68dea20",
+        "name": "PIC Input",
+        "label": "Enter PIC",
+        "order": 5,
+        "width": 6,
+        "height": 1,
+        "topic": "topic",
+        "topicType": "msg",
+        "mode": "text",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": true,
+        "sendOnDelay": true,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "sendOnClear": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "x": 520,
+        "y": 800,
+        "wires": [
+            [
+                "878776d77cbcb253"
+            ]
+        ]
+    },
+    {
+        "id": "878776d77cbcb253",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "Update global pic ",
+        "func": "global.set(\"activePic\", msg.payload);\n\nmsg.type = \"activePic\";    \nmsg.value = msg.payload;    \nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 800,
+        "wires": [
+            [
+                "3b5d722bfc436434"
+            ]
+        ]
+    },
+    {
+        "id": "f56a16c7cbaeb9a4",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "d": true,
+        "group": "53026aa3c68dea20",
+        "page": "",
+        "ui": "",
+        "name": "OrderID Cards",
+        "order": 9,
+        "width": "",
+        "height": "",
+        "head": "",
+        "format": "<template>\n  <v-container fluid class=\"pa-0\">\n    <v-row dense class=\"ma-0\">\n      <template v-for=\"(plans, date) in groupedPlans\" :key=\"date\">\n        <!-- Date header -->\n        <v-col cols=\"12\" class=\"px-4 py-2\">\n          <div class=\"text-h6 font-weight-bold\">{{ date }}</div>\n        </v-col>\n\n        <!-- Cards under this date -->\n        <v-col v-for=\"(plan, index) in plans\" :key=\"date + '-' + index\" cols=\"12\" sm=\"6\" class=\"pa-2\">\n          <v-card class=\"hoverable plan-card pa-3\" outlined @click=\"selectPlan(plan)\">\n            <v-row>\n              <v-col class=\"pa-4\">\n                <div class=\"text-h6\">{{ plan.productName }}</div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  {{ plan.orderId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Quantity: {{ plan.quantity }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Start: {{ new Date(plan.start).toLocaleString() }}\n                </div>\n              </v-col>\n            </v-row>\n          </v-card>\n        </v-col>\n      </template>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      selectedPlan: null,\n      planOptions: [],\n    };\n  },\n\n  computed: {\n    groupedPlans() {\n      const groups = {};\n\n      // group by display date\n      this.planOptions.forEach((plan) => {\n        const date = new Date(plan.start);\n        const displayKey = date.toLocaleDateString(\"en-GB\"); // stays like \"14/11/2025\"\n\n        if (!groups[displayKey]) groups[displayKey] = [];\n        groups[displayKey].push(plan);\n      });\n\n      // sort date keys DESC but KEEP display format\n      const sorted = Object.fromEntries(\n        Object.entries(groups).sort((a, b) => {\n          const dA = new Date(a[0].split(\"/\").reverse().join(\"-\")); // 14/11/2025 → 2025-11-14\n          const dB = new Date(b[0].split(\"/\").reverse().join(\"-\"));\n          return dB - dA; // newest first\n        })\n      );\n\n      return sorted;\n    },\n  },\n\n  methods: {\n    selectPlan(plan) {\n      this.selectedPlan = plan.orderId;\n      this.send({ payload: plan.orderId }); // sending orderId to Node-RED exec node\n\n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: {\n          orderId: plan.orderId,\n          productName: plan.productName,\n          quantity: plan.quantity,\n          start: plan.start,\n        },\n      });\n    },\n  },\n\n  watch: {\n    msg(newMsg) {\n      if (Array.isArray(newMsg?.payload)) {\n        this.planOptions = newMsg.payload.map((r) => ({\n          productName: r.productName,\n          orderId: r.orderId,\n          quantity: r.quantity ?? 0,\n          start: r.start ?? \"-\",\n        }));\n      } else if (newMsg?.payload?.orderId) {\n        const r = newMsg.payload;\n        this.planOptions = [\n          {\n            productName: r.productName,\n            orderId: r.orderId,\n            quantity: r.quantity ?? 0,\n            start: r.start ?? \"-\",\n          },\n        ];\n      }\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .plan-card {\n    width: 100%;\n    cursor: pointer;\n    transition: 0.25s;\n    border-radius: 16px;\n    overflow: hidden;\n  }\n\n  .plan-card:hover {\n    background-color: #f5f5f5;\n    transform: scale(1.01);\n  }\n\n  .v-card.selected {\n    border-color: #1976d2;\n    background-color: #e3f2fd;\n  }\n\n  .v-container {\n    max-height: 100%;\n    overflow-y: auto;\n    scrollbar-width: none;\n    padding-top: 0 !important;\n  }\n</style>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1020,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5f7227e1e10253b9",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "d": true,
+        "group": "16a799820a185e70",
+        "page": "",
+        "ui": "",
+        "name": "Finish Button",
+        "order": 12,
+        "width": "4",
+        "height": "2",
+        "head": "",
+        "format": "<template>\n  <v-btn fluid class=\"finish-style\" @click=\"handleClick\">\n    Finish\n  </v-btn>\n</template>\n\n<script>\n  export default {\n  methods: {\n    handleClick() {\n      // send a message back to Node-RED\n      this.send({ payload: \"finished\" });\n      // go back to the previous page\n      this.$root.$router.push(\"/production_plan\");\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .finish-style {\n    font-weight: 600;\n    color: white !important;\n    background: #e73c52 !important;\n    /* ← you missed this semicolon */\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n      0 4px 10px rgba(1, 39, 76, 0.4),\n      inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n        /* font-size: calc(1vw + 0.5em); */\n    font-size: calc(0.8vw + 0.4em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n    overflow: hidden;\n      max-height: calc( 2 * var(--widget-row-height)); \n  }\n\n  .finish-style:hover,\n  .finish-style:focus {\n    background: #b52f43 !important;\n    /* darker red for hover */\n    box-shadow:\n      0 6px 16px rgba(1, 39, 76, 0.5),\n      inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n  }\n\n  .finish-style:active {\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n  }\n</style>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 450,
+        "y": 1440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f74d78774be5cba9",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "Toggle Andon to Green",
+        "func": "flow.set('activeColor', \"green\");\nnode.status({ text:\"green\" });\nmsg.payload = \"green\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 700,
+        "wires": [
+            [
+                "18201862fbb66b2b",
+                "c6958310caaee75b"
+            ]
+        ]
+    },
+    {
+        "id": "18201862fbb66b2b",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1420,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "70e16d4faa819142",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 300,
+        "wires": [
+            [
+                "120cf863c8ba2f62"
+            ]
+        ]
+    },
+    {
+        "id": "120cf863c8ba2f62",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "name": "Create table count_logs",
+        "func": "msg.topic = `\n\nCREATE TABLE IF NOT EXISTS count_logs (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  orderId TEXT NOT NULL,\n  counts INTEGER DEFAULT 0,\n  timestamp INTEGER NOT NULL,\n  andon TEXT NOT NULL,\n);\n`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 300,
+        "wires": [
+            [
+                "a89785d8bc402843"
+            ]
+        ]
+    },
+    {
+        "id": "a89785d8bc402843",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 730,
+        "y": 300,
+        "wires": [
+            [
+                "5756be06b1516839"
+            ]
+        ]
+    },
+    {
+        "id": "5756be06b1516839",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "g": "8896598dfb74748c",
+        "name": "create table current",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "264320706a32fb10",
+        "type": "comment",
+        "z": "f69312076bb95996",
+        "name": "Alter sqlite",
+        "info": "",
+        "x": 1240,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "c4480e528baeb33b",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "group": "",
+        "page": "",
+        "ui": "d7416ec1d9513281",
+        "name": "Page Styling",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "\nbody,\n.v-application {\n    background-color: white !important;\n    font-family: monospace !important;\n}\n\n",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "site:style",
+        "className": "",
+        "x": 1790,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c3751df6655f9a49",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1300,
+        "y": 120,
+        "wires": [
+            [
+                "01ba145b9414a53a"
+            ]
+        ]
+    },
+    {
+        "id": "01ba145b9414a53a",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "Alter table tastiway_plans",
+        "func": "msg.topic = `\nALTER TABLE tastiway_plans ADD COLUMN batchId TEXT NOT NULL DEFAULT '';\n`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1550,
+        "y": 120,
+        "wires": [
+            [
+                "c9fa976fcbcbeaad"
+            ]
+        ]
+    },
+    {
+        "id": "c9fa976fcbcbeaad",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 1830,
+        "y": 120,
+        "wires": [
+            [
+                "a16d9505dbbcf8c4"
+            ]
+        ]
+    },
+    {
+        "id": "a16d9505dbbcf8c4",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "create table tastiway_plans",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2060,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a9a4b2c0cb0403ec",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1300,
+        "y": 180,
+        "wires": [
+            [
+                "2df4b92e8cc4a2d6"
+            ]
+        ]
+    },
+    {
+        "id": "2df4b92e8cc4a2d6",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "add reject table tastiway_process",
+        "func": "msg.topic = `\nALTER TABLE tastiway_process ADD COLUMN reject INTEGER DEFAULT 0;`\n;\n\nreturn msg;\n\n\n// msg.topic = `\n// ALTER TABLE tastiway_process ADD COLUMN pic TEXT NOT NULL DEFAULT '';\n// `;\n// return msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1580,
+        "y": 180,
+        "wires": [
+            [
+                "81a4eecc55f83b03"
+            ]
+        ]
+    },
+    {
+        "id": "81a4eecc55f83b03",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 1830,
+        "y": 180,
+        "wires": [
+            [
+                "1c61f3de5a74dc67"
+            ]
+        ]
+    },
+    {
+        "id": "1c61f3de5a74dc67",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "alter table tastiway_process",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2060,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "67a14cad98f3ea5a",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1300,
+        "y": 360,
+        "wires": [
+            [
+                "68ad5cb73845748f"
+            ]
+        ]
+    },
+    {
+        "id": "68ad5cb73845748f",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "Alter table current",
+        "func": "msg.topic = `\nALTER TABLE current ADD COLUMN andon TEXT NOT NULL DEFAULT '';\n`;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1530,
+        "y": 360,
+        "wires": [
+            [
+                "281a023651f4c647"
+            ]
+        ]
+    },
+    {
+        "id": "281a023651f4c647",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 1830,
+        "y": 360,
+        "wires": [
+            [
+                "caaee56f4e42d967"
+            ]
+        ]
+    },
+    {
+        "id": "caaee56f4e42d967",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "create table current",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2030,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "ab08efcc0e59d6cc",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "create table current",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2030,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "088111059854cf41",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1300,
+        "y": 420,
+        "wires": [
+            [
+                "4a78ea0fbb8bdc22"
+            ]
+        ]
+    },
+    {
+        "id": "4a78ea0fbb8bdc22",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "Create table log",
+        "func": "msg.topic = `\n\nCREATE TABLE IF NOT EXISTS log (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  orderId TEXT NOT NULL,\n  count INTEGER DEFAULT 0,\n  timestamp INTEGER NOT NULL,\n  andon TEXT NOT NULL\n);\n`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1520,
+        "y": 420,
+        "wires": [
+            [
+                "b48dd578139306db"
+            ]
+        ]
+    },
+    {
+        "id": "b48dd578139306db",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 1830,
+        "y": 420,
+        "wires": [
+            [
+                "ab08efcc0e59d6cc"
+            ]
+        ]
+    },
+    {
+        "id": "063b70f650298f26",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "c1ad46093c13eb17",
         "type": "inject",
         "z": "f69312076bb95996",
         "name": "",
@@ -1966,17 +2584,659 @@
         ],
         "repeat": "",
         "crontab": "",
-        "once": true,
+        "once": false,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 90,
-        "y": 2440,
+        "x": 140,
+        "y": 1700,
         "wires": [
             [
-                "c6958310caaee75b"
+                "dea2c70eed901830"
             ]
         ]
+    },
+    {
+        "id": "63b65731e67e62b3",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 510,
+        "y": 1700,
+        "wires": [
+            [
+                "44d62556412e68e1",
+                "5334aa84824bf3d4"
+            ]
+        ]
+    },
+    {
+        "id": "dea2c70eed901830",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "Query Current",
+        "func": "msg.topic = \"SELECT * FROM current;\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 1700,
+        "wires": [
+            [
+                "63b65731e67e62b3"
+            ]
+        ]
+    },
+    {
+        "id": "44d62556412e68e1",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 1580,
+        "wires": []
+    },
+    {
+        "id": "5334aa84824bf3d4",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "Insert into count_logs",
+        "func": "const row = msg.payload;\n\nconst nowMillis = Date.now();  \n\nmsg.topic = `\n  INSERT INTO count_logs (orderId, counts, nowMillis, andon)\n  VALUES (?, ?, ?, ?)\n`;\n\nmsg.params = [\n    row.orderId,\n    row.counts,\n    nowMillis,\n    row.andon,\n];\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 1700,
+        "wires": [
+            [
+                "a23d5fbc36faf076"
+            ]
+        ]
+    },
+    {
+        "id": "a23d5fbc36faf076",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 990,
+        "y": 1700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "916fbe10e7e43768",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "Update andon in current",
+        "func": "const andon = flow.get('activeColor') \n\nmsg.topic = `\n  UPDATE current\n  SET andon = '${andon}'\n`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2390,
+        "y": 820,
+        "wires": [
+            [
+                "a3eec1c0aca38ab3"
+            ]
+        ]
+    },
+    {
+        "id": "a3eec1c0aca38ab3",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 2610,
+        "y": 820,
+        "wires": [
+            [
+                "7151a0bc9c8d11d2"
+            ]
+        ]
+    },
+    {
+        "id": "34e31d288f9286f1",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2260,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "099b519895618f53",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "disable pp page in menu",
+        "func": "\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/process\"\n) {\n    // node.send({\n    //     payload: {\n    //         pages: {\n    //             disable: ['Production Plan']\n    //         }\n    //     }\n    // });\n    node.send({ payload: { pages: { disable: ['Production Plan'] } } });\n\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 1040,
+        "wires": [
+            [
+                "1cecc0f98920ebb8"
+            ]
+        ]
+    },
+    {
+        "id": "1cecc0f98920ebb8",
+        "type": "ui-control",
+        "z": "f69312076bb95996",
+        "name": "",
+        "ui": "d7416ec1d9513281",
+        "events": "all",
+        "x": 680,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d3181f7c823461a8",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "enable pp page",
+        "func": "node.send({ payload: { pages: { enable: ['Production Plan'] } } });\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 1300,
+        "wires": [
+            [
+                "29104e96c189d38e"
+            ]
+        ]
+    },
+    {
+        "id": "29104e96c189d38e",
+        "type": "ui-control",
+        "z": "f69312076bb95996",
+        "name": "",
+        "ui": "d7416ec1d9513281",
+        "events": "all",
+        "x": 880,
+        "y": 1300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "20b0b99bdc560814",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "30",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1710,
+        "y": 1320,
+        "wires": [
+            [
+                "5f227b8a80d0d42e"
+            ]
+        ]
+    },
+    {
+        "id": "5f227b8a80d0d42e",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "check current",
+        "func": "msg.topic = \"SELECT * FROM current;\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2000,
+        "y": 1320,
+        "wires": [
+            [
+                "42fd5cb9775b703a"
+            ]
+        ]
+    },
+    {
+        "id": "42fd5cb9775b703a",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 2170,
+        "y": 1320,
+        "wires": [
+            [
+                "24e37cb0bb761730",
+                "e0c46f9f800ee406"
+            ]
+        ]
+    },
+    {
+        "id": "24e37cb0bb761730",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "update andon sqlite",
+        "func": "const rows = msg.payload;\n\nif (!rows || rows.length === 0) {\n    return null;   \n}\n\nconst row = rows[0];\n\nmsg.topic = `\n  INSERT INTO log (orderId, count, andon, timestamp)\n  VALUES ('${row.orderId}', ${row.counts}, '${row.andon}', ${Date.now()})\n`;\n\nreturn msg;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2370,
+        "y": 1320,
+        "wires": [
+            [
+                "58ee8418095a25a0"
+            ]
+        ]
+    },
+    {
+        "id": "58ee8418095a25a0",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 2610,
+        "y": 1320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e0c46f9f800ee406",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 10",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2340,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "7151a0bc9c8d11d2",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2780,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "9883577d393fd1ad",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1300,
+        "y": 240,
+        "wires": [
+            [
+                "f37ea846073a02af"
+            ]
+        ]
+    },
+    {
+        "id": "f37ea846073a02af",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "Add pic table tastiway_process",
+        "func": "msg.topic = `\nALTER TABLE tastiway_process ADD COLUMN pic TEXT NOT NULL DEFAULT '';\n`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1570,
+        "y": 240,
+        "wires": [
+            [
+                "f21f6bde3613ce58"
+            ]
+        ]
+    },
+    {
+        "id": "f21f6bde3613ce58",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 1830,
+        "y": 240,
+        "wires": [
+            [
+                "1da702148ed46fcc"
+            ]
+        ]
+    },
+    {
+        "id": "1da702148ed46fcc",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "alter table tastiway_process",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2060,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "b026175dce5fee1b",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1300,
+        "y": 300,
+        "wires": [
+            [
+                "26240593488c8e98"
+            ]
+        ]
+    },
+    {
+        "id": "26240593488c8e98",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "add batchId table tastiway_process",
+        "func": "msg.topic = `\nALTER TABLE tastiway_process ADD COLUMN batchId TEXT;`\n;\n\nreturn msg;\n\n\n// msg.topic = `\n// ALTER TABLE tastiway_process ADD COLUMN pic TEXT NOT NULL DEFAULT '';\n// `;\n// return msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1580,
+        "y": 300,
+        "wires": [
+            [
+                "7419990bbe325e7f"
+            ]
+        ]
+    },
+    {
+        "id": "7419990bbe325e7f",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 1830,
+        "y": 300,
+        "wires": [
+            [
+                "dc6ef99ba62a84eb"
+            ]
+        ]
+    },
+    {
+        "id": "dc6ef99ba62a84eb",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "g": "d3760f4172c763a6",
+        "name": "alter table tastiway_process",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2060,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "6cb56de36a3e267f",
+        "type": "link out",
+        "z": "f69312076bb95996",
+        "name": "start process",
+        "mode": "link",
+        "links": [
+            "90199c17386ded4c"
+        ],
+        "x": 1665,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "90199c17386ded4c",
+        "type": "link in",
+        "z": "f69312076bb95996",
+        "name": "start process",
+        "links": [
+            "6cb56de36a3e267f"
+        ],
+        "x": 1895,
+        "y": 1240,
+        "wires": [
+            [
+                "5f227b8a80d0d42e"
+            ]
+        ]
+    },
+    {
+        "id": "fef0ad104f619d49",
+        "type": "ui-button",
+        "z": "f69312076bb95996",
+        "d": true,
+        "group": "53026aa3c68dea20",
+        "name": "manual orderId Button",
+        "label": "manual start",
+        "order": 7,
+        "width": 2,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "manualInput",
+        "payloadType": "flow",
+        "topic": "payload",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 820,
+        "y": 600,
+        "wires": [
+            [
+                "a838e298114a1f97",
+                "f74d78774be5cba9",
+                "7088c57090ef3bb3",
+                "ea48b0a95fbe9250",
+                "e06b0ac2c2526a9d"
+            ]
+        ]
+    },
+    {
+        "id": "2c1ad7df4a0e9ace",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "d": true,
+        "name": "flow set the manualInput",
+        "func": "const orderId = msg.payload;\nconst activePic = global.get(\"activePic\") ?? \"\";\n\nconst manualInput = `${orderId},-,${activePic},-,`\nflow.set(\"manualInput\",manualInput )\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ea48b0a95fbe9250",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "group": "53026aa3c68dea20",
+        "page": "",
+        "ui": "",
+        "name": "redirect manual order ID",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<script>\nexport default {\n  data() {\n    return {\n      selectedPlan: null,\n      planOptions: [],\n      activePic: \"\",\n      lastProcessedMsgId: null  // Add this\n    };\n  },\n  computed: {\n    groupedPlans() {\n      // your existing groupedPlans code\n    },\n  },\n  methods: {\n    selectPlan(plan) {\n      // your existing selectPlan code\n    },\n  },\n  watch: {\n    msg(newMsg) {\n      if (!newMsg) return;\n      if (newMsg?.payload) {\n        // Check if this is a new message\n        const msgId = newMsg._msgid || JSON.stringify(newMsg.payload);\n        if (msgId === this.lastProcessedMsgId) {\n          return; // Skip if we've already processed this message\n        }\n        this.lastProcessedMsgId = msgId;\n        \n        const r = newMsg.payload;\n        let payloadObj = r;\n        if (typeof r === \"string\") {\n          try {\n            payloadObj = JSON.parse(r);\n          } catch (err) {\n            console.warn(\"Button payload is not JSON\");\n            return;\n          }\n        }\n        \n        // redirect to the process page\n        this.$router.push({\n          path: \"/dashboard/process\",\n          query: {\n            orderId: payloadObj.orderId,\n            productName: payloadObj.productName,\n            quantity: payloadObj.quantity,\n            start: payloadObj.start,\n            activePic: payloadObj.activePic,\n            batchId: payloadObj.batchId\n          },\n        });\n      }\n    }\n  }\n};\n</script>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1130,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e06b0ac2c2526a9d",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 520,
+        "wires": []
     }
 ]

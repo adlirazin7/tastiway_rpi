@@ -59,7 +59,8 @@
             }
         },
         "debug": {
-            "filter": "filterAll"
-        }
+            "filter": "filterCurrent"
+        },
+        "menu-menu-item-palette": false
     }
 }

@@ -608,6 +608,36 @@
         "className": ""
     },
     {
+        "id": "5d093b29a6ea79c2",
+        "type": "modbus-client",
+        "name": "",
+        "clienttype": "serial",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": 502,
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB0",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": 9600,
+        "serialDatabits": 8,
+        "serialStopbits": 1,
+        "serialParity": "none",
+        "serialConnectionDelay": 100,
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
         "id": "a00acd6c3cf84ad5",
         "type": "modbus-read",
         "z": "9f6ce41efe93ec24",
@@ -2135,6 +2165,106 @@
                 "46c79e349cf7960e"
             ]
         ]
+    },
+    {
+        "id": "2288fe5b3f210392",
+        "type": "modbus-read",
+        "z": "9f6ce41efe93ec24",
+        "name": "ModBus HumTemp",
+        "topic": "",
+        "showStatusActivities": true,
+        "logIOActivities": false,
+        "showErrors": true,
+        "showWarnings": true,
+        "unitid": "2",
+        "dataType": "InputRegister",
+        "adr": "8448",
+        "quantity": "4",
+        "rate": "1",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "enableDeformedMessages": false,
+        "startDelayTime": "",
+        "server": "5d093b29a6ea79c2",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": true,
+        "x": 170,
+        "y": 560,
+        "wires": [
+            [],
+            [
+                "cf0535e216c00456"
+            ]
+        ]
+    },
+    {
+        "id": "cf0535e216c00456",
+        "type": "buffer-parser",
+        "z": "9f6ce41efe93ec24",
+        "name": "Parse Int",
+        "data": "payload.data",
+        "dataType": "msg",
+        "specification": "spec",
+        "specificationType": "ui",
+        "items": [
+            {
+                "type": "int16be",
+                "name": "hum",
+                "offset": 0,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            },
+            {
+                "type": "int16be",
+                "name": "temp",
+                "offset": 4,
+                "length": 1,
+                "offsetbit": 0,
+                "scale": "1",
+                "mask": ""
+            }
+        ],
+        "swap1": "",
+        "swap2": "",
+        "swap3": "",
+        "swap1Type": "swap",
+        "swap2Type": "swap",
+        "swap3Type": "swap",
+        "msgProperty": "payload",
+        "msgPropertyType": "str",
+        "resultType": "keyvalue",
+        "resultTypeType": "return",
+        "multipleResult": false,
+        "fanOutMultipleResult": false,
+        "setTopic": true,
+        "outputs": 1,
+        "x": 360,
+        "y": 560,
+        "wires": [
+            [
+                "764c124b19a2a305"
+            ]
+        ]
+    },
+    {
+        "id": "764c124b19a2a305",
+        "type": "debug",
+        "z": "9f6ce41efe93ec24",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 660,
+        "wires": []
     },
     {
         "id": "bd54913827144c1e",
@@ -4800,7 +4930,7 @@
         "type": "function",
         "z": "7c2196e0bf45cdca",
         "name": "Toggle Color Logic",
-        "func": "// Get previous active color\nlet activeColor = flow.get('activeColor') || null;\n\nconst greenMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'green' ? 'green' : '#0a7d00'\n    }\n};\n\nconst blueMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'blue' ? 'blue' : '#003c8f'\n    }\n};\n\nconst redMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'red' ? 'red' : '#8b0000'\n    }\n};\n\nreturn [greenMsg, blueMsg, redMsg];\n",
+        "func": "// Get previous active color\nlet activeColor = flow.get('activeColor') || null;\n\nconst greenMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'green' ? 'green' : 'grey'\n    }\n};\n\nconst blueMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'blue' ? 'blue' : 'grey'\n    }\n};\n\nconst redMsg = {\n    ui_update: {\n        buttonColor: activeColor === 'red' ? 'red' : 'grey'\n    }\n};\n\nreturn [greenMsg, blueMsg, redMsg];\n",
         "outputs": 3,
         "timeout": "",
         "noerr": 0,

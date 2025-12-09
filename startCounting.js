@@ -113,12 +113,7 @@ try {
     }
 
 
-    console.log(
-        JSON.stringify({
-            status: "success",
-            orderId,
-        })
-    );
+    console.log("Finished")
 
 } catch (err) {
     console.error("❌ Error:", err.message);

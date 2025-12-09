@@ -188,9 +188,9 @@
         "group": "53026aa3c68dea20",
         "name": "spacer",
         "tooltip": "",
-        "order": 4,
-        "width": 12,
-        "height": 1,
+        "order": 3,
+        "width": 6,
+        "height": 2,
         "className": ""
     },
     {
@@ -255,8 +255,8 @@
         "group": "53026aa3c68dea20",
         "name": "spacer",
         "tooltip": "",
-        "order": 3,
-        "width": 8,
+        "order": 4,
+        "width": 12,
         "height": 1,
         "className": ""
     },
@@ -266,7 +266,7 @@
         "group": "16a799820a185e70",
         "name": "spacer",
         "tooltip": "",
-        "order": 10,
+        "order": 8,
         "width": 8,
         "height": 1,
         "className": ""
@@ -277,8 +277,8 @@
         "group": "16a799820a185e70",
         "name": "spacer",
         "tooltip": "",
-        "order": 9,
-        "width": 12,
+        "order": 7,
+        "width": 2,
         "height": 1,
         "className": ""
     },
@@ -294,34 +294,12 @@
         "className": ""
     },
     {
-        "id": "af232e24ea5e6cdb",
+        "id": "f41bba26a16139f6",
         "type": "ui-spacer",
         "group": "53026aa3c68dea20",
         "name": "spacer",
         "tooltip": "",
-        "order": 10,
-        "width": 1,
-        "height": 1,
-        "className": ""
-    },
-    {
-        "id": "8be2d2b13318ba66",
-        "type": "ui-spacer",
-        "group": "16a799820a185e70",
-        "name": "spacer",
-        "tooltip": "",
-        "order": 5,
-        "width": 1,
-        "height": 1,
-        "className": ""
-    },
-    {
-        "id": "05ffaf499e6d0c46",
-        "type": "ui-spacer",
-        "group": "16a799820a185e70",
-        "name": "spacer",
-        "tooltip": "",
-        "order": 7,
+        "order": 9,
         "width": 1,
         "height": 1,
         "className": ""
@@ -634,7 +612,7 @@
         "page": "",
         "ui": "",
         "name": "OrderID Cards",
-        "order": 8,
+        "order": 7,
         "width": "",
         "height": "",
         "head": "",
@@ -661,7 +639,7 @@
         "group": "53026aa3c68dea20",
         "name": "Refresh Order ID",
         "label": "Refresh Order ID",
-        "order": 2,
+        "order": 1,
         "width": "4",
         "height": "2",
         "emulateClick": false,
@@ -686,10 +664,11 @@
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
         "x": 170,
-        "y": 820,
+        "y": 400,
         "wires": [
             [
-                "387dc7dc7cfd6972"
+                "92dea9fd9848195e",
+                "7e11e87ba43a3111"
             ]
         ]
     },
@@ -705,11 +684,13 @@
         "winHide": false,
         "oldrc": false,
         "name": "(orders) -- firestore => sqlite",
-        "x": 420,
-        "y": 460,
+        "x": 400,
+        "y": 540,
         "wires": [
             [
-                "5e16498d64ade981"
+                "5e16498d64ade981",
+                "387dc7dc7cfd6972",
+                "54deef88aa5aada4"
             ],
             [],
             []
@@ -764,8 +745,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 170,
-        "y": 460,
+        "x": 150,
+        "y": 540,
         "wires": [
             [
                 "92dea9fd9848195e"
@@ -802,8 +783,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 710,
-        "y": 460,
+        "x": 750,
+        "y": 480,
         "wires": []
     },
     {
@@ -1023,40 +1004,6 @@
         ]
     },
     {
-        "id": "b9b7d594a7adf9f9",
-        "type": "ui-text-input",
-        "z": "f69312076bb95996",
-        "d": true,
-        "group": "53026aa3c68dea20",
-        "name": "OrderId input view",
-        "label": "BatchId",
-        "order": 6,
-        "width": 6,
-        "height": 1,
-        "topic": "payload",
-        "topicType": "msg",
-        "mode": "text",
-        "tooltip": "",
-        "delay": 300,
-        "passthru": true,
-        "sendOnDelay": false,
-        "sendOnBlur": true,
-        "sendOnEnter": false,
-        "className": "",
-        "clearable": false,
-        "sendOnClear": false,
-        "icon": "",
-        "iconPosition": "left",
-        "iconInnerPosition": "inside",
-        "x": 250,
-        "y": 600,
-        "wires": [
-            [
-                "2c1ad7df4a0e9ace"
-            ]
-        ]
-    },
-    {
         "id": "5040a4cc321a9a37",
         "type": "ui-template",
         "z": "f69312076bb95996",
@@ -1203,11 +1150,11 @@
         "page": "",
         "ui": "",
         "name": "Finish Button",
-        "order": 11,
+        "order": 9,
         "width": "4",
-        "height": "2",
+        "height": 2,
         "head": "",
-        "format": "<template>\n    <div class=\"text-center pa-4\">\n  <v-btn class=\"finish-style\"  width=\"100%\"  @click=\"dialog = true\">\n    Finish\n  </v-btn>\n\n  <v-dialog v-model=\"dialog\" width=\"700px\">\n    <v-card title=\"Confirm Finish\">\n      <v-card-text>\n\n\n        <v-number-input\n          v-model=\"rejectQty\"\n          :reverse=\"false\"\n          controlVariant=\"default\"\n          label=\"Rejected Quantity\"\n          :hideInput=\"false\"\n          :inset=\"false\"\n        ></v-number-input>\n      </v-card-text>\n\n      <v-card-actions class=\"actions-right\">\n        <v-btn text @click=\"dialog = false\">\n          Cancel\n        </v-btn>\n\n        <v-btn class=\"submit-big\" color=\"red\" variant=\"flat\" @click=\"submit\">\n          Submit\n        </v-btn>\n      </v-card-actions>\n    </v-card>\n\n  </v-dialog>\n    </div>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n    dialog: false,\n    rejectQty: null,\n    };\n  },\n\n  methods: {\n    submit() {\n      this.send({\n      payload: {\n      rejectQty: this.rejectQty ?? 0,\n      },\n      });\n\n      this.$root.$router.push(\"/production_plan\");\n      this.dialog = false;\n    }\n  },\n};\n</script>\n\n<style scoped>\n  .finish-style {\n    font-weight: 600;\n    color: white !important;\n    background: #e73c52 !important;\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n      0 4px 10px rgba(1, 39, 76, 0.4),\n      inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n    font-size: calc(0.8vw + 0.4em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n  }\n\n  .finish-style:hover,\n  .finish-style:focus {\n    background: #b52f43 !important;\n    box-shadow:\n      0 6px 16px rgba(1, 39, 76, 0.5),\n      inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n  }\n\n  .finish-style:active {\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n  }\n\n  .submit-big {\n  min-width: 180px; /* wider */\n  padding: 10px 24px; /* taller + more horizontal padding */\n  font-size: 1rem;\n  font-weight: 600;\n  border-radius: 10px;\n  }\n\n  .actions-right {\n  display: flex;\n  justify-content: flex-end;   /* align both buttons right */\n  gap: 12px;                   /* spacing between Cancel + Submit */\n  padding-right: 20px;         /* optional: add a little breathing room */\n}\n</style>",
+        "format": "<template>\n    <div class=\"text-center pa-4\">\n  <v-btn class=\"finish-style\" height=\"100%\" width=\"100%\"  @click=\"dialog = true\">\n    Finish\n  </v-btn>\n\n  <v-dialog v-model=\"dialog\" width=\"700px\">\n    <v-card title=\"Confirm Finish\">\n      <v-card-text>\n\n\n        <v-number-input\n          v-model=\"rejectQty\"\n          :reverse=\"false\"\n          controlVariant=\"default\"\n          label=\"Rejected Quantity\"\n          :hideInput=\"false\"\n          :inset=\"false\"\n        ></v-number-input>\n      </v-card-text>\n\n      <v-card-actions class=\"actions-right\">\n        <v-btn text @click=\"dialog = false\">\n          Cancel\n        </v-btn>\n\n        <v-btn class=\"submit-big\" color=\"red\" variant=\"flat\" @click=\"submit\">\n          Submit\n        </v-btn>\n      </v-card-actions>\n    </v-card>\n\n  </v-dialog>\n    </div>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n    dialog: false,\n    rejectQty: null,\n    };\n  },\n\n  methods: {\n    submit() {\n      this.send({\n      payload: {\n      rejectQty: this.rejectQty ?? 0,\n      },\n      });\n\n      this.$root.$router.push(\"/production_plan\");\n      this.dialog = false;\n    }\n  },\n};\n</script>\n\n<style scoped>\n  .finish-style {\n    font-weight: 600;\n    color: white !important;\n    background: #e73c52 !important;\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n      0 4px 10px rgba(1, 39, 76, 0.4),\n      inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n    font-size: calc(0.8vw + 0.4em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n  }\n\n  .finish-style:hover,\n  .finish-style:focus {\n    background: #b52f43 !important;\n    box-shadow:\n      0 6px 16px rgba(1, 39, 76, 0.5),\n      inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n  }\n\n  .finish-style:active {\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n  }\n\n  .submit-big {\n  min-width: 180px; /* wider */\n  padding: 20px 24px; /* taller + more horizontal padding */\n  font-size: 1rem;\n  font-weight: 600;\n  border-radius: 10px;\n  }\n\n  .actions-right {\n  display: flex;\n  justify-content: flex-end;   /* align both buttons right */\n  gap: 12px;                   /* spacing between Cancel + Submit */\n  padding-right: 20px;         /* optional: add a little breathing room */\n}\n</style>",
         "storeOutMessages": true,
         "passthru": true,
         "resendOnRefresh": true,
@@ -1235,7 +1182,9 @@
                 "b918c810745954df",
                 "a153e30311bbef15",
                 "f6317eedc5fda05c",
-                "099b519895618f53"
+                "099b519895618f53",
+                "53dad0cc97c13d52",
+                "cde774c8f00f1bf7"
             ]
         ]
     },
@@ -1277,8 +1226,8 @@
         "resendOnRefresh": true,
         "templateScope": "page:style",
         "className": "",
-        "x": 180,
-        "y": 780,
+        "x": 140,
+        "y": 720,
         "wires": [
             []
         ]
@@ -1315,18 +1264,18 @@
         "page": "",
         "ui": "",
         "name": "Elapsed TIme",
-        "order": 13,
+        "order": 10,
         "width": "2",
         "height": "1",
         "head": "",
-        "format": "<template>\n  <v-card class=\"borderless pa-4 text-left\">\n    <div class=\"text-h5 font-weight-bold\">{{ elapsed }}</div>\n  </v-card>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      start: Date.now(),\n      elapsed: \"00:00:00\",\n      interval: null,\n    };\n  },\n\n  mounted() {\n    this.interval = setInterval(() => {\n      const diff = Date.now() - this.start;\n      this.elapsed = this.formatTime(diff);\n    }, 1000);\n  },\n\n  beforeUnmount() {\n    clearInterval(this.interval);\n  },\n\n  methods: {\n    formatTime(ms) {\n      let sec = Math.floor(ms / 1000);\n      const hrs = String(Math.floor(sec / 3600)).padStart(2, \"0\");\n      sec %= 3600;\n      const mins = String(Math.floor(sec / 60)).padStart(2, \"0\");\n      sec = String(sec % 60).padStart(2, \"0\");\n      return `${hrs}:${mins}:${sec}`;\n    }\n  }\n};\n</script>\n\n<style>\n  .borderless {\n    border: transparent;\n    padding: 0;\n  }\n\n  .borderless .v-card-text {\n    border: 1px solid transparent;\n    padding: 0;\n  }\n</style>",
+        "format": "<!-- <template>\n  <v-card class=\"borderless pa-4 text-left\">\n    <div class=\"text-h5 font-weight-bold\">{{ elapsed }}</div>\n  </v-card>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      start: Date.now(),\n      elapsed: \"00:00:00\",\n      interval: null,\n    };\n  },\n\n  mounted() {\n    this.interval = setInterval(() => {\n      const diff = Date.now() - this.start;\n      this.elapsed = this.formatTime(diff);\n    }, 1000);\n  },\n\n  beforeUnmount() {\n    clearInterval(this.interval);\n  },\n\n  methods: {\n    formatTime(ms) {\n      let sec = Math.floor(ms / 1000);\n      const hrs = String(Math.floor(sec / 3600)).padStart(2, \"0\");\n      sec %= 3600;\n      const mins = String(Math.floor(sec / 60)).padStart(2, \"0\");\n      sec = String(sec % 60).padStart(2, \"0\");\n      return `${hrs}:${mins}:${sec}`;\n    }\n  }\n};\n</script>\n\n<style>\n  .borderless {\n    border: transparent;\n    padding: 0;\n  }\n\n  .borderless .v-card-text {\n    border: 1px solid transparent;\n    padding: 0;\n  }\n</style> -->\n\n<template>\n  <v-card class=\"borderless pa-4 text-left\">\n    <div class=\"text-h5 font-weight-bold\">{{ elapsed }}</div>\n  </v-card>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      elapsedMs: 0,     // total accumulated time\n      lastStart: null,  // timestamp when resumed\n      interval: null,\n    };\n  },\n\n  mounted() {\n    // start immediately\n    this.startTimer();\n\n    // watch for msg updates from Node-RED\n    this.$watch(\n      () => this.msg,\n      (msg) => {\n        if (!msg || !msg.payload) return;\n\n        const color = msg.payload.toLowerCase();\n\n        if (color === \"green\") {\n          this.resumeTimer();\n        } else if (color === \"red\" || color === \"blue\") {\n          this.pauseTimer();\n        }\n      }\n    );\n  },\n\n  beforeUnmount() {\n    clearInterval(this.interval);\n  },\n\n  methods: {\n    startTimer() {\n      this.lastStart = Date.now();\n      this.interval = setInterval(() => {\n        if (this.lastStart) {\n          this.elapsedMs = this.elapsedMs + (Date.now() - this.lastStart);\n          this.lastStart = Date.now(); // reset tick\n        }\n      }, 1000);\n    },\n\n    pauseTimer() {\n      if (this.lastStart) {\n        this.elapsedMs += Date.now() - this.lastStart;\n        this.lastStart = null;\n      }\n    },\n\n    resumeTimer() {\n      if (!this.lastStart) {\n        this.lastStart = Date.now();\n      }\n    },\n\n    format(ms) {\n      let sec = Math.floor(ms / 1000);\n      const hrs = String(Math.floor(sec / 3600)).padStart(2, \"0\");\n      sec %= 3600;\n      const mins = String(Math.floor(sec / 60)).padStart(2, \"0\");\n      sec = String(sec % 60).padStart(2, \"0\");\n      return `${hrs}:${mins}:${sec}`;\n    }\n  },\n\n  computed: {\n    elapsed() {\n      return this.format(this.elapsedMs);\n    }\n  }\n};\n</script>\n\n<style>\n  .borderless {\n    border: transparent !important;\n    padding: 0;\n  }\n</style>",
         "storeOutMessages": true,
         "passthru": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 160,
-        "y": 1360,
+        "x": 2380,
+        "y": 1020,
         "wires": [
             []
         ]
@@ -1341,7 +1290,7 @@
         "value": "payload",
         "valueType": "msg",
         "width": "10",
-        "height": "4",
+        "height": 7,
         "gtype": "gauge-34",
         "gstyle": "rounded",
         "title": "Count",
@@ -1737,10 +1686,10 @@
         "z": "f69312076bb95996",
         "group": "16a799820a185e70",
         "name": "",
-        "label": "",
+        "label": "Running",
         "order": 3,
-        "width": "1",
-        "height": "1",
+        "width": "2",
+        "height": "2",
         "emulateClick": false,
         "tooltip": "",
         "color": "",
@@ -1762,7 +1711,7 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 1830,
+        "x": 1840,
         "y": 920,
         "wires": [
             [
@@ -1776,10 +1725,10 @@
         "z": "f69312076bb95996",
         "group": "16a799820a185e70",
         "name": "",
-        "label": "",
-        "order": 6,
-        "width": "1",
-        "height": "1",
+        "label": "Assistance",
+        "order": 5,
+        "width": "2",
+        "height": "2",
         "emulateClick": false,
         "tooltip": "",
         "color": "",
@@ -1801,7 +1750,7 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 1830,
+        "x": 1850,
         "y": 960,
         "wires": [
             [
@@ -1815,10 +1764,10 @@
         "z": "f69312076bb95996",
         "group": "16a799820a185e70",
         "name": "",
-        "label": "",
-        "order": 8,
-        "width": "1",
-        "height": "1",
+        "label": "Breakdown",
+        "order": 6,
+        "width": "2",
+        "height": "2",
         "emulateClick": false,
         "tooltip": "",
         "color": "",
@@ -1840,7 +1789,7 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 1830,
+        "x": 1850,
         "y": 1000,
         "wires": [
             [
@@ -1875,7 +1824,8 @@
             [
                 "c2702c05965937f5",
                 "916fbe10e7e43768",
-                "34e31d288f9286f1"
+                "34e31d288f9286f1",
+                "c59dfe4ed5a3e147"
             ]
         ]
     },
@@ -1955,7 +1905,7 @@
         "name": "PIC Input",
         "label": "Enter PIC",
         "order": 5,
-        "width": 6,
+        "width": "5",
         "height": 1,
         "topic": "topic",
         "topicType": "msg",
@@ -1972,8 +1922,8 @@
         "icon": "",
         "iconPosition": "left",
         "iconInnerPosition": "inside",
-        "x": 520,
-        "y": 800,
+        "x": 580,
+        "y": 780,
         "wires": [
             [
                 "878776d77cbcb253"
@@ -1992,11 +1942,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 710,
-        "y": 800,
+        "x": 790,
+        "y": 780,
         "wires": [
             [
-                "3b5d722bfc436434"
+                "3b5d722bfc436434",
+                "cf971225ebabb56b"
             ]
         ]
     },
@@ -2009,7 +1960,7 @@
         "page": "",
         "ui": "",
         "name": "OrderID Cards",
-        "order": 9,
+        "order": 8,
         "width": "",
         "height": "",
         "head": "",
@@ -2034,7 +1985,7 @@
         "page": "",
         "ui": "",
         "name": "Finish Button",
-        "order": 12,
+        "order": 11,
         "width": "4",
         "height": "2",
         "head": "",
@@ -2741,7 +2692,7 @@
         "id": "099b519895618f53",
         "type": "function",
         "z": "f69312076bb95996",
-        "name": "disable pp page in menu",
+        "name": "disable pp page in process",
         "func": "\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/process\"\n) {\n    // node.send({\n    //     payload: {\n    //         pages: {\n    //             disable: ['Production Plan']\n    //         }\n    //     }\n    // });\n    node.send({ payload: { pages: { disable: ['Production Plan'] } } });\n\n}",
         "outputs": 1,
         "timeout": 0,
@@ -2749,7 +2700,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 450,
+        "x": 460,
         "y": 1040,
         "wires": [
             [
@@ -2817,7 +2768,7 @@
                 "vt": "str"
             }
         ],
-        "repeat": "30",
+        "repeat": "300",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
@@ -3137,97 +3088,68 @@
         ]
     },
     {
-        "id": "fef0ad104f619d49",
-        "type": "ui-button",
-        "z": "f69312076bb95996",
-        "d": true,
-        "group": "53026aa3c68dea20",
-        "name": "manual orderId Button",
-        "label": "manual start",
-        "order": 7,
-        "width": 2,
-        "height": 0,
-        "emulateClick": false,
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "iconPosition": "left",
-        "payload": "manualInput",
-        "payloadType": "flow",
-        "topic": "payload",
-        "topicType": "msg",
-        "buttonColor": "",
-        "textColor": "",
-        "iconColor": "",
-        "enableClick": true,
-        "enablePointerdown": false,
-        "pointerdownPayload": "",
-        "pointerdownPayloadType": "str",
-        "enablePointerup": false,
-        "pointerupPayload": "",
-        "pointerupPayloadType": "str",
-        "x": 820,
-        "y": 600,
-        "wires": [
-            [
-                "a838e298114a1f97",
-                "f74d78774be5cba9",
-                "7088c57090ef3bb3",
-                "ea48b0a95fbe9250",
-                "e06b0ac2c2526a9d"
-            ]
-        ]
-    },
-    {
-        "id": "2c1ad7df4a0e9ace",
-        "type": "function",
-        "z": "f69312076bb95996",
-        "d": true,
-        "name": "flow set the manualInput",
-        "func": "const orderId = msg.payload;\nconst activePic = global.get(\"activePic\") ?? \"\";\n\nconst manualInput = `${orderId},-,${activePic},-,`\nflow.set(\"manualInput\",manualInput )\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 530,
-        "y": 600,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ea48b0a95fbe9250",
+        "id": "e735dc355d962d7f",
         "type": "ui-template",
         "z": "f69312076bb95996",
         "group": "53026aa3c68dea20",
         "page": "",
         "ui": "",
-        "name": "redirect manual order ID",
-        "order": 1,
-        "width": 0,
+        "name": "manual BatchId",
+        "order": 6,
+        "width": 7,
         "height": 0,
         "head": "",
-        "format": "<script>\nexport default {\n  data() {\n    return {\n      selectedPlan: null,\n      planOptions: [],\n      activePic: \"\",\n      lastProcessedMsgId: null  // Add this\n    };\n  },\n  computed: {\n    groupedPlans() {\n      // your existing groupedPlans code\n    },\n  },\n  methods: {\n    selectPlan(plan) {\n      // your existing selectPlan code\n    },\n  },\n  watch: {\n    msg(newMsg) {\n      if (!newMsg) return;\n      if (newMsg?.payload) {\n        // Check if this is a new message\n        const msgId = newMsg._msgid || JSON.stringify(newMsg.payload);\n        if (msgId === this.lastProcessedMsgId) {\n          return; // Skip if we've already processed this message\n        }\n        this.lastProcessedMsgId = msgId;\n        \n        const r = newMsg.payload;\n        let payloadObj = r;\n        if (typeof r === \"string\") {\n          try {\n            payloadObj = JSON.parse(r);\n          } catch (err) {\n            console.warn(\"Button payload is not JSON\");\n            return;\n          }\n        }\n        \n        // redirect to the process page\n        this.$router.push({\n          path: \"/dashboard/process\",\n          query: {\n            orderId: payloadObj.orderId,\n            productName: payloadObj.productName,\n            quantity: payloadObj.quantity,\n            start: payloadObj.start,\n            activePic: payloadObj.activePic,\n            batchId: payloadObj.batchId\n          },\n        });\n      }\n    }\n  }\n};\n</script>",
+        "format": "<template>\n<v-container fluid class=\"pa-4\">\n  <v-row>\n    <v-col cols=\"9\">\n      <v-text-field\n        v-model=\"batchId\"\n        label=\"Enter Batch ID\"\n        outlined\n        dense\n      ></v-text-field>\n    </v-col>\n\n    <v-col cols=\"3\">\n      <v-btn block color=\"primary\" @click=\"submitBatch\" :disabled=\"!batchId\">\n        Start Manual\n      </v-btn>\n    </v-col>\n  </v-row>\n</v-container>\n\n\n</template>\n\n<script>\nexport default {\n  data() {\n    return {\n      batchId: \"\",\n      activePic: \"\", \n    };\n  },\n  methods: {\n    submitBatch() {\n      const orderId = `ORD-${Date.now()}`;\n      \n      const payload = {\n        productName: \"Unknown -- Manual Input\",\n        orderId,\n        quantity: 0,\n        start: new Date().toISOString(),\n        batchId: this.batchId,\n        activePic: this.activePic,\n      };\n\n      this.send({\n        payload: `${payload.orderId},-,${payload.activePic},-,${payload.batchId}`,\n      });\n\n      \n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: payload, \n      });\n    },\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n    },\n  },\n};\n</script>\n\n<style scoped>\n.v-container {\n  max-height: 100%;\n}\n</style>",
         "storeOutMessages": true,
         "passthru": false,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 1130,
-        "y": 540,
+        "x": 860,
+        "y": 600,
         "wires": [
-            []
+            [
+                "a838e298114a1f97",
+                "2305890dab5f178b",
+                "f74d78774be5cba9",
+                "7088c57090ef3bb3"
+            ]
         ]
     },
     {
-        "id": "e06b0ac2c2526a9d",
+        "id": "cf971225ebabb56b",
+        "type": "link out",
+        "z": "f69312076bb95996",
+        "name": "sent pic",
+        "mode": "link",
+        "links": [
+            "31b044cccc0287b6"
+        ],
+        "x": 885,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "31b044cccc0287b6",
+        "type": "link in",
+        "z": "f69312076bb95996",
+        "name": "receive pic",
+        "links": [
+            "cf971225ebabb56b"
+        ],
+        "x": 735,
+        "y": 600,
+        "wires": [
+            [
+                "e735dc355d962d7f"
+            ]
+        ]
+    },
+    {
+        "id": "2305890dab5f178b",
         "type": "debug",
         "z": "f69312076bb95996",
-        "name": "debug 12",
+        "name": "debug 13",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -3235,8 +3157,122 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 880,
-        "y": 520,
+        "x": 1040,
+        "y": 540,
         "wires": []
+    },
+    {
+        "id": "be0e6cb62246ca13",
+        "type": "ui-text",
+        "z": "f69312076bb95996",
+        "group": "53026aa3c68dea20",
+        "order": 2,
+        "width": 2,
+        "height": 0,
+        "name": "Show fetching state",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": true,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 650,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "7e11e87ba43a3111",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "prepare msg",
+        "func": "msg.payload = \"Fetching data ...\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 400,
+        "wires": [
+            [
+                "be0e6cb62246ca13"
+            ]
+        ]
+    },
+    {
+        "id": "54deef88aa5aada4",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "prepare msg",
+        "func": "msg.payload = \"\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 460,
+        "wires": [
+            [
+                "be0e6cb62246ca13"
+            ]
+        ]
+    },
+    {
+        "id": "53dad0cc97c13d52",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "topic",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "cde774c8f00f1bf7",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "disable pp page in process",
+        "func": "\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/production_plan\"\n) {\n    // node.send({\n    //     payload: {\n    //         pages: {\n    //             disable: ['Production Plan']\n    //         }\n    //     }\n    // });\n    node.send({ payload: { pages: { disable: ['Process'] } } });\n\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 1100,
+        "wires": [
+            [
+                "eb3f27273b857a3f"
+            ]
+        ]
+    },
+    {
+        "id": "eb3f27273b857a3f",
+        "type": "ui-control",
+        "z": "f69312076bb95996",
+        "name": "",
+        "ui": "d7416ec1d9513281",
+        "events": "all",
+        "x": 680,
+        "y": 1100,
+        "wires": [
+            []
+        ]
     }
 ]

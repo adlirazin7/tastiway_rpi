@@ -22,8 +22,8 @@ const db = await open({
 const now = new Date();
 const dayStart = (d) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
 const addDays = (d, n) => new Date(d.getTime() + n * 86400000);
-const start = addDays(dayStart(now), -1);
-const end = addDays(dayStart(now), 2);
+const start = addDays(dayStart(now), -2);
+const end = addDays(dayStart(now), 3);
 
 try {
     // Fetch data from firestore 

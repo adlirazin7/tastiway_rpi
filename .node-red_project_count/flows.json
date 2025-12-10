@@ -1623,40 +1623,6 @@
         "wires": []
     },
     {
-        "id": "function_handle_dialog",
-        "type": "function",
-        "z": "f69312076bb95996",
-        "name": "Process Dialog",
-        "func": "msg.payload = {\n    signal: msg.values.blueBtn ? \"blue\" : msg.values.yellowBtn ? \"yellow\" : null,\n    message: msg.values.textMessage\n};\nreturn msg;",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 120,
-        "y": 2500,
-        "wires": [
-            [
-                "debug_out"
-            ]
-        ]
-    },
-    {
-        "id": "debug_out",
-        "type": "debug",
-        "z": "f69312076bb95996",
-        "name": "Dialog Output",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "x": 340,
-        "y": 2500,
-        "wires": []
-    },
-    {
         "id": "99bdfba52e6ed083",
         "type": "ui-template",
         "z": "f69312076bb95996",

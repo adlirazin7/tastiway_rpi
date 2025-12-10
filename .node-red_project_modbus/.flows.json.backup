@@ -2367,7 +2367,7 @@
         "type": "function",
         "z": "9f6ce41efe93ec24",
         "name": "Insert SQLite",
-        "func": "// Get current time \nconst data = msg.payload;\nconst now = new Date();\nconst seconds = now.getSeconds();\nconst minutes = now.getMinutes();\nconst hours = now.getHours();\n\nif (minutes % 5 === 0) {\n\n    const timestamp = Date.now();\n\n    const yyyy = now.getFullYear();\n    const mm = String(now.getMonth() + 1).padStart(2, '0');\n    const dd = String(now.getDate()).padStart(2, '0');\n    const dateOnly = `${yyyy}-${mm}-${dd}`;\n\n    const hum = (data.hum ?? 0) / 10;\n    const temp = (data.temp ?? 0) / 10;\n\n    msg.topic = `\n        INSERT INTO rht (\n            timestamp, date,\n            hum, temp\n        )\n        VALUES (\n            ${timestamp},\n            '${dateOnly}',\n            ${hum},\n            ${temp}\n        );\n    `;\n\n    return msg;\n}\n\nreturn null;\n",
+        "func": "// Get current time \nconst data = msg.payload;\nconst now = new Date();\nconst seconds = now.getSeconds();\nconst minutes = now.getMinutes();\nconst hours = now.getHours();\n\nif (minutes % 5 === 0) {\n\n    const timestamp = Date.now();\n\n    const yyyy = now.getFullYear();\n    const mm = String(now.getMonth() + 1).padStart(2, '0');\n    const dd = String(now.getDate()).padStart(2, '0');\n    const dateOnly = `${yyyy}-${mm}-${dd}`;\n\n    const hum = (data.hum ?? 0) / 10;\n    const temp = (data.temp ?? 0) / 10;\n\n    msg.topic = `\n        INSERT INTO rht (\n            timestamp, doc,\n            rh, temp\n        )\n        VALUES (\n            ${timestamp},\n            '${dateOnly}',\n            ${hum},\n            ${temp}\n        );\n    `;\n\n    return msg;\n}\n\nreturn null;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2415,7 +2415,7 @@
         "id": "557f6a8e31eeb78e",
         "type": "exec",
         "z": "9f6ce41efe93ec24",
-        "command": "node /home/pi/Project/rht.py",
+        "command": "node /home/pi/Project/rht.js",
         "addpay": "",
         "append": "",
         "useSpawn": "false",
@@ -3675,7 +3675,8 @@
         "wires": [
             [
                 "9e53df2a68840d25",
-                "69804fc389878762"
+                "69804fc389878762",
+                "c8df2e44e23a84cf"
             ],
             [
                 "9e53df2a68840d25"
@@ -6178,5 +6179,150 @@
                 "80866cc38d55c483"
             ]
         ]
+    },
+    {
+        "id": "56f828854c771501",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1790,
+        "y": 1200,
+        "wires": [
+            [
+                "3c83341f8d638987"
+            ]
+        ]
+    },
+    {
+        "id": "3c83341f8d638987",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "check current",
+        "func": "msg.topic = \"SELECT * FROM current;\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2080,
+        "y": 1200,
+        "wires": [
+            [
+                "53e1830db14b35af"
+            ]
+        ]
+    },
+    {
+        "id": "53e1830db14b35af",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 2250,
+        "y": 1200,
+        "wires": [
+            [
+                "c944b499f51c4d64",
+                "cc48cbbc88b0c585"
+            ]
+        ]
+    },
+    {
+        "id": "c944b499f51c4d64",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "update andon sqlite",
+        "func": "const rows = msg.payload;\n\nif (!rows || rows.length === 0) {\n    return null;   \n}\n\nconst row = rows[0];\n\nmsg.topic = `\n  INSERT INTO log (orderId, count, andon, timestamp)\n  VALUES ('${row.orderId}', ${row.counts}, '${row.andon}', ${Date.now()})\n`;\n\nreturn msg;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2450,
+        "y": 1200,
+        "wires": [
+            [
+                "4895046e9282344b"
+            ]
+        ]
+    },
+    {
+        "id": "4895046e9282344b",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 2690,
+        "y": 1200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cc48cbbc88b0c585",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "debug 10",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2420,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "520a54ebb8acd830",
+        "type": "link in",
+        "z": "7c2196e0bf45cdca",
+        "name": "start process",
+        "links": [
+            "c8df2e44e23a84cf"
+        ],
+        "x": 1975,
+        "y": 1120,
+        "wires": [
+            [
+                "3c83341f8d638987"
+            ]
+        ]
+    },
+    {
+        "id": "c8df2e44e23a84cf",
+        "type": "link out",
+        "z": "7c2196e0bf45cdca",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "520a54ebb8acd830"
+        ],
+        "x": 1845,
+        "y": 540,
+        "wires": []
     }
 ]

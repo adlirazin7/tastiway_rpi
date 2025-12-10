@@ -4,7 +4,7 @@ import { open } from "sqlite";
 import { initializeApp, cert } from "firebase-admin/app";
 import { getFirestore, FieldValue, Timestamp } from "firebase-admin/firestore";
 
-const serviceAccount = (await import("./service_account-cp4.json", { assert: { type: "json" } })).default;
+import serviceAccount from "./service_account-cp4.json" with { type: "json" };
 
 initializeApp({
   credential: cert(serviceAccount),
@@ -82,7 +82,8 @@ function prepareEntries(rows) {
 }
 
 async function uploadGroupedToFirestore(grouped, timestamps) {
-  const ID = await fs.readFile("rht_id.txt", "utf8");
+    const idPath = new URL("./rht_id.txt", import.meta.url);
+    const ID = await fs.readFile(idPath, "utf8");
 
   for (const docId of Object.keys(grouped)) {
     const entries = grouped[docId];

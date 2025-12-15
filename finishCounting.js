@@ -98,7 +98,9 @@ try {
                     reject: order["reject"],
                     batchId: order["batchId"],
                     machineId: machineId,
-                    data: data
+                    data: data,
+                    pic: order["pic"]
+
 
                 },
             )

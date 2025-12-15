@@ -346,7 +346,7 @@
                 "cols": "12"
             }
         ],
-        "order": 4,
+        "order": 2,
         "className": "",
         "visible": "true",
         "disabled": "false"
@@ -471,7 +471,7 @@
                 "cols": "12"
             }
         ],
-        "order": 2,
+        "order": 3,
         "className": "mypage",
         "visible": "true",
         "disabled": "false"
@@ -549,7 +549,7 @@
                 "cols": "12"
             }
         ],
-        "order": 3,
+        "order": 4,
         "className": "",
         "visible": "false",
         "disabled": "false"
@@ -3578,7 +3578,7 @@
         "width": "",
         "height": "",
         "head": "",
-        "format": "<template>\n  <v-container fluid class=\"pa-0\">\n    <v-row dense class=\"ma-0\">\n      <template v-for=\"(plans, date) in groupedPlans\" :key=\"date\">\n        <!-- Date header -->\n        <v-col cols=\"12\" class=\"px-4 py-2\">\n          <div class=\"text-h6 font-weight-bold\">{{ date }}</div>\n        </v-col>\n\n        <!-- Cards under this date -->\n        <v-col v-for=\"(plan, index) in plans\" :key=\"date + '-' + index\" cols=\"12\" sm=\"6\" class=\"pa-2\">\n          <v-card class=\"hoverable plan-card pa-3\" outlined @click=\"selectPlan(plan)\">\n            <v-row>\n              <v-col class=\"pa-4\">\n                <div class=\"text-h6\">{{ plan.productName }}</div>\n                <div class=\"text-subtitle-1 font-weight-bold \">\n                  {{ plan.batchId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  {{ plan.orderId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Quantity: {{ plan.quantity }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Start: {{ new Date(plan.start).toLocaleString() }}\n                </div>\n              </v-col>\n            </v-row>\n          </v-card>\n        </v-col>\n      </template>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      selectedPlan: null,\n      planOptions: [],\n      activePic: \"\"\n    };\n  },\n\n  computed: {\n    groupedPlans() {\n      const groups = {};\n\n      // group by display date\n      this.planOptions.forEach((plan) => {\n        const date = new Date(plan.start);\n        const displayKey = date.toLocaleDateString(\"en-GB\"); // stays like \"14/11/2025\"\n\n        if (!groups[displayKey]) groups[displayKey] = [];\n        groups[displayKey].push(plan);\n      });\n\n      // sort date keys DESC but KEEP display format\n      const sorted = Object.fromEntries(\n        Object.entries(groups).sort((a, b) => {\n          const dA = new Date(a[0].split(\"/\").reverse().join(\"-\")); // 14/11/2025 → 2025-11-14\n          const dB = new Date(b[0].split(\"/\").reverse().join(\"-\"));\n          return dB - dA; // newest first\n        })\n      );\n\n      return sorted;\n    },\n  },\n\n  methods: {\n    selectPlan(plan) {\n      this.selectedPlan = plan.orderId;\n      this.send({ payload: `${plan.orderId},-,${this.activePic},-,${plan.batchId}` }); // sending orderId to Node-RED exec node\n      // this.send({ payload: `${plan.orderId}` }); // sending orderId to Node-RED exec node\n\n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: {\n          orderId: plan.orderId,\n          productName: plan.productName,\n          quantity: plan.quantity,\n          start: plan.start,\n          activePic: this.activePic\n        },\n      });\n    },\n  },\n\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n\n      if (Array.isArray(newMsg?.payload)) {\n        this.planOptions = newMsg.payload.map((r) => ({\n          productName: r.productName,\n          orderId: r.orderId,\n          quantity: r.quantity ?? 0,\n          start: r.start ?? \"-\",\n          batchId: r.batchId \n\n        }));\n      } else if (newMsg?.payload?.orderId) {\n        const r = newMsg.payload;\n        this.planOptions = [\n          {\n            productName: r.productName,\n            orderId: r.orderId,\n            quantity: r.quantity ?? 0,\n            start: r.start ?? \"-\",\n            batchId: r.batchId \n\n          },\n        ];\n      }\n    },\n  },\n};\n\n</script>\n\n<style scoped>\n  .plan-card {\n    width: 100%;\n    cursor: pointer;\n    transition: 0.25s;\n    border-radius: 16px;\n    overflow: hidden;\n  }\n\n  .plan-card:hover {\n    background-color: #f5f5f5;\n    transform: scale(1.01);\n  }\n\n  .v-card.selected {\n    border-color: #1976d2;\n    background-color: #e3f2fd;\n  }\n\n  .v-container {\n    max-height: 100%;\n    overflow-y: auto;\n    scrollbar-width: none;\n    padding-top: 0 !important;\n  }\n</style>\n\n<script>\n  (function(scope) {\n  scope.$watch(\"msg\", function(msg) {\n    if (!msg) return;\n\n    scope.$emit(\"input\", msg);\n  });\n})(scope);\n</script>",
+        "format": "<template>\n  <v-container fluid class=\"pa-0\">\n    <v-row dense class=\"ma-0\">\n      <template v-for=\"(plans, date) in groupedPlans\" :key=\"date\">\n        <!-- Date header -->\n        <v-col cols=\"12\" class=\"px-4 py-2\">\n          <div class=\"text-h6 font-weight-bold\">{{ date }}</div>\n        </v-col>\n\n        <!-- Cards under this date -->\n        <v-col v-for=\"(plan, index) in plans\" :key=\"date + '-' + index\" cols=\"12\" sm=\"6\" class=\"pa-2\">\n          <v-card class=\"hoverable plan-card pa-3\" outlined @click=\"selectPlan(plan)\">\n            <v-row>\n              <v-col class=\"pa-4\">\n                <div class=\"text-h6\">{{ plan.productName }}</div>\n                <div class=\"text-subtitle-1 font-weight-bold \">\n                  {{ plan.batchId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  {{ plan.orderId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Quantity: {{ plan.quantity }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Start: {{ new Date(plan.start).toLocaleString() }}\n                </div>\n              </v-col>\n            </v-row>\n          </v-card>\n        </v-col>\n      </template>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      selectedPlan: null,\n      planOptions: [],\n      activePic: \"\"\n    };\n  },\n\n  computed: {\n    groupedPlans() {\n      const groups = {};\n\n      // group by display date\n      this.planOptions.forEach((plan) => {\n        const date = new Date(plan.start);\n        const displayKey = date.toLocaleDateString(\"en-GB\"); // stays like \"14/11/2025\"\n\n        if (!groups[displayKey]) groups[displayKey] = [];\n        groups[displayKey].push(plan);\n      });\n\n      // sort date keys DESC but KEEP display format\n      const sorted = Object.fromEntries(\n        Object.entries(groups).sort((a, b) => {\n          const dA = new Date(a[0].split(\"/\").reverse().join(\"-\")); // 14/11/2025 → 2025-11-14\n          const dB = new Date(b[0].split(\"/\").reverse().join(\"-\"));\n          return dB - dA; // newest first\n        })\n      );\n\n      return sorted;\n    },\n  },\n\n  methods: {\n    selectPlan(plan) {\n      this.selectedPlan = plan.orderId;\n      this.send({\n        payload: `${plan.orderId},-,${this.activePic.replace(/ /g, \"__SPACE__\")},-,${plan.batchId.replace(/ /g, \"__SPACE__\")}`\n      });\n      // this.send({ payload: `${plan.orderId}` }); // sending orderId to Node-RED exec node\n\n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: {\n          orderId: plan.orderId,\n          productName: plan.productName,\n          quantity: plan.quantity,\n          start: plan.start,\n          activePic: this.activePic\n        },\n      });\n    },\n  },\n\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n\n      if (Array.isArray(newMsg?.payload)) {\n        this.planOptions = newMsg.payload.map((r) => ({\n          productName: r.productName,\n          orderId: r.orderId,\n          quantity: r.quantity ?? 0,\n          start: r.start ?? \"-\",\n          batchId: r.batchId \n\n        }));\n      } else if (newMsg?.payload?.orderId) {\n        const r = newMsg.payload;\n        this.planOptions = [\n          {\n            productName: r.productName,\n            orderId: r.orderId,\n            quantity: r.quantity ?? 0,\n            start: r.start ?? \"-\",\n            batchId: r.batchId \n\n          },\n        ];\n      }\n    },\n  },\n};\n\n</script>\n\n<style scoped>\n  .plan-card {\n    width: 100%;\n    cursor: pointer;\n    transition: 0.25s;\n    border-radius: 16px;\n    overflow: hidden;\n  }\n\n  .plan-card:hover {\n    background-color: #f5f5f5;\n    transform: scale(1.01);\n  }\n\n  .v-card.selected {\n    border-color: #1976d2;\n    background-color: #e3f2fd;\n  }\n\n  .v-container {\n    max-height: 100%;\n    overflow-y: auto;\n    scrollbar-width: none;\n    padding-top: 0 !important;\n  }\n</style>\n\n<script>\n  (function(scope) {\n  scope.$watch(\"msg\", function(msg) {\n    if (!msg) return;\n\n    scope.$emit(\"input\", msg);\n  });\n})(scope);\n</script>",
         "storeOutMessages": true,
         "passthru": false,
         "resendOnRefresh": true,
@@ -3905,7 +3905,7 @@
         "width": "4",
         "height": "2",
         "head": "",
-        "format": "<template>\n  <div class=\"text-center pa-4\">\n    <v-btn class=\"finish-style\" height=\"100%\" width=\"100%\" @click=\"dialog = true\">\n      Finish\n    </v-btn>\n\n    <v-dialog v-model=\"dialog\" width=\"700px\">\n      <v-card title=\"Confirm Finish\">\n        <v-card-text>\n\n\n          <v-number-input v-model=\"rejectQty\" :reverse=\"false\" controlVariant=\"default\" label=\"Rejected Quantity\"\n            :hideInput=\"false\" :inset=\"false\"></v-number-input>\n        </v-card-text>\n\n        <v-card-actions class=\"actions-right\">\n          <v-btn text @click=\"dialog = false\">\n            Cancel\n          </v-btn>\n\n          <v-btn class=\"submit-big\" color=\"red\" variant=\"flat\" @click=\"submit\">\n            Submit\n          </v-btn>\n        </v-card-actions>\n      </v-card>\n\n    </v-dialog>\n  </div>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n    dialog: false,\n    rejectQty: null,\n    };\n  },\n\n  methods: {\n    submit() {\n      this.send({\n      payload: {\n      rejectQty: this.rejectQty ?? 0,\n      },\n      });\n\n      this.$root.$router.push(\"/production_plan\");\n      this.dialog = false;\n    }\n  },\n};\n</script>\n\n<style scoped>\n  .finish-style {\n    font-weight: 600;\n    color: white !important;\n    background: #e73c52 !important;\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n      0 4px 10px rgba(1, 39, 76, 0.4),\n      inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n    font-size: calc(0.8vw + 0.4em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n  }\n\n  .finish-style:hover,\n  .finish-style:focus {\n    background: #b52f43 !important;\n    box-shadow:\n      0 6px 16px rgba(1, 39, 76, 0.5),\n      inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n  }\n\n  .finish-style:active {\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n  }\n\n  .submit-big {\n    min-width: 180px;\n    /* wider */\n    padding: 20px 24px;\n    /* taller + more horizontal padding */\n    font-size: 1rem;\n    font-weight: 600;\n    border-radius: 10px;\n  }\n\n  .actions-right {\n    display: flex;\n    justify-content: flex-end;\n    /* align both buttons right */\n    gap: 12px;\n    /* spacing between Cancel + Submit */\n    padding-right: 20px;\n    /* optional: add a little breathing room */\n  }\n</style>",
+        "format": "<template>\n    <div class=\"text-center pa-4\">\n  <v-btn class=\"finish-style\" height=\"100%\" width=\"100%\"  @click=\"dialog = true\">\n    Finish\n  </v-btn>\n\n  <v-dialog v-model=\"dialog\" width=\"700px\">\n    <v-card title=\"Confirm Finish\">\n      <v-card-text>\n\n\n        <v-number-input\n          v-model=\"rejectQty\"\n          :reverse=\"false\"\n          controlVariant=\"split\"\n          label=\"Rejected Quantity\"\n          :hideInput=\"false\"\n          :inset=\"false\"\n          variant=\"outlined\"\n        ></v-number-input>\n      </v-card-text>\n\n      <v-card-actions class=\"actions-right\">\n        <v-btn text @click=\"dialog = false\">\n          Cancel\n        </v-btn>\n\n        <v-btn class=\"submit-big\" color=\"red\" variant=\"flat\" @click=\"submit\">\n          Submit\n        </v-btn>\n      </v-card-actions>\n    </v-card>\n\n  </v-dialog>\n    </div>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n    dialog: false,\n    rejectQty: null,\n    };\n  },\n\n  methods: {\n    submit() {\n      this.send({\n      payload: {\n      rejectQty: this.rejectQty ?? 0,\n      },\n      });\n\n      this.$root.$router.push(\"/production_plan\");\n      this.dialog = false;\n    }\n  },\n};\n</script>\n\n<style scoped>\n  .finish-style {\n    font-weight: 600;\n    color: white !important;\n    background: #e73c52 !important;\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n      0 4px 10px rgba(1, 39, 76, 0.4),\n      inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n    font-size: calc(0.8vw + 0.4em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n  }\n  .v-number-input .v-icon {\n    color: #444444 !important; /* Force a dark color */\n}\n\n  .finish-style:hover,\n  .finish-style:focus {\n    background: #b52f43 !important;\n    box-shadow:\n      0 6px 16px rgba(1, 39, 76, 0.5),\n      inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n  }\n\n  .finish-style:active {\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n  }\n\n  .submit-big {\n  min-width: 180px; /* wider */\n  padding: 20px 24px; /* taller + more horizontal padding */\n  font-size: 1rem;\n  font-weight: 600;\n  border-radius: 10px;\n  }\n\n  .actions-right {\n  display: flex;\n  justify-content: flex-end;   /* align both buttons right */\n  gap: 12px;                   /* spacing between Cancel + Submit */\n  padding-right: 20px;         /* optional: add a little breathing room */\n}\n</style>",
         "storeOutMessages": true,
         "passthru": true,
         "resendOnRefresh": true,
@@ -5393,7 +5393,7 @@
         "tooltip": "",
         "color": "",
         "bgcolor": "",
-        "className": "",
+        "className": "andon-style",
         "icon": "play",
         "iconPosition": "left",
         "payload": "green",
@@ -5432,7 +5432,7 @@
         "tooltip": "",
         "color": "",
         "bgcolor": "",
-        "className": "",
+        "className": "andon-style",
         "icon": "account-question",
         "iconPosition": "left",
         "payload": "blue",
@@ -5471,7 +5471,7 @@
         "tooltip": "",
         "color": "",
         "bgcolor": "",
-        "className": "",
+        "className": "andon-style",
         "icon": "close-octagon",
         "iconPosition": "left",
         "payload": "red",
@@ -5785,15 +5785,15 @@
         "id": "099b519895618f53",
         "type": "function",
         "z": "7c2196e0bf45cdca",
-        "name": "disable pp page in process",
-        "func": "\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/process\"\n) {\n    // node.send({\n    //     payload: {\n    //         pages: {\n    //             disable: ['Production Plan']\n    //         }\n    //     }\n    // });\n    node.send({ payload: { pages: { disable: ['Production Plan'] } } });\n\n}",
+        "name": "in Process Page",
+        "func": "if (\n  msg.topic === \"$pageview\" &&\n  msg.payload?.page?.path === \"/process\"\n) {\n  return {\n    payload: {\n      pages: {\n        disable: ['Production Plan', 'Power Meter'],\n      }\n    }\n  };\n}\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
+        "x": 360,
         "y": 960,
         "wires": [
             [
@@ -5910,7 +5910,7 @@
         "width": 7,
         "height": 0,
         "head": "",
-        "format": "<template>\n<v-container fluid class=\"pa-4\">\n  <v-row>\n    <v-col cols=\"9\">\n      <v-text-field\n        v-model=\"batchId\"\n        label=\"Enter Batch ID\"\n        outlined\n        dense\n      ></v-text-field>\n    </v-col>\n\n    <v-col cols=\"3\">\n      <v-btn block color=\"primary\" @click=\"submitBatch\" :disabled=\"!batchId\">\n        Start Manual\n      </v-btn>\n    </v-col>\n  </v-row>\n</v-container>\n\n\n</template>\n\n<script>\nexport default {\n  data() {\n    return {\n      batchId: \"\",\n      activePic: \"\", \n    };\n  },\n  methods: {\n    submitBatch() {\n      const orderId = `ORD-${Date.now()}`;\n      \n      const payload = {\n        productName: \"Unknown -- Manual Input\",\n        orderId,\n        quantity: 0,\n        start: new Date().toISOString(),\n        batchId: this.batchId,\n        activePic: this.activePic,\n      };\n\n      this.send({\n        payload: `${payload.orderId},-,${payload.activePic},-,${payload.batchId}`,\n      });\n\n      \n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: payload, \n      });\n    },\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n    },\n  },\n};\n</script>\n\n<style scoped>\n.v-container {\n  max-height: 100%;\n}\n</style>",
+        "format": "<template>\n  <v-container fluid class=\"pa-4\">\n    <v-row>\n      <v-col cols=\"9\">\n        <v-text-field v-model=\"batchId\" label=\"Enter Batch ID\" outlined dense></v-text-field>\n      </v-col>\n\n      <v-col cols=\"3\">\n        <v-btn block color=\"primary\" @click=\"submitBatch\" :disabled=\"!batchId\">\n          Start Manual\n        </v-btn>\n      </v-col>\n    </v-row>\n  </v-container>\n\n\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      batchId: \"\",\n      activePic: \"\", \n    };\n  },\n  methods: {\n    submitBatch() {\n      const now = new Date();\n      const currentDate =\n        now.getFullYear().toString() +\n        String(now.getMonth() + 1).padStart(2, \"0\") +\n        String(now.getDate()).padStart(2, \"0\");\n\n      const currentTime =\n        String(now.getHours()).padStart(2, \"0\") +\n        String(now.getMinutes()).padStart(2, \"0\") +\n        String(now.getSeconds()).padStart(2, \"0\");\n\n      // first two letter of batach ID\n      const letters =\n        this.batchId && this.batchId.trim().length > 1\n          ? this.batchId.trim().slice(0, 2).toUpperCase()\n          : \"AB\";\n\n      const orderId = `${currentDate}-${letters}-${currentTime}`;\n      \n      const payload = {\n        productName: \"Unknown -- Manual Input\",\n        orderId,\n        quantity: 0,\n        start: new Date().toISOString(),\n        batchId: this.batchId,\n        activePic: this.activePic,\n      };\n\n      this.send({\n  payload: `${payload.orderId},-,${payload.activePic.replace(/ /g, \"__SPACE__\")},-,${payload.batchId.replace(/ /g, \"__SPACE__\")}`\n});\n\n\n      \n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: payload, \n      });\n    },\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .v-container {\n    max-height: 100%;\n  }\n</style>",
         "storeOutMessages": true,
         "passthru": false,
         "resendOnRefresh": true,
@@ -6331,16 +6331,15 @@
         "id": "9183f2c2183cf134",
         "type": "function",
         "z": "7c2196e0bf45cdca",
-        "d": true,
-        "name": "disable process in pp page",
-        "func": "\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/production_plan\"\n) {\n    // node.send({\n    //     payload: {\n    //         pages: {\n    //             disable: ['Production Plan']\n    //         }\n    //     }\n    // });\n    node.send({ payload: { pages: { disable: ['Process'] } } });\n\n}",
+        "name": "in PP page",
+        "func": "\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/production_plan\"\n) {\n    node.send({\n    payload: {\n      pages: {\n        disable: ['Process'],\n        enable: ['Power Meter']\n      }\n    }\n  });\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
+        "x": 350,
         "y": 1020,
         "wires": [
             [
@@ -6352,59 +6351,44 @@
         "id": "aef8007978578bce",
         "type": "function",
         "z": "7c2196e0bf45cdca",
-        "d": true,
-        "name": "from power meter, set query",
-        "func": "\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/power_meter\"\n) {\n    // node.send({\n    //     payload: {\n    //         pages: {\n    //             disable: ['Production Plan']\n    //         }\n    //     }\n    // });\n    // node.send({ payload: { pages: { disable: ['Process'] } } });\n    return msg;\n}",
+        "name": "from power meter, enable PP page",
+        "func": "\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/power_meter\"\n) {\n    node.send({\n    payload: {\n      pages: {\n        disable: ['Power Meter'],\n        enable: ['Production Plan']\n      }\n    }\n  });\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
-        "y": 1080,
-        "wires": [
-            [
-                "fed1b8593879c4e2"
-            ]
-        ]
-    },
-    {
-        "id": "fed1b8593879c4e2",
-        "type": "sqlite",
-        "z": "7c2196e0bf45cdca",
-        "d": true,
-        "mydb": "25c1914aaf26412a",
-        "sqlquery": "msg.topic",
-        "sql": "",
-        "name": "tastiwayDB",
-        "x": 650,
-        "y": 1080,
-        "wires": [
-            [
-                "9db61ce3a9fc47d5"
-            ]
-        ]
-    },
-    {
-        "id": "9db61ce3a9fc47d5",
-        "type": "function",
-        "z": "7c2196e0bf45cdca",
-        "d": true,
-        "name": "disable page from power meter",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 910,
+        "x": 420,
         "y": 1080,
         "wires": [
             [
                 "6abe29bb45725de3"
             ]
+        ]
+    },
+    {
+        "id": "36663e18872eeabe",
+        "type": "ui-template",
+        "z": "7c2196e0bf45cdca",
+        "group": "",
+        "page": "8b5a8b9ec8801e6b",
+        "ui": "",
+        "name": "Andon Button CSS",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": ".andon-style button {\n    font-weight: 600;\n    color: white;\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n        0 4px 10px rgba(1, 39, 76, 0.4),\n        inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n    \n    font-size: calc(1vw + 0.5em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n    max-height: calc( 2 * var(--widget-row-height)); /* in case font size gets out of hand */\n    overflow: hidden; /* in case text too wide at this font size */\n}\n\n/* optional active press effect */\n.refresh-style button:active {\n    transform: scale(0.98);\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n}",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "page:style",
+        "className": "",
+        "x": 2010,
+        "y": 740,
+        "wires": [
+            []
         ]
     }
 ]

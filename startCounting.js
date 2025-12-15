@@ -8,10 +8,14 @@ import fs from "fs";
 
 // retrieve the custom machine Id 
 const machineId = fs.readFileSync('/etc/machine_id_custom', 'utf8').trim();
-
+// retrieve the variable from the node red
 const combined = process.argv[2];
-console.log("combined:", combined)
-const [orderId, activePic, batchId] = combined.split(",-,");
+console.log("combined:", combined);
+const decode = (v) => v.replace(/__SPACE__/g, " ");
+const [orderIdRaw, activePicRaw, batchIdRaw] = combined.split(",-,");
+const orderId = decode(orderIdRaw);
+const activePic = decode(activePicRaw);
+const batchId = decode(batchIdRaw);
 
 if (!orderId) {
     console.error("❌ Missing orderId argument!");

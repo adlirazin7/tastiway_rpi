@@ -35,14 +35,14 @@ try {
 
     // retrive sqlite -- table current
     try {
-        currentRow = await db.get(`SELECT * FROM current LIMIT 1;`);
+        currentRow = await db.all(`SELECT * FROM current LIMIT 1;`);
     } catch (err) {
         throw new Error(`❌ Retrieve 'current' table failed: ${err.message}`);
     }
 
     // Firestore -- update ANDON signal system
-    if(pressedColor === 'green'){
-        if (!currentRow){
+    if (pressedColor === 'green') {
+        if (currentRow.length === 0) {
             try {
                 await dbFirestore
                     .collection("tastiway_machines")
@@ -57,7 +57,7 @@ try {
             } catch (err) {
                 throw new Error(`❌ Firestore update Andon status failed: ${err.message}`);
             }
-        }else{
+        } else {
             try {
                 await dbFirestore
                     .collection("tastiway_machines")
@@ -73,36 +73,36 @@ try {
                 throw new Error(`❌ Firestore update Andon status failed: ${err.message}`);
             }
         }
-    }else if(pressedColor === 'blue'){
+    } else if (pressedColor === 'blue') {
         try {
-                await dbFirestore
-                    .collection("tastiway_machines")
-                    .doc(machineId)
-                    .set(
-                        {
-                            status: "blue",
-                            lastSeen: new Date(),
-                        },
-                        { merge: true }
-                    );
-            } catch (err) {
-                throw new Error(`❌ Firestore update Andon status failed: ${err.message}`);
-            }
-    }else{
+            await dbFirestore
+                .collection("tastiway_machines")
+                .doc(machineId)
+                .set(
+                    {
+                        status: "blue",
+                        lastSeen: new Date(),
+                    },
+                    { merge: true }
+                );
+        } catch (err) {
+            throw new Error(`❌ Firestore update Andon status failed: ${err.message}`);
+        }
+    } else {
         try {
-                await dbFirestore
-                    .collection("tastiway_machines")
-                    .doc(machineId)
-                    .set(
-                        {
-                            status: "red",
-                            lastSeen: new Date(),
-                        },
-                        { merge: true }
-                    );
-            } catch (err) {
-                throw new Error(`❌ Firestore update Andon status failed: ${err.message}`);
-            }
+            await dbFirestore
+                .collection("tastiway_machines")
+                .doc(machineId)
+                .set(
+                    {
+                        status: "red",
+                        lastSeen: new Date(),
+                    },
+                    { merge: true }
+                );
+        } catch (err) {
+            throw new Error(`❌ Firestore update Andon status failed: ${err.message}`);
+        }
     }
 
 } catch (err) {

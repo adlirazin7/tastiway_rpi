@@ -47,7 +47,7 @@ try {
         throw new Error(`❌  SQLite open failed: ${err.message}`);
     }
 
-    // Sqlite -- table 'process'
+    // Sqlite -- tastiway-process table
     const nowMillis = Date.now();
     try {// orderId Primary key
         await db.run(
@@ -61,9 +61,9 @@ try {
 
     //Sqlite -- current table
     try {
-        const currentRow = await db.get(`SELECT * FROM current LIMIT 1;`);
+        const currentRow = await db.all(`SELECT * FROM current LIMIT 1;`);
 
-        if (!currentRow) {
+        if (currentRow.length === 0) {
             // table empty -> insert new
             await db.run(
                 `INSERT INTO current (orderId, counts, pic) VALUES (?, ?, ?)`,
@@ -114,6 +114,37 @@ try {
             );
     } catch (err) {
         throw new Error(`❌ Firestore update Andon status failed: ${err.message}`);
+    }
+
+    // Firestore -- create doc for report
+    try {
+        const order = await db.all(`SELECT * FROM tastiway_process WHERE orderId = ?`, [orderId]);
+        if (order.length === 0) {
+            throw new Error(`${orderId} is not found in the tastiway_process`)
+        }
+        // set the doc in the firestore
+        await dbFirestore
+            .collection("tastiway_reports")
+            .doc(orderId)
+            .set(
+                {
+                    orderId: orderId,
+                    start: Timestamp.fromMillis(order["start"]),
+                    batchId: order["batchId"],
+                    machineId: machineId,
+                    pic: order["pic"]
+                },
+            )
+        // once added into 'report', modify the updated
+        await db.run(
+            `UPDATE tastiway_process
+                SET uploadedStart = 1
+                WHERE orderId = ?`,
+            [orderId]
+        );
+    } catch (err) {
+        throw new Error(`❌ Report creation failed for orderId=${orderId}: ${err.message}`);
+
     }
 
 

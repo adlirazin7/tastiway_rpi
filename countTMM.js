@@ -16,11 +16,11 @@ const db = await open({
 try {
   const { kgperhour, threshold } = JSON.parse(config);
 
-  const currentRow = await db.get(`SELECT * FROM current LIMIT 1;`);
+  const currentRow = await db.all(`SELECT * FROM current LIMIT 1;`);
 
-  if (!currentRow) {
+  if (currentRow.length === 0) {
     console.log("NO PROCESS IS RUNNING >:c");
- 
+
   }
 
   const startTime = currentRow.start;
@@ -56,17 +56,17 @@ try {
   const totalTimeOn = onArr.length * 20;
   const totalCount = (totalTimeOn / 3600) * kgperhour;
   console.log(totalCount)
-  await fetch("http://localhost:6018/tmm_count" , {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    count: totalCount ?? 0
+  await fetch("http://localhost:6018/tmm_count", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      count: totalCount ?? 0
+    })
+
   })
 
-})
-  
 
 
 } catch (error) {

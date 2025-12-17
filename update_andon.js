@@ -34,13 +34,13 @@ try {
 
     // retrive sqlite -- table current
     try {
-        currentRow = await db.get(`SELECT * FROM current LIMIT 1;`);
+        currentRow = await db.all(`SELECT * FROM current LIMIT 1;`);
     } catch (err) {
         throw new Error(`❌ Retrieve 'current' table failed: ${err.message}`);
     }
 
     // Firestore -- update ANDON signal system
-    if (!currentRow){
+    if (currentRow.length === 0) {
         try {
             await dbFirestore
                 .collection("tastiway_machines")
@@ -48,14 +48,14 @@ try {
                 .set(
                     {
                         status: "yellow",
-			lastSeen: new Date(),
+                        lastSeen: new Date(),
                     },
                     { merge: true }
                 );
         } catch (err) {
             throw new Error(`❌ Firestore update Andon status failed: ${err.message}`);
         }
-    }else{
+    } else {
         try {
             await dbFirestore
                 .collection("tastiway_machines")
@@ -63,7 +63,7 @@ try {
                 .set(
                     {
                         status: "green",
-			lastSeen: new Date(),
+                        lastSeen: new Date(),
                     },
                     { merge: true }
                 );

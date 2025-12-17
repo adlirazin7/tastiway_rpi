@@ -125,10 +125,10 @@
             "70a504f88a83e41c",
             "765602198123efe5",
             "9271c39e4e869867",
-            "a940d9172735db12",
-            "c8289f2083621b64",
-            "c44918c63f3ccb43",
-            "05bfb7dad78edf7d"
+            "dd8f215b5c37a602",
+            "0bc989e18ca927cb",
+            "7c54209a073fddc8",
+            "b5eafb750a6d51da"
         ],
         "x": 54,
         "y": 59,
@@ -149,35 +149,14 @@
             "color": "#a4a4a4"
         },
         "nodes": [
-            "e823e5d0dacf7124",
-            "da00adab83fb8bb6",
-            "ab54a850b89ed3c8",
-            "91d56ed89c2c7025",
-            "9696bfba6c5375bc",
-            "61d777026c4a7979",
-            "4432ea5eeca942fd",
-            "a969af2381dbb4bd",
-            "88ebd3e145f14ab3",
-            "da04efe108e28fa2",
-            "5bddeb81be0bb4bd",
-            "1aa6bc293533495e",
-            "2873fda5aae12eb2",
-            "85c33d368e1c9f4e",
-            "a797eec1e0e4ba30",
-            "cc4afe565eec1e85",
-            "fecb0158eef894b4",
-            "9135d2a4bece746f",
-            "8f04c0c2165e5842",
-            "172df75575d1d84a",
-            "39309f4e89a2e6b9",
-            "eacfb7a03545a973",
-            "3e85db347786219c",
-            "999d97b3616a1161"
+            "cc9ff203a9caeea7",
+            "9b4363adb5ca1441",
+            "852e09495ff4be2c"
         ],
-        "x": 1134,
-        "y": 59,
-        "w": 1032,
-        "h": 382
+        "x": 1154,
+        "y": 71.5,
+        "w": 792,
+        "h": 97
     },
     {
         "id": "4a6bf541ef792204",
@@ -410,24 +389,6 @@
         "width": 8,
         "height": 1,
         "className": ""
-    },
-    {
-        "id": "5075a7d8e4947586",
-        "type": "ui-theme",
-        "name": "Default Theme",
-        "colors": {
-            "surface": "#ffffff",
-            "primary": "#0094CE",
-            "bgPage": "#eeeeee",
-            "groupBg": "#ffffff",
-            "groupOutline": "#cccccc"
-        },
-        "sizes": {
-            "pagePadding": "12px",
-            "groupGap": "12px",
-            "groupBorderRadius": "4px",
-            "widgetGap": "12px"
-        }
     },
     {
         "id": "dff5edc413f07f75",
@@ -3769,9 +3730,9 @@
         "id": "817962aa2a40a7df",
         "type": "comment",
         "z": "7c2196e0bf45cdca",
-        "name": "Initaitions sqlite",
+        "name": "Initaitions sqlite tables",
         "info": "",
-        "x": 140,
+        "x": 160,
         "y": 40,
         "wires": []
     },
@@ -4410,92 +4371,6 @@
         "wires": []
     },
     {
-        "id": "a940d9172735db12",
-        "type": "inject",
-        "z": "7c2196e0bf45cdca",
-        "g": "d9cfe70f210b43e5",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 280,
-        "wires": [
-            [
-                "c8289f2083621b64"
-            ]
-        ]
-    },
-    {
-        "id": "c8289f2083621b64",
-        "type": "function",
-        "z": "7c2196e0bf45cdca",
-        "g": "d9cfe70f210b43e5",
-        "name": "Alter current -- add start",
-        "func": "msg.topic = `\nALTER TABLE current\nADD COLUMN start INTEGER;\n`;\n\nreturn msg;\n\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 410,
-        "y": 280,
-        "wires": [
-            [
-                "c44918c63f3ccb43"
-            ]
-        ]
-    },
-    {
-        "id": "c44918c63f3ccb43",
-        "type": "sqlite",
-        "z": "7c2196e0bf45cdca",
-        "g": "d9cfe70f210b43e5",
-        "mydb": "25c1914aaf26412a",
-        "sqlquery": "msg.topic",
-        "sql": "",
-        "name": "tastiwayDB",
-        "x": 690,
-        "y": 280,
-        "wires": [
-            [
-                "05bfb7dad78edf7d"
-            ]
-        ]
-    },
-    {
-        "id": "05bfb7dad78edf7d",
-        "type": "debug",
-        "z": "7c2196e0bf45cdca",
-        "g": "d9cfe70f210b43e5",
-        "name": "create table current",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 910,
-        "y": 280,
-        "wires": []
-    },
-    {
         "id": "30ea4ff2fb21cbd9",
         "type": "http in",
         "z": "7c2196e0bf45cdca",
@@ -4803,522 +4678,6 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "e823e5d0dacf7124",
-        "type": "inject",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1240,
-        "y": 100,
-        "wires": [
-            [
-                "da00adab83fb8bb6"
-            ]
-        ]
-    },
-    {
-        "id": "da00adab83fb8bb6",
-        "type": "function",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "Alter table tastiway_plans",
-        "func": "msg.topic = `\nALTER TABLE tastiway_plans ADD COLUMN batchId TEXT NOT NULL DEFAULT '';\n`;\n\nreturn msg;\n\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1490,
-        "y": 100,
-        "wires": [
-            [
-                "ab54a850b89ed3c8"
-            ]
-        ]
-    },
-    {
-        "id": "ab54a850b89ed3c8",
-        "type": "sqlite",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "mydb": "25c1914aaf26412a",
-        "sqlquery": "msg.topic",
-        "sql": "",
-        "name": "tastiwayDB",
-        "x": 1770,
-        "y": 100,
-        "wires": [
-            [
-                "91d56ed89c2c7025"
-            ]
-        ]
-    },
-    {
-        "id": "91d56ed89c2c7025",
-        "type": "debug",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "create table tastiway_plans",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2000,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "9696bfba6c5375bc",
-        "type": "inject",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1240,
-        "y": 160,
-        "wires": [
-            [
-                "61d777026c4a7979"
-            ]
-        ]
-    },
-    {
-        "id": "61d777026c4a7979",
-        "type": "function",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "add reject table tastiway_process",
-        "func": "msg.topic = `\nALTER TABLE tastiway_process ADD COLUMN reject INTEGER DEFAULT 0;`\n;\n\nreturn msg;\n\n\n// msg.topic = `\n// ALTER TABLE tastiway_process ADD COLUMN pic TEXT NOT NULL DEFAULT '';\n// `;\n// return msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1520,
-        "y": 160,
-        "wires": [
-            [
-                "4432ea5eeca942fd"
-            ]
-        ]
-    },
-    {
-        "id": "4432ea5eeca942fd",
-        "type": "sqlite",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "mydb": "25c1914aaf26412a",
-        "sqlquery": "msg.topic",
-        "sql": "",
-        "name": "tastiwayDB",
-        "x": 1770,
-        "y": 160,
-        "wires": [
-            [
-                "a969af2381dbb4bd"
-            ]
-        ]
-    },
-    {
-        "id": "a969af2381dbb4bd",
-        "type": "debug",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "alter table tastiway_process",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2000,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "88ebd3e145f14ab3",
-        "type": "inject",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1240,
-        "y": 340,
-        "wires": [
-            [
-                "da04efe108e28fa2"
-            ]
-        ]
-    },
-    {
-        "id": "da04efe108e28fa2",
-        "type": "function",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "Alter table current",
-        "func": "msg.topic = `\nALTER TABLE current ADD COLUMN andon TEXT NOT NULL DEFAULT '';\n`;\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1470,
-        "y": 340,
-        "wires": [
-            [
-                "5bddeb81be0bb4bd"
-            ]
-        ]
-    },
-    {
-        "id": "5bddeb81be0bb4bd",
-        "type": "sqlite",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "mydb": "25c1914aaf26412a",
-        "sqlquery": "msg.topic",
-        "sql": "",
-        "name": "tastiwayDB",
-        "x": 1770,
-        "y": 340,
-        "wires": [
-            [
-                "1aa6bc293533495e"
-            ]
-        ]
-    },
-    {
-        "id": "1aa6bc293533495e",
-        "type": "debug",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "create table current",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1970,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "2873fda5aae12eb2",
-        "type": "debug",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "create table current",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1970,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "85c33d368e1c9f4e",
-        "type": "inject",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1240,
-        "y": 400,
-        "wires": [
-            [
-                "a797eec1e0e4ba30"
-            ]
-        ]
-    },
-    {
-        "id": "a797eec1e0e4ba30",
-        "type": "function",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "Create table log",
-        "func": "msg.topic = `\n\nCREATE TABLE IF NOT EXISTS log (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  orderId TEXT NOT NULL,\n  count INTEGER DEFAULT 0,\n  timestamp INTEGER NOT NULL,\n  andon TEXT NOT NULL\n);\n`;\n\nreturn msg;\n\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1460,
-        "y": 400,
-        "wires": [
-            [
-                "cc4afe565eec1e85"
-            ]
-        ]
-    },
-    {
-        "id": "cc4afe565eec1e85",
-        "type": "sqlite",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "mydb": "25c1914aaf26412a",
-        "sqlquery": "msg.topic",
-        "sql": "",
-        "name": "tastiwayDB",
-        "x": 1770,
-        "y": 400,
-        "wires": [
-            [
-                "2873fda5aae12eb2"
-            ]
-        ]
-    },
-    {
-        "id": "fecb0158eef894b4",
-        "type": "inject",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1240,
-        "y": 220,
-        "wires": [
-            [
-                "9135d2a4bece746f"
-            ]
-        ]
-    },
-    {
-        "id": "9135d2a4bece746f",
-        "type": "function",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "Add pic table tastiway_process",
-        "func": "msg.topic = `\nALTER TABLE tastiway_process ADD COLUMN pic TEXT NOT NULL DEFAULT '';\n`;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1510,
-        "y": 220,
-        "wires": [
-            [
-                "8f04c0c2165e5842"
-            ]
-        ]
-    },
-    {
-        "id": "8f04c0c2165e5842",
-        "type": "sqlite",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "mydb": "25c1914aaf26412a",
-        "sqlquery": "msg.topic",
-        "sql": "",
-        "name": "tastiwayDB",
-        "x": 1770,
-        "y": 220,
-        "wires": [
-            [
-                "172df75575d1d84a"
-            ]
-        ]
-    },
-    {
-        "id": "172df75575d1d84a",
-        "type": "debug",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "alter table tastiway_process",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2000,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "39309f4e89a2e6b9",
-        "type": "inject",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1240,
-        "y": 280,
-        "wires": [
-            [
-                "eacfb7a03545a973"
-            ]
-        ]
-    },
-    {
-        "id": "eacfb7a03545a973",
-        "type": "function",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "add batchId table tastiway_process",
-        "func": "msg.topic = `\nALTER TABLE tastiway_process ADD COLUMN batchId TEXT;`\n;\n\nreturn msg;\n\n\n// msg.topic = `\n// ALTER TABLE tastiway_process ADD COLUMN pic TEXT NOT NULL DEFAULT '';\n// `;\n// return msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1520,
-        "y": 280,
-        "wires": [
-            [
-                "3e85db347786219c"
-            ]
-        ]
-    },
-    {
-        "id": "3e85db347786219c",
-        "type": "sqlite",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "mydb": "25c1914aaf26412a",
-        "sqlquery": "msg.topic",
-        "sql": "",
-        "name": "tastiwayDB",
-        "x": 1770,
-        "y": 280,
-        "wires": [
-            [
-                "999d97b3616a1161"
-            ]
-        ]
-    },
-    {
-        "id": "999d97b3616a1161",
-        "type": "debug",
-        "z": "7c2196e0bf45cdca",
-        "g": "80963a9ea04fe8c6",
-        "name": "alter table tastiway_process",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2000,
-        "y": 280,
-        "wires": []
     },
     {
         "id": "264320706a32fb10",
@@ -6183,35 +5542,6 @@
         ]
     },
     {
-        "id": "56f828854c771501",
-        "type": "inject",
-        "z": "7c2196e0bf45cdca",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "300",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1790,
-        "y": 1200,
-        "wires": [
-            [
-                "3c83341f8d638987"
-            ]
-        ]
-    },
-    {
         "id": "3c83341f8d638987",
         "type": "function",
         "z": "7c2196e0bf45cdca",
@@ -6331,15 +5661,15 @@
         "id": "9183f2c2183cf134",
         "type": "function",
         "z": "7c2196e0bf45cdca",
-        "name": "disable process in pp page",
-        "func": "\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/production_plan\"\n) {\n    node.send({ payload: { pages: { disable: ['Process'] } } });\n\n}",
+        "name": "in PP page",
+        "func": "\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/production_plan\"\n) {\n    node.send({\n    payload: {\n      pages: {\n        disable: ['Process'],\n        enable: ['Power Meter']\n      }\n    }\n  });\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
+        "x": 350,
         "y": 1020,
         "wires": [
             [
@@ -6390,5 +5720,265 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "dd8f215b5c37a602",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "create table current",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "0bc989e18ca927cb",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 280,
+        "wires": [
+            [
+                "7c54209a073fddc8"
+            ]
+        ]
+    },
+    {
+        "id": "7c54209a073fddc8",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "name": "Create table log",
+        "func": "msg.topic = `\n\nCREATE TABLE IF NOT EXISTS log (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  orderId TEXT NOT NULL,\n  count INTEGER DEFAULT 0,\n  timestamp INTEGER NOT NULL,\n  andon TEXT NOT NULL\n);\n`;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 280,
+        "wires": [
+            [
+                "b5eafb750a6d51da"
+            ]
+        ]
+    },
+    {
+        "id": "b5eafb750a6d51da",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "g": "d9cfe70f210b43e5",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 690,
+        "y": 280,
+        "wires": [
+            [
+                "dd8f215b5c37a602"
+            ]
+        ]
+    },
+    {
+        "id": "cc9ff203a9caeea7",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "g": "80963a9ea04fe8c6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1260,
+        "y": 120,
+        "wires": [
+            [
+                "9b4363adb5ca1441"
+            ]
+        ]
+    },
+    {
+        "id": "9b4363adb5ca1441",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "g": "80963a9ea04fe8c6",
+        "command": "node /home/pi/Project/updateSqlite.js",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1530,
+        "y": 120,
+        "wires": [
+            [
+                "852e09495ff4be2c"
+            ],
+            [
+                "852e09495ff4be2c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "852e09495ff4be2c",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "g": "80963a9ea04fe8c6",
+        "name": "Alter sqlite table",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1820,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "514a75ef0f0b71c7",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "name": "5 mins",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/5 0-23 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1780,
+        "y": 1200,
+        "wires": [
+            [
+                "3c83341f8d638987"
+            ]
+        ]
+    },
+    {
+        "id": "d1cb207bed205957",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/5 0-23 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 2540,
+        "wires": [
+            [
+                "e6716af0f3538687"
+            ]
+        ]
+    },
+    {
+        "id": "e6716af0f3538687",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "node /home/pi/Project/update_report.js",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Sync Firestore",
+        "x": 420,
+        "y": 2540,
+        "wires": [
+            [
+                "74abea1b341b47ad"
+            ],
+            [
+                "74abea1b341b47ad"
+            ],
+            [
+                "74abea1b341b47ad"
+            ]
+        ]
+    },
+    {
+        "id": "74abea1b341b47ad",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "debug 15",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 2540,
+        "wires": []
     }
 ]

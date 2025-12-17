@@ -41,10 +41,10 @@ try {
         throw new Error(`❌  SQLite open failed: ${err.message}`);
     }
 
-    // update sqlite -- table process
+    // update sqlite -- table tastiway-process
     const nowMillis = Date.now();
     try {
-        const currentRow = await db.get(`SELECT * FROM current LIMIT 1;`);
+        const currentRow = await db.all(`SELECT * FROM current LIMIT 1;`);
         if (orderId === currentRow['orderId']) {
             await db.run(
                 `UPDATE tastiway_process
@@ -81,28 +81,21 @@ try {
 
     //Firestore -- add collection 'reports'
     try {
-        const order = await db.get(`SELECT * FROM tastiway_process WHERE orderId = ?`, [orderId]);
+        const order = await db.all(`SELECT * FROM tastiway_process WHERE orderId = ?`, [orderId]);
+        if (order.length === 0) {
+            throw new Error(`${orderId} is not exist in the tastiway_process table`);
+        }
         // retrieve the andon array for that period from count_logs
-        const data = await db.all(`SELECT timestamp, count, andon FROM log WHERE orderId= ? AND timestamp > ? AND timestamp < ?`, [orderId, order["start"], order["stop"]]);
-        data.push({ timestamp: nowMillis, count: order["counts"], andon: data[data.length - 1]["andon"] });
-        // set the doc in the firestore
         await dbFirestore
             .collection("tastiway_reports")
             .doc(orderId)
             .set(
                 {
-                    orderId: orderId,
-                    start: Timestamp.fromMillis(order["start"]),
                     stop: Timestamp.fromMillis(order["stop"]),
                     finalCount: order["counts"],
                     reject: order["reject"],
-                    batchId: order["batchId"],
-                    machineId: machineId,
-                    data: data,
-                    pic: order["pic"]
-
-
                 },
+                { merge: true }
             )
         // once added into 'report', modify the updated
         await db.run(

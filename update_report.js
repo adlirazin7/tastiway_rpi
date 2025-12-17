@@ -60,6 +60,7 @@ try {
                         machineId: machineId,
                         pic: order["pic"]
                     },
+                    { merge: true }
                 )
             // once added into 'report', modify the updated
             await db.run(
@@ -75,23 +76,20 @@ try {
 
     //Firestore -- append data from log into the respective dos in the collection report
     try {
-        for (const order of orders) {
+        //retrive the orderId (per doc) of where at least one row is not uploaded yet
+        const logOrders = await db.all(`SELECT DISTINCT orderId FROM log WHERE uploaded = 0;`)
+        for (const order of logOrders) {
             orderId = order["orderId"]
             // retrieve the andon array for that period from count_logs
             const data = await db.all(`SELECT timestamp, count, andon, duration FROM log WHERE orderId=? AND uploaded=0`, [orderId]);
-            if (data.length === 0) {
-                continue
-            }
+            if (data.length === 0) { continue }
             // set the doc in the firestorewhy 
             await dbFirestore
                 .collection("tastiway_reports")
                 .doc(orderId)
-                .set(
-                    {
-                        data: data,
-                    },
-                    { merge: true }
-                )
+                .update({
+                    data: arrayUnion(...data)
+                });
             // once added into 'report', update the uploaded in the log table
             await db.run(
                 `UPDATE log
@@ -119,18 +117,29 @@ try {
     //Firestore -- update finish info into collection report
     try {
         for (const order of ordersFinish) {
+            if (!order["stop"]) { continue }
             orderId = order["orderId"]
-            // retrieve the andon array for that period from count_logs
+            const plan = await db.all(`SELECT * FROM tastiway_plan WHERE orderId=?`, [orderId])
+            let expectedQuantity;
+            let productName;
+
+            if (plan.length === 0) {
+                expectedQuantity = 0;
+                productName = ""
+            } else {
+                expectedQuantity = plan[0]["quantity"]
+                productName = plan[0]["productName"]
+            }
             await dbFirestore
                 .collection("tastiway_reports")
                 .doc(orderId)
-                .set(
+                .update(
                     {
                         stop: Timestamp.fromMillis(order["stop"]),
                         finalCount: order["counts"],
-                        reject: order["reject"],
+                        reject: expectedQuantity - order["reject"],
+                        name: productName,
                     },
-                    { merge: true }
                 )
             // once added into 'report', modify the updated
             await db.run(

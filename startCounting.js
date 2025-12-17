@@ -1,5 +1,5 @@
 import { initializeApp, cert } from "firebase-admin/app";
-import { getFirestore } from "firebase-admin/firestore";
+import { getFirestore, Timestamp } from "firebase-admin/firestore";
 import serviceAccount from "./service_account-cp4.json" with { type: "json" };
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
@@ -16,6 +16,7 @@ const [orderIdRaw, activePicRaw, batchIdRaw] = combined.split(",-,");
 const orderId = decode(orderIdRaw);
 const activePic = decode(activePicRaw);
 const batchId = decode(batchIdRaw);
+const nowMillis = Date.now();
 
 if (!orderId) {
     console.error("❌ Missing orderId argument!");
@@ -48,7 +49,6 @@ try {
     }
 
     // Sqlite -- tastiway-process table
-    const nowMillis = Date.now();
     try {// orderId Primary key
         await db.run(
             `INSERT OR IGNORE INTO tastiway_process (orderId, start, pic, batchId)
@@ -118,10 +118,11 @@ try {
 
     // Firestore -- create doc for report
     try {
-        const order = await db.all(`SELECT * FROM tastiway_process WHERE orderId = ?`, [orderId]);
-        if (order.length === 0) {
+        const orders = await db.all(`SELECT * FROM tastiway_process WHERE orderId = ?`, [orderId]);
+        if (orders.length === 0) {
             throw new Error(`${orderId} is not found in the tastiway_process`)
         }
+        const order = orders[0];
         // set the doc in the firestore
         await dbFirestore
             .collection("tastiway_reports")
@@ -134,6 +135,7 @@ try {
                     machineId: machineId,
                     pic: order["pic"]
                 },
+                { merge: true }
             )
         // once added into 'report', modify the updated
         await db.run(

@@ -67,6 +67,33 @@
         "h": 97
     },
     {
+        "id": "c3495ec264fdf1d0",
+        "type": "group",
+        "z": "f69312076bb95996",
+        "style": {
+            "stroke": "#999999",
+            "stroke-opacity": "1",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "label-position": "nw",
+            "color": "#a4a4a4"
+        },
+        "nodes": [
+            "95c19fc6a00fb19f",
+            "fb5dbb32e75e69f5",
+            "d1cb207bed205957",
+            "e6716af0f3538687",
+            "74abea1b341b47ad",
+            "90199c17386ded4c",
+            "dda313d59c85387e"
+        ],
+        "x": 1694,
+        "y": 1359,
+        "w": 1012,
+        "h": 229.5
+    },
+    {
         "id": "d7416ec1d9513281",
         "type": "ui-base",
         "name": "My Dashboard",
@@ -1073,7 +1100,8 @@
         "y": 1380,
         "wires": [
             [
-                "b59f60c8d21beb67"
+                "b59f60c8d21beb67",
+                "6d6b5f6cb38943bb"
             ],
             [
                 "b59f60c8d21beb67"
@@ -1507,77 +1535,6 @@
         "wires": []
     },
     {
-        "id": "44bfb6ef778a96bf",
-        "type": "inject",
-        "z": "f69312076bb95996",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "*/5 0-23 * * *",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 130,
-        "y": 2400,
-        "wires": [
-            [
-                "95c19fc6a00fb19f"
-            ]
-        ]
-    },
-    {
-        "id": "95c19fc6a00fb19f",
-        "type": "exec",
-        "z": "f69312076bb95996",
-        "command": "node /home/pi/Project/update_andon.js ",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "update andon",
-        "x": 360,
-        "y": 2400,
-        "wires": [
-            [
-                "fb5dbb32e75e69f5"
-            ],
-            [
-                "fb5dbb32e75e69f5"
-            ],
-            [
-                "fb5dbb32e75e69f5"
-            ]
-        ]
-    },
-    {
-        "id": "fb5dbb32e75e69f5",
-        "type": "debug",
-        "z": "f69312076bb95996",
-        "name": "debug 4",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 2400,
-        "wires": []
-    },
-    {
         "id": "99bdfba52e6ed083",
         "type": "ui-template",
         "z": "f69312076bb95996",
@@ -1784,12 +1741,8 @@
             [
                 "ce96c436669e48b9"
             ],
-            [
-                "ce96c436669e48b9"
-            ],
-            [
-                "ce96c436669e48b9"
-            ]
+            [],
+            []
         ]
     },
     {
@@ -2246,122 +2199,6 @@
         ]
     },
     {
-        "id": "20b0b99bdc560814",
-        "type": "inject",
-        "z": "f69312076bb95996",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "300",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1710,
-        "y": 1320,
-        "wires": [
-            [
-                "5f227b8a80d0d42e"
-            ]
-        ]
-    },
-    {
-        "id": "5f227b8a80d0d42e",
-        "type": "function",
-        "z": "f69312076bb95996",
-        "name": "check current",
-        "func": "msg.topic = \"SELECT * FROM current;\";\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2000,
-        "y": 1320,
-        "wires": [
-            [
-                "42fd5cb9775b703a"
-            ]
-        ]
-    },
-    {
-        "id": "42fd5cb9775b703a",
-        "type": "sqlite",
-        "z": "f69312076bb95996",
-        "mydb": "25c1914aaf26412a",
-        "sqlquery": "msg.topic",
-        "sql": "",
-        "name": "tastiwayDB",
-        "x": 2170,
-        "y": 1320,
-        "wires": [
-            [
-                "24e37cb0bb761730",
-                "e0c46f9f800ee406"
-            ]
-        ]
-    },
-    {
-        "id": "24e37cb0bb761730",
-        "type": "function",
-        "z": "f69312076bb95996",
-        "name": "update andon sqlite",
-        "func": "const rows = msg.payload;\n\nif (!rows || rows.length === 0) {\n    return null;   \n}\n\nconst row = rows[0];\n\nmsg.topic = `\n  INSERT INTO log (orderId, count, andon, timestamp)\n  VALUES ('${row.orderId}', ${row.counts}, '${row.andon}', ${Date.now()})\n`;\n\nreturn msg;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2370,
-        "y": 1320,
-        "wires": [
-            [
-                "58ee8418095a25a0"
-            ]
-        ]
-    },
-    {
-        "id": "58ee8418095a25a0",
-        "type": "sqlite",
-        "z": "f69312076bb95996",
-        "mydb": "25c1914aaf26412a",
-        "sqlquery": "msg.topic",
-        "sql": "",
-        "name": "tastiwayDB",
-        "x": 2610,
-        "y": 1320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e0c46f9f800ee406",
-        "type": "debug",
-        "z": "f69312076bb95996",
-        "name": "debug 10",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2340,
-        "y": 1420,
-        "wires": []
-    },
-    {
         "id": "7151a0bc9c8d11d2",
         "type": "debug",
         "z": "f69312076bb95996",
@@ -2394,15 +2231,16 @@
         "id": "90199c17386ded4c",
         "type": "link in",
         "z": "f69312076bb95996",
+        "g": "c3495ec264fdf1d0",
         "name": "start process",
         "links": [
             "6cb56de36a3e267f"
         ],
-        "x": 1895,
-        "y": 1240,
+        "x": 1955,
+        "y": 1420,
         "wires": [
             [
-                "5f227b8a80d0d42e"
+                "95c19fc6a00fb19f"
             ]
         ]
     },
@@ -2776,5 +2614,207 @@
         "x": 1860,
         "y": 140,
         "wires": []
+    },
+    {
+        "id": "285531db5b35b815",
+        "type": "comment",
+        "z": "f69312076bb95996",
+        "name": "periodic task",
+        "info": "",
+        "x": 1770,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "95c19fc6a00fb19f",
+        "type": "exec",
+        "z": "f69312076bb95996",
+        "g": "c3495ec264fdf1d0",
+        "command": "node /home/pi/Project/update_log_status.js ",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "update log table and status",
+        "x": 2180,
+        "y": 1440,
+        "wires": [
+            [
+                "fb5dbb32e75e69f5"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "fb5dbb32e75e69f5",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "g": "c3495ec264fdf1d0",
+        "name": "update log table and status to firestore",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2510,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "d1cb207bed205957",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "g": "c3495ec264fdf1d0",
+        "name": "5 mins",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/1 0-23 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1800,
+        "y": 1480,
+        "wires": [
+            [
+                "95c19fc6a00fb19f",
+                "e6716af0f3538687"
+            ]
+        ]
+    },
+    {
+        "id": "e6716af0f3538687",
+        "type": "exec",
+        "z": "f69312076bb95996",
+        "g": "c3495ec264fdf1d0",
+        "command": "node /home/pi/Project/update_report.js",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Sync to Firestore",
+        "x": 2170,
+        "y": 1540,
+        "wires": [
+            [
+                "74abea1b341b47ad"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "74abea1b341b47ad",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "g": "c3495ec264fdf1d0",
+        "name": "sync to firestore (report)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2530,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "8fb08e4bec2e9cee",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "add +1 count test",
+        "func": "var currentOrderId = flow.get(\"currentOrderId\") || null;\n\nvar sqlMsg = null;\n\n// Only count if an order is active\nif (currentOrderId) {\n        sqlMsg = {\n            topic: `UPDATE current\n                    SET counts = counts + 1\n                    WHERE orderId = '${currentOrderId}';`\n        };\n        node.status({ fill: \"green\", shape: \"dot\", text: \"Counting...\" });\n    \n} else {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"Counting disabled\" });\n}\n\nreturn sqlMsg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 1240,
+        "wires": [
+            [
+                "317ec6aaa27620e1"
+            ]
+        ]
+    },
+    {
+        "id": "fbd27481b6aa8fb2",
+        "type": "inject",
+        "z": "f69312076bb95996",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 1240,
+        "wires": [
+            [
+                "8fb08e4bec2e9cee"
+            ]
+        ]
+    },
+    {
+        "id": "6d6b5f6cb38943bb",
+        "type": "link out",
+        "z": "f69312076bb95996",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "dda313d59c85387e"
+        ],
+        "x": 1115,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "dda313d59c85387e",
+        "type": "link in",
+        "z": "f69312076bb95996",
+        "g": "c3495ec264fdf1d0",
+        "name": "link in 1",
+        "links": [
+            "6d6b5f6cb38943bb"
+        ],
+        "x": 2015,
+        "y": 1400,
+        "wires": [
+            [
+                "95c19fc6a00fb19f"
+            ]
+        ]
     }
 ]

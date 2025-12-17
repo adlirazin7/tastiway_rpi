@@ -32,7 +32,6 @@ try {
         snap = await dbFirestore
             .collection("tastiway_plans")
             .where("machineId", "==", machineId)
-            .where("status", "==", "pending")
             .where("start", ">=", Timestamp.fromDate(start))
             .where("start", "<", Timestamp.fromDate(end))
             .limit(100)

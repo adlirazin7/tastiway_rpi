@@ -44,8 +44,8 @@ try {
     throw new Error(`❌ Retrieve 'current' table failed: ${err.message}`);
 }
 
+// Sqlite -- update the log table
 if (currentRows.length === 1) {
-    // Sqlite -- update the log table
     try {
         let duration;
         // retrieve latest duration 
@@ -64,7 +64,7 @@ if (currentRows.length === 1) {
     }
 }
 
-// Firestore -- update ANDON signal system
+// Firestore -- update 'real-time' data to the machine
 if (currentRows.length === 0) {
     try {
         await dbFirestore
@@ -75,6 +75,8 @@ if (currentRows.length === 0) {
                     status: "yellow",
                     lastSeen: new Date(),
                     count: null,
+                    expectedQuantity: null,
+                    productName: null,
                 },
                 { merge: true }
             );
@@ -83,6 +85,17 @@ if (currentRows.length === 0) {
     }
 } else {
     try {
+        const plan = await db.all(`SELECT * FROM tastiway_plan WHERE orderId=?`, [orderId])
+        let expectedQuantity;
+        let productName;
+
+        if (plan.length === 0) {
+            expectedQuantity = 0;
+            productName = ""
+        } else {
+            expectedQuantity = plan[0]["quantity"]
+            productName = plan[0]["productName"]
+        }
         await dbFirestore
             .collection("tastiway_machines")
             .doc(machineId)
@@ -91,6 +104,8 @@ if (currentRows.length === 0) {
                     status: currentRow["andon"],
                     lastSeen: new Date(),
                     count: currentRow["counts"],
+                    expectedQuantity: expectedQuantity,
+                    productName: productName,
                 },
                 { merge: true }
             );

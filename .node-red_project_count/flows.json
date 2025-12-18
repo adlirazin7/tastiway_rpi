@@ -2680,7 +2680,7 @@
             }
         ],
         "repeat": "",
-        "crontab": "*/1 0-23 * * *",
+        "crontab": "*/5 0-23 * * *",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",

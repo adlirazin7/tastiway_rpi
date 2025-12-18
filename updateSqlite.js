@@ -33,6 +33,8 @@ try {
                 { name: "pic", sql: "ALTER TABLE tastiway_process ADD COLUMN pic TEXT NOT NULL DEFAULT '';" },
                 { name: "batchId", sql: "ALTER TABLE tastiway_process ADD COLUMN batchId TEXT;" },
                 { name: "uploadedStart", sql: "ALTER TABLE tastiway_process ADD COLUMN uploadedStart INTEGER DEFAULT 0;" },
+                { name: "productName", sql: "ALTER TABLE tastiway_process ADD COLUMN productName TEXT NOT NULL DEFAULT '';" },
+                { name: "expectedQuantity", sql: "ALTER TABLE tastiway_process ADD COLUMN expectedQuantity INTEGER DEFAULT 0;" },
             ],
         },
         {

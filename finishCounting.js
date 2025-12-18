@@ -21,6 +21,7 @@ if (!orderId) {
 
 let db;
 let dbFirestore;
+let currentRow
 
 try {
     // firebase init
@@ -45,10 +46,10 @@ try {
 
 
 
-    // update sqlite -- table tastiway-process
+    //* update sqlite -- table tastiway-process
     try {
         const currentRows = await db.all(`SELECT * FROM current LIMIT 1;`);
-        const currentRow = currentRows[0]
+        currentRow = currentRows[0]
         if (orderId === currentRow['orderId']) {
             await db.run(
                 `UPDATE tastiway_process
@@ -65,7 +66,9 @@ try {
         throw new Error(`❌ 'tastiway_process' table handling failed: ${err.message}`);
     }
 
-    // Sqlilte -- add the last data to table log -- make sure to clear the orderId first to prevent from race condition with the log updater
+
+
+    //* Sqlilte -- add the last data to table log -- make sure to clear the orderId first to prevent from race condition with the log updater
     try {
         let duration;
         // retrieve latest duration 
@@ -82,7 +85,9 @@ try {
         throw new Error(`❌ Update 'log' table failed: ${err.message}`);
     }
 
-    // Firestore -- update status
+
+
+    //* Firestore -- update status
     try {
         await dbFirestore
             .collection("tastiway_plans")
@@ -100,24 +105,13 @@ try {
 
 
 
-    //Firestore -- add collection 'reports'
+    //* Firestore -- add collection 'reports'
     try {
         const orders = await db.all(`SELECT * FROM tastiway_process WHERE orderId = ?`, [orderId]);
-        const plan = await db.all(`SELECT * FROM tastiway_plan WHERE orderId=?`, [orderId])
         if (orders.length === 0) {
             throw new Error(`${orderId} is not exist in the tastiway_process table`);
         }
         const order = orders[0]
-        let expectedQuantity;
-        let productName;
-
-        if (plan.length === 0) {
-            expectedQuantity = 0;
-            productName = ""
-        } else {
-            expectedQuantity = plan[0]["quantity"]
-            productName = plan[0]["productName"]
-        }
         // retrieve the andon array for that period from count_logs
         await dbFirestore
             .collection("tastiway_reports")
@@ -126,8 +120,7 @@ try {
                 {
                     stop: Timestamp.fromMillis(order["stop"]),
                     finalCount: order["counts"],
-                    reject: expectedQuantity - order["reject"],
-                    name: productName,
+                    reject: order["counts"] - order["reject"],
                 },
             )
         // once added into 'report', modify the updated
@@ -141,7 +134,9 @@ try {
         throw new Error(`❌ Firestore add into record failed: ${err.message} for ${orderId}`);
     }
 
-    // Firestore -- update ANDON signal system
+
+
+    //* Firestore -- update ANDON signal system
     try {
         await dbFirestore
             .collection("tastiway_machines")

@@ -12,10 +12,10 @@ const machineId = fs.readFileSync('/etc/machine_id_custom', 'utf8').trim();
 const combined = process.argv[2];
 console.log("combined:", combined);
 const decode = (v) => v.replace(/__SPACE__/g, " ");
-const [orderIdRaw, activePicRaw, batchIdRaw] = combined.split(",-,");
-const orderId = decode(orderIdRaw);
+const [orderId, activePicRaw, batchIdRaw, productNameRaw, expectedQuantity] = combined.split(",-,");
 const activePic = decode(activePicRaw);
 const batchId = decode(batchIdRaw);
+const productName = decode(productNameRaw);
 const nowMillis = Date.now();
 
 if (!orderId) {
@@ -51,9 +51,9 @@ try {
     // Sqlite -- tastiway-process table
     try {// orderId Primary key
         await db.run(
-            `INSERT OR IGNORE INTO tastiway_process (orderId, start, pic, batchId)
-             VALUES (?, ?, ?, ?)`,
-            [orderId, nowMillis, activePic, batchId]
+            `INSERT OR IGNORE INTO tastiway_process (orderId, start, pic, batchId, productName, expectedQuantity)
+             VALUES (?, ?, ?, ?, ?, ?)`,
+            [orderId, nowMillis, activePic, batchId, productName, expectedQuantity]
         );
     } catch (err) {
         throw new Error(`❌ SQLite table 'process' failed: ${err.message}`);
@@ -133,7 +133,9 @@ try {
                     start: Timestamp.fromMillis(order["start"]),
                     batchId: order["batchId"],
                     machineId: machineId,
-                    pic: order["pic"]
+                    pic: order["pic"],
+                    productName: order["productName"],
+                    expectedQuantity: order["expectedQuantity"]
                 },
                 { merge: true }
             )

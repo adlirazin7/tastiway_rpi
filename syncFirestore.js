@@ -1,5 +1,5 @@
 import { initializeApp, cert } from "firebase-admin/app";
-import { getFirestore, Timestamp } from "firebase-admin/firestore";
+import { getFirestore, Timestamp, FieldValue } from "firebase-admin/firestore";
 import serviceAccount from "./service_account-cp4.json" with { type: "json" };
 import sqlite3 from "sqlite3";
 import { open } from "sqlite";
@@ -9,10 +9,11 @@ import fs from "fs";
 // retrieve the custom machine Id 
 const machineId = fs.readFileSync('/etc/machine_id_custom', 'utf8').trim();
 
-
+const { arrayUnion } = FieldValue;
 let db;
 let dbFirestore;
 let orderId;
+let msg = "report sync started\n";
 
 try {
     // firebase init
@@ -58,7 +59,9 @@ try {
                         start: Timestamp.fromMillis(order["start"]),
                         batchId: order["batchId"],
                         machineId: machineId,
-                        pic: order["pic"]
+                        pic: order["pic"],
+                        productName: order["productName"],
+                        expectedQuantity: order["expectedQuantity"]
                     },
                     { merge: true }
                 )
@@ -70,9 +73,11 @@ try {
                 [orderId]
             );
         }
+        msg += `✅ finished upload the start of the process`;
     } catch (err) {
         throw new Error(`❌ Firestore Report creation failed for orderId=${orderId}: ${err.message}`);
     }
+
 
     //Firestore -- append data from log into the respective dos in the collection report
     try {
@@ -98,6 +103,7 @@ try {
                 [orderId]
             );
         }
+        msg += `✅ finished upload the log table`;
     } catch (err) {
         throw new Error(`❌ Firestore add into record from log failed: ${err.message} for ${orderId}`);
     }
@@ -107,7 +113,7 @@ try {
     let ordersFinish = []
     try {
         ordersFinish = await db.all(
-            `SELECT orderId, stop, counts, reject FROM tastiway_process WHERE uploaded = 0`,
+            `SELECT orderId, stop, counts, reject, expectedQuantity FROM tastiway_process WHERE uploaded = 0`,
         );
     } catch (err) {
         throw new Error(`❌ SQLite table 'process retrieve finish' failed: ${err.message}`);
@@ -119,17 +125,6 @@ try {
         for (const order of ordersFinish) {
             if (!order["stop"]) { continue }
             orderId = order["orderId"]
-            const plan = await db.all(`SELECT * FROM tastiway_plan WHERE orderId=?`, [orderId])
-            let expectedQuantity;
-            let productName;
-
-            if (plan.length === 0) {
-                expectedQuantity = 0;
-                productName = ""
-            } else {
-                expectedQuantity = plan[0]["quantity"]
-                productName = plan[0]["productName"]
-            }
             await dbFirestore
                 .collection("tastiway_reports")
                 .doc(orderId)
@@ -137,8 +132,7 @@ try {
                     {
                         stop: Timestamp.fromMillis(order["stop"]),
                         finalCount: order["counts"],
-                        reject: expectedQuantity - order["reject"],
-                        name: productName,
+                        reject: order["counts"] - order["reject"],
                     },
                 )
             // once added into 'report', modify the updated
@@ -149,11 +143,12 @@ try {
                 [orderId]
             );
         }
+        msg += `✅ finished upload the finish of the process`;
     } catch (err) {
         throw new Error(`❌ Firestore add into record failed: ${err.message} for ${orderId}`);
     }
 
-    console.log(`✅ update report finished`)
+    console.log(msg)
 
 } catch (err) {
     console.error("❌ Error:", err.message);

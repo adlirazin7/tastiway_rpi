@@ -85,7 +85,14 @@ try {
     );
 
 } catch (err) {
-    console.error("❌ Error during sync:", err.message);
+    console.error("❌ Error:", err.message);
+    console.error(err.stack);
 } finally {
-    await db.close();
+    if (db) {
+        try {
+            await db.close();
+        } catch (err) {
+            console.error("⚠️ Failed to close SQLite DB:", err.message);
+        }
+    }
 }

@@ -5804,7 +5804,7 @@
         "type": "exec",
         "z": "7c2196e0bf45cdca",
         "g": "c3495ec264fdf1d0",
-        "command": "node /home/pi/Project/update_report.js",
+        "command": "node /home/pi/Project/syncFirestore.js",
         "addpay": "",
         "append": "",
         "useSpawn": "false",

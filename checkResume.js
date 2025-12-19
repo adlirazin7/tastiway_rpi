@@ -30,7 +30,6 @@ try {
             payload: null
         }));
     }
-    console.log("✅ working")
 
 
 } catch (err) {

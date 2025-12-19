@@ -8,7 +8,7 @@ import fs from "fs";
 
 // retrieve the custom machine Id 
 const machineId = fs.readFileSync('/etc/machine_id_custom', 'utf8').trim();
-
+// retrieve the argument passed
 const combined = process.argv[2];
 console.log("combined:", combined)
 const [orderId, reject] = combined.split(",-,");
@@ -18,6 +18,18 @@ if (!orderId) {
     console.error("❌ Missing orderId argument!");
     process.exit(1);
 }
+
+
+// set the uom
+const machineUom = {
+    TMM001: "kg",
+    ZPL001: "PACK",
+    ZTP001: "PACK",
+    SMW001: "kg",
+    BPM001: "PACK",
+
+}
+
 
 let db;
 let dbFirestore;
@@ -92,48 +104,15 @@ try {
         await dbFirestore
             .collection("tastiway_plans")
             .doc(orderId)
-            .set(
+            .update(
                 {
                     status: "completed",
                     updatedAt: new Date(),
                 },
-                { merge: true }
             );
     } catch (err) {
-        throw new Error(`❌ Firestore update status failed: ${err.message}`);
+        console.error(`⚠️ Firestore update status failed (manual will fail): ${err.message}`);
     }
-
-
-
-    //* Firestore -- add collection 'reports'
-    try {
-        const orders = await db.all(`SELECT * FROM tastiway_process WHERE orderId = ?`, [orderId]);
-        if (orders.length === 0) {
-            throw new Error(`${orderId} is not exist in the tastiway_process table`);
-        }
-        const order = orders[0]
-        // retrieve the andon array for that period from count_logs
-        await dbFirestore
-            .collection("tastiway_reports")
-            .doc(orderId)
-            .update(
-                {
-                    stop: Timestamp.fromMillis(order["stop"]),
-                    finalCount: order["counts"],
-                    reject: order["counts"] - order["reject"],
-                },
-            )
-        // once added into 'report', modify the updated
-        await db.run(
-            `UPDATE tastiway_process
-            SET uploaded = 1
-            WHERE orderId = ?`,
-            [orderId]
-        );
-    } catch (err) {
-        throw new Error(`❌ Firestore add into record failed: ${err.message} for ${orderId}`);
-    }
-
 
 
     //* Firestore -- update ANDON signal system

@@ -89,15 +89,14 @@ try {
         await dbFirestore
             .collection("tastiway_plans")
             .doc(orderId)
-            .set(
+            .update(
                 {
                     status: "in_progress",
                     updatedAt: new Date(),
                 },
-                { merge: true }
             );
     } catch (err) {
-        throw new Error(`❌ Firestore update status in plans failed: ${err.message}`);
+        console.error(`⚠️ Firestore update status in plans failed (manual will failed): ${err.message}`);
     }
 
     // Firestore -- update ANDON signal system
@@ -113,7 +112,7 @@ try {
                 { merge: true }
             );
     } catch (err) {
-        throw new Error(`❌ Firestore update Andon status failed: ${err.message}`);
+        throw new Error(`❌ Firestore update Andon status failed (collection machines): ${err.message}`);
     }
 
     // Firestore -- create doc for report

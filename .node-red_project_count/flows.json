@@ -85,12 +85,13 @@
             "d1cb207bed205957",
             "e6716af0f3538687",
             "74abea1b341b47ad",
-            "90199c17386ded4c"
+            "90199c17386ded4c",
+            "3c722e92013d3455"
         ],
         "x": 1694,
         "y": 1379,
         "w": 1012,
-        "h": 209.5
+        "h": 222
     },
     {
         "id": "d7416ec1d9513281",
@@ -194,7 +195,7 @@
         "name": "spacer",
         "tooltip": "",
         "order": 3,
-        "width": 6,
+        "width": 3,
         "height": 2,
         "className": ""
     },
@@ -260,7 +261,7 @@
         "group": "53026aa3c68dea20",
         "name": "spacer",
         "tooltip": "",
-        "order": 4,
+        "order": 5,
         "width": 12,
         "height": 1,
         "className": ""
@@ -304,7 +305,7 @@
         "group": "53026aa3c68dea20",
         "name": "spacer",
         "tooltip": "",
-        "order": 9,
+        "order": 10,
         "width": 1,
         "height": 1,
         "className": ""
@@ -544,7 +545,7 @@
         "type": "function",
         "z": "f69312076bb95996",
         "name": "send count value",
-        "func": "if (msg.payload && msg.payload.length > 0) {\n    const countValue = msg.payload[0].counts;\n\n    node.status({ fill: \"green\", shape: \"dot\", text: \"Count: \" + countValue });\n\n    // Send to UI\n    msg.payload = countValue;\n    return msg;\n} else {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"No data\" });\n    return null;\n}\n",
+        "func": "if (msg.payload && msg.payload.length > 0) {\n    const countValue = msg.payload[0].counts;\n\n    node.status({ fill: \"green\", shape: \"dot\", text: \"Count: \" + countValue });\n\n    // Send to UI\n    msg.payload = countValue;\n} else {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"Count: 0\" });\n    msg.payload = 0;\n}\n    return msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -617,7 +618,7 @@
         "page": "",
         "ui": "",
         "name": "OrderID Cards",
-        "order": 7,
+        "order": 8,
         "width": "",
         "height": "",
         "head": "",
@@ -718,8 +719,8 @@
         "wires": [
             [
                 "534651e93a429058",
-                "916fbe10e7e43768",
-                "6cb56de36a3e267f"
+                "6cb56de36a3e267f",
+                "cf2a75d4176873e3"
             ],
             [
                 "534651e93a429058"
@@ -995,17 +996,19 @@
         "type": "function",
         "z": "f69312076bb95996",
         "name": "set flow for currentOrderId",
-        "func": "// Expecting msg.orderId to come from previous node\nconst combined = msg.payload;\nconst orderId = combined.split(\",-,\")[0];\n\nif (orderId) {\n    flow.set(\"currentOrderId\", orderId);\n    node.status({ text: \"Current Order: \" + orderId });\n} else {\n    node.error(\"❌ Missing orderId argument!\", msg);\n}\n\nreturn msg;\n",
+        "func": "// Expecting msg.orderId to come from previous node\nconst combined = msg.payload;\nconst orderId = combined.split(\",-,\")[0];\n\nif (orderId) {\n    flow.set(\"currentOrderId\", orderId);\n    node.status({ text: \"Current Order: \" + orderId });\n} else {\n    node.error(\"❌ Missing orderId argument!\", msg);\n}\nmsg.payload = orderId;\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1190,
-        "y": 840,
+        "x": 1150,
+        "y": 800,
         "wires": [
-            []
+            [
+                "e138d2bd04e01535"
+            ]
         ]
     },
     {
@@ -1070,7 +1073,7 @@
         "id": "9c0a05a7de101d95",
         "type": "debug",
         "z": "f69312076bb95996",
-        "name": "debug 1",
+        "name": "current count",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -1079,7 +1082,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1360,
+        "x": 1370,
         "y": 1260,
         "wires": []
     },
@@ -1099,7 +1102,8 @@
         "y": 1380,
         "wires": [
             [
-                "b59f60c8d21beb67"
+                "b59f60c8d21beb67",
+                "9afa9c96f17d8eb9"
             ],
             [
                 "b59f60c8d21beb67"
@@ -1186,9 +1190,7 @@
             [
                 "b918c810745954df",
                 "a153e30311bbef15",
-                "f6317eedc5fda05c",
                 "099b519895618f53",
-                "53dad0cc97c13d52",
                 "cde774c8f00f1bf7"
             ]
         ]
@@ -1198,7 +1200,7 @@
         "type": "function",
         "z": "f69312076bb95996",
         "name": "trigger in pp page",
-        "func": "// Trigger only when user opens the Production Plan page\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/production_plan\"\n) {\n    // run your query or next logic\n    msg.topic = \"SELECT * FROM tastiway_plans;\";\n    return msg;\n}\n\nreturn null;",
+        "func": "// Trigger only when user opens the Production Plan page\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/production_plan\"\n) {\n    // run your query or next logic\n    msg.topic = \"SELECT * FROM current LIMIT 1;\";\n    return msg;\n}\n\nreturn null;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1209,7 +1211,8 @@
         "y": 860,
         "wires": [
             [
-                "387dc7dc7cfd6972"
+                "387dc7dc7cfd6972",
+                "f1f9b173f649081c"
             ]
         ]
     },
@@ -1249,14 +1252,14 @@
         "width": "2",
         "height": "1",
         "head": "",
-        "format": "<!-- <template>\n  <v-card class=\"borderless pa-4 text-left\">\n    <div class=\"text-h5 font-weight-bold\">{{ elapsed }}</div>\n  </v-card>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      start: Date.now(),\n      elapsed: \"00:00:00\",\n      interval: null,\n    };\n  },\n\n  mounted() {\n    this.interval = setInterval(() => {\n      const diff = Date.now() - this.start;\n      this.elapsed = this.formatTime(diff);\n    }, 1000);\n  },\n\n  beforeUnmount() {\n    clearInterval(this.interval);\n  },\n\n  methods: {\n    formatTime(ms) {\n      let sec = Math.floor(ms / 1000);\n      const hrs = String(Math.floor(sec / 3600)).padStart(2, \"0\");\n      sec %= 3600;\n      const mins = String(Math.floor(sec / 60)).padStart(2, \"0\");\n      sec = String(sec % 60).padStart(2, \"0\");\n      return `${hrs}:${mins}:${sec}`;\n    }\n  }\n};\n</script>\n\n<style>\n  .borderless {\n    border: transparent;\n    padding: 0;\n  }\n\n  .borderless .v-card-text {\n    border: 1px solid transparent;\n    padding: 0;\n  }\n</style> -->\n\n<template>\n  <v-card class=\"borderless pa-4 text-left\">\n    <div class=\"text-h5 font-weight-bold\">{{ elapsed }}</div>\n  </v-card>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      elapsedMs: 0,     // total accumulated time\n      lastStart: null,  // timestamp when resumed\n      interval: null,\n    };\n  },\n\n  mounted() {\n    // start immediately\n    this.startTimer();\n\n    // watch for msg updates from Node-RED\n    this.$watch(\n      () => this.msg,\n      (msg) => {\n        if (!msg || !msg.payload) return;\n\n        const color = msg.payload.toLowerCase();\n\n        if (color === \"green\") {\n          this.resumeTimer();\n        } else if (color === \"red\" || color === \"blue\") {\n          this.pauseTimer();\n        }\n      }\n    );\n  },\n\n  beforeUnmount() {\n    clearInterval(this.interval);\n  },\n\n  methods: {\n    startTimer() {\n      this.lastStart = Date.now();\n      this.interval = setInterval(() => {\n        if (this.lastStart) {\n          this.elapsedMs = this.elapsedMs + (Date.now() - this.lastStart);\n          this.lastStart = Date.now(); // reset tick\n        }\n      }, 1000);\n    },\n\n    pauseTimer() {\n      if (this.lastStart) {\n        this.elapsedMs += Date.now() - this.lastStart;\n        this.lastStart = null;\n      }\n    },\n\n    resumeTimer() {\n      if (!this.lastStart) {\n        this.lastStart = Date.now();\n      }\n    },\n\n    format(ms) {\n      let sec = Math.floor(ms / 1000);\n      const hrs = String(Math.floor(sec / 3600)).padStart(2, \"0\");\n      sec %= 3600;\n      const mins = String(Math.floor(sec / 60)).padStart(2, \"0\");\n      sec = String(sec % 60).padStart(2, \"0\");\n      return `${hrs}:${mins}:${sec}`;\n    }\n  },\n\n  computed: {\n    elapsed() {\n      return this.format(this.elapsedMs);\n    }\n  }\n};\n</script>\n\n<style>\n  .borderless {\n    border: transparent !important;\n    padding: 0;\n  }\n</style>",
+        "format": "<template>\n  <v-card class=\"borderless pa-4 text-left\">\n    <div class=\"text-h5 font-weight-bold\">{{ elapsed }}</div>\n  </v-card>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      elapsedMs: 0,\n      lastStart: null,\n      interval: null,\n    };\n  },\n\n  mounted() {\n    this.startTimer();\n\n    this.$watch(\n      () => this.msg,\n      (msg) => {\n        if (!msg || msg.payload == null) return;\n\n        if (typeof msg.payload === \"number\") {\n          this.elapsedMs = msg.payload;\n          if (this.lastStart) {\n            this.lastStart = Date.now();\n          }\n          return;\n        }\n\n        const color = msg.payload;\n\n        if (color === \"green\") {\n          this.resumeTimer();\n        } else if (color === \"red\" || color === \"blue\") {\n          this.pauseTimer();\n        }\n      }\n    );\n  },\n\n  beforeUnmount() {\n    clearInterval(this.interval);\n    this.interval = null;\n  },\n\n  methods: {\n    startTimer() {\n      if (this.interval) return;\n\n      this.lastStart = Date.now();\n      this.interval = setInterval(() => {\n        if (this.lastStart) {\n          this.elapsedMs += Date.now() - this.lastStart;\n          this.lastStart = Date.now();\n        }\n      }, 1000);\n    },\n\n    pauseTimer() {\n      if (this.lastStart) {\n        this.elapsedMs += Date.now() - this.lastStart;\n        this.lastStart = null;\n      }\n    },\n\n    resumeTimer() {\n      if (!this.lastStart) {\n        this.lastStart = Date.now();\n      }\n    },\n\n    format(ms) {\n      let sec = Math.floor(ms / 1000);\n      const hrs = String(Math.floor(sec / 3600)).padStart(2, \"0\");\n      sec %= 3600;\n      const mins = String(Math.floor(sec / 60)).padStart(2, \"0\");\n      sec = String(sec % 60).padStart(2, \"0\");\n      return `${hrs}:${mins}:${sec}`;\n    }\n  },\n\n  computed: {\n    elapsed() {\n      return this.format(this.elapsedMs);\n    }\n  }\n};\n\n</script>\n\n<style>\n  .borderless {\n    border: transparent !important;\n    padding: 0;\n  }\n</style>",
         "storeOutMessages": true,
         "passthru": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 2380,
-        "y": 1020,
+        "x": 2580,
+        "y": 1060,
         "wires": [
             []
         ]
@@ -1320,37 +1323,21 @@
         "type": "function",
         "z": "f69312076bb95996",
         "name": "trigger in process page",
-        "func": "// // Just trigger the template when user opens the Process page\n// if (\n//     msg.topic === \"$pageview\" &&\n//     msg.payload?.page?.path === \"/process\"\n// ) {\n//     return { trigger: true };    // passes the event into the UI Template\n// }\n\n// return null;\n\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/process\"\n) {\n    const query = msg.payload.query;\n\n    const qty = Number(query.quantity);\n\n\n    msg.payload = null;\n    msg.ui_update = {\n        max: qty\n    };\n\n    return msg;\n}\n\nreturn null;\n",
+        "func": "// // Just trigger the template when user opens the Process page\n// if (\n//     msg.topic === \"$pageview\" &&\n//     msg.payload?.page?.path === \"/process\"\n// ) {\n//     return { trigger: true };    // passes the event into the UI Template\n// }\n\n// return null;\n\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/process\"\n) {\n    const query = msg.payload.query;\n\n    const qty = Number(query.quantity);\n\n\n    msg.payload = null;\n    msg.ui_update = {\n        max: qty\n    };\n\n\n    return msg;\n}\n\nreturn null;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 400,
-        "y": 960,
+        "x": 460,
+        "y": 1080,
         "wires": [
             [
-                "f6317eedc5fda05c",
+                "231d11e98ba1955a",
                 "26d222d71a3d8ff4"
             ]
         ]
-    },
-    {
-        "id": "f6317eedc5fda05c",
-        "type": "debug",
-        "z": "f69312076bb95996",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 680,
-        "y": 920,
-        "wires": []
     },
     {
         "id": "cb6cabb336cecf6e",
@@ -1487,8 +1474,7 @@
         "y": 2100,
         "wires": [
             [
-                "565aa7a6d5ed08d5",
-                "375686e4d3e1d76e"
+                "565aa7a6d5ed08d5"
             ]
         ]
     },
@@ -1515,22 +1501,6 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "375686e4d3e1d76e",
-        "type": "debug",
-        "z": "f69312076bb95996",
-        "name": "debug 15",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 780,
-        "y": 2040,
-        "wires": []
     },
     {
         "id": "99bdfba52e6ed083",
@@ -1700,7 +1670,6 @@
             [
                 "c2702c05965937f5",
                 "916fbe10e7e43768",
-                "34e31d288f9286f1",
                 "c59dfe4ed5a3e147"
             ]
         ]
@@ -1709,15 +1678,16 @@
         "id": "ce96c436669e48b9",
         "type": "debug",
         "z": "f69312076bb95996",
-        "name": "debug 5",
+        "name": "update andon",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 2620,
+        "x": 2640,
         "y": 960,
         "wires": []
     },
@@ -1776,7 +1746,7 @@
         "group": "53026aa3c68dea20",
         "name": "PIC Input",
         "label": "Enter PIC",
-        "order": 5,
+        "order": 6,
         "width": "5",
         "height": 1,
         "topic": "topic",
@@ -1832,7 +1802,7 @@
         "page": "",
         "ui": "",
         "name": "OrderID Cards",
-        "order": 8,
+        "order": 9,
         "width": "",
         "height": "",
         "head": "",
@@ -1877,7 +1847,7 @@
         "id": "f74d78774be5cba9",
         "type": "function",
         "z": "f69312076bb95996",
-        "name": "Toggle Andon to Green",
+        "name": "set active color green",
         "func": "flow.set('activeColor', \"green\");\nnode.status({ text:\"green\" });\nmsg.payload = \"green\"\nreturn msg;",
         "outputs": 1,
         "timeout": "",
@@ -1898,7 +1868,7 @@
         "id": "18201862fbb66b2b",
         "type": "debug",
         "z": "f69312076bb95996",
-        "name": "debug 6",
+        "name": "set active color green",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -1907,7 +1877,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1420,
+        "x": 1460,
         "y": 700,
         "wires": []
     },
@@ -2032,7 +2002,7 @@
         "type": "debug",
         "z": "f69312076bb95996",
         "name": "debug 8",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2040,7 +2010,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 680,
-        "y": 1580,
+        "y": 1640,
         "wires": []
     },
     {
@@ -2114,23 +2084,6 @@
         ]
     },
     {
-        "id": "34e31d288f9286f1",
-        "type": "debug",
-        "z": "f69312076bb95996",
-        "name": "debug 9",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2260,
-        "y": 1120,
-        "wires": []
-    },
-    {
         "id": "099b519895618f53",
         "type": "function",
         "z": "f69312076bb95996",
@@ -2143,7 +2096,7 @@
         "finalize": "",
         "libs": [],
         "x": 460,
-        "y": 1040,
+        "y": 1020,
         "wires": [
             [
                 "1cecc0f98920ebb8"
@@ -2158,7 +2111,7 @@
         "ui": "d7416ec1d9513281",
         "events": "all",
         "x": 680,
-        "y": 1040,
+        "y": 1020,
         "wires": [
             []
         ]
@@ -2222,7 +2175,7 @@
             "90199c17386ded4c"
         ],
         "x": 1665,
-        "y": 580,
+        "y": 540,
         "wires": []
     },
     {
@@ -2250,11 +2203,11 @@
         "page": "",
         "ui": "",
         "name": "manual BatchId",
-        "order": 6,
+        "order": 7,
         "width": 7,
         "height": 0,
         "head": "",
-        "format": "<template>\n<v-container fluid class=\"pa-4\">\n  <v-row>\n    <v-col cols=\"9\">\n      <v-text-field\n        v-model=\"batchId\"\n        label=\"Enter Batch ID\"\n        outlined\n        dense\n      ></v-text-field>\n    </v-col>\n\n    <v-col cols=\"3\">\n      <v-btn block color=\"primary\" @click=\"submitBatch\" :disabled=\"!batchId\">\n        Start Manual\n      </v-btn>\n    </v-col>\n  </v-row>\n</v-container>\n\n\n</template>\n\n<script>\nexport default {\n  data() {\n    return {\n      batchId: \"\",\n      activePic: \"\", \n    };\n  },\n  methods: {\n    submitBatch() {\n      const now = new Date();\n      const currentDate =\n        now.getFullYear().toString() +\n        String(now.getMonth() + 1).padStart(2, \"0\") +\n        String(now.getDate()).padStart(2, \"0\");\n\n      const currentTime =\n        String(now.getHours()).padStart(2, \"0\") +\n        String(now.getMinutes()).padStart(2, \"0\") +\n        String(now.getSeconds()).padStart(2, \"0\");\n\n      // first two letter of batach ID\n      const letters =\n        this.batchId && this.batchId.trim().length > 1\n          ? this.batchId.trim().slice(0, 2).toUpperCase()\n          : \"AB\";\n\n      const orderId = `${currentDate}-${letters}-${currentTime}`;\n      \n      const payload = {\n        productName: \"Unknown -- Manual Input\",\n        orderId,\n        quantity: 0,\n        start: new Date().toISOString(),\n        batchId: this.batchId,\n        activePic: this.activePic,\n      };\n\n      this.send({\n  payload: `${payload.orderId},-,${payload.activePic.replace(/ /g, \"__SPACE__\")},-,${payload.batchId.replace(/ /g, \"__SPACE__\")}`\n});\n\n\n      \n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: payload, \n      });\n    },\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n    },\n  },\n};\n</script>\n\n<style scoped>\n.v-container {\n  max-height: 100%;\n}\n</style>",
+        "format": "<template>\n  <v-container fluid class=\"pa-4\">\n    <v-row>\n      <v-col cols=\"6\">\n        <v-text-field v-model=\"batchId\" label=\"Enter Batch ID\" outlined dense></v-text-field>\n      </v-col>\n      <v-col cols=\"3\">\n        <v-text-field v-model=\"expectedQuantity\" label=\"Enter quantity\" outlined dense type=\"text\" @input=\"expectedQuantity = expectedQuantity.replace(/\\D/g,'')\" />      </v-col>\n      <v-col cols=\"3\">\n        <v-btn block color=\"primary\" @click=\"submitBatch\" :disabled=\"!batchId || !expectedQuantity\">\n          Start Manual\n        </v-btn>\n      </v-col>\n    </v-row>\n  </v-container>\n\n\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      batchId: \"\",\n      activePic: \"\", \n      expectedQuantity: \"\",\n    };\n  },\n  methods: {\n    submitBatch() {\n      const now = new Date();\n      const currentDate =\n        now.getFullYear().toString() +\n        String(now.getMonth() + 1).padStart(2, \"0\") +\n        String(now.getDate()).padStart(2, \"0\");\n\n      const currentTime =\n        String(now.getHours()).padStart(2, \"0\") +\n        String(now.getMinutes()).padStart(2, \"0\") +\n        String(now.getSeconds()).padStart(2, \"0\");\n\n      // first two letter of batach ID\n      const letters =\n        this.batchId && this.batchId.trim().length > 1\n          ? this.batchId.trim().slice(0, 2).toUpperCase()\n          : \"AB\";\n\n      const orderId = `${currentDate}-${letters}-${currentTime}`;\n      \n      const payload = {\n        productName: \"Unknown -- Manual Input\",\n        orderId,\n        quantity: 0,\n        start: new Date().toISOString(),\n        batchId: this.batchId,\n        activePic: this.activePic,\n        expectedQuantity: this.expectedQuantity,\n      };\n\n      this.send({\n  payload: `${payload.orderId},-,${payload.activePic.replace(/ /g, \"__SPACE__\")},-,${payload.batchId.replace(/ /g, \"__SPACE__\")},-,,-,${payload.expectedQuantity.replace(/ /g, \"__SPACE__\")}`\n});\n\n\n      \n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: payload, \n      });\n    },\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .v-container {\n    max-height: 100%;\n  }\n</style>",
         "storeOutMessages": true,
         "passthru": false,
         "resendOnRefresh": true,
@@ -2265,7 +2218,6 @@
         "wires": [
             [
                 "a838e298114a1f97",
-                "2305890dab5f178b",
                 "f74d78774be5cba9",
                 "7088c57090ef3bb3"
             ]
@@ -2280,8 +2232,8 @@
         "links": [
             "31b044cccc0287b6"
         ],
-        "x": 885,
-        "y": 820,
+        "x": 935,
+        "y": 800,
         "wires": []
     },
     {
@@ -2299,22 +2251,6 @@
                 "e735dc355d962d7f"
             ]
         ]
-    },
-    {
-        "id": "2305890dab5f178b",
-        "type": "debug",
-        "z": "f69312076bb95996",
-        "name": "debug 13",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1040,
-        "y": 540,
-        "wires": []
     },
     {
         "id": "be0e6cb62246ca13",
@@ -2381,23 +2317,6 @@
         ]
     },
     {
-        "id": "53dad0cc97c13d52",
-        "type": "debug",
-        "z": "f69312076bb95996",
-        "name": "debug 12",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "topic",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 300,
-        "y": 800,
-        "wires": []
-    },
-    {
         "id": "cde774c8f00f1bf7",
         "type": "function",
         "z": "f69312076bb95996",
@@ -2410,7 +2329,7 @@
         "finalize": "",
         "libs": [],
         "x": 460,
-        "y": 1100,
+        "y": 940,
         "wires": [
             [
                 "eb3f27273b857a3f"
@@ -2425,7 +2344,7 @@
         "ui": "d7416ec1d9513281",
         "events": "all",
         "x": 680,
-        "y": 1100,
+        "y": 940,
         "wires": [
             []
         ]
@@ -2782,6 +2701,300 @@
         "wires": [
             [
                 "8fb08e4bec2e9cee"
+            ]
+        ]
+    },
+    {
+        "id": "afd29a3c0d3c5e33",
+        "type": "ui-template",
+        "z": "f69312076bb95996",
+        "group": "53026aa3c68dea20",
+        "page": "",
+        "ui": "",
+        "name": "Resume Button",
+        "order": 4,
+        "width": 3,
+        "height": 2,
+        "head": "",
+        "format": "<template>\n  <v-container fluid class=\"pa-4 fill-height\">\n    <v-row class=\"fill-height\">\n      <v-col cols=\"12\" class=\"d-flex\">\n        <v-btn class=\"flex-grow-1 red-button\" @click=\"submitResume\" :disabled=\"!resumeProcess\" v-show=\"resumeProcess\">\n          <!-- Use mustache syntax to bind the value -->\n          Resume {{ resumeProcess?.orderId }}\n        </v-btn>\n      </v-col>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      resumeProcess: null,\n    };\n  },\n  watch: {\n    msg: {\n      handler(newMsg) {\n        let data = newMsg?.payload || newMsg;\n        if (typeof data === 'string') {\n          try { data = JSON.parse(data); } \n          catch (e) { return; }\n        }\n        if (data && data.type === \"resumeProcess\") {\n          // Set resumeProcess to the payload (which could be null or an object)\n          this.resumeProcess = data.payload;\n        }\n      },\n      immediate: true,\n      deep: true\n    }\n  },\n  methods: {\n    submitResume() {\n      if (!this.resumeProcess) return;\n      const p = this.resumeProcess;\n      const payload = {\n        productName: p.productName,\n        orderId: p.orderId,\n        batchId: p.batchId,\n        quantity: p.expectedQuantity,\n        start: p.start,\n        activePic: p.pic\n      };\n      const formattedOutput = `${payload.orderId},-,${payload.activePic.replace(/ /g, \"__SPACE__\")},-,${payload.batchId.replace(/ /g, \"__SPACE__\")},-,,-,${String(payload.quantity)}`;\n      this.send({ payload: formattedOutput });\n      this.$router.push({ path: \"/dashboard/process\", query: payload });\n    }\n  }\n};\n</script>\n\n<style scoped>\n  .fill-height {\n    height: 100%;\n  }\n\n  .red-button {\n    background-color: red !important;\n    color: white !important;\n  }\n</style>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 920,
+        "y": 540,
+        "wires": [
+            [
+                "f74d78774be5cba9",
+                "7088c57090ef3bb3",
+                "e2665ae91d4e6dd2"
+            ]
+        ]
+    },
+    {
+        "id": "b99ae93f87a0dbb3",
+        "type": "link out",
+        "z": "f69312076bb95996",
+        "name": "resume",
+        "mode": "link",
+        "links": [
+            "6f1d82a18b5a9cb1"
+        ],
+        "x": 935,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "6f1d82a18b5a9cb1",
+        "type": "link in",
+        "z": "f69312076bb95996",
+        "name": "resume",
+        "links": [
+            "b99ae93f87a0dbb3"
+        ],
+        "x": 805,
+        "y": 540,
+        "wires": [
+            [
+                "afd29a3c0d3c5e33"
+            ]
+        ]
+    },
+    {
+        "id": "f1f9b173f649081c",
+        "type": "exec",
+        "z": "f69312076bb95996",
+        "command": "node /home/pi/Project/checkResume.js",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "check resume",
+        "x": 800,
+        "y": 860,
+        "wires": [
+            [
+                "b99ae93f87a0dbb3",
+                "b6d79ea41b00e175"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "9afa9c96f17d8eb9",
+        "type": "link out",
+        "z": "f69312076bb95996",
+        "name": "finish",
+        "mode": "link",
+        "links": [
+            "d3e1a422880e9b4c",
+            "3c722e92013d3455"
+        ],
+        "x": 1095,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "d3e1a422880e9b4c",
+        "type": "link in",
+        "z": "f69312076bb95996",
+        "name": "finish",
+        "links": [
+            "9afa9c96f17d8eb9"
+        ],
+        "x": 635,
+        "y": 900,
+        "wires": [
+            [
+                "f1f9b173f649081c"
+            ]
+        ]
+    },
+    {
+        "id": "e2665ae91d4e6dd2",
+        "type": "exec",
+        "z": "f69312076bb95996",
+        "command": "node /home/pi/Project/startresumeCounting.js",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "resume firestore",
+        "x": 1160,
+        "y": 540,
+        "wires": [
+            [
+                "802002eaedf78b38"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "802002eaedf78b38",
+        "type": "link out",
+        "z": "f69312076bb95996",
+        "name": "andon",
+        "mode": "link",
+        "links": [
+            "a8742f689401ac1a"
+        ],
+        "x": 1325,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "a8742f689401ac1a",
+        "type": "link in",
+        "z": "f69312076bb95996",
+        "name": "link in 1",
+        "links": [
+            "802002eaedf78b38",
+            "cf2a75d4176873e3"
+        ],
+        "x": 2245,
+        "y": 760,
+        "wires": [
+            [
+                "916fbe10e7e43768"
+            ]
+        ]
+    },
+    {
+        "id": "cf2a75d4176873e3",
+        "type": "link out",
+        "z": "f69312076bb95996",
+        "name": "andon",
+        "mode": "link",
+        "links": [
+            "a8742f689401ac1a"
+        ],
+        "x": 1725,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "b6d79ea41b00e175",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "check resume result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "e138d2bd04e01535",
+        "type": "link out",
+        "z": "f69312076bb95996",
+        "name": "current orderId",
+        "mode": "link",
+        "links": [
+            "49e5434e88b2ac4d"
+        ],
+        "x": 1325,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "49e5434e88b2ac4d",
+        "type": "link in",
+        "z": "f69312076bb95996",
+        "name": "link in 2",
+        "links": [
+            "e138d2bd04e01535"
+        ],
+        "x": 1725,
+        "y": 1080,
+        "wires": [
+            [
+                "721710bb58bfc8b5"
+            ]
+        ]
+    },
+    {
+        "id": "721710bb58bfc8b5",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "query duration",
+        "func": "var currentOrderId = flow.get(\"currentOrderId\") || null;\nvar sqlMsg = null;\n\n// if start is pressed\nsqlMsg = {\n    topic: `\n        SELECT duration\n        FROM log\n        WHERE orderId = '${currentOrderId}'\n        ORDER BY id DESC\n        LIMIT 1;\n    `};\nnode.status({ fill: \"green\", shape: \"dot\", text: \"Retrieving counts from log\" });\n\nreturn sqlMsg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1880,
+        "y": 1080,
+        "wires": [
+            [
+                "bd73336244d21918"
+            ]
+        ]
+    },
+    {
+        "id": "bd73336244d21918",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 2050,
+        "y": 1080,
+        "wires": [
+            [
+                "3f1087b016cecf44"
+            ]
+        ]
+    },
+    {
+        "id": "3f1087b016cecf44",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "send count value",
+        "func": "if (msg.payload && msg.payload.length > 0) {\n    const duration = msg.payload[0].duration;\n    node.status({ fill: \"green\", shape: \"dot\", text: \"duration \" + duration });\n\n    // Send to UI\n    msg.payload = duration;\n} else {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"No data\" });\n    msg.payload = 0;\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2250,
+        "y": 1080,
+        "wires": [
+            [
+                "c59dfe4ed5a3e147"
+            ]
+        ]
+    },
+    {
+        "id": "3c722e92013d3455",
+        "type": "link in",
+        "z": "f69312076bb95996",
+        "g": "c3495ec264fdf1d0",
+        "name": "link in 3",
+        "links": [
+            "9afa9c96f17d8eb9"
+        ],
+        "x": 1915,
+        "y": 1560,
+        "wires": [
+            [
+                "e6716af0f3538687"
             ]
         ]
     }

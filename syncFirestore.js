@@ -15,6 +15,16 @@ let dbFirestore;
 let orderId;
 let msg = "report sync started\n";
 
+// set the uom
+const machineUom = {
+    TMM001: "kg",
+    ZPL001: "PACK",
+    ZTP001: "PACK",
+    SMW001: "kg",
+    BPM001: "PACK",
+
+}
+
 try {
     // firebase init
     try {
@@ -85,23 +95,28 @@ try {
         const logOrders = await db.all(`SELECT DISTINCT orderId FROM log WHERE uploaded = 0;`)
         for (const order of logOrders) {
             orderId = order["orderId"]
-            // retrieve the andon array for that period from count_logs
-            const data = await db.all(`SELECT timestamp, count, andon, duration FROM log WHERE orderId=? AND uploaded=0`, [orderId]);
-            if (data.length === 0) { continue }
-            // set the doc in the firestorewhy 
-            await dbFirestore
-                .collection("tastiway_reports")
-                .doc(orderId)
-                .update({
-                    data: arrayUnion(...data)
-                });
-            // once added into 'report', update the uploaded in the log table
-            await db.run(
-                `UPDATE log
+            try {
+                // retrieve the andon array for that period from count_logs
+                const data = await db.all(`SELECT timestamp, count, andon, duration FROM log WHERE orderId=? AND uploaded=0`, [orderId]);
+                if (data.length === 0) { continue }
+                // set the doc in the firestorewhy 
+                await dbFirestore
+                    .collection("tastiway_reports")
+                    .doc(orderId)
+                    .update({
+                        data: arrayUnion(...data)
+                    });
+                // once added into 'report', update the uploaded in the log table
+                await db.run(
+                    `UPDATE log
                 SET uploaded = 1
                 WHERE orderId = ?`,
-                [orderId]
-            );
+                    [orderId]
+                );
+            } catch (err) {
+                console.error(`❌ Failed to upload orderId=${orderId}: ${err.message}`);
+                continue;
+            }
         }
         msg += `✅ finished upload the log table`;
     } catch (err) {
@@ -125,23 +140,29 @@ try {
         for (const order of ordersFinish) {
             if (!order["stop"]) { continue }
             orderId = order["orderId"]
-            await dbFirestore
-                .collection("tastiway_reports")
-                .doc(orderId)
-                .update(
-                    {
-                        stop: Timestamp.fromMillis(order["stop"]),
-                        finalCount: order["counts"],
-                        reject: order["counts"] - order["reject"],
-                    },
-                )
-            // once added into 'report', modify the updated
-            await db.run(
-                `UPDATE tastiway_process
+            try {
+                await dbFirestore
+                    .collection("tastiway_reports")
+                    .doc(orderId)
+                    .update(
+                        {
+                            stop: Timestamp.fromMillis(order["stop"]),
+                            finalCount: order["counts"],
+                            reject: order["counts"] - order["reject"],
+                            uom: machineUom[machineId],
+                        },
+                    )
+                // once added into 'report', modify the updated
+                await db.run(
+                    `UPDATE tastiway_process
                 SET uploaded = 1
                 WHERE orderId = ?`,
-                [orderId]
-            );
+                    [orderId]
+                );
+            } catch (err) {
+                console.error(`❌ Failed to upload orderId=${orderId}: ${err.message}`);
+                continue;
+            }
         }
         msg += `✅ finished upload the finish of the process`;
     } catch (err) {

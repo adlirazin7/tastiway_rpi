@@ -315,7 +315,7 @@
         "group": "53026aa3c68dea20",
         "name": "spacer",
         "tooltip": "",
-        "order": 4,
+        "order": 5,
         "width": 12,
         "height": 1,
         "className": ""
@@ -411,7 +411,7 @@
         "group": "16a799820a185e70",
         "name": "spacer",
         "tooltip": "",
-        "order": 12,
+        "order": 13,
         "width": 8,
         "height": 1,
         "className": ""
@@ -422,7 +422,7 @@
         "group": "16a799820a185e70",
         "name": "spacer",
         "tooltip": "",
-        "order": 11,
+        "order": 12,
         "width": 12,
         "height": 1,
         "className": ""
@@ -3534,11 +3534,11 @@
         "page": "",
         "ui": "",
         "name": "OrderID Cards",
-        "order": 7,
+        "order": 8,
         "width": "",
         "height": "",
         "head": "",
-        "format": "<template>\n  <v-container fluid class=\"pa-0\">\n    <v-row dense class=\"ma-0\">\n      <template v-for=\"(plans, date) in groupedPlans\" :key=\"date\">\n        <!-- Date header -->\n        <v-col cols=\"12\" class=\"px-4 py-2\">\n          <div class=\"text-h6 font-weight-bold\">{{ date }}</div>\n        </v-col>\n\n        <!-- Cards under this date -->\n        <v-col v-for=\"(plan, index) in plans\" :key=\"date + '-' + index\" cols=\"12\" sm=\"6\" class=\"pa-2\">\n          <v-card class=\"hoverable plan-card pa-3\" outlined @click=\"selectPlan(plan)\">\n            <v-row>\n              <v-col class=\"pa-4\">\n                <div class=\"text-h6\">{{ plan.productName }}</div>\n                <div class=\"text-subtitle-1 font-weight-bold \">\n                  {{ plan.batchId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  {{ plan.orderId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Quantity: {{ plan.quantity }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Start: {{ new Date(plan.start).toLocaleString() }}\n                </div>\n              </v-col>\n            </v-row>\n          </v-card>\n        </v-col>\n      </template>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      selectedPlan: null,\n      planOptions: [],\n      activePic: \"\"\n    };\n  },\n\n  computed: {\n    groupedPlans() {\n      const groups = {};\n\n      // group by display date\n      this.planOptions.forEach((plan) => {\n        const date = new Date(plan.start);\n        const displayKey = date.toLocaleDateString(\"en-GB\"); // stays like \"14/11/2025\"\n\n        if (!groups[displayKey]) groups[displayKey] = [];\n        groups[displayKey].push(plan);\n      });\n\n      // sort date keys DESC but KEEP display format\n      const sorted = Object.fromEntries(\n        Object.entries(groups).sort((a, b) => {\n          const dA = new Date(a[0].split(\"/\").reverse().join(\"-\")); // 14/11/2025 → 2025-11-14\n          const dB = new Date(b[0].split(\"/\").reverse().join(\"-\"));\n          return dB - dA; // newest first\n        })\n      );\n\n      return sorted;\n    },\n  },\n\n  methods: {\n    selectPlan(plan) {\n      this.selectedPlan = plan.orderId;\n      this.send({\n        payload: `${plan.orderId},-,${this.activePic.replace(/ /g, \"__SPACE__\")},-,${plan.batchId.replace(/ /g, \"__SPACE__\")}`\n      });\n      // this.send({ payload: `${plan.orderId}` }); // sending orderId to Node-RED exec node\n\n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: {\n          orderId: plan.orderId,\n          productName: plan.productName,\n          quantity: plan.quantity,\n          start: plan.start,\n          activePic: this.activePic\n        },\n      });\n    },\n  },\n\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n\n      if (Array.isArray(newMsg?.payload)) {\n        this.planOptions = newMsg.payload.map((r) => ({\n          productName: r.productName,\n          orderId: r.orderId,\n          quantity: r.quantity ?? 0,\n          start: r.start ?? \"-\",\n          batchId: r.batchId \n\n        }));\n      } else if (newMsg?.payload?.orderId) {\n        const r = newMsg.payload;\n        this.planOptions = [\n          {\n            productName: r.productName,\n            orderId: r.orderId,\n            quantity: r.quantity ?? 0,\n            start: r.start ?? \"-\",\n            batchId: r.batchId \n\n          },\n        ];\n      }\n    },\n  },\n};\n\n</script>\n\n<style scoped>\n  .plan-card {\n    width: 100%;\n    cursor: pointer;\n    transition: 0.25s;\n    border-radius: 16px;\n    overflow: hidden;\n  }\n\n  .plan-card:hover {\n    background-color: #f5f5f5;\n    transform: scale(1.01);\n  }\n\n  .v-card.selected {\n    border-color: #1976d2;\n    background-color: #e3f2fd;\n  }\n\n  .v-container {\n    max-height: 100%;\n    overflow-y: auto;\n    scrollbar-width: none;\n    padding-top: 0 !important;\n  }\n</style>\n\n<script>\n  (function(scope) {\n  scope.$watch(\"msg\", function(msg) {\n    if (!msg) return;\n\n    scope.$emit(\"input\", msg);\n  });\n})(scope);\n</script>",
+        "format": "<template>\n  <v-container fluid class=\"pa-0\">\n    <v-row dense class=\"ma-0\">\n      <template v-for=\"(plans, date) in groupedPlans\" :key=\"date\">\n        <!-- Date header -->\n        <v-col cols=\"12\" class=\"px-4 py-2\">\n          <div class=\"text-h6 font-weight-bold\">{{ date }}</div>\n        </v-col>\n\n        <!-- Cards under this date -->\n        <v-col v-for=\"(plan, index) in plans\" :key=\"date + '-' + index\" cols=\"12\" sm=\"6\" class=\"pa-2\">\n          <v-card class=\"hoverable plan-card pa-3\" outlined @click=\"selectPlan(plan)\">\n            <v-row>\n              <v-col class=\"pa-4\">\n                <div class=\"text-h6\">{{ plan.productName }}</div>\n                <div class=\"text-subtitle-1 font-weight-bold \">\n                  {{ plan.batchId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  {{ plan.orderId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Quantity: {{ plan.quantity }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Start: {{ new Date(plan.start).toLocaleString() }}\n                </div>\n              </v-col>\n            </v-row>\n          </v-card>\n        </v-col>\n      </template>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      selectedPlan: null,\n      planOptions: [],\n      activePic: \"\"\n    };\n  },\n\n  computed: {\n    groupedPlans() {\n      const groups = {};\n\n      // group by display date\n      this.planOptions.forEach((plan) => {\n        const date = new Date(plan.start);\n        const displayKey = date.toLocaleDateString(\"en-GB\"); // stays like \"14/11/2025\"\n\n        if (!groups[displayKey]) groups[displayKey] = [];\n        groups[displayKey].push(plan);\n      });\n\n      // sort date keys DESC but KEEP display format\n      const sorted = Object.fromEntries(\n        Object.entries(groups).sort((a, b) => {\n          const dA = new Date(a[0].split(\"/\").reverse().join(\"-\")); // 14/11/2025 → 2025-11-14\n          const dB = new Date(b[0].split(\"/\").reverse().join(\"-\"));\n          return dB - dA; // newest first\n        })\n      );\n\n      return sorted;\n    },\n  },\n\n  methods: {\n    selectPlan(plan) {\n      this.selectedPlan = plan.orderId;\n      this.send({\n        payload: `${plan.orderId},-,${this.activePic.replace(/ /g, \"__SPACE__\")},-,${plan.batchId.replace(/ /g, \"__SPACE__\")},-,${plan.productName.replace(/ /g, \"__SPACE__\")},-,${plan.quantity}`\n      });      // this.send({ payload: `${plan.orderId}` }); // sending orderId to Node-RED exec node\n\n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: {\n          orderId: plan.orderId,\n          productName: plan.productName,\n          quantity: plan.quantity,\n          start: plan.start,\n          activePic: this.activePic\n        },\n      });\n    },\n  },\n\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n\n      if (Array.isArray(newMsg?.payload)) {\n        this.planOptions = newMsg.payload.map((r) => ({\n          productName: r.productName,\n          orderId: r.orderId,\n          quantity: r.quantity ?? 0,\n          start: r.start ?? \"-\",\n          batchId: r.batchId \n\n        }));\n      } else if (newMsg?.payload?.orderId) {\n        const r = newMsg.payload;\n        this.planOptions = [\n          {\n            productName: r.productName,\n            orderId: r.orderId,\n            quantity: r.quantity ?? 0,\n            start: r.start ?? \"-\",\n            batchId: r.batchId \n\n          },\n        ];\n      }\n    },\n  },\n};\n\n</script>\n\n<style scoped>\n  .plan-card {\n    width: 100%;\n    cursor: pointer;\n    transition: 0.25s;\n    border-radius: 16px;\n    overflow: hidden;\n  }\n\n  .plan-card:hover {\n    background-color: #f5f5f5;\n    transform: scale(1.01);\n  }\n\n  .v-card.selected {\n    border-color: #1976d2;\n    background-color: #e3f2fd;\n  }\n\n  .v-container {\n    max-height: 100%;\n    overflow-y: auto;\n    scrollbar-width: none;\n    padding-top: 0 !important;\n  }\n</style>\n\n<script>\n(function(scope) {\n  scope.$watch(\"msg\", function(msg) {\n    if (!msg) return;\n\n    scope.$emit(\"input\", msg);\n  });\n})(scope);\n</script>",
         "storeOutMessages": true,
         "passthru": false,
         "resendOnRefresh": true,
@@ -3636,7 +3636,8 @@
             [
                 "9e53df2a68840d25",
                 "69804fc389878762",
-                "c8df2e44e23a84cf"
+                "c8df2e44e23a84cf",
+                "69db839d34a02c89"
             ],
             [
                 "9e53df2a68840d25"
@@ -3705,8 +3706,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 730,
-        "y": 520,
+        "x": 710,
+        "y": 500,
         "wires": []
     },
     {
@@ -3747,10 +3748,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1430,
+        "x": 1390,
         "y": 780,
         "wires": [
-            []
+            [
+                "8bee914bc3c1487f"
+            ]
         ]
     },
     {
@@ -3836,7 +3839,7 @@
         "page": "",
         "ui": "",
         "name": "Finish Button",
-        "order": 13,
+        "order": 14,
         "width": "4",
         "height": "2",
         "head": "",
@@ -3867,7 +3870,6 @@
             [
                 "771c3bd2c2cba03e",
                 "50e4f151392a0cd8",
-                "0d1ba548ef99b7e9",
                 "6ff71356c05332d3",
                 "099b519895618f53",
                 "9183f2c2183cf134",
@@ -3887,11 +3889,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
-        "y": 760,
+        "x": 390,
+        "y": 780,
         "wires": [
             [
-                "6a0068e23f64f81b"
+                "6a0068e23f64f81b",
+                "f1f9b173f649081c"
             ]
         ]
     },
@@ -4081,8 +4084,7 @@
         "y": 840,
         "wires": [
             [
-                "8d4b1e15d28d6004",
-                "0d1ba548ef99b7e9"
+                "8d4b1e15d28d6004"
             ]
         ]
     },
@@ -4444,22 +4446,6 @@
         ]
     },
     {
-        "id": "0d1ba548ef99b7e9",
-        "type": "debug",
-        "z": "7c2196e0bf45cdca",
-        "name": "debug 9",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 680,
-        "y": 780,
-        "wires": []
-    },
-    {
         "id": "89b7d742c10fb973",
         "type": "inject",
         "z": "7c2196e0bf45cdca",
@@ -4672,7 +4658,7 @@
         "page": "",
         "ui": "",
         "name": "OrderID Cards",
-        "order": 8,
+        "order": 9,
         "width": "",
         "height": "",
         "head": "",
@@ -4682,32 +4668,8 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 1020,
-        "y": 480,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f72cb75a4d357a56",
-        "type": "ui-template",
-        "z": "7c2196e0bf45cdca",
-        "group": "16a799820a185e70",
-        "page": "",
-        "ui": "",
-        "name": "Elapsed TIme",
-        "order": 15,
-        "width": "2",
-        "height": "1",
-        "head": "",
-        "format": "<!-- <template>\n  <v-card class=\"borderless pa-4 text-left\">\n    <div class=\"text-h5 font-weight-bold\">{{ elapsed }}</div>\n  </v-card>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      start: Date.now(),\n      elapsed: \"00:00:00\",\n      interval: null,\n    };\n  },\n\n  mounted() {\n    this.interval = setInterval(() => {\n      const diff = Date.now() - this.start;\n      this.elapsed = this.formatTime(diff);\n    }, 1000);\n  },\n\n  beforeUnmount() {\n    clearInterval(this.interval);\n  },\n\n  methods: {\n    formatTime(ms) {\n      let sec = Math.floor(ms / 1000);\n      const hrs = String(Math.floor(sec / 3600)).padStart(2, \"0\");\n      sec %= 3600;\n      const mins = String(Math.floor(sec / 60)).padStart(2, \"0\");\n      sec = String(sec % 60).padStart(2, \"0\");\n      return `${hrs}:${mins}:${sec}`;\n    }\n  }\n};\n</script>\n\n<style>\n  .borderless {\n    border: transparent;\n    padding: 0;\n  }\n\n  .borderless .v-card-text {\n    border: 1px solid transparent;\n    padding: 0;\n  }\n</style> -->\n\n<template>\n  <v-card class=\"borderless pa-4 text-left\">\n    <div class=\"text-h5 font-weight-bold\">{{ elapsed }}</div>\n  </v-card>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      elapsedMs: 0,     // total accumulated time\n      lastStart: null,  // timestamp when resumed\n      interval: null,\n    };\n  },\n\n  mounted() {\n    // start immediately\n    this.startTimer();\n\n    // watch for msg updates from Node-RED\n    this.$watch(\n      () => this.msg,\n      (msg) => {\n        if (!msg || !msg.payload) return;\n\n        const color = msg.payload.toLowerCase();\n\n        if (color === \"green\") {\n          this.resumeTimer();\n        } else if (color === \"red\" || color === \"blue\") {\n          this.pauseTimer();\n        }\n      }\n    );\n  },\n\n  beforeUnmount() {\n    clearInterval(this.interval);\n  },\n\n  methods: {\n    startTimer() {\n      this.lastStart = Date.now();\n      this.interval = setInterval(() => {\n        if (this.lastStart) {\n          this.elapsedMs = this.elapsedMs + (Date.now() - this.lastStart);\n          this.lastStart = Date.now(); // reset tick\n        }\n      }, 1000);\n    },\n\n    pauseTimer() {\n      if (this.lastStart) {\n        this.elapsedMs += Date.now() - this.lastStart;\n        this.lastStart = null;\n      }\n    },\n\n    resumeTimer() {\n      if (!this.lastStart) {\n        this.lastStart = Date.now();\n      }\n    },\n\n    format(ms) {\n      let sec = Math.floor(ms / 1000);\n      const hrs = String(Math.floor(sec / 3600)).padStart(2, \"0\");\n      sec %= 3600;\n      const mins = String(Math.floor(sec / 60)).padStart(2, \"0\");\n      sec = String(sec % 60).padStart(2, \"0\");\n      return `${hrs}:${mins}:${sec}`;\n    }\n  },\n\n  computed: {\n    elapsed() {\n      return this.format(this.elapsedMs);\n    }\n  }\n};\n</script>\n\n<style>\n  .borderless {\n    border: transparent !important;\n    padding: 0;\n  }\n</style>",
-        "storeOutMessages": true,
-        "passthru": true,
-        "resendOnRefresh": true,
-        "templateScope": "local",
-        "className": "",
-        "x": 2540,
-        "y": 900,
+        "x": 1040,
+        "y": 380,
         "wires": [
             []
         ]
@@ -4856,8 +4818,7 @@
             [
                 "c532e1a601fecdc0",
                 "69804fc389878762",
-                "eb3922176b8b8fcd",
-                "f72cb75a4d357a56"
+                "35b47f01f4dcf475"
             ]
         ]
     },
@@ -4895,12 +4856,8 @@
             [
                 "153b8b833fc25c11"
             ],
-            [
-                "153b8b833fc25c11"
-            ],
-            [
-                "153b8b833fc25c11"
-            ]
+            [],
+            []
         ]
     },
     {
@@ -4915,7 +4872,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1730,
+        "x": 1770,
         "y": 840,
         "wires": [
             [
@@ -4964,23 +4921,6 @@
                 "87d715d5916f610e"
             ]
         ]
-    },
-    {
-        "id": "eb3922176b8b8fcd",
-        "type": "debug",
-        "z": "7c2196e0bf45cdca",
-        "name": "debug 9",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2420,
-        "y": 1000,
-        "wires": []
     },
     {
         "id": "87d715d5916f610e",
@@ -5069,7 +5009,7 @@
         "type": "debug",
         "z": "7c2196e0bf45cdca",
         "name": "debug 8",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -5141,8 +5081,8 @@
         "name": "",
         "ui": "d7416ec1d9513281",
         "events": "all",
-        "x": 740,
-        "y": 920,
+        "x": 660,
+        "y": 1000,
         "wires": [
             []
         ]
@@ -5154,7 +5094,7 @@
         "group": "53026aa3c68dea20",
         "name": "PIC Input",
         "label": "Enter PIC",
-        "order": 5,
+        "order": 6,
         "width": "5",
         "height": 1,
         "topic": "topic",
@@ -5239,11 +5179,11 @@
         "page": "",
         "ui": "",
         "name": "manual BatchId",
-        "order": 6,
+        "order": 7,
         "width": 7,
         "height": 0,
         "head": "",
-        "format": "<template>\n  <v-container fluid class=\"pa-4\">\n    <v-row>\n      <v-col cols=\"9\">\n        <v-text-field v-model=\"batchId\" label=\"Enter Batch ID\" outlined dense></v-text-field>\n      </v-col>\n\n      <v-col cols=\"3\">\n        <v-btn block color=\"primary\" @click=\"submitBatch\" :disabled=\"!batchId\">\n          Start Manual\n        </v-btn>\n      </v-col>\n    </v-row>\n  </v-container>\n\n\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      batchId: \"\",\n      activePic: \"\", \n    };\n  },\n  methods: {\n    submitBatch() {\n      const now = new Date();\n      const currentDate =\n        now.getFullYear().toString() +\n        String(now.getMonth() + 1).padStart(2, \"0\") +\n        String(now.getDate()).padStart(2, \"0\");\n\n      const currentTime =\n        String(now.getHours()).padStart(2, \"0\") +\n        String(now.getMinutes()).padStart(2, \"0\") +\n        String(now.getSeconds()).padStart(2, \"0\");\n\n      // first two letter of batach ID\n      const letters =\n        this.batchId && this.batchId.trim().length > 1\n          ? this.batchId.trim().slice(0, 2).toUpperCase()\n          : \"AB\";\n\n      const orderId = `${currentDate}-${letters}-${currentTime}`;\n      \n      const payload = {\n        productName: \"Unknown -- Manual Input\",\n        orderId,\n        quantity: 0,\n        start: new Date().toISOString(),\n        batchId: this.batchId,\n        activePic: this.activePic,\n      };\n\n      this.send({\n  payload: `${payload.orderId},-,${payload.activePic.replace(/ /g, \"__SPACE__\")},-,${payload.batchId.replace(/ /g, \"__SPACE__\")}`\n});\n\n\n      \n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: payload, \n      });\n    },\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .v-container {\n    max-height: 100%;\n  }\n</style>",
+        "format": "<template>\n  <v-container fluid class=\"pa-4\">\n    <v-row>\n      <v-col cols=\"6\">\n        <v-text-field v-model=\"batchId\" label=\"Enter Batch ID\" outlined dense></v-text-field>\n      </v-col>\n      <v-col cols=\"3\">\n        <v-text-field v-model=\"expectedQuantity\" label=\"Enter quantity\" outlined dense type=\"text\" @input=\"expectedQuantity = expectedQuantity.replace(/\\D/g,'')\" />      </v-col>\n      <v-col cols=\"3\">\n        <v-btn block color=\"primary\" @click=\"submitBatch\" :disabled=\"!batchId || !expectedQuantity\">\n          Start Manual\n        </v-btn>\n      </v-col>\n    </v-row>\n  </v-container>\n\n\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      batchId: \"\",\n      activePic: \"\", \n      expectedQuantity: \"\",\n    };\n  },\n  methods: {\n    submitBatch() {\n      const now = new Date();\n      const currentDate =\n        now.getFullYear().toString() +\n        String(now.getMonth() + 1).padStart(2, \"0\") +\n        String(now.getDate()).padStart(2, \"0\");\n\n      const currentTime =\n        String(now.getHours()).padStart(2, \"0\") +\n        String(now.getMinutes()).padStart(2, \"0\") +\n        String(now.getSeconds()).padStart(2, \"0\");\n\n      // first two letter of batach ID\n      const letters =\n        this.batchId && this.batchId.trim().length > 1\n          ? this.batchId.trim().slice(0, 2).toUpperCase()\n          : \"AB\";\n\n      const orderId = `${currentDate}-${letters}-${currentTime}`;\n      \n      const payload = {\n        productName: \"Unknown -- Manual Input\",\n        orderId,\n        quantity: 0,\n        start: new Date().toISOString(),\n        batchId: this.batchId,\n        activePic: this.activePic,\n        expectedQuantity: this.expectedQuantity,\n      };\n\n      this.send({\n  payload: `${payload.orderId},-,${payload.activePic.replace(/ /g, \"__SPACE__\")},-,${payload.batchId.replace(/ /g, \"__SPACE__\")},-,,-,${payload.expectedQuantity.replace(/ /g, \"__SPACE__\")}`\n});\n\n\n      \n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: payload, \n      });\n    },\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .v-container {\n    max-height: 100%;\n  }\n</style>",
         "storeOutMessages": true,
         "passthru": false,
         "resendOnRefresh": true,
@@ -5288,15 +5228,15 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1280,
-        "y": 540,
+        "x": 1300,
+        "y": 560,
         "wires": []
     },
     {
         "id": "f74d78774be5cba9",
         "type": "function",
         "z": "7c2196e0bf45cdca",
-        "name": "Toggle Andon to Green",
+        "name": "set ActiveColor Green",
         "func": "flow.set('activeColor', \"green\");\nnode.status({ text:\"green\" });\nmsg.payload = \"green\"\nreturn msg;",
         "outputs": 1,
         "timeout": "",
@@ -5322,7 +5262,7 @@
         "page": "",
         "ui": "",
         "name": "Finish Button",
-        "order": 14,
+        "order": 15,
         "width": "4",
         "height": "2",
         "head": "",
@@ -5354,7 +5294,8 @@
         "y": 1480,
         "wires": [
             [
-                "2fe3f515d15a3aa7"
+                "2fe3f515d15a3aa7",
+                "8b1d901ab30114bb"
             ],
             [
                 "2fe3f515d15a3aa7"
@@ -5784,7 +5725,7 @@
             }
         ],
         "repeat": "",
-        "crontab": "*/1 0-23 * * *",
+        "crontab": "*/5 0-23 * * *",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
@@ -5804,7 +5745,7 @@
         "type": "exec",
         "z": "7c2196e0bf45cdca",
         "g": "c3495ec264fdf1d0",
-        "command": "node /home/pi/Project/update_report.js",
+        "command": "node /home/pi/Project/syncFirestore.js",
         "addpay": "",
         "append": "",
         "useSpawn": "false",
@@ -5852,6 +5793,304 @@
         "info": "",
         "x": 1770,
         "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "35b47f01f4dcf475",
+        "type": "ui-template",
+        "z": "7c2196e0bf45cdca",
+        "group": "16a799820a185e70",
+        "page": "",
+        "ui": "",
+        "name": "Elapsed TIme",
+        "order": 11,
+        "width": "2",
+        "height": "1",
+        "head": "",
+        "format": "<template>\n  <v-card class=\"borderless pa-4 text-left\">\n    <div class=\"text-h5 font-weight-bold\">{{ elapsed }}</div>\n  </v-card>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      elapsedMs: 0,\n      lastStart: null,\n      interval: null,\n    };\n  },\n\n  mounted() {\n    this.startTimer();\n\n    this.$watch(\n      () => this.msg,\n      (msg) => {\n        if (!msg || msg.payload == null) return;\n\n        if (typeof msg.payload === \"number\") {\n          this.elapsedMs = msg.payload;\n          if (this.lastStart) {\n            this.lastStart = Date.now();\n          }\n          return;\n        }\n\n        const color = msg.payload;\n\n        if (color === \"green\") {\n          this.resumeTimer();\n        } else if (color === \"red\" || color === \"blue\") {\n          this.pauseTimer();\n        }\n      }\n    );\n  },\n\n  beforeUnmount() {\n    clearInterval(this.interval);\n    this.interval = null;\n  },\n\n  methods: {\n    startTimer() {\n      if (this.interval) return;\n\n      this.lastStart = Date.now();\n      this.interval = setInterval(() => {\n        if (this.lastStart) {\n          this.elapsedMs += Date.now() - this.lastStart;\n          this.lastStart = Date.now();\n        }\n      }, 1000);\n    },\n\n    pauseTimer() {\n      if (this.lastStart) {\n        this.elapsedMs += Date.now() - this.lastStart;\n        this.lastStart = null;\n      }\n    },\n\n    resumeTimer() {\n      if (!this.lastStart) {\n        this.lastStart = Date.now();\n      }\n    },\n\n    format(ms) {\n      let sec = Math.floor(ms / 1000);\n      const hrs = String(Math.floor(sec / 3600)).padStart(2, \"0\");\n      sec %= 3600;\n      const mins = String(Math.floor(sec / 60)).padStart(2, \"0\");\n      sec = String(sec % 60).padStart(2, \"0\");\n      return `${hrs}:${mins}:${sec}`;\n    }\n  },\n\n  computed: {\n    elapsed() {\n      return this.format(this.elapsedMs);\n    }\n  }\n};\n\n</script>\n\n<style>\n  .borderless {\n    border: transparent !important;\n    padding: 0;\n  }\n</style>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2680,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "63d14d3360d55a41",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "query duration",
+        "func": "var currentOrderId = flow.get(\"currentOrderId\") || null;\nvar sqlMsg = null;\n\n// if start is pressed\nsqlMsg = {\n    topic: `\n        SELECT duration\n        FROM log\n        WHERE orderId = '${currentOrderId}'\n        ORDER BY id DESC\n        LIMIT 1;\n    `};\nnode.status({ fill: \"green\", shape: \"dot\", text: \"Retrieving counts from log\" });\n\nreturn sqlMsg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1940,
+        "y": 980,
+        "wires": [
+            [
+                "8673dc364ed76c38"
+            ]
+        ]
+    },
+    {
+        "id": "8673dc364ed76c38",
+        "type": "sqlite",
+        "z": "7c2196e0bf45cdca",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 2150,
+        "y": 980,
+        "wires": [
+            [
+                "7fdad5821048b7da"
+            ]
+        ]
+    },
+    {
+        "id": "7fdad5821048b7da",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "send count value",
+        "func": "if (msg.payload && msg.payload.length > 0) {\n    const duration = msg.payload[0].duration;\n    node.status({ fill: \"green\", shape: \"dot\", text: \"duration \" + duration });\n\n    // Send to UI\n    msg.payload = duration;\n} else {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"No data\" });\n    msg.payload = 0;\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2350,
+        "y": 980,
+        "wires": [
+            [
+                "35b47f01f4dcf475"
+            ]
+        ]
+    },
+    {
+        "id": "afca2e5aedfc18d1",
+        "type": "link in",
+        "z": "7c2196e0bf45cdca",
+        "name": "orderId",
+        "links": [
+            "8bee914bc3c1487f"
+        ],
+        "x": 1785,
+        "y": 980,
+        "wires": [
+            [
+                "63d14d3360d55a41"
+            ]
+        ]
+    },
+    {
+        "id": "8bee914bc3c1487f",
+        "type": "link out",
+        "z": "7c2196e0bf45cdca",
+        "name": "orderId",
+        "mode": "link",
+        "links": [
+            "afca2e5aedfc18d1"
+        ],
+        "x": 1545,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "69db839d34a02c89",
+        "type": "link out",
+        "z": "7c2196e0bf45cdca",
+        "name": "andon",
+        "mode": "link",
+        "links": [
+            "fc3cd54ba64c1a0c"
+        ],
+        "x": 1945,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "fc3cd54ba64c1a0c",
+        "type": "link in",
+        "z": "7c2196e0bf45cdca",
+        "name": "andon",
+        "links": [
+            "69db839d34a02c89",
+            "651e739fffba7922"
+        ],
+        "x": 2295,
+        "y": 660,
+        "wires": [
+            [
+                "69804fc389878762"
+            ]
+        ]
+    },
+    {
+        "id": "b99ae93f87a0dbb3",
+        "type": "link out",
+        "z": "7c2196e0bf45cdca",
+        "name": "resume",
+        "mode": "link",
+        "links": [
+            "a4dc27fcafa18bdb"
+        ],
+        "x": 865,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "f1f9b173f649081c",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "node /home/pi/Project/checkResume.js",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "check resume",
+        "x": 730,
+        "y": 780,
+        "wires": [
+            [
+                "b99ae93f87a0dbb3",
+                "b6d79ea41b00e175"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "d3e1a422880e9b4c",
+        "type": "link in",
+        "z": "7c2196e0bf45cdca",
+        "name": "finish",
+        "links": [
+            "8b1d901ab30114bb"
+        ],
+        "x": 565,
+        "y": 820,
+        "wires": [
+            [
+                "f1f9b173f649081c"
+            ]
+        ]
+    },
+    {
+        "id": "b6d79ea41b00e175",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "check resume result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "8b1d901ab30114bb",
+        "type": "link out",
+        "z": "7c2196e0bf45cdca",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "d3e1a422880e9b4c"
+        ],
+        "x": 975,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "23540a12fb51dc00",
+        "type": "ui-template",
+        "z": "7c2196e0bf45cdca",
+        "group": "53026aa3c68dea20",
+        "page": "",
+        "ui": "",
+        "name": "Resume Button",
+        "order": 4,
+        "width": 3,
+        "height": 2,
+        "head": "",
+        "format": "<template>\n  <v-container fluid class=\"pa-4 fill-height\">\n    <v-row class=\"fill-height\">\n      <v-col cols=\"12\" class=\"d-flex\">\n        <v-btn class=\"flex-grow-1 red-button\" @click=\"submitResume\" :disabled=\"!resumeProcess\" v-show=\"resumeProcess\">\n          <!-- Use mustache syntax to bind the value -->\n          Resume {{ resumeProcess?.orderId }}\n        </v-btn>\n      </v-col>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      resumeProcess: null,\n    };\n  },\n  watch: {\n    msg: {\n      handler(newMsg) {\n        let data = newMsg?.payload || newMsg;\n        if (typeof data === 'string') {\n          try { data = JSON.parse(data); } \n          catch (e) { return; }\n        }\n        if (data && data.type === \"resumeProcess\") {\n          // Set resumeProcess to the payload (which could be null or an object)\n          this.resumeProcess = data.payload;\n        }\n      },\n      immediate: true,\n      deep: true\n    }\n  },\n  methods: {\n    submitResume() {\n      if (!this.resumeProcess) return;\n      const p = this.resumeProcess;\n      const payload = {\n        productName: p.productName,\n        orderId: p.orderId,\n        batchId: p.batchId,\n        quantity: p.expectedQuantity,\n        start: p.start,\n        activePic: p.pic\n      };\n      const formattedOutput = `${payload.orderId},-,${payload.activePic.replace(/ /g, \"__SPACE__\")},-,${payload.batchId.replace(/ /g, \"__SPACE__\")},-,,-,${String(payload.quantity)}`;\n      this.send({ payload: formattedOutput });\n      this.$router.push({ path: \"/dashboard/process\", query: payload });\n    }\n  }\n};\n</script>\n\n<style scoped>\n  .fill-height {\n    height: 100%;\n  }\n\n  .red-button {\n    background-color: red !important;\n    color: white !important;\n  }\n</style>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1040,
+        "y": 500,
+        "wires": [
+            [
+                "e943198447df0ef9"
+            ]
+        ]
+    },
+    {
+        "id": "a4dc27fcafa18bdb",
+        "type": "link in",
+        "z": "7c2196e0bf45cdca",
+        "name": "resume",
+        "links": [
+            "b99ae93f87a0dbb3"
+        ],
+        "x": 915,
+        "y": 500,
+        "wires": [
+            [
+                "23540a12fb51dc00"
+            ]
+        ]
+    },
+    {
+        "id": "e943198447df0ef9",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "node /home/pi/Project/startresumeCounting.js",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "resume firestore",
+        "x": 1260,
+        "y": 500,
+        "wires": [
+            [
+                "651e739fffba7922"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "651e739fffba7922",
+        "type": "link out",
+        "z": "7c2196e0bf45cdca",
+        "name": "andon",
+        "mode": "link",
+        "links": [
+            "fc3cd54ba64c1a0c"
+        ],
+        "x": 1415,
+        "y": 480,
         "wires": []
     }
 ]

@@ -49,7 +49,7 @@ try {
     let orders = []
     try {
         orders = await db.all(
-            `SELECT orderId, start, batchId, pic FROM tastiway_process WHERE uploadedStart = 0`,
+            `SELECT *  FROM tastiway_process WHERE uploadedStart = 0`,
         );
     } catch (err) {
         throw new Error(`❌ SQLite table 'process' failed: ${err.message}`);
@@ -172,14 +172,14 @@ try {
     console.log(msg)
 
 } catch (err) {
-    console.error("❌ Error:", err.message);
-    console.error(err.stack);
+    console.log("❌ Error:", err.message);
+    console.log(err.stack);
 } finally {
     if (db) {
         try {
             await db.close();
         } catch (err) {
-            console.error("⚠️ Failed to close SQLite DB:", err.message);
+            console.log("⚠️ Failed to close SQLite DB:", err.message);
         }
     }
 }

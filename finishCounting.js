@@ -34,6 +34,7 @@ const machineUom = {
 let db;
 let dbFirestore;
 let currentRow
+let duration;
 
 try {
     // firebase init
@@ -82,13 +83,12 @@ try {
 
     //* Sqlilte -- add the last data to table log -- make sure to clear the orderId first to prevent from race condition with the log updater
     try {
-        let duration;
         // retrieve latest duration 
-        const latestRow = await db.all(`SELECT duration from log WHERE orderId=? ORDER BY id DESC LIMIT 1`, [currentRow["orderId"]]);
+        const latestRow = await db.all(`SELECT duration, timestamp from log WHERE orderId=? ORDER BY id DESC LIMIT 1`, [currentRow["orderId"]]);
         if (latestRow.length === 0) {
             duration = 0
         } else {
-            duration = latestRow[0]["duration"] + 5 * 60 * 1000; // in millisecond
+            duration = latestRow[0]["duration"] + (nowMillis - latestRow[0]["timestamp"]) // in millisecond
         }
         await db.run(
             `INSERT INTO log (orderId, count, andon, timestamp, duration) VALUES (?,?,?,?,?)`, [currentRow["orderId"], currentRow["counts"], currentRow["andon"], nowMillis, duration]
@@ -129,6 +129,33 @@ try {
             );
     } catch (err) {
         throw new Error(`❌ Firestore update Andon status failed: ${err.message}`);
+    }
+
+    //* Firestore -- update finish info into collection report
+    try {
+
+        await dbFirestore
+            .collection("tastiway_reports")
+            .doc(orderId)
+            .update(
+                {
+                    stop: Timestamp.fromMillis(nowMillis),
+                    finalCount: currentRow["counts"],
+                    reject: currentRow["counts"] - reject,
+                    uom: machineUom[machineId],
+                },
+            )
+        // once added into 'report', modify the updated
+        await db.run(
+            `UPDATE tastiway_process
+        SET uploaded = 1
+        WHERE orderId = ?`,
+            [orderId]
+        );
+
+
+    } catch (err) {
+        throw new Error(`❌ Firestore add into record failed: ${err.message} for ${orderId}`);
     }
 
     console.log(`✅ process finished, sqlite and firestore been successfully updated`)

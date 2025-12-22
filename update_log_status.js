@@ -88,7 +88,7 @@ try {
         }
     } else {
         try {
-            const plan = await db.all(`SELECT * FROM tastiway_plan WHERE orderId=?`, currentRow["orderId"])
+            const plan = await db.all(`SELECT * FROM tastiway_plans WHERE orderId=?`, currentRow["orderId"])
             let expectedQuantity;
             let productName;
 

@@ -66,15 +66,15 @@ try {
         if (currentRow.length === 0) {
             // table empty -> insert new
             await db.run(
-                `INSERT INTO current (orderId, counts, pic) VALUES (?, ?, ?)`,
-                [orderId, 0, activePic]
+                `INSERT INTO current (orderId, counts, pic, start) VALUES (?, ?, ?,?)`,
+                [orderId, 0, activePic, nowMillis]
             );
         } else if (currentRow.orderId !== orderId) {
             // different order -> clear and insert new
             await db.run(`DELETE FROM current;`);
             await db.run(
-                `INSERT INTO current (orderId, counts, pic) VALUES (?, ?, ?)`,
-                [orderId, 0, activePic]
+                `INSERT INTO current (orderId, counts, pic, start) VALUES (?, ?, ?,?)`,
+                [orderId, 0, activePic, nowMillis]
             );
         } else {
             // same orderId -> keep as is

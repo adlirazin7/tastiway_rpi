@@ -27,6 +27,7 @@ if (!orderId) {
 
 let db;
 let dbFirestore;
+let msg;
 
 try {
     // firebase init
@@ -48,22 +49,49 @@ try {
                     updatedAt: new Date(),
                 },
             );
+        msg += "✅ finished update status machine in the tastiway_plans";
     } catch (err) {
         console.error(`❌ Firestore update status in plans failed: ${err.message}`);
     }
 
+    // Sqlite -- retrieve  table current
+    try {
+        currentRows = await db.all(`SELECT * FROM current LIMIT 1;`);
+        if (currentRows.length > 0) {
+            currentRow = currentRows[0]
+        }
+    } catch (err) {
+        throw new Error(`❌ Retrieve 'current' table failed: ${err.message}`);
+    }
+
+
     // Firestore -- update ANDON signal system
     try {
+        const plan = await db.all(`SELECT * FROM tastiway_plan WHERE orderId=?`, currentRow["orderId"])
+        let expectedQuantity;
+        let productName;
+
+        if (plan.length === 0) {
+            expectedQuantity = 0;
+            productName = ""
+        } else {
+            expectedQuantity = plan[0]["quantity"]
+            productName = plan[0]["productName"]
+        }
         await dbFirestore
             .collection("tastiway_machines")
             .doc(machineId)
             .set(
                 {
-                    status: "green",
+                    status: currentRow["andon"],
                     lastSeen: new Date(),
+                    count: currentRow["counts"],
+                    expectedQuantity: expectedQuantity,
+                    productName: productName,
                 },
                 { merge: true }
             );
+        msg += "✅ finished upload the status to tastiway_machines";
     } catch (err) {
         throw new Error(`❌ Firestore update Andon status failed: ${err.message}`);
     }

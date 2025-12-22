@@ -88,7 +88,7 @@ try {
         }
     } else {
         try {
-            const plan = await db.all(`SELECT * FROM tastiway_plan WHERE orderId=?`, [orderId])
+            const plan = await db.all(`SELECT * FROM tastiway_plan WHERE orderId=?`, currentRow["orderId"])
             let expectedQuantity;
             let productName;
 
@@ -122,14 +122,14 @@ try {
     console.log(msg)
 
 } catch (err) {
-    console.error("❌ Error:", err.message);
-    console.error(err.stack);
+    console.log("❌ Error:", err.message);
+    console.log(err.stack);
 } finally {
     if (db) {
         try {
             await db.close();
         } catch (err) {
-            console.error("⚠️ Failed to close SQLite DB:", err.message);
+            console.log("⚠️ Failed to close SQLite DB:", err.message);
         }
     }
 }

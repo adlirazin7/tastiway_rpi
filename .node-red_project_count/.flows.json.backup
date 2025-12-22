@@ -2966,7 +2966,7 @@
         "type": "function",
         "z": "f69312076bb95996",
         "name": "send count value",
-        "func": "if (msg.payload && msg.payload.length > 0) {\n    const duration = msg.payload[0].duration;\n    node.status({ fill: \"green\", shape: \"dot\", text: \"duration \" + duration });\n\n    // Send to UI\n    msg.payload = duration;\n} else {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"No data\" });\n    msg.payload = 0;\n}\nreturn msg;\n",
+        "func": "if (msg.payload && msg.payload.length > 0) {\n    const duration = msg.payload[0].duration;\n    node.status({ fill: \"green\", shape: \"dot\", text: \"duration \" + duration });\n\n    // Send to UI\n    msg.payload = duration;\n} else {\n    node.status({ fill: \"green\", shape: \"dot\", text: \"duration 0\" });\n    msg.payload = 0;\n}\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,

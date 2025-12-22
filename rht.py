@@ -95,7 +95,6 @@ def upload_grouped_to_firestore(grouped, timestamps):
                 # do NOT set doc for any other unexpected error
                 continue
 
-
 def main():
     rows = read_unuploaded()
 

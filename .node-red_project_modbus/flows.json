@@ -3913,7 +3913,7 @@
         "wires": [
             [
                 "0f710ad4ed37e0ba",
-                "29281d4ed756aa12"
+                "627fa08426dc4239"
             ]
         ]
     },
@@ -3949,7 +3949,7 @@
         "page": "",
         "ui": "",
         "name": "Elapsed TIme",
-        "order": 15,
+        "order": 14,
         "width": "2",
         "height": "1",
         "head": "",
@@ -4273,7 +4273,7 @@
         "group": "16a799820a185e70",
         "name": "",
         "label": "Assistance",
-        "order": 6,
+        "order": 5,
         "width": "2",
         "height": "2",
         "emulateClick": false,
@@ -4312,7 +4312,7 @@
         "group": "16a799820a185e70",
         "name": "",
         "label": "Breakdown",
-        "order": 5,
+        "order": 6,
         "width": "2",
         "height": "2",
         "emulateClick": false,
@@ -4528,7 +4528,7 @@
         "page": "",
         "ui": "",
         "name": "Finish Button",
-        "order": 14,
+        "order": 15,
         "width": "4",
         "height": "2",
         "head": "",
@@ -6011,6 +6011,31 @@
         "wires": [
             [
                 "125e7173fb5ca07f"
+            ]
+        ]
+    },
+    {
+        "id": "627fa08426dc4239",
+        "type": "delay",
+        "z": "7c2196e0bf45cdca",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 670,
+        "y": 980,
+        "wires": [
+            [
+                "29281d4ed756aa12"
             ]
         ]
     }

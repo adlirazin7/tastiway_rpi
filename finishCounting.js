@@ -124,6 +124,9 @@ try {
                 {
                     status: "yellow",
                     lastSeen: new Date(),
+                    count: null,
+                    expectedQuantity: null,
+                    productName: null,
                 },
                 { merge: true }
             );

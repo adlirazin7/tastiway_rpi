@@ -725,9 +725,7 @@
             [
                 "534651e93a429058"
             ],
-            [
-                "534651e93a429058"
-            ]
+            []
         ]
     },
     {
@@ -763,7 +761,7 @@
         "id": "534651e93a429058",
         "type": "debug",
         "z": "f69312076bb95996",
-        "name": "+ process&current(sqlite) &&  + status (firestore)",
+        "name": "start counting",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -772,7 +770,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1940,
+        "x": 1840,
         "y": 600,
         "wires": []
     },
@@ -1212,7 +1210,7 @@
         "wires": [
             [
                 "387dc7dc7cfd6972",
-                "f1f9b173f649081c"
+                "2b906280ab491c3b"
             ]
         ]
     },
@@ -1334,7 +1332,6 @@
         "y": 1080,
         "wires": [
             [
-                "231d11e98ba1955a",
                 "26d222d71a3d8ff4"
             ]
         ]
@@ -2172,7 +2169,8 @@
         "name": "start process",
         "mode": "link",
         "links": [
-            "90199c17386ded4c"
+            "90199c17386ded4c",
+            "9ff2a5ae0e4506f5"
         ],
         "x": 1665,
         "y": 540,
@@ -2830,7 +2828,8 @@
         "y": 540,
         "wires": [
             [
-                "802002eaedf78b38"
+                "802002eaedf78b38",
+                "74bebe911794e031"
             ],
             [],
             []
@@ -2845,8 +2844,8 @@
         "links": [
             "a8742f689401ac1a"
         ],
-        "x": 1325,
-        "y": 540,
+        "x": 1275,
+        "y": 500,
         "wires": []
     },
     {
@@ -2995,6 +2994,76 @@
         "wires": [
             [
                 "e6716af0f3538687"
+            ]
+        ]
+    },
+    {
+        "id": "9ff2a5ae0e4506f5",
+        "type": "link in",
+        "z": "f69312076bb95996",
+        "name": "start process",
+        "links": [
+            "6cb56de36a3e267f"
+        ],
+        "x": 635,
+        "y": 1100,
+        "wires": [
+            [
+                "231d11e98ba1955a"
+            ]
+        ]
+    },
+    {
+        "id": "74bebe911794e031",
+        "type": "link out",
+        "z": "f69312076bb95996",
+        "name": "start process for resume",
+        "mode": "link",
+        "links": [
+            "487259b276f55b37"
+        ],
+        "x": 1335,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "487259b276f55b37",
+        "type": "link in",
+        "z": "f69312076bb95996",
+        "name": "start process for resume",
+        "links": [
+            "74bebe911794e031"
+        ],
+        "x": 545,
+        "y": 1120,
+        "wires": [
+            [
+                "231d11e98ba1955a"
+            ]
+        ]
+    },
+    {
+        "id": "2b906280ab491c3b",
+        "type": "delay",
+        "z": "f69312076bb95996",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "500",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 610,
+        "y": 860,
+        "wires": [
+            [
+                "f1f9b173f649081c"
             ]
         ]
     }

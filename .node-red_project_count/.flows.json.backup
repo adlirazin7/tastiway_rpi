@@ -1163,7 +1163,7 @@
         "width": "4",
         "height": 2,
         "head": "",
-        "format": "<template>\n    <div class=\"text-center pa-4\">\n  <v-btn class=\"finish-style\" height=\"100%\" width=\"100%\"  @click=\"dialog = true\">\n    Finish\n  </v-btn>\n\n  <v-dialog v-model=\"dialog\" width=\"700px\">\n    <v-card title=\"Confirm Finish\">\n      <v-card-text>\n\n\n        <v-number-input\n          v-model=\"rejectQty\"\n          :reverse=\"false\"\n          controlVariant=\"split\"\n          label=\"Rejected Quantity\"\n          :hideInput=\"false\"\n          :inset=\"false\"\n          variant=\"outlined\"\n        ></v-number-input>\n      </v-card-text>\n\n      <v-card-actions class=\"actions-right\">\n        <v-btn text @click=\"dialog = false\">\n          Cancel\n        </v-btn>\n\n        <v-btn class=\"submit-big\" color=\"red\" variant=\"flat\" @click=\"submit\">\n          Submit\n        </v-btn>\n      </v-card-actions>\n    </v-card>\n\n  </v-dialog>\n    </div>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n    dialog: false,\n    rejectQty: null,\n    };\n  },\n\n  methods: {\n    submit() {\n      this.send({\n      payload: {\n      rejectQty: this.rejectQty ?? 0,\n      },\n      });\n\n      this.$root.$router.push(\"/production_plan\");\n      this.dialog = false;\n    }\n  },\n};\n</script>\n\n<style scoped>\n  .finish-style {\n    font-weight: 600;\n    color: white !important;\n    background: #e73c52 !important;\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n      0 4px 10px rgba(1, 39, 76, 0.4),\n      inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n    font-size: calc(0.8vw + 0.4em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n  }\n  .v-number-input .v-icon {\n    color: #444444 !important; /* Force a dark color */\n}\n\n  .finish-style:hover,\n  .finish-style:focus {\n    background: #b52f43 !important;\n    box-shadow:\n      0 6px 16px rgba(1, 39, 76, 0.5),\n      inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n  }\n\n  .finish-style:active {\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n  }\n\n  .submit-big {\n  min-width: 180px; /* wider */\n  padding: 20px 24px; /* taller + more horizontal padding */\n  font-size: 1rem;\n  font-weight: 600;\n  border-radius: 10px;\n  }\n\n  .actions-right {\n  display: flex;\n  justify-content: flex-end;   /* align both buttons right */\n  gap: 12px;                   /* spacing between Cancel + Submit */\n  padding-right: 20px;         /* optional: add a little breathing room */\n}\n</style>",
+        "format": "<template>\n    <div class=\"text-center pa-4\">\n  <v-btn class=\"finish-style\" height=\"100%\" width=\"100%\"  @click=\"dialog = true\">\n    Finish\n  </v-btn>\n\n  <v-dialog v-model=\"dialog\" width=\"700px\">\n    <v-card title=\"Confirm Finish\">\n      <v-card-text>\n\n\n        <v-number-input\n          v-model=\"rejectQty\"\n          :reverse=\"false\"\n          controlVariant=\"split\"\n          label=\"Output Quantity\"\n          :hideInput=\"false\"\n          :inset=\"false\"\n          variant=\"outlined\"\n        ></v-number-input>\n      </v-card-text>\n\n      <v-card-actions class=\"actions-right\">\n        <v-btn text @click=\"dialog = false\">\n          Cancel\n        </v-btn>\n\n        <v-btn class=\"submit-big\" color=\"red\" variant=\"flat\" @click=\"submit\">\n          Submit\n        </v-btn>\n      </v-card-actions>\n    </v-card>\n\n  </v-dialog>\n    </div>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n    dialog: false,\n    rejectQty: null,\n    };\n  },\n\n  methods: {\n    submit() {\n      this.send({\n      payload: {\n      rejectQty: this.rejectQty ?? 0,\n      },\n      });\n\n      this.$root.$router.push(\"/production_plan\");\n      this.dialog = false;\n    }\n  },\n};\n</script>\n\n<style scoped>\n  .finish-style {\n    font-weight: 600;\n    color: white !important;\n    background: #e73c52 !important;\n    border: 0.1vw solid rgba(255, 255, 255, 0.2);\n    border-radius: 14px;\n    box-shadow:\n      0 4px 10px rgba(1, 39, 76, 0.4),\n      inset 0 0 12px rgba(255, 255, 255, 0.15);\n    text-transform: none;\n    letter-spacing: 0.5px;\n    font-size: calc(0.8vw + 0.4em);\n    padding: 0.6em 1.2em;\n    transition: all 0.25s ease;\n    cursor: pointer;\n  }\n  .v-number-input .v-icon {\n    color: #444444 !important; /* Force a dark color */\n}\n\n  .finish-style:hover,\n  .finish-style:focus {\n    background: #b52f43 !important;\n    box-shadow:\n      0 6px 16px rgba(1, 39, 76, 0.5),\n      inset 0 0 14px rgba(255, 255, 255, 0.2);\n    border-color: rgba(255, 255, 255, 0.4);\n  }\n\n  .finish-style:active {\n    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);\n  }\n\n  .submit-big {\n  min-width: 180px; /* wider */\n  padding: 20px 24px; /* taller + more horizontal padding */\n  font-size: 1rem;\n  font-weight: 600;\n  border-radius: 10px;\n  }\n\n  .actions-right {\n  display: flex;\n  justify-content: flex-end;   /* align both buttons right */\n  gap: 12px;                   /* spacing between Cancel + Submit */\n  padding-right: 20px;         /* optional: add a little breathing room */\n}\n</style>",
         "storeOutMessages": true,
         "passthru": true,
         "resendOnRefresh": true,
@@ -1334,7 +1334,6 @@
         "y": 1080,
         "wires": [
             [
-                "231d11e98ba1955a",
                 "26d222d71a3d8ff4"
             ]
         ]
@@ -2172,7 +2171,8 @@
         "name": "start process",
         "mode": "link",
         "links": [
-            "90199c17386ded4c"
+            "90199c17386ded4c",
+            "9ff2a5ae0e4506f5"
         ],
         "x": 1665,
         "y": 540,
@@ -2830,7 +2830,8 @@
         "y": 540,
         "wires": [
             [
-                "802002eaedf78b38"
+                "802002eaedf78b38",
+                "74bebe911794e031"
             ],
             [],
             []
@@ -2845,8 +2846,8 @@
         "links": [
             "a8742f689401ac1a"
         ],
-        "x": 1325,
-        "y": 540,
+        "x": 1275,
+        "y": 500,
         "wires": []
     },
     {
@@ -2995,6 +2996,51 @@
         "wires": [
             [
                 "e6716af0f3538687"
+            ]
+        ]
+    },
+    {
+        "id": "9ff2a5ae0e4506f5",
+        "type": "link in",
+        "z": "f69312076bb95996",
+        "name": "start process",
+        "links": [
+            "6cb56de36a3e267f"
+        ],
+        "x": 635,
+        "y": 1100,
+        "wires": [
+            [
+                "231d11e98ba1955a"
+            ]
+        ]
+    },
+    {
+        "id": "74bebe911794e031",
+        "type": "link out",
+        "z": "f69312076bb95996",
+        "name": "start process for resume",
+        "mode": "link",
+        "links": [
+            "487259b276f55b37"
+        ],
+        "x": 1335,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "487259b276f55b37",
+        "type": "link in",
+        "z": "f69312076bb95996",
+        "name": "start process for resume",
+        "links": [
+            "74bebe911794e031"
+        ],
+        "x": 545,
+        "y": 1120,
+        "wires": [
+            [
+                "231d11e98ba1955a"
             ]
         ]
     }

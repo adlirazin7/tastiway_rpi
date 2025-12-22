@@ -62,19 +62,23 @@ try {
     //Sqlite -- current table
     try {
         const currentRow = await db.all(`SELECT * FROM current LIMIT 1;`);
+        const process = await db.all(`SELECT start, counts FROM tastiway_process WHERE orderId=?`, [orderId]);
+        const start = process[0]["start"]
+        const counts = process[0]["counts"]
 
         if (currentRow.length === 0) {
             // table empty -> insert new
+
             await db.run(
-                `INSERT INTO current (orderId, counts, pic, start) VALUES (?, ?, ?,?)`,
-                [orderId, 0, activePic, nowMillis]
+                `INSERT INTO current (orderId, counts, pic, start) VALUES (?, ?, ?, ?)`,
+                [orderId, counts, activePic, start]
             );
-        } else if (currentRow.orderId !== orderId) {
+        } else if (currentRow[0].orderId !== orderId) {
             // different order -> clear and insert new
             await db.run(`DELETE FROM current;`);
             await db.run(
-                `INSERT INTO current (orderId, counts, pic, start) VALUES (?, ?, ?,?)`,
-                [orderId, 0, activePic, nowMillis]
+                `INSERT INTO current (orderId, counts, pic, start) VALUES (?, ?, ?, ?)`,
+                [orderId, counts, activePic, start]
             );
         } else {
             // same orderId -> keep as is

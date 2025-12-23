@@ -13,6 +13,7 @@ const combined = process.argv[2];
 console.log("combined:", combined)
 const [orderId, reject] = combined.split(",-,");
 const nowMillis = Date.now();
+let msg = "Start Finish Operations";
 
 if (!orderId) {
     console.error("❌ Missing orderId argument!");
@@ -76,6 +77,7 @@ try {
         }
         // clear the current table
         await db.run("DELETE FROM current;");
+        console.log("✅ Sqlite - update finish at tastiway_process");
     } catch (err) {
         throw new Error(`❌ 'tastiway_process' table handling failed: ${err.message}`);
     }
@@ -94,6 +96,7 @@ try {
         await db.run(
             `INSERT INTO log (orderId, count, andon, timestamp, duration) VALUES (?,?,?,?,?)`, [currentRow["orderId"], currentRow["counts"], currentRow["andon"], nowMillis, duration]
         );
+        console.log("✅ Sqlite - add last log data ");
     } catch (err) {
         throw new Error(`❌ Update 'log' table failed: ${err.message}`);
     }
@@ -111,8 +114,9 @@ try {
                     updatedAt: new Date(),
                 },
             );
+        console.log("✅ Firestore - update status at plan");
     } catch (err) {
-        console.error(`⚠️ Firestore update status failed (manual will fail): ${err.message}`);
+        console.log(`⚠️ Firestore update status failed (manual will fail): ${err.message}`);
     }
 
 
@@ -131,8 +135,9 @@ try {
                 },
                 { merge: true }
             );
+        console.log("✅ Firestore - update machines");
     } catch (err) {
-        throw new Error(`❌ Firestore update Andon status failed: ${err.message}`);
+        console.log(`❌ Firestore update Andon status failed: ${err.message}`);
     }
 
     //* Firestore -- update finish info into collection report
@@ -156,13 +161,12 @@ try {
         WHERE orderId = ?`,
             [orderId]
         );
-
+        console.log("✅ Firestore - update report");
 
     } catch (err) {
-        throw new Error(`❌ Firestore add into record failed: ${err.message} for ${orderId}`);
+        console.log(`❌ Firestore add into record failed: ${err.message} for ${orderId}`);
     }
 
-    console.log(`✅ process finished, sqlite and firestore been successfully updated`)
     console.log(
         JSON.stringify({
             status: "success",

@@ -163,6 +163,19 @@ try {
                 console.error(`❌ Failed to upload orderId=${orderId}: ${err.message}`);
                 continue;
             }
+            try {
+                await dbFirestore
+                    .collection("tastiway_plans")
+                    .doc(orderId)
+                    .update(
+                        {
+                            status: "completed",
+                            updatedAt: new Date(),
+                        },
+                    );
+            } catch (err) {
+                console.error(`⚠️ Firestore update status failed (manual will fail): ${err.message}`);
+            }
         }
         msg += `✅ finished upload the finish of the process`;
     } catch (err) {

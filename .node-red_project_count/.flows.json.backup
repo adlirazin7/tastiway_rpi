@@ -1321,7 +1321,7 @@
         "type": "function",
         "z": "f69312076bb95996",
         "name": "trigger in process page",
-        "func": "// // Just trigger the template when user opens the Process page\n// if (\n//     msg.topic === \"$pageview\" &&\n//     msg.payload?.page?.path === \"/process\"\n// ) {\n//     return { trigger: true };    // passes the event into the UI Template\n// }\n\n// return null;\n\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/process\"\n) {\n    const query = msg.payload.query;\n\n    const qty = Number(query.quantity);\n\n\n    msg.payload = null;\n    msg.ui_update = {\n        max: qty\n    };\n\n\n    return msg;\n}\n\nreturn null;\n",
+        "func": "// // Just trigger the template when user opens the Process page\n// if (\n//     msg.topic === \"$pageview\" &&\n//     msg.payload?.page?.path === \"/process\"\n// ) {\n//     return { trigger: true };    // passes the event into the UI Template\n// }\n\n// return null;\n\nif (\n    msg.topic === \"$pageview\" &&\n    msg.payload?.page?.path === \"/process\"\n) {\n    const query = msg.payload.query;\n\n    const qty = Number(query.quantity);\n\n\n    msg.payload = 0;\n    msg.ui_update = {\n        max: qty\n    };\n\n\n    return msg;\n}\n\nreturn null;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,

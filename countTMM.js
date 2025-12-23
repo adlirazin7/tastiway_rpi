@@ -23,7 +23,7 @@ try {
 
   }
 
-  const startTime = currentRow.start;
+  const startTime = currentRow[0].start;
 
   const arr = await db.all(
     `SELECT kw FROM energy_reading WHERE timestamp >= ? ORDER BY timestamp ASC`,

@@ -27,6 +27,7 @@ const machineUom = {
     ZTP001: "PACK",
     SMW001: "kg",
     BPM001: "PACK",
+    TEST001: "PACK",
 
 }
 

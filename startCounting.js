@@ -9,13 +9,13 @@ import fs from "fs";
 // retrieve the custom machine Id 
 const machineId = fs.readFileSync('/etc/machine_id_custom', 'utf8').trim();
 // retrieve the variable from the node red
-const combined = process.argv[2];
-console.log("combined:", combined);
-const decode = (v) => v.replace(/__SPACE__/g, " ");
-const [orderId, activePicRaw, batchIdRaw, productNameRaw, expectedQuantity] = combined.split(",-,");
-const activePic = decode(activePicRaw);
-const batchId = decode(batchIdRaw);
-const productName = decode(productNameRaw);
+const payload = process.argv[2];
+console.log("payload:", payload);
+
+const [orderId, activePicRaw, batchIdRaw, productNameRaw, expectedQuantity] = payload.split(",-,");
+const activePic = decodeURIComponent(activePicRaw)
+const batchId = decodeURIComponent(batchIdRaw)
+const productName = decodeURIComponent(productNameRaw)
 const nowMillis = Date.now();
 
 if (!orderId) {

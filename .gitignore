@@ -9,6 +9,7 @@ dist/
 build/
 
 createMachine.js
+test.js
 
 # ============================
 # Environment & Credentials

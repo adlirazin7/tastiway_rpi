@@ -71,7 +71,9 @@ try {
                         machineId: machineId,
                         pic: order["pic"],
                         productName: order["productName"],
-                        expectedQuantity: order["expectedQuantity"]
+                        expectedQuantity: order["expectedQuantity"],
+                        expectedStart: new Date(order["expectedStart"]),
+                        expectedEnd: new Date(order["expectedEnd"]),
                     },
                     { merge: true }
                 )

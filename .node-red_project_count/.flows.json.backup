@@ -516,7 +516,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 720,
+        "x": 740,
         "y": 1180,
         "wires": [
             [
@@ -557,7 +557,7 @@
         "wires": [
             [
                 "9c0a05a7de101d95",
-                "26d222d71a3d8ff4"
+                "7dd8d04ed6ce3898"
             ]
         ]
     },
@@ -622,7 +622,7 @@
         "width": "",
         "height": "",
         "head": "",
-        "format": "<template>\n  <v-container fluid class=\"pa-0\">\n    <v-row dense class=\"ma-0\">\n      <template v-for=\"(plans, date) in groupedPlans\" :key=\"date\">\n        <!-- Date header -->\n        <v-col cols=\"12\" class=\"px-4 py-2\">\n          <div class=\"text-h6 font-weight-bold\">{{ date }}</div>\n        </v-col>\n\n        <!-- Cards under this date -->\n        <v-col v-for=\"(plan, index) in plans\" :key=\"date + '-' + index\" cols=\"12\" sm=\"6\" class=\"pa-2\">\n          <v-card class=\"hoverable plan-card pa-3\" outlined @click=\"selectPlan(plan)\">\n            <v-row>\n              <v-col class=\"pa-4\">\n                <div class=\"text-h6\">{{ plan.productName }}</div>\n                <div class=\"text-subtitle-1 font-weight-bold \">\n                  {{ plan.batchId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  {{ plan.orderId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Quantity: {{ plan.quantity }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Start: {{ new Date(plan.start).toLocaleString() }}\n                </div>\n              </v-col>\n            </v-row>\n          </v-card>\n        </v-col>\n      </template>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      selectedPlan: null,\n      planOptions: [],\n      activePic: \"\"\n    };\n  },\n\n  computed: {\n    groupedPlans() {\n      const groups = {};\n\n      // group by display date\n      this.planOptions.forEach((plan) => {\n        const date = new Date(plan.start);\n        const displayKey = date.toLocaleDateString(\"en-GB\"); // stays like \"14/11/2025\"\n\n        if (!groups[displayKey]) groups[displayKey] = [];\n        groups[displayKey].push(plan);\n      });\n\n      // sort date keys DESC but KEEP display format\n      const sorted = Object.fromEntries(\n        Object.entries(groups).sort((a, b) => {\n          const dA = new Date(a[0].split(\"/\").reverse().join(\"-\")); // 14/11/2025 → 2025-11-14\n          const dB = new Date(b[0].split(\"/\").reverse().join(\"-\"));\n          return dB - dA; // newest first\n        })\n      );\n\n      return sorted;\n    },\n  },\n\n  methods: {\n    strictEncode(str) {\n        return encodeURIComponent(str).replace(/[!'()*._~-]/g, (c) => {\n            return '%' + c.charCodeAt(0).toString(16).toUpperCase();\n        });\n    },\n    selectPlan(plan) {\n      this.selectedPlan = plan.orderId;\n      const safePic = this.strictEncode(this.activePic);\n      const safeBatch = this.strictEncode(plan.batchId);\n      const safeName = this.strictEncode(plan.productName)\n      this.send({\n      payload:`${plan.orderId},-,${safePic},-,${safeBatch},-,${safeName},-,${plan.quantity}`\n      });      // this.send({ payload: `${plan.orderId}` }); // sending orderId to Node-RED exec node\n\n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: {\n          orderId: plan.orderId,\n          productName: plan.productName,\n          quantity: plan.quantity,\n          start: plan.start,\n          activePic: this.activePic\n        },\n      });\n    },\n  },\n\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n\n      if (Array.isArray(newMsg?.payload)) {\n        this.planOptions = newMsg.payload.map((r) => ({\n          productName: r.productName,\n          orderId: r.orderId,\n          quantity: r.quantity ?? 0,\n          start: r.start ?? \"-\",\n          batchId: r.batchId \n\n        }));\n      } else if (newMsg?.payload?.orderId) {\n        const r = newMsg.payload;\n        this.planOptions = [\n          {\n            productName: r.productName,\n            orderId: r.orderId,\n            quantity: r.quantity ?? 0,\n            start: r.start ?? \"-\",\n            batchId: r.batchId \n\n          },\n        ];\n      }\n    },\n  },\n};\n\n</script>\n\n<style scoped>\n  .plan-card {\n    width: 100%;\n    cursor: pointer;\n    transition: 0.25s;\n    border-radius: 16px;\n    overflow: hidden;\n  }\n\n  .plan-card:hover {\n    background-color: #f5f5f5;\n    transform: scale(1.01);\n  }\n\n  .v-card.selected {\n    border-color: #1976d2;\n    background-color: #e3f2fd;\n  }\n\n  .v-container {\n    max-height: 100%;\n    overflow-y: auto;\n    scrollbar-width: none;\n    padding-top: 0 !important;\n  }\n</style>\n\n<script>\n(function(scope) {\n  scope.$watch(\"msg\", function(msg) {\n    if (!msg) return;\n\n    scope.$emit(\"input\", msg);\n  });\n})(scope);\n</script>",
+        "format": "<template>\n  <v-container fluid class=\"pa-0\">\n    <v-row dense class=\"ma-0\">\n      <template v-for=\"(plans, date) in groupedPlans\" :key=\"date\">\n        <!-- Date header -->\n        <v-col cols=\"12\" class=\"px-4 py-2\">\n          <div class=\"text-h6 font-weight-bold\">{{ date }}</div>\n        </v-col>\n\n        <!-- Cards under this date -->\n        <v-col v-for=\"(plan, index) in plans\" :key=\"date + '-' + index\" cols=\"12\" sm=\"6\" class=\"pa-2\">\n          <v-card class=\"hoverable plan-card pa-3\" outlined @click=\"selectPlan(plan)\">\n            <v-row>\n              <v-col class=\"pa-4\">\n                <div class=\"text-h6\">{{ plan.productName }}</div>\n                <div class=\"text-subtitle-1 font-weight-bold \">\n                  {{ plan.batchId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  {{ plan.orderId }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Quantity: {{ plan.quantity }}\n                </div>\n                <div class=\"text-subtitle-2 grey--text\">\n                  Start: {{ new Date(plan.start).toLocaleString() }}\n                </div>\n              </v-col>\n            </v-row>\n          </v-card>\n        </v-col>\n      </template>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      selectedPlan: null,\n      planOptions: [],\n      activePic: \"\"\n    };\n  },\n\n  computed: {\n    groupedPlans() {\n      const groups = {};\n\n      // group by display date\n      this.planOptions.forEach((plan) => {\n        const date = new Date(plan.start);\n        const displayKey = date.toLocaleDateString(\"en-GB\"); // stays like \"14/11/2025\"\n\n        if (!groups[displayKey]) groups[displayKey] = [];\n        groups[displayKey].push(plan);\n      });\n\n      // sort date keys DESC but KEEP display format\n      const sorted = Object.fromEntries(\n        Object.entries(groups).sort((a, b) => {\n          const dA = new Date(a[0].split(\"/\").reverse().join(\"-\")); // 14/11/2025 → 2025-11-14\n          const dB = new Date(b[0].split(\"/\").reverse().join(\"-\"));\n          return dB - dA; // newest first\n        })\n      );\n\n      return sorted;\n    },\n  },\n\n  methods: {\n    strictEncode(str) {\n        return encodeURIComponent(str).replace(/[!'()*._~-]/g, (c) => {\n            return '%' + c.charCodeAt(0).toString(16).toUpperCase();\n        });\n    },\n    selectPlan(plan) {\n      this.selectedPlan = plan.orderId;\n      const safePic = this.strictEncode(this.activePic);\n      const safeBatch = this.strictEncode(plan.batchId);\n      const safeName = this.strictEncode(plan.productName);\n      const safeExpectedStart = this.strictEncode(plan.start);\n      const safeExpectedEnd = this.strictEncode(plan.end)\n      this.send({\n      payload:`${plan.orderId},-,${safePic},-,${safeBatch},-,${safeName},-,${plan.quantity},-,${safeExpectedStart},-,${safeExpectedEnd}`\n      });  // sending orderId and other info to Node-RED exec node\n\n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: {\n          orderId: plan.orderId,\n          productName: plan.productName,\n          quantity: plan.quantity,\n          start: plan.start,\n          activePic: this.activePic\n        },\n      });\n    },\n  },\n\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n\n      if (Array.isArray(newMsg?.payload)) {\n        this.planOptions = newMsg.payload.map((r) => ({\n          productName: r.productName,\n          orderId: r.orderId,\n          quantity: r.quantity ?? 0,\n          start: r.start ?? \"\",\n          batchId: r.batchId,\n          end: r.end ?? \"\", \n\n        }));\n      } else if (newMsg?.payload?.orderId) {\n        const r = newMsg.payload;\n        this.planOptions = [\n          {\n            productName: r.productName,\n            orderId: r.orderId,\n            quantity: r.quantity ?? 0,\n            start: r.start ?? \"\",\n            batchId: r.batchId,\n            end: r.end ?? \"\", \n\n          },\n        ];\n      }\n    },\n  },\n};\n\n</script>\n\n<style scoped>\n  .plan-card {\n    width: 100%;\n    cursor: pointer;\n    transition: 0.25s;\n    border-radius: 16px;\n    overflow: hidden;\n  }\n\n  .plan-card:hover {\n    background-color: #f5f5f5;\n    transform: scale(1.01);\n  }\n\n  .v-card.selected {\n    border-color: #1976d2;\n    background-color: #e3f2fd;\n  }\n\n  .v-container {\n    max-height: 100%;\n    overflow-y: auto;\n    scrollbar-width: none;\n    padding-top: 0 !important;\n  }\n</style>\n\n<script>\n(function(scope) {\n  scope.$watch(\"msg\", function(msg) {\n    if (!msg) return;\n\n    scope.$emit(\"input\", msg);\n  });\n})(scope);\n</script>",
         "storeOutMessages": true,
         "passthru": false,
         "resendOnRefresh": true,
@@ -1189,7 +1189,8 @@
                 "b918c810745954df",
                 "a153e30311bbef15",
                 "099b519895618f53",
-                "cde774c8f00f1bf7"
+                "cde774c8f00f1bf7",
+                "619413be92ba7adc"
             ]
         ]
     },
@@ -1310,8 +1311,8 @@
         "styleRounded": true,
         "styleGlow": false,
         "className": "",
-        "x": 1390,
-        "y": 1100,
+        "x": 1450,
+        "y": 1080,
         "wires": [
             []
         ]
@@ -2205,7 +2206,7 @@
         "width": 7,
         "height": 0,
         "head": "",
-        "format": "<template>\n  <v-container fluid class=\"pa-4\">\n    <v-row>\n      <v-col cols=\"6\">\n        <v-text-field v-model=\"batchId\" label=\"Enter Batch ID\" outlined dense></v-text-field>\n      </v-col>\n      <v-col cols=\"3\">\n        <v-text-field v-model=\"expectedQuantity\" label=\"Quantity\" outlined dense type=\"text\" @input=\"expectedQuantity = expectedQuantity.replace(/\\D/g,'')\" />      </v-col>\n      <v-col cols=\"3\">\n        <v-btn block color=\"primary\" @click=\"submitBatch\" :disabled=\"!batchId || !expectedQuantity\">\n          Start Manual\n        </v-btn>\n      </v-col>\n    </v-row>\n  </v-container>\n\n\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      batchId: \"\",\n      activePic: \"\", \n      expectedQuantity: \"\",\n    };\n  },\n  methods: {\n    strictEncode(str) {\n        return encodeURIComponent(str).replace(/[!'()*._~-]/g, (c) => {\n            return '%' + c.charCodeAt(0).toString(16).toUpperCase();\n        });\n    },\n    submitBatch() {\n      const now = new Date();\n      const currentDate =\n        now.getFullYear().toString() +\n        String(now.getMonth() + 1).padStart(2, \"0\") +\n        String(now.getDate()).padStart(2, \"0\");\n\n      const currentTime =\n        String(now.getHours()).padStart(2, \"0\") +\n        String(now.getMinutes()).padStart(2, \"0\") +\n        String(now.getSeconds()).padStart(2, \"0\");\n\n      // first two letter of batach ID\n      const letters =\n        this.batchId && this.batchId.trim().length > 1\n          ? this.batchId.trim().slice(0, 2).toUpperCase()\n          : \"AB\";\n\n      const safePic = this.strictEncode(this.activePic);\n      const safeBatch = this.strictEncode(this.batchId);\n\n      const orderId = `${currentDate}-${letters}-${currentTime}`;\n      \n      const payload = {\n        productName: \"Unknown -- Manual Input\",\n        orderId,\n        quantity: 0,\n        start: new Date().toISOString(),\n        batchId: safeBatch,\n        activePic: safePic,\n        expectedQuantity: this.expectedQuantity,\n      };\n\n      this.send({\n  payload: `${payload.orderId},-,${payload.activePic.replace(/ /g, \"__SPACE__\")},-,${payload.batchId.replace(/ /g, \"__SPACE__\")},-,,-,${payload.expectedQuantity.replace(/ /g, \"__SPACE__\")}`\n}); // no productName\n\n\n      \n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: payload, \n      });\n    },\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .v-container {\n    max-height: 100%;\n  }\n</style>",
+        "format": "<template>\n  <v-container fluid class=\"pa-4\">\n    <v-row>\n      <v-col cols=\"6\">\n        <v-text-field v-model=\"batchId\" label=\"Enter Batch ID\" outlined dense></v-text-field>\n      </v-col>\n      <v-col cols=\"3\">\n        <v-text-field v-model=\"expectedQuantity\" label=\"Quantity\" outlined dense type=\"text\" @input=\"expectedQuantity = expectedQuantity.replace(/\\D/g,'')\" />      </v-col>\n      <v-col cols=\"3\">\n        <v-btn block color=\"primary\" @click=\"submitBatch\" :disabled=\"!batchId || !expectedQuantity\">\n          Start Manual\n        </v-btn>\n      </v-col>\n    </v-row>\n  </v-container>\n\n\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      batchId: \"\",\n      activePic: \"\", \n      expectedQuantity: \"\",\n    };\n  },\n  methods: {\n    strictEncode(str) {\n        return encodeURIComponent(str).replace(/[!'()*._~-]/g, (c) => {\n            return '%' + c.charCodeAt(0).toString(16).toUpperCase();\n        });\n    },\n    submitBatch() {\n      const now = new Date();\n      const currentDate =\n        now.getFullYear().toString() +\n        String(now.getMonth() + 1).padStart(2, \"0\") +\n        String(now.getDate()).padStart(2, \"0\");\n\n      const currentTime =\n        String(now.getHours()).padStart(2, \"0\") +\n        String(now.getMinutes()).padStart(2, \"0\") +\n        String(now.getSeconds()).padStart(2, \"0\");\n\n      // first two letter of batach ID\n      const letters = \"MAN\"\n\n      const safePic = this.strictEncode(this.activePic);\n      const safeBatch = this.strictEncode(this.batchId);\n\n      const orderId = `${currentDate}-${letters}-${currentTime}`;\n      \n      const payload = {\n        productName: \"Unknown -- Manual Input\",\n        orderId,\n        quantity: this.expectedQuantity,\n        start: new Date().toISOString(),\n        batchId: safeBatch,\n        activePic: safePic,\n      };\n\n      this.send({\n  payload: `${payload.orderId},-,${payload.activePic.replace(/ /g, \"__SPACE__\")},-,${payload.batchId.replace(/ /g, \"__SPACE__\")},-,,-,${payload.quantity.replace(/ /g, \"__SPACE__\")},-,,-,`\n}); // no productName\n\n\n      \n      this.$router.push({\n        path: \"/dashboard/process\",\n        query: payload, \n      });\n    },\n  },\n  watch: {\n    msg(newMsg) {\n      if (newMsg?.type === \"activePic\") {\n        this.activePic = newMsg.value || \"\";\n      }\n    },\n  },\n};\n</script>\n\n<style scoped>\n  .v-container {\n    max-height: 100%;\n  }\n</style>",
         "storeOutMessages": true,
         "passthru": false,
         "resendOnRefresh": true,
@@ -3005,8 +3006,8 @@
         "links": [
             "6cb56de36a3e267f"
         ],
-        "x": 635,
-        "y": 1100,
+        "x": 595,
+        "y": 1160,
         "wires": [
             [
                 "231d11e98ba1955a"
@@ -3034,11 +3035,11 @@
         "links": [
             "74bebe911794e031"
         ],
-        "x": 545,
+        "x": 475,
         "y": 1120,
         "wires": [
             [
-                "231d11e98ba1955a"
+                "55791e9227a46acc"
             ]
         ]
     },
@@ -3064,6 +3065,130 @@
         "wires": [
             [
                 "f1f9b173f649081c"
+            ]
+        ]
+    },
+    {
+        "id": "619413be92ba7adc",
+        "type": "debug",
+        "z": "f69312076bb95996",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 240,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "55791e9227a46acc",
+        "type": "delay",
+        "z": "f69312076bb95996",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "100",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 590,
+        "y": 1120,
+        "wires": [
+            [
+                "231d11e98ba1955a",
+                "bb07f4286b3f6715"
+            ]
+        ]
+    },
+    {
+        "id": "bb07f4286b3f6715",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "retrieve expectedQuantity",
+        "func": "var currentOrderId = flow.get(\"currentOrderId\") || null;\nvar sqlMsg = null;\n\nif (currentOrderId) {\n        sqlMsg = {topic : `\n            SELECT expectedQuantity\n            FROM tastiway_process\n            WHERE orderId = '${currentOrderId}';\n        `};\n        node.status({ fill: \"green\", shape: \"dot\", text: \"Retrieving counts\" }); \n} else {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"Counting disabled\" });\n}\n\nreturn sqlMsg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 1120,
+        "wires": [
+            [
+                "783ece214a1afdba"
+            ]
+        ]
+    },
+    {
+        "id": "783ece214a1afdba",
+        "type": "sqlite",
+        "z": "f69312076bb95996",
+        "mydb": "25c1914aaf26412a",
+        "sqlquery": "msg.topic",
+        "sql": "",
+        "name": "tastiwayDB",
+        "x": 1050,
+        "y": 1120,
+        "wires": [
+            [
+                "41a9a6fd605ee915"
+            ]
+        ]
+    },
+    {
+        "id": "41a9a6fd605ee915",
+        "type": "function",
+        "z": "f69312076bb95996",
+        "name": "send quantity",
+        "func": "if (msg.payload && msg.payload.length > 0) {\n    const expectedQuantity = msg.payload[0].expectedQuantity;\n\n    node.status({ fill: \"green\", shape: \"dot\", text: \"Quantity: \" + expectedQuantity });\n    msg.ui_update = {\n        max: expectedQuantity\n    };\n    return msg;\n} \n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1210,
+        "y": 1120,
+        "wires": [
+            [
+                "26d222d71a3d8ff4"
+            ]
+        ]
+    },
+    {
+        "id": "7dd8d04ed6ce3898",
+        "type": "delay",
+        "z": "f69312076bb95996",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "100",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1370,
+        "y": 1160,
+        "wires": [
+            [
+                "26d222d71a3d8ff4"
             ]
         ]
     }

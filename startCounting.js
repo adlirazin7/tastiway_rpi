@@ -12,11 +12,14 @@ const machineId = fs.readFileSync('/etc/machine_id_custom', 'utf8').trim();
 const payload = process.argv[2];
 console.log("payload:", payload);
 
-const [orderId, activePicRaw, batchIdRaw, productNameRaw, expectedQuantity] = payload.split(",-,");
-const activePic = decodeURIComponent(activePicRaw)
-const batchId = decodeURIComponent(batchIdRaw)
-const productName = decodeURIComponent(productNameRaw)
+const [orderId, activePicRaw, batchIdRaw, productNameRaw, expectedQuantity, expectedStartRaw, expectedEndRaw] = payload.split(",-,");
+const activePic = decodeURIComponent(activePicRaw);
+const batchId = decodeURIComponent(batchIdRaw);
+const productName = decodeURIComponent(productNameRaw);
 const nowMillis = Date.now();
+const expectedStart = decodeURIComponent(expectedStartRaw);
+const expectedEnd = decodeURIComponent(expectedEndRaw);
+
 
 if (!orderId) {
     console.error("❌ Missing orderId argument!");
@@ -51,9 +54,9 @@ try {
     // Sqlite -- tastiway-process table
     try {// orderId Primary key
         await db.run(
-            `INSERT OR IGNORE INTO tastiway_process (orderId, start, pic, batchId, productName, expectedQuantity)
-             VALUES (?, ?, ?, ?, ?, ?)`,
-            [orderId, nowMillis, activePic, batchId, productName, expectedQuantity]
+            `INSERT OR IGNORE INTO tastiway_process (orderId, start, pic, batchId, productName, expectedQuantity, expectedStart, expectedEnd)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+            [orderId, nowMillis, activePic, batchId, productName, expectedQuantity, expectedStart, expectedEnd]
         );
     } catch (err) {
         throw new Error(`❌ SQLite table 'process' failed: ${err.message}`);
@@ -138,7 +141,9 @@ try {
                     machineId: machineId,
                     pic: order["pic"],
                     productName: order["productName"],
-                    expectedQuantity: order["expectedQuantity"]
+                    expectedQuantity: order["expectedQuantity"],
+                    expectedStart: new Date(order["expectedStart"]),
+                    expectedEnd: new Date(order["expectedEnd"]),
                 },
                 { merge: true }
             )

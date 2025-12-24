@@ -35,6 +35,8 @@ try {
                 { name: "uploadedStart", sql: "ALTER TABLE tastiway_process ADD COLUMN uploadedStart INTEGER DEFAULT 0;" },
                 { name: "productName", sql: "ALTER TABLE tastiway_process ADD COLUMN productName TEXT NOT NULL DEFAULT '';" },
                 { name: "expectedQuantity", sql: "ALTER TABLE tastiway_process ADD COLUMN expectedQuantity INTEGER DEFAULT 0;" },
+                { name: "expectedStart", sql: "ALTER TABLE tastiway_process ADD COLUMN expectedStart INTEGER DEFAULT '';" },
+                { name: "expectedEnd", sql: "ALTER TABLE tastiway_process ADD COLUMN expectedEnd INTEGER DEFAULT '';" },
             ],
         },
         {

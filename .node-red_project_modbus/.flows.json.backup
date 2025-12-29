@@ -3430,7 +3430,7 @@
         "wires": [
             [
                 "372a6bc9e3075ff0",
-                "ef6b9e25779e130b"
+                "5054cdc55e5b17e9"
             ]
         ]
     },
@@ -4844,7 +4844,8 @@
         "mode": "link",
         "links": [
             "45a27690efb49229",
-            "76e197ee39b4bd78"
+            "76e197ee39b4bd78",
+            "c0267d3c9877489e"
         ],
         "x": 1725,
         "y": 660,
@@ -6109,89 +6110,7 @@
         "y": 1280,
         "wires": [
             [
-                "de3909b7a82446c1",
-                "ea3778cc6c13c9e7"
-            ]
-        ]
-    },
-    {
-        "id": "ea3778cc6c13c9e7",
-        "type": "function",
-        "z": "7c2196e0bf45cdca",
-        "name": "retrieve expectedQuantity",
-        "func": "var currentOrderId = flow.get(\"currentOrderId\") || null;\nvar sqlMsg = null;\n\nif (currentOrderId) {\n        sqlMsg = {topic : `\n            SELECT expectedQuantity\n            FROM tastiway_process\n            WHERE orderId = '${currentOrderId}';\n        `};\n        node.status({ fill: \"green\", shape: \"dot\", text: \"Retrieving counts\" }); \n} else {\n    node.status({ fill: \"red\", shape: \"ring\", text: \"Counting disabled\" });\n}\n\nreturn sqlMsg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 930,
-        "y": 1260,
-        "wires": [
-            [
-                "a3de64a8bf3ef9fd"
-            ]
-        ]
-    },
-    {
-        "id": "a3de64a8bf3ef9fd",
-        "type": "sqlite",
-        "z": "7c2196e0bf45cdca",
-        "mydb": "25c1914aaf26412a",
-        "sqlquery": "msg.topic",
-        "sql": "",
-        "name": "tastiwayDB",
-        "x": 1150,
-        "y": 1260,
-        "wires": [
-            [
-                "17e9a4284561e469"
-            ]
-        ]
-    },
-    {
-        "id": "17e9a4284561e469",
-        "type": "function",
-        "z": "7c2196e0bf45cdca",
-        "name": "send quantity",
-        "func": "if (msg.payload && msg.payload.length > 0) {\n    const expectedQuantity = msg.payload[0].expectedQuantity;\n\n    node.status({ fill: \"green\", shape: \"dot\", text: \"Quantity: \" + expectedQuantity });\n    msg.ui_update = {\n        max: expectedQuantity\n    };\n    return msg;\n} \n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1330,
-        "y": 1260,
-        "wires": [
-            [
-                "5054cdc55e5b17e9"
-            ]
-        ]
-    },
-    {
-        "id": "ef6b9e25779e130b",
-        "type": "delay",
-        "z": "7c2196e0bf45cdca",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "100",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1450,
-        "y": 1320,
-        "wires": [
-            [
-                "5054cdc55e5b17e9"
+                "de3909b7a82446c1"
             ]
         ]
     },
@@ -6234,10 +6153,110 @@
         "name": "start process for resume",
         "mode": "link",
         "links": [
-            "6b0d2011f78cc3cc"
+            "6b0d2011f78cc3cc",
+            "c0267d3c9877489e"
         ],
         "x": 1435,
         "y": 600,
         "wires": []
+    },
+    {
+        "id": "e4fc2d51ba5fad2a",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "cat /etc/machine_id_custom",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "cat operstate",
+        "x": 390,
+        "y": 2500,
+        "wires": [
+            [
+                "a967f6cac8f980f4"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a967f6cac8f980f4",
+        "type": "function",
+        "z": "7c2196e0bf45cdca",
+        "name": "set machineId",
+        "func": "global.set(\"machineId\", msg.payload);\nmsg.type = \"machineId\";    \nmsg.value = msg.payload;    \nnode.status({  text: \"Count: \" + msg.payload });\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 2500,
+        "wires": [
+            [
+                "2a91d81a648f4c2a"
+            ]
+        ]
+    },
+    {
+        "id": "8afe4f29e954d378",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 2500,
+        "wires": [
+            [
+                "e4fc2d51ba5fad2a"
+            ]
+        ]
+    },
+    {
+        "id": "2a91d81a648f4c2a",
+        "type": "link out",
+        "z": "7c2196e0bf45cdca",
+        "name": "machineId",
+        "mode": "link",
+        "links": [],
+        "x": 725,
+        "y": 2500,
+        "wires": []
+    },
+    {
+        "id": "c0267d3c9877489e",
+        "type": "link in",
+        "z": "7c2196e0bf45cdca",
+        "name": "link in 6",
+        "links": [
+            "6643b197cc00458c",
+            "a5feda585d5b230d"
+        ],
+        "x": 255,
+        "y": 2440,
+        "wires": [
+            [
+                "e4fc2d51ba5fad2a"
+            ]
+        ]
     }
 ]

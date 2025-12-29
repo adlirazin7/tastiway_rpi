@@ -129,6 +129,8 @@ try {
             throw new Error(`${orderId} is not found in the tastiway_process`)
         }
         const order = orders[0];
+        const expectedStart = order["expectedStart"] !== '' ? new Date(order["expectedStart"]) : null;
+        const expectedEnd = order["expectedStart"] !== '' ? new Date(order["expectedStart"]) : null;
         // set the doc in the firestore
         await dbFirestore
             .collection("tastiway_reports")
@@ -142,8 +144,8 @@ try {
                     pic: order["pic"],
                     productName: order["productName"],
                     expectedQuantity: order["expectedQuantity"],
-                    expectedStart: new Date(order["expectedStart"]),
-                    expectedEnd: new Date(order["expectedEnd"]),
+                    expectedStart: expectedStart,
+                    expectedEnd: expectedEnd,
                 },
                 { merge: true }
             )

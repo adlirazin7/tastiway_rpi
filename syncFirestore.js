@@ -60,6 +60,8 @@ try {
         for (const order of orders) {
             orderId = order["orderId"]
             // set the doc in the firestore
+            const expectedStart = order["expectedStart"] !== '' ? newDate(order["expectedStart"]) : null;
+            const expectedEnd = order["expectedStart"] !== '' ? newDate(order["expectedStart"]) : null;
             await dbFirestore
                 .collection("tastiway_reports")
                 .doc(orderId)
@@ -72,8 +74,8 @@ try {
                         pic: order["pic"],
                         productName: order["productName"],
                         expectedQuantity: order["expectedQuantity"],
-                        expectedStart: new Date(order["expectedStart"]),
-                        expectedEnd: new Date(order["expectedEnd"]),
+                        expectedStart: expectedStart,
+                        expectedEnd: expectedEnd,
                     },
                     { merge: true }
                 )

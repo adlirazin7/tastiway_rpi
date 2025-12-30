@@ -1073,7 +1073,7 @@
         "type": "debug",
         "z": "f69312076bb95996",
         "name": "current count",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,

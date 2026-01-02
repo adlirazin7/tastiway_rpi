@@ -142,6 +142,12 @@ try {
 
     //* Firestore -- update finish info into collection report
     try {
+        let prodOutput
+        if (machineId === "ZPL001") {
+            prodOutput = currentRow["counts"] - reject;
+        } else {
+            prodOutput = 0;
+        }
 
         await dbFirestore
             .collection("tastiway_reports")
@@ -150,7 +156,8 @@ try {
                 {
                     stop: Timestamp.fromMillis(nowMillis),
                     finalCount: currentRow["counts"],
-                    reject: currentRow["counts"] - reject,
+                    reject: Number(reject),
+                    prodOutput: prodOutput,
                     uom: machineUom[machineId],
                 },
             )

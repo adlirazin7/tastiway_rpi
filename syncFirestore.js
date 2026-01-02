@@ -141,7 +141,14 @@ try {
 
     //Firestore -- update finish info into collection report
     try {
+        let prodOutput
         for (const order of ordersFinish) {
+            if (machineId === "ZPL001") {
+                prodOutput = order["counts"] - Number(order["reject"]);
+            } else {
+                prodOutput = 0;
+            }
+
             if (!order["stop"]) { continue }
             orderId = order["orderId"]
             try {
@@ -152,7 +159,8 @@ try {
                         {
                             stop: Timestamp.fromMillis(order["stop"]),
                             finalCount: order["counts"],
-                            reject: order["counts"] - order["reject"],
+                            reject: Number(order["reject"]),
+                            prodOutput: prodOutput,
                             uom: machineUom[machineId],
                         },
                     )

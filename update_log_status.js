@@ -52,6 +52,7 @@ try {
             // retrieve latest duration 
             const latestRow = await db.all(`SELECT duration from log WHERE orderId=? ORDER BY id DESC LIMIT 1`, [currentRow["orderId"]]);
             if (latestRow.length === 0) {
+    
                 duration = 0
             } else {
                 duration = latestRow[0]["duration"] + 5 * 60 * 1000; // in millisecond

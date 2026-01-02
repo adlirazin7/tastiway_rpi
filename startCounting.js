@@ -26,8 +26,6 @@ if (!orderId) {
     process.exit(1);
 }
 
-
-
 let db;
 let dbFirestore;
 
@@ -130,7 +128,7 @@ try {
         }
         const order = orders[0];
         const expectedStart = order["expectedStart"] !== '' ? new Date(order["expectedStart"]) : null;
-        const expectedEnd = order["expectedStart"] !== '' ? new Date(order["expectedStart"]) : null;
+        const expectedEnd = order["expectedEnd"] !== '' ? new Date(order["expectedEnd"]) : null;
         // set the doc in the firestore
         await dbFirestore
             .collection("tastiway_reports")

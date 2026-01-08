@@ -6306,5 +6306,76 @@
                 "4b50b25894efc06a"
             ]
         ]
+    },
+    {
+        "id": "fca6c517c7ec4726",
+        "type": "inject",
+        "z": "7c2196e0bf45cdca",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 2680,
+        "wires": [
+            [
+                "12b4221ae45fa09c"
+            ]
+        ]
+    },
+    {
+        "id": "2e742416545e56b5",
+        "type": "debug",
+        "z": "7c2196e0bf45cdca",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 2680,
+        "wires": []
+    },
+    {
+        "id": "12b4221ae45fa09c",
+        "type": "exec",
+        "z": "7c2196e0bf45cdca",
+        "command": "node /home/pi/Project/screenshot.js",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "cat operstate",
+        "x": 390,
+        "y": 2680,
+        "wires": [
+            [
+                "2e742416545e56b5"
+            ],
+            [
+                "2e742416545e56b5"
+            ],
+            [
+                "2e742416545e56b5"
+            ]
+        ]
     }
 ]

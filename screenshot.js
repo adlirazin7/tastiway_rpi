@@ -14,7 +14,7 @@ try {
     try {
         initializeApp({ credential: cert(serviceAccount) });
         const dbFirestore = getFirestore();
-        doc_ref = dbFirestore.collection("tastiway_machines").doc(machineId + "SS")
+        doc_ref = dbFirestore.collection("tastiway_machines").doc(machineId)
     } catch (err) {
         throw new Error(`❌ Firestore initialisation failed ${err.message}`)
     }

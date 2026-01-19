@@ -18,12 +18,15 @@ try {
                 { name: "start", sql: "ALTER TABLE current ADD COLUMN start INTEGER;" },
                 { name: "andon", sql: "ALTER TABLE current ADD COLUMN andon TEXT NOT NULL DEFAULT '';" },
                 { name: "pic", sql: "ALTER TABLE current ADD COLUMN pic TEXT NOT NULL DEFAULT '';" },
+                { name: "comment", sql: "ALTER TABLE current ADD COLUMN comment TEXT DEFAULT '';" },
             ],
         },
         {
             name: "tastiway_plans",
             columns: [
                 { name: "batchId", sql: "ALTER TABLE tastiway_plans ADD COLUMN batchId TEXT NOT NULL DEFAULT '';" },
+                { name: "comment", sql: "ALTER TABLE tastiway_plans ADD COLUMN comment TEXT DEFAULT '';" },
+
             ],
         },
         {
@@ -37,6 +40,7 @@ try {
                 { name: "expectedQuantity", sql: "ALTER TABLE tastiway_process ADD COLUMN expectedQuantity INTEGER DEFAULT 0;" },
                 { name: "expectedStart", sql: "ALTER TABLE tastiway_process ADD COLUMN expectedStart INTEGER DEFAULT '';" },
                 { name: "expectedEnd", sql: "ALTER TABLE tastiway_process ADD COLUMN expectedEnd INTEGER DEFAULT '';" },
+                { name: "comment", sql: "ALTER TABLE tastiway_process ADD COLUMN comment TEXT DEFAULT '';" },
             ],
         },
         {

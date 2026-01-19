@@ -59,8 +59,8 @@ try {
             const data = doc.data();
             await db.run(
                 `INSERT INTO tastiway_plans
-          (start, end, orderId, batchId, productName, quantity)
-         VALUES (?, ?, ?, ?, ?, ?)`,
+          (start, end, orderId, batchId, productName, quantity, comment)
+         VALUES (?, ?, ?, ?, ?, ?, ?)`,
                 [
                     data.start?.toDate().toISOString() ?? null,
                     data.end?.toDate().toISOString() ?? null,
@@ -68,6 +68,7 @@ try {
                     data.batchId ?? null,
                     data.productName ?? null,
                     data.quantity ?? null,
+                    data.comments ?? "",
                 ]
             );
             insertedCount++;

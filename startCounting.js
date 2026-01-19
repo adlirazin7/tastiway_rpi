@@ -12,13 +12,14 @@ const machineId = fs.readFileSync('/etc/machine_id_custom', 'utf8').trim();
 const payload = process.argv[2];
 console.log("payload:", payload);
 
-const [orderId, activePicRaw, batchIdRaw, productNameRaw, expectedQuantity, expectedStartRaw, expectedEndRaw] = payload.split(",-,");
+const [orderId, activePicRaw, batchIdRaw, productNameRaw, expectedQuantity, expectedStartRaw, expectedEndRaw, commentRaw] = payload.split(",-,");
 const activePic = decodeURIComponent(activePicRaw);
 const batchId = decodeURIComponent(batchIdRaw);
 const productName = decodeURIComponent(productNameRaw);
 const nowMillis = Date.now();
 const expectedStart = decodeURIComponent(expectedStartRaw);
 const expectedEnd = decodeURIComponent(expectedEndRaw);
+const comment = decodeURIComponent(commentRaw);
 
 
 if (!orderId) {
@@ -52,9 +53,9 @@ try {
     // Sqlite -- tastiway-process table
     try {// orderId Primary key
         await db.run(
-            `INSERT OR IGNORE INTO tastiway_process (orderId, start, pic, batchId, productName, expectedQuantity, expectedStart, expectedEnd)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-            [orderId, nowMillis, activePic, batchId, productName, expectedQuantity, expectedStart, expectedEnd]
+            `INSERT OR IGNORE INTO tastiway_process (orderId, start, pic, batchId, productName, expectedQuantity, expectedStart, expectedEnd, comment)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            [orderId, nowMillis, activePic, batchId, productName, expectedQuantity, expectedStart, expectedEnd, comment]
         );
     } catch (err) {
         throw new Error(`❌ SQLite table 'process' failed: ${err.message}`);
@@ -63,7 +64,7 @@ try {
     //Sqlite -- current table
     try {
         const currentRow = await db.all(`SELECT * FROM current LIMIT 1;`);
-        const process = await db.all(`SELECT start, counts FROM tastiway_process WHERE orderId=?`, [orderId]);
+        const process = await db.all(`SELECT start, counts FROM tastiway_process WHERE orderId=?`, [orderId]); // in case of choosing the same orderId
         const start = process[0]["start"]
         const counts = process[0]["counts"]
 
@@ -71,15 +72,15 @@ try {
             // table empty -> insert new
 
             await db.run(
-                `INSERT INTO current (orderId, counts, pic, start) VALUES (?, ?, ?, ?)`,
-                [orderId, counts, activePic, start]
+                `INSERT INTO current (orderId, counts, pic, start, comment) VALUES (?, ?, ?, ?, ?)`,
+                [orderId, counts, activePic, start, comment]
             );
         } else if (currentRow[0].orderId !== orderId) {
             // different order -> clear and insert new
             await db.run(`DELETE FROM current;`);
             await db.run(
-                `INSERT INTO current (orderId, counts, pic, start) VALUES (?, ?, ?, ?)`,
-                [orderId, counts, activePic, start]
+                `INSERT INTO current (orderId, counts, pic, start, comment) VALUES (?, ?, ?, ?, ?)`,
+                [orderId, counts, activePic, start, comment]
             );
         } else {
             // same orderId -> keep as is

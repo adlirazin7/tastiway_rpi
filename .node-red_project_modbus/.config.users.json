@@ -59,7 +59,7 @@
             }
         },
         "debug": {
-            "filter": "filterCurrent"
+            "filter": "filterAll"
         },
         "menu-menu-item-palette": true
     }

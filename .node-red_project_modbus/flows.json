@@ -6368,7 +6368,7 @@
         "width": 4,
         "height": 0,
         "head": "",
-        "format": "<template>\n  <v-container fluid class=\"pa-0 ma-0\">\n    <v-row no-gutters>\n      <v-col class=\"pa-4\">\n        <p class=\"text-body-1\">\n          {{ comment ? `${comment}` : '' }}\n        </p>\n      </v-col>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      comment: null,\n    };\n  },\n  mounted() {\n    const query = this.$route.query;\n    this.comment = query.comment;\n  },\n};\n</script>",
+        "format": "<template>\n  <v-container fluid class=\"pa-0 ma-0\">\n    <v-row no-gutters>\n      <v-col class=\"pa-4\">\n        <p class=\"text-h6 font-weight-bold text-red\">\n          {{ comment ? `${comment}` : '' }}\n        </p>\n      </v-col>\n    </v-row>\n  </v-container>\n</template>\n\n<script>\n  export default {\n  data() {\n    return {\n      comment: null,\n    };\n  },\n  mounted() {\n    const query = this.$route.query;\n    this.comment = query.comment;\n  },\n};\n</script>",
         "storeOutMessages": true,
         "passthru": true,
         "resendOnRefresh": true,

@@ -25,6 +25,7 @@ if (!orderId) {
 const machineUom = {
     TMM001: "kg",
     ZPL001: "PACK",
+    ZPL002: "PACK",
     ZTP001: "PACK",
     SMW001: "kg",
     BPM001: "Bag",
@@ -143,7 +144,7 @@ try {
     //* Firestore -- update finish info into collection report
     try {
         let prodOutput
-        if (machineId === "ZPL001") {
+        if (machineId === "ZPL001" || machineId === "ZPL002") {
             prodOutput = currentRow["counts"] - reject;
         } else {
             prodOutput = 0;

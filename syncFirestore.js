@@ -19,6 +19,7 @@ let msg = "report sync started\n";
 const machineUom = {
     TMM001: "kg",
     ZPL001: "PACK",
+    ZPL002: "PACK",
     ZTP001: "PACK",
     SMW001: "kg",
     BPM001: "Bag",
@@ -143,7 +144,7 @@ try {
     try {
         let prodOutput
         for (const order of ordersFinish) {
-            if (machineId === "ZPL001") {
+            if (machineId === "ZPL001" || machineId === "ZPL002") {
                 prodOutput = order["counts"] - Number(order["reject"]);
             } else {
                 prodOutput = 0;

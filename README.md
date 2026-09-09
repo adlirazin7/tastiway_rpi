@@ -1,153 +1,274 @@
-# Tastiway RPI — Operations Handover (Factory Floor Staff)
+# Tastiway RPI — Installation & Setup Guide
 
 > **System name:** Tastiway Production Counter
-> **Audience:** Supervisors and operators on the factory floor
-> **Last updated:** 2026-09-03
+> **Target device:** Raspberry Pi (Raspberry Pi OS, user `pi`)
+> **Last updated:** 2026-09-09
 
-This guide explains how to use the Tastiway touchscreen at each machine station for daily
-production counting.
-
----
-
-## 1. What the system does
-
-The Tastiway touchscreen at each machine station:
-
-- Shows today's **production orders** (what needs to be produced)
-- **Counts production output** automatically using a sensor
-- Tracks the **traffic light status** (Running / Need Help / Breakdown)
-- Sends all data to the cloud so supervisors can monitor from the office
+This guide walks through installing the Tastiway Production Counter on a fresh Raspberry Pi
+from scratch: installing Node.js and Node-RED, cloning this repository, choosing the correct
+Node-RED flow for the machine, setting the machine ID, and enabling kiosk mode so everything
+auto-starts when the device powers on.
 
 ---
 
-## 2. Starting a production run
+## 0. Overview
 
-### Step 1: Enter your name
+Each Raspberry Pi is dedicated to **one machine** on the factory floor. It runs:
 
-On the **Production Plan** screen, type your name in the **PIC** (Person In Charge) field at the top.
+- **Node-RED** — the flow engine + touchscreen dashboard (editor/dashboard on port **6018**).
+- A set of **Node.js scripts** (in `/home/pi/Project/`) that Node-RED calls to fetch orders,
+  count production, sync to Firestore, take screenshots, etc.
+- **Chromium in kiosk mode**, which opens the dashboard full-screen on boot.
 
-### Step 2: Select the order
+There are **two Node-RED flow variants** in this repo — you install exactly one, depending on
+how the machine counts production:
 
-Tap the **order card** for the production order you want to start. Each card shows:
-- Product name
-- Batch ID
-- Order ID
-- Target quantity
-- Planned start date
+| Folder | Use for | Counting method |
+|--------|---------|-----------------|
+| `.node-red_project_count` | Most machines (ZPL, BPM, ZTP, etc.) | GPIO proximity sensor (count +1 per product) |
+| `.node-red_project_modbus` | TMM and other metered machines | Modbus energy meter (kg based on power) |
 
-If you need to refresh the order list, tap the **Refresh** button.
-
-### Step 3: Production starts
-
-After tapping the order card, the screen switches to the **Process** page showing:
-- A **count gauge** (circular display showing current count vs target)
-- An **elapsed timer** (how long the run has been going)
-- Three **traffic light buttons** (Running / Assistance / Breakdown)
-- A **Finish** button
-
-The count updates automatically as the machine produces.
+> Only **one** of these is copied into `~/.node-red`. Pick based on the machine type.
 
 ---
 
-## 3. During production
+## 1. Prepare the Raspberry Pi
 
-### Traffic light buttons
+1. Flash **Raspberry Pi OS (with desktop)** and boot the device.
+2. Set the username to **`pi`** (all paths in this project assume `/home/pi`).
+3. Connect to Wi-Fi / network and update the system:
 
-Use these buttons to report the machine status:
-
-| Button | Colour | Meaning | Timer |
-|--------|--------|---------|-------|
-| **Running** | Green | Machine is running normally | Timer runs |
-| **Assistance** | Blue | Need help (e.g. material request) | Timer pauses |
-| **Breakdown** | Red | Machine is broken down | Timer pauses |
-
-Always press the correct button when the status changes. This data is used for reporting.
-
-### The count gauge
-
-The circular gauge shows:
-- **Current count** (how many units produced so far)
-- **Target quantity** (from the production order)
-
-For most machines, the count goes up by 1 each time the sensor detects a product. For TMM machines,
-the count is in kg and updates every few seconds based on energy consumption.
+   ```bash
+   sudo apt update && sudo apt full-upgrade -y
+   ```
 
 ---
 
-## 4. Finishing a production run
+## 2. Install Node.js and Node-RED
 
-1. Press the **Finish** button when the order is complete.
-2. For most machines, a dialog will ask for the **reject quantity** (how many defective units). Enter
-   the number and confirm.
-3. For some machines (TMM, BPM, ZTP), the finish happens automatically without asking for rejects.
-4. The screen returns to the **Production Plan** page, ready for the next order.
+Use the official Node-RED install script — it installs a compatible Node.js, Node-RED, and sets
+up the **systemd service** used for auto-start:
 
----
+```bash
+bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+```
 
-## 5. Resuming after a restart
+Accept the prompts (Pi-specific settings: **yes**). When it finishes, verify:
 
-If the power goes off or the system restarts while an order is in progress:
+```bash
+node -v          # should print a Node.js version
+node-red --version   # should print Node-RED 4.1.0 or compatible
+```
 
-1. The system will automatically detect the unfinished order.
-2. A **yellow Resume card** will appear at the top of the Production Plan page.
-3. Tap the Resume card to continue where you left off.
-4. The count will be preserved — no data is lost.
-
----
-
-## 6. Manual batch entry
-
-If the production order is not in the system:
-
-1. Look for the **Manual Batch** section on the Production Plan page.
-2. Enter the **Batch ID** and **Quantity**.
-3. Tap to start the manual batch.
+Do **not** start Node-RED yet — we install the flow first (Section 5).
 
 ---
 
-## 7. If the internet is down
+## 3. Clone this repository
 
-**Keep working normally.** The system saves everything locally on the device. When the internet
-comes back, all data will sync to the cloud automatically. You may see the WiFi indicator (top of
-the screen) turn red — this is expected and does not affect counting.
+Clone the repo to **`/home/pi/Project`** (the scripts are hard-coded to this path — e.g.
+`node /home/pi/Project/startCounting.js`).
 
----
+```bash
+cd /home/pi
+git clone <REPO_URL> Project
+cd Project
+```
 
-## 8. Common questions
+Install the Node.js script dependencies (firebase-admin, sqlite):
 
-| Question | Answer |
-|----------|--------|
-| *The count is not going up* | Check if the sensor is working (proximity sensor near the machine output). For TMM machines, check if the machine is actually consuming power above the threshold. |
-| *I selected the wrong order* | Press Finish with 0 rejects to close it, then start the correct order. |
-| *The screen is frozen* | Wait 30 seconds. If still frozen, ask maintenance to restart the device. |
-| *Orders are not showing* | Tap the Refresh button. If still empty, the internet may be down — orders will appear when connectivity returns. Check with the office if the orders have been created in the system. |
-| *The traffic light is wrong colour* | Press the correct traffic light button on the screen. |
-| *How do I exit the full-screen app?* | Press the **Close App** button (X icon) in the top bar. This is for maintenance only. |
+```bash
+npm install
+```
 
 ---
 
-## 9. For supervisors — remote monitoring
+## 4. Add the required secret files
 
-From the office, you can:
+These are **not** in git and must be added manually.
 
-- **View live machine status** in the Firestore `tastiway_machines` collection or via the monitoring
-  dashboard. Each machine shows its current andon colour, count, product, and last-seen time.
-- **Request a screenshot** of any machine's screen by setting `requestSS = true` on the machine's
-  Firestore document. The screenshot will appear in the `screenshot` field within a few seconds.
-- **View production reports** in the `tastiway_reports` collection, which contains the full history
-  of each order: start/stop times, counts, rejects, and the 5-minute log data.
+### 4a. Firebase service account
+
+Copy the Firebase service account key into the Project folder as
+**`/home/pi/Project/service_account-cp4.json`**. All scripts import it directly:
+
+```bash
+# copy your key file into place
+cp /path/to/service_account-cp4.json /home/pi/Project/service_account-cp4.json
+```
+
+> ⚠️ Never commit this file — it is listed in `.gitignore`.
+
+### 4b. Machine ID file (`/etc/machine_id_custom`)
+
+Every script reads the machine identity from **`/etc/machine_id_custom`**. This single line
+tells the system which machine this Pi belongs to (e.g. `TMM001`, `ZPL001`, `ZPL002`, `RHT001`).
+
+A template is provided at `extra_configuration/machine_id_custom`. Create the file with the
+**correct ID for this machine**:
+
+```bash
+# replace ZPL001 with this machine's actual ID
+echo "ZPL001" | sudo tee /etc/machine_id_custom
+```
+
+Verify:
+
+```bash
+cat /etc/machine_id_custom
+```
+
+> The ID must match the `machineId` used in the cloud (Firestore `tastiway_machines` /
+> `tastiway_reports`), otherwise orders and counts will not match up.
 
 ---
 
-## 10. Maintenance notes (for supervisors)
+## 5. Install the correct Node-RED flow
 
-- The system **automatically syncs** data to the cloud every 5 minutes.
-- The system **automatically refreshes** the order list every 4 hours.
-- If a device needs to be restarted, simply **turn it off and on**. It will start up automatically
-  in kiosk mode and check for any unfinished orders.
-- If the Node-RED editor needs to be accessed (for debugging), navigate to `http://<device-ip>:6018/`
-  from a laptop on the same network. Login: `pi` / (ask IT for password).
+Node-RED runs from **`/home/pi/.node-red`**. Copy the contents of the flow variant that matches
+this machine into that folder so it loads automatically on start.
+
+**For a standard proximity-sensor machine:**
+
+```bash
+cp -r /home/pi/Project/.node-red_project_count/. /home/pi/.node-red/
+```
+
+**For a Modbus / metered machine (e.g. TMM):**
+
+```bash
+cp -r /home/pi/Project/.node-red_project_modbus/. /home/pi/.node-red/
+```
+
+Then install the Node-RED node dependencies (dashboard, modbus, sqlite, firestore, etc.):
+
+```bash
+cd /home/pi/.node-red
+npm install
+```
+
+> The flow's `settings.js` sets the editor/dashboard port to **6018** and the credential secret.
+> Keep both files as copied.
 
 ---
 
-*End of operations handover document.*
+## 6. Enable Node-RED auto-start on boot
+
+The official installer registers a **systemd service**. Enable it so Node-RED starts on every
+boot:
+
+```bash
+sudo systemctl enable nodered.service
+sudo systemctl start nodered.service
+```
+
+Check it is running, then open the dashboard from another PC on the network to confirm:
+
+```bash
+sudo systemctl status nodered.service
+# dashboard:  http://<device-ip>:6018/dashboard/production_plan
+# editor:     http://<device-ip>:6018/
+```
+
+Useful commands: `node-red-start`, `node-red-stop`, `node-red-log`.
+
+---
+
+## 7. Set up kiosk mode (auto-open the dashboard)
+
+On boot the Pi should open the dashboard full-screen in Chromium. This is driven by
+`onBoot.sh` + a desktop autostart entry.
+
+1. Copy the boot script and exit helper into `/home/pi/Documents/`:
+
+   ```bash
+   mkdir -p /home/pi/Documents
+   cp /home/pi/Project/extra_configuration/onBoot.sh /home/pi/Documents/onBoot.sh
+   cp /home/pi/Project/extra_configuration/exitKiosk.js /home/pi/Documents/exitKiosk.js
+   chmod +x /home/pi/Documents/onBoot.sh
+   ```
+
+   `onBoot.sh` waits for the network, then launches Chromium in kiosk mode pointing at
+   `http://localhost:6018/dashboard/production_plan`.
+
+2. (Optional) Place the app icon used by the launcher:
+
+   ```bash
+   cp /path/to/circle_tastiway.png /home/pi/Pictures/circle_tastiway.png
+   ```
+
+3. Install the autostart entry so kiosk mode launches on desktop login:
+
+   ```bash
+   mkdir -p /home/pi/.config/autostart
+   cp /home/pi/Project/extra_configuration/Kiosk.desktop /home/pi/.config/autostart/Kiosk.desktop
+   ```
+
+   `Kiosk.desktop` runs `/home/pi/Documents/onBoot.sh`.
+
+---
+
+## 8. First boot / verification
+
+Reboot the device:
+
+```bash
+sudo reboot
+```
+
+After reboot, confirm:
+
+- [ ] Node-RED service is running (`sudo systemctl status nodered.service`).
+- [ ] Chromium opens full-screen showing the **Production Plan** page.
+- [ ] The correct machine ID appears / orders for this machine load (Refresh if needed).
+- [ ] Counting works (trigger the sensor / meter and watch the gauge).
+- [ ] Data reaches the cloud (check the `tastiway_machines` Firestore document for this ID).
+
+The local SQLite database is created automatically at `/home/pi/Project/tastiway.db`.
+
+---
+
+## 9. RHT sensor devices (temperature / humidity) — optional
+
+Some devices instead run the standalone RHT reader (`rht.py` / `rht.js`), which reads its ID
+from `rht_id.txt` (e.g. `RHT001`) in the Project folder rather than `/etc/machine_id_custom`.
+If you are setting up an RHT sensor node, set its ID:
+
+```bash
+echo "RHT001" > /home/pi/Project/rht_id.txt
+```
+
+---
+
+## 10. Path reference
+
+| What | Location |
+|------|----------|
+| Repo / Node.js scripts | `/home/pi/Project/` |
+| Firebase key | `/home/pi/Project/service_account-cp4.json` |
+| Local database | `/home/pi/Project/tastiway.db` |
+| Machine ID | `/etc/machine_id_custom` |
+| Active Node-RED flow | `/home/pi/.node-red/` |
+| Kiosk boot script | `/home/pi/Documents/onBoot.sh` |
+| Kiosk exit helper | `/home/pi/Documents/exitKiosk.js` |
+| Autostart entry | `/home/pi/.config/autostart/Kiosk.desktop` |
+| Dashboard | `http://<device-ip>:6018/dashboard/production_plan` |
+| Node-RED editor | `http://<device-ip>:6018/` |
+
+---
+
+## 11. Updating an existing device
+
+```bash
+cd /home/pi/Project
+git pull
+
+# if the active flow changed, re-copy the matching variant, then:
+cd /home/pi/.node-red && npm install
+node-red-restart   # or: sudo systemctl restart nodered.service
+```
+
+---
+
+*End of installation guide. For day-to-day operator instructions, refer to the operations
+handover documentation.*

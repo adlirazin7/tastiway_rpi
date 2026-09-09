@@ -121,6 +121,28 @@ cat /etc/machine_id_custom
 > The ID must match the `machineId` used in the cloud (Firestore `tastiway_machines` /
 > `tastiway_reports`), otherwise orders and counts will not match up.
 
+### 4c. Machine config file (`/home/pi/config.json`) — Modbus / TMM machines only
+
+Metered machines calculate output from power consumption. `countTMM.js` reads its parameters
+from **`/home/pi/config.json`** (note: the home folder, **not** the Project folder). A template
+is provided at the repo root (`config.json`):
+
+```json
+{"threshold":2,"kgperhour":42}
+```
+
+- `threshold` — kW cut-off; the machine is counted as "running" only when power is above this.
+- `kgperhour` — production rate used to convert running time into kilograms.
+
+Copy it into place and adjust the values for this machine:
+
+```bash
+cp /home/pi/Project/config.json /home/pi/config.json
+# then edit /home/pi/config.json with the correct threshold / kgperhour
+```
+
+> Standard proximity-sensor machines do not use this file and can skip this step.
+
 ---
 
 ## 5. Install the correct Node-RED flow
@@ -183,7 +205,7 @@ On boot the Pi should open the dashboard full-screen in Chromium. This is driven
 
    ```bash
    mkdir -p /home/pi/Documents
-   cp /home/pi/Project/extra_configuration/onBoot.sh /home/pi/Documents/onBoot.sh
+   cp /home/pi/Project/onBoot.sh /home/pi/Documents/onBoot.sh
    cp /home/pi/Project/extra_configuration/exitKiosk.js /home/pi/Documents/exitKiosk.js
    chmod +x /home/pi/Documents/onBoot.sh
    ```
@@ -201,14 +223,44 @@ On boot the Pi should open the dashboard full-screen in Chromium. This is driven
 
    ```bash
    mkdir -p /home/pi/.config/autostart
-   cp /home/pi/Project/extra_configuration/Kiosk.desktop /home/pi/.config/autostart/Kiosk.desktop
+   cp /home/pi/Project/Kiosk.desktop /home/pi/.config/autostart/Kiosk.desktop
    ```
 
    `Kiosk.desktop` runs `/home/pi/Documents/onBoot.sh`.
 
 ---
 
-## 8. First boot / verification
+## 8. Enable the on-screen (touchscreen) keyboard
+
+So operators can type (PIC name, manual batch, reject quantity) on the touchscreen without a
+physical keyboard, enable an on-screen keyboard. This follows the
+[UbuntuHandbook on-screen keyboard guide](https://ubuntuhandbook.org/index.php/2022/05/enable-on-screen-keyboard-ubuntu-22-04/).
+
+### Method 1 — Built-in Screen Keyboard (quick)
+
+Open **Settings → Accessibility**, scroll to **Typing**, and turn on **Screen Keyboard**.
+
+> The built-in keyboard only pops up in limited fields, so for reliable kiosk typing use
+> Method 2.
+
+### Method 2 — Improved OSK extension (recommended)
+
+Install the GNOME Extension Manager, then add the **Improved OSK** extension:
+
+```bash
+sudo apt install gnome-shell-extension-manager
+```
+
+1. Open **Extension Manager** (press the Super key and search for it).
+2. Under the **Browse** tab, search for **Improved OSK** and install it.
+3. In its settings, adjust the keyboard size and enable the top-bar toggle button so the
+   keyboard can be opened on demand.
+
+Test by tapping a text field on the dashboard — the on-screen keyboard should appear.
+
+---
+
+## 9. First boot / verification
 
 Reboot the device:
 
@@ -228,7 +280,7 @@ The local SQLite database is created automatically at `/home/pi/Project/tastiway
 
 ---
 
-## 9. RHT sensor devices (temperature / humidity) — optional
+## 10. RHT sensor devices (temperature / humidity) — optional
 
 Some devices instead run the standalone RHT reader (`rht.py` / `rht.js`), which reads its ID
 from `rht_id.txt` (e.g. `RHT001`) in the Project folder rather than `/etc/machine_id_custom`.
@@ -240,7 +292,7 @@ echo "RHT001" > /home/pi/Project/rht_id.txt
 
 ---
 
-## 10. Path reference
+## 11. Path reference
 
 | What | Location |
 |------|----------|
@@ -248,6 +300,7 @@ echo "RHT001" > /home/pi/Project/rht_id.txt
 | Firebase key | `/home/pi/Project/service_account-cp4.json` |
 | Local database | `/home/pi/Project/tastiway.db` |
 | Machine ID | `/etc/machine_id_custom` |
+| Machine config (Modbus/TMM) | `/home/pi/config.json` |
 | Active Node-RED flow | `/home/pi/.node-red/` |
 | Kiosk boot script | `/home/pi/Documents/onBoot.sh` |
 | Kiosk exit helper | `/home/pi/Documents/exitKiosk.js` |
@@ -257,7 +310,7 @@ echo "RHT001" > /home/pi/Project/rht_id.txt
 
 ---
 
-## 11. Updating an existing device
+## 12. Updating an existing device
 
 ```bash
 cd /home/pi/Project

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Start
+Comment=Launch Chromium in kiosk mode
+Exec=/home/pi/Documents/onBoot.sh
+Icon=/home/pi/Pictures/circle_tastiway.png
+Terminal=false
+Name[en_GB]=Start
